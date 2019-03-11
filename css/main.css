@@ -1891,7 +1891,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #7aa3f0;
+  background: #ff797c;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2993,4 +2993,7 @@ ul.breadcrumb li+li:last-child {
   .post-body {
     text-align: justify;
   }
+}
+body {
+  background: url("/images/S8.jpg");
 }
