@@ -936,7 +936,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://dyrisingsunlight.github.io/2019/03/15/TJ_Postfix expression/">
+    <link itemprop="mainEntityOfPage" href="https://dyrisingsunlight.github.io/2019/03/15/TJ_Milk Scheduling/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="RisingSunlight">
@@ -956,7 +956,7 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/2019/03/15/TJ_Postfix expression/" class="post-title-link" itemprop="url">后缀表达式</a>
+                <a href="/2019/03/15/TJ_Milk Scheduling/" class="post-title-link" itemprop="url">USACO13FEB 牛奶调度Milk Scheduling</a>
               
             
           </h1>
@@ -981,24 +981,12 @@
                 
               
 
-              <time title="Post created: 2019-03-15 00:00:00" itemprop="dateCreated datePublished" datetime="2019-03-15T00:00:00+08:00">2019-03-15</time>
+              <time title="Post created: 2019-03-15 00:00:00 / Updated at: 01:51:43" itemprop="dateCreated datePublished" datetime="2019-03-15T00:00:00+08:00">2019-03-15</time>
             
 
             
               
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Updated at: 2019-03-17 01:20:02" itemprop="dateModified" datetime="2019-03-17T01:20:02+08:00">2019-03-17</time>
               
             
           </span>
@@ -1034,12 +1022,9 @@
       
         
           
-            <p>这道题应用到了栈的思想，也相当于一个模拟过程。</p>
-<p>处理过程：扫描后缀表达式，只要遇到操作数将其进栈，遇到运算符则从栈中弹出两个操作数进行相应运算，将运算结果进栈，然后继续扫描，直到扫完位置，这时，栈底的数即为该后缀表达式的值。</p>
-<p>发一下我的代码（C++）</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;  //头文件 </span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">int</span> edg[<span class="number">1010</span>];</span><br><span class="line"><span class="keyword">char</span> s[<span class="number">256</span>];  <span class="comment">//全局变量 </span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">dfs</span><span class="params">(<span class="keyword">char</span> s[<span class="number">256</span>])</span>  <span class="comment">//扫描后缀表达式 </span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i=<span class="number">0</span>,top=<span class="number">0</span>,e;</span><br><span class="line">    <span class="keyword">while</span>(i&lt;=<span class="built_in">strlen</span>(s)<span class="number">-2</span>)  <span class="comment">//扫描到strlen(s)-2</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">switch</span>(s[i])  <span class="comment">//判断 </span></span><br><span class="line">        &#123;</span><br><span class="line">            case'+':edg[--top]+=edg[top+1];break;  //+</span><br><span class="line">            case'-':edg[--top]-=edg[top+1];break;  //-</span><br><span class="line">            case'*':edg[--top]*=edg[top+1];break;  //*</span><br><span class="line">            case'/':edg[--top]/=edg[top+1];break;  ///</span><br><span class="line">            <span class="keyword">default</span>:e=<span class="number">0</span>;</span><br><span class="line">            <span class="keyword">while</span>(s[i]!=<span class="string">'.'</span>)</span><br><span class="line">                e=e*<span class="number">10</span>+s[i++]-<span class="string">'0'</span>;  <span class="comment">//检查是否扫描到间隔符号'.' </span></span><br><span class="line">                edg[++top]=e;<span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        i++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> edg[top];</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span>  <span class="comment">//主程序 </span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    gets(s);  <span class="comment">//输入 </span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d"</span>,dfs(s));  <span class="comment">//输出 </span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>希望我的代码能够帮助到大家！</p>
-
+            <h2 id="本人思路：拓扑思想-简单模拟"><a href="#本人思路：拓扑思想-简单模拟" class="headerlink" title="本人思路：拓扑思想+简单模拟"></a>本人思路：拓扑思想+简单模拟</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">这道题其实并不难，只是用到了拓扑的思想，A奶牛必须在B奶牛挤奶前挤奶，这就形成了一个有向图，点A指向点B。</span><br></pre></td></tr></table></figure>
+<h4 id="我们只需要记一下总量（实际上是每只奶牛挤奶时间的总和），每一次循环将入度为0的奶牛加入要挤奶的数组，并且取挤奶数组的最小值，让在挤奶数组里的奶牛减去最小值，如果一个奶牛挤完奶了，那就删除与它相连的边，并且相连的点入度减一，总时间加上最小值，总量减去最小值-挤奶牛数，直到总量为0结束-如果到这里还不懂可以看代码，代码有更详细的解释。"><a href="#我们只需要记一下总量（实际上是每只奶牛挤奶时间的总和），每一次循环将入度为0的奶牛加入要挤奶的数组，并且取挤奶数组的最小值，让在挤奶数组里的奶牛减去最小值，如果一个奶牛挤完奶了，那就删除与它相连的边，并且相连的点入度减一，总时间加上最小值，总量减去最小值-挤奶牛数，直到总量为0结束-如果到这里还不懂可以看代码，代码有更详细的解释。" class="headerlink" title="我们只需要记一下总量（实际上是每只奶牛挤奶时间的总和），每一次循环将入度为0的奶牛加入要挤奶的数组，并且取挤奶数组的最小值，让在挤奶数组里的奶牛减去最小值，如果一个奶牛挤完奶了，那就删除与它相连的边，并且相连的点入度减一，总时间加上最小值，总量减去最小值*挤奶牛数，直到总量为0结束,如果到这里还不懂可以看代码，代码有更详细的解释。"></a>我们只需要记一下总量（实际上是每只奶牛挤奶时间的总和），每一次循环将入度为0的奶牛加入要挤奶的数组，并且取挤奶数组的最小值，让在挤奶数组里的奶牛减去最小值，如果一个奶牛挤完奶了，那就删除与它相连的边，并且相连的点入度减一，总时间加上最小值，总量减去最小值*挤奶牛数，直到总量为0结束,如果到这里还不懂可以看代码，代码有更详细的解释。</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> maxn 10007</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">int</span> n,m,minn,ans,tot,len;  <span class="comment">//n奶牛数目 m有先后要求的量 minn挤奶数组的最小值 ans最后答案  tot总量 len挤奶数组长度 </span></span><br><span class="line"><span class="keyword">int</span> a[maxn],ru[maxn],q[maxn];  <span class="comment">//a[]每只奶牛挤奶时间 ru[]每只奶牛的入度 q[]挤奶数组 </span></span><br><span class="line"><span class="keyword">bool</span> edg[<span class="number">20000</span>][<span class="number">20000</span>];  <span class="comment">//二维数组建图（模拟大法好） </span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span>  <span class="comment">//程序开始 </span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;n,&amp;m);   </span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;a[i]),tot+=a[i];  <span class="comment">//输入，并且计算总量 </span></span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">int</span> x,y;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;x,&amp;y);</span><br><span class="line">		ru[y]++;  <span class="comment">//x指向y  y入度+1 </span></span><br><span class="line">		edg[x][y]=<span class="number">1</span>;  <span class="comment">//建图 </span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">while</span>(tot)  <span class="comment">//直到总量为0结束 </span></span><br><span class="line">	&#123;</span><br><span class="line">		minn=<span class="number">0x7fffffff</span>;  <span class="comment">//先赋一个最大值 </span></span><br><span class="line">		len=<span class="number">0</span>; </span><br><span class="line">		<span class="built_in">memset</span>(q,<span class="number">0</span>,<span class="keyword">sizeof</span>(q));  <span class="comment">//挤奶数组长度、内容清零 </span></span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span>(!ru[i]&amp;&amp;a[i]&gt;<span class="number">0</span>)  q[++len]=i,minn=min(minn,a[i]);  <span class="comment">//找还有奶并且入度为0的奶牛加入挤奶数组 &amp;&amp; 计算挤奶最小值 </span></span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=len;i++)</span><br><span class="line">		&#123;</span><br><span class="line">			a[q[i]]-=minn;  <span class="comment">//每只挤奶奶牛减去最小值 </span></span><br><span class="line">			<span class="keyword">if</span>(a[q[i]]&lt;=<span class="number">0</span>)  <span class="comment">//处理没奶的奶牛 </span></span><br><span class="line">			&#123;</span><br><span class="line">				<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=n;j++)</span><br><span class="line">				&#123;</span><br><span class="line">					<span class="keyword">if</span>(edg[q[i]][j]==<span class="number">1</span>)  ru[j]--,edg[q[i]][j]=<span class="number">0</span>;  <span class="comment">//删除和它相连的所有边以及和它相连点的入度 </span></span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		tot-=(minn*len);  <span class="comment">//总量减去（最小值*挤奶奶牛数） </span></span><br><span class="line">		ans+=minn;   <span class="comment">//需要时间（答案）加上最小值 </span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%d"</span>,ans);  <span class="comment">//输出 </span></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;  <span class="comment">//程序结束 </span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="另外嘱咐大家一句：数组一定要够大，否则RE"><a href="#另外嘱咐大家一句：数组一定要够大，否则RE" class="headerlink" title="另外嘱咐大家一句：数组一定要够大，否则RE"></a>另外嘱咐大家一句：数组一定要够大，否则<a href="https://www.luogu.org/record/show?rid=12080872" target="_blank" rel="noopener">RE</a></h5><h2 id="最后祝大家"><a href="#最后祝大家" class="headerlink" title="最后祝大家"></a>最后祝大家</h2><h1 id="RP-；"><a href="#RP-；" class="headerlink" title="RP++；"></a>RP++；</h1>
           
         
       
@@ -1239,150 +1224,6 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://dyrisingsunlight.github.io/2019/03/15/TJ_Milk Scheduling/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="RisingSunlight">
-      <meta itemprop="description" content="爱你所爱，行你所行；听从你心，无问西东。">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="DY 博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/03/15/TJ_Milk Scheduling/" class="post-title-link" itemprop="url">USACO13FEB 牛奶调度Milk Scheduling</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Veröffentlicht am</span>
-              
-
-              
-                
-              
-
-              <time title="Post created: 2019-03-15 00:00:00 / Updated at: 01:51:43" itemprop="dateCreated datePublished" datetime="2019-03-15T00:00:00+08:00">2019-03-15</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="本人思路：拓扑思想-简单模拟"><a href="#本人思路：拓扑思想-简单模拟" class="headerlink" title="本人思路：拓扑思想+简单模拟"></a>本人思路：拓扑思想+简单模拟</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">这道题其实并不难，只是用到了拓扑的思想，A奶牛必须在B奶牛挤奶前挤奶，这就形成了一个有向图，点A指向点B。</span><br></pre></td></tr></table></figure>
-<h4 id="我们只需要记一下总量（实际上是每只奶牛挤奶时间的总和），每一次循环将入度为0的奶牛加入要挤奶的数组，并且取挤奶数组的最小值，让在挤奶数组里的奶牛减去最小值，如果一个奶牛挤完奶了，那就删除与它相连的边，并且相连的点入度减一，总时间加上最小值，总量减去最小值-挤奶牛数，直到总量为0结束-如果到这里还不懂可以看代码，代码有更详细的解释。"><a href="#我们只需要记一下总量（实际上是每只奶牛挤奶时间的总和），每一次循环将入度为0的奶牛加入要挤奶的数组，并且取挤奶数组的最小值，让在挤奶数组里的奶牛减去最小值，如果一个奶牛挤完奶了，那就删除与它相连的边，并且相连的点入度减一，总时间加上最小值，总量减去最小值-挤奶牛数，直到总量为0结束-如果到这里还不懂可以看代码，代码有更详细的解释。" class="headerlink" title="我们只需要记一下总量（实际上是每只奶牛挤奶时间的总和），每一次循环将入度为0的奶牛加入要挤奶的数组，并且取挤奶数组的最小值，让在挤奶数组里的奶牛减去最小值，如果一个奶牛挤完奶了，那就删除与它相连的边，并且相连的点入度减一，总时间加上最小值，总量减去最小值*挤奶牛数，直到总量为0结束,如果到这里还不懂可以看代码，代码有更详细的解释。"></a>我们只需要记一下总量（实际上是每只奶牛挤奶时间的总和），每一次循环将入度为0的奶牛加入要挤奶的数组，并且取挤奶数组的最小值，让在挤奶数组里的奶牛减去最小值，如果一个奶牛挤完奶了，那就删除与它相连的边，并且相连的点入度减一，总时间加上最小值，总量减去最小值*挤奶牛数，直到总量为0结束,如果到这里还不懂可以看代码，代码有更详细的解释。</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> maxn 10007</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">int</span> n,m,minn,ans,tot,len;  <span class="comment">//n奶牛数目 m有先后要求的量 minn挤奶数组的最小值 ans最后答案  tot总量 len挤奶数组长度 </span></span><br><span class="line"><span class="keyword">int</span> a[maxn],ru[maxn],q[maxn];  <span class="comment">//a[]每只奶牛挤奶时间 ru[]每只奶牛的入度 q[]挤奶数组 </span></span><br><span class="line"><span class="keyword">bool</span> edg[<span class="number">20000</span>][<span class="number">20000</span>];  <span class="comment">//二维数组建图（模拟大法好） </span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span>  <span class="comment">//程序开始 </span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;n,&amp;m);   </span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;a[i]),tot+=a[i];  <span class="comment">//输入，并且计算总量 </span></span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">int</span> x,y;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;x,&amp;y);</span><br><span class="line">		ru[y]++;  <span class="comment">//x指向y  y入度+1 </span></span><br><span class="line">		edg[x][y]=<span class="number">1</span>;  <span class="comment">//建图 </span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">while</span>(tot)  <span class="comment">//直到总量为0结束 </span></span><br><span class="line">	&#123;</span><br><span class="line">		minn=<span class="number">0x7fffffff</span>;  <span class="comment">//先赋一个最大值 </span></span><br><span class="line">		len=<span class="number">0</span>; </span><br><span class="line">		<span class="built_in">memset</span>(q,<span class="number">0</span>,<span class="keyword">sizeof</span>(q));  <span class="comment">//挤奶数组长度、内容清零 </span></span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span>(!ru[i]&amp;&amp;a[i]&gt;<span class="number">0</span>)  q[++len]=i,minn=min(minn,a[i]);  <span class="comment">//找还有奶并且入度为0的奶牛加入挤奶数组 &amp;&amp; 计算挤奶最小值 </span></span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=len;i++)</span><br><span class="line">		&#123;</span><br><span class="line">			a[q[i]]-=minn;  <span class="comment">//每只挤奶奶牛减去最小值 </span></span><br><span class="line">			<span class="keyword">if</span>(a[q[i]]&lt;=<span class="number">0</span>)  <span class="comment">//处理没奶的奶牛 </span></span><br><span class="line">			&#123;</span><br><span class="line">				<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=n;j++)</span><br><span class="line">				&#123;</span><br><span class="line">					<span class="keyword">if</span>(edg[q[i]][j]==<span class="number">1</span>)  ru[j]--,edg[q[i]][j]=<span class="number">0</span>;  <span class="comment">//删除和它相连的所有边以及和它相连点的入度 </span></span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		tot-=(minn*len);  <span class="comment">//总量减去（最小值*挤奶奶牛数） </span></span><br><span class="line">		ans+=minn;   <span class="comment">//需要时间（答案）加上最小值 </span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%d"</span>,ans);  <span class="comment">//输出 </span></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;  <span class="comment">//程序结束 </span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h5 id="另外嘱咐大家一句：数组一定要够大，否则RE"><a href="#另外嘱咐大家一句：数组一定要够大，否则RE" class="headerlink" title="另外嘱咐大家一句：数组一定要够大，否则RE"></a>另外嘱咐大家一句：数组一定要够大，否则<a href="https://www.luogu.org/record/show?rid=12080872" target="_blank" rel="noopener">RE</a></h5><h2 id="最后祝大家"><a href="#最后祝大家" class="headerlink" title="最后祝大家"></a>最后祝大家</h2><h1 id="RP-；"><a href="#RP-；" class="headerlink" title="RP++；"></a>RP++；</h1>
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://dyrisingsunlight.github.io/2019/03/15/TJ_Uncle McDonald's problem/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1482,6 +1323,165 @@
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;queue&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> re register</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> dx[]=&#123;<span class="number">1</span>,<span class="number">-1</span>,<span class="number">0</span>,<span class="number">0</span>&#125;;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> dy[]=&#123;<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">-1</span>&#125;;</span><br><span class="line"><span class="keyword">int</span> n,m,minn,maxx;</span><br><span class="line"><span class="keyword">bool</span> Map[<span class="number">20</span>][<span class="number">20</span>],pd[<span class="number">20</span>][<span class="number">20</span>];<span class="comment">//变量解释见上文或代码一 </span></span><br><span class="line"><span class="keyword">int</span> dis[<span class="number">20</span>][<span class="number">20</span>],M[<span class="number">20</span>][<span class="number">20</span>];</span><br><span class="line"><span class="built_in">queue</span> &lt;<span class="keyword">int</span>&gt; qx,qy;</span><br><span class="line"><span class="keyword">namespace</span> DY &#123;</span><br><span class="line">	<span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">control</span><span class="params">()</span> </span>&#123;<span class="comment">//将f[][]赋值给M[][] </span></span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;=n; i++)</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>; j&lt;=n; j++)</span><br><span class="line">				M[i][j]=dis[i][j];</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">bfs</span><span class="params">()</span> </span>&#123;<span class="comment">//广搜解释见代码一 </span></span><br><span class="line">		qx.push(n); qy.push(<span class="number">1</span>);</span><br><span class="line">		pd[n][<span class="number">1</span>]=<span class="number">1</span>;</span><br><span class="line">		<span class="keyword">while</span>(!qx.empty()) &#123;</span><br><span class="line">			<span class="keyword">int</span> xx=qx.front(),yy=qy.front();</span><br><span class="line">			qx.pop(); qy.pop();</span><br><span class="line">			<span class="keyword">for</span>(re <span class="keyword">int</span> i=<span class="number">0</span>; i&lt;<span class="number">4</span>; i++) &#123;</span><br><span class="line">				<span class="keyword">int</span> nowx=xx+dx[i],nowy=yy+dy[i];</span><br><span class="line">				<span class="keyword">if</span>(nowx&gt;<span class="number">0</span>&amp;&amp;nowy&gt;<span class="number">0</span>&amp;&amp;nowx&lt;=n&amp;&amp;nowy&lt;=n&amp;&amp;(!Map[nowx][nowy])&amp;&amp;(!pd[nowx][nowy])) &#123;</span><br><span class="line">					<span class="keyword">if</span>(nowx==<span class="number">1</span>&amp;&amp;nowy==n) &#123;</span><br><span class="line">						minn=dis[xx][yy]+<span class="number">1</span>;</span><br><span class="line">						<span class="keyword">return</span> ;</span><br><span class="line">					&#125;</span><br><span class="line">					dis[nowx][nowy]=dis[xx][yy]+<span class="number">1</span>;</span><br><span class="line">					pd[nowx][nowy]=<span class="number">1</span>;</span><br><span class="line">					qx.push(nowx); qy.push(nowy);</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> xx,<span class="keyword">int</span> yy)</span> </span>&#123;<span class="comment">//记忆化深搜 </span></span><br><span class="line">		<span class="keyword">if</span>(dis[xx][yy]&gt;minn&amp;&amp;dis[xx][yy]&lt;M[xx][yy]) <span class="keyword">return</span> ;<span class="comment">//剪枝，如果到这个点的步数已经比最小值大了，但是却没有以前经过此点的步数多，再见。 </span></span><br><span class="line">		<span class="keyword">if</span>(xx==<span class="number">1</span>&amp;&amp;yy==n) &#123;<span class="comment">//到达右上角 </span></span><br><span class="line">			<span class="keyword">if</span>(dis[xx][yy]&gt;maxx) &#123;<span class="comment">//取最大值 </span></span><br><span class="line">				maxx=dis[xx][yy];</span><br><span class="line">				control();<span class="comment">//此函数用来更新M[][]即把当前的f[][]赋值给M[][] </span></span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">return</span> ;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;<span class="number">4</span>; i++) &#123;</span><br><span class="line">			<span class="keyword">int</span> nowx=xx+dx[i],nowy=yy+dy[i];</span><br><span class="line">			<span class="keyword">if</span>(nowx&gt;<span class="number">0</span>&amp;&amp;nowy&gt;<span class="number">0</span>&amp;&amp;nowx&lt;=n&amp;&amp;nowy&lt;=n&amp;&amp;(!Map[nowx][nowy])&amp;&amp;(!pd[nowx][nowy])) &#123;</span><br><span class="line">				pd[nowx][nowy]=<span class="number">1</span>;</span><br><span class="line">				dis[nowx][nowy]=dis[xx][yy]+<span class="number">1</span>;</span><br><span class="line">				dfs(nowx,nowy);<span class="comment">//搜下一个点 </span></span><br><span class="line">				pd[nowx][nowy]=<span class="number">0</span>;<span class="comment">//回溯 </span></span><br><span class="line">				dis[nowx][nowy]=<span class="number">0</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;n,&amp;m);</span><br><span class="line">		<span class="keyword">for</span>(re <span class="keyword">int</span> i=<span class="number">1</span>; i&lt;=m; i++) &#123;</span><br><span class="line">			<span class="keyword">int</span> x,y;</span><br><span class="line">			<span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;x,&amp;y);</span><br><span class="line">			Map[x][y]=<span class="number">1</span>;<span class="comment">//记录障碍 </span></span><br><span class="line">		&#125;</span><br><span class="line">		bfs();<span class="comment">//广搜求最少步数 </span></span><br><span class="line">		<span class="built_in">memset</span>(pd,<span class="number">0</span>,<span class="keyword">sizeof</span>(pd));<span class="comment">//清零 </span></span><br><span class="line">		<span class="built_in">memset</span>(dis,<span class="number">0</span>,<span class="keyword">sizeof</span>(dis));</span><br><span class="line">		pd[n][<span class="number">1</span>]=<span class="number">1</span>;</span><br><span class="line">		dfs(n,<span class="number">1</span>);<span class="comment">//深搜求最大步数 </span></span><br><span class="line"><span class="comment">//		cout&lt;&lt;maxx&lt;&lt;endl&lt;&lt;minn&lt;&lt;endl;</span></span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"%d"</span>,maxx-minn);</span><br><span class="line">	&#125;	</span><br><span class="line">&#125;;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	DY::main();</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>祝各位OIer(Of course including me) </p>
 <h4 id="RP"><a href="#RP" class="headerlink" title="RP++;"></a>RP++;</h4>
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://dyrisingsunlight.github.io/2019/03/15/TJ_Postfix expression/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="RisingSunlight">
+      <meta itemprop="description" content="爱你所爱，行你所行；听从你心，无问西东。">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="DY 博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/03/15/TJ_Postfix expression/" class="post-title-link" itemprop="url">后缀表达式</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+
+              
+                
+              
+
+              <time title="Post created: 2019-03-15 00:00:00" itemprop="dateCreated datePublished" datetime="2019-03-15T00:00:00+08:00">2019-03-15</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Updated at: 2019-03-17 01:20:02" itemprop="dateModified" datetime="2019-03-17T01:20:02+08:00">2019-03-17</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>这道题应用到了栈的思想，也相当于一个模拟过程。</p>
+<p>处理过程：扫描后缀表达式，只要遇到操作数将其进栈，遇到运算符则从栈中弹出两个操作数进行相应运算，将运算结果进栈，然后继续扫描，直到扫完位置，这时，栈底的数即为该后缀表达式的值。</p>
+<p>发一下我的代码（C++）</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;  //头文件 </span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">int</span> edg[<span class="number">1010</span>];</span><br><span class="line"><span class="keyword">char</span> s[<span class="number">256</span>];  <span class="comment">//全局变量 </span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">dfs</span><span class="params">(<span class="keyword">char</span> s[<span class="number">256</span>])</span>  <span class="comment">//扫描后缀表达式 </span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i=<span class="number">0</span>,top=<span class="number">0</span>,e;</span><br><span class="line">    <span class="keyword">while</span>(i&lt;=<span class="built_in">strlen</span>(s)<span class="number">-2</span>)  <span class="comment">//扫描到strlen(s)-2</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">switch</span>(s[i])  <span class="comment">//判断 </span></span><br><span class="line">        &#123;</span><br><span class="line">            case'+':edg[--top]+=edg[top+1];break;  //+</span><br><span class="line">            case'-':edg[--top]-=edg[top+1];break;  //-</span><br><span class="line">            case'*':edg[--top]*=edg[top+1];break;  //*</span><br><span class="line">            case'/':edg[--top]/=edg[top+1];break;  ///</span><br><span class="line">            <span class="keyword">default</span>:e=<span class="number">0</span>;</span><br><span class="line">            <span class="keyword">while</span>(s[i]!=<span class="string">'.'</span>)</span><br><span class="line">                e=e*<span class="number">10</span>+s[i++]-<span class="string">'0'</span>;  <span class="comment">//检查是否扫描到间隔符号'.' </span></span><br><span class="line">                edg[++top]=e;<span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        i++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> edg[top];</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span>  <span class="comment">//主程序 </span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    gets(s);  <span class="comment">//输入 </span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d"</span>,dfs(s));  <span class="comment">//输出 </span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>希望我的代码能够帮助到大家！</p>
+
           
         
       
