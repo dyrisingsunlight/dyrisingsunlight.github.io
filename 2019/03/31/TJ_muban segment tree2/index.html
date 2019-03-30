@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="DY_RisingSunlight">
 <meta property="og:description" content="题目链接：【模板】线段树 2 （区间加法、乘法、查询） 题目标签：线段树 题目大意：给定一个序列，支持三种操作：区间加法、区间乘法和区间查询，输出每一次 查询mod p 的结果。 题目分析：对于区间加法和区间查询，相信大家在AC完模板1后已经掌握了，那我们着重来分析一下 区间乘法 ，根据模板1的经验，我们可以想到——肯定还要打标记，但是怎样打一个合适的懒标记呢？ 区间乘法的LazyTag   我">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-03-30T17:52:50.383Z">
+<meta property="og:updated_time" content="2019-03-30T17:55:56.889Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="模板_线段树2">
 <meta name="twitter:description" content="题目链接：【模板】线段树 2 （区间加法、乘法、查询） 题目标签：线段树 题目大意：给定一个序列，支持三种操作：区间加法、区间乘法和区间查询，输出每一次 查询mod p 的结果。 题目分析：对于区间加法和区间查询，相信大家在AC完模板1后已经掌握了，那我们着重来分析一下 区间乘法 ，根据模板1的经验，我们可以想到——肯定还要打标记，但是怎样打一个合适的懒标记呢？ 区间乘法的LazyTag   我">
@@ -224,7 +224,7 @@
 
     
 
-    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Accueil</a>
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Beranda</a>
 
   </li>
         
@@ -241,7 +241,7 @@
 
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Arsip</a>
 
   </li>
 
@@ -329,14 +329,14 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posté le</span>
+                <span class="post-meta-item-text">Diposting di</span>
               
 
               
                 
               
 
-              <time title="Post created: 2019-03-31 00:00:00 / Updated at: 01:52:50" itemprop="dateCreated datePublished" datetime="2019-03-31T00:00:00+08:00">2019-03-31</time>
+              <time title="Post created: 2019-03-31 00:00:00 / Updated at: 01:55:56" itemprop="dateCreated datePublished" datetime="2019-03-31T00:00:00+08:00">2019-03-31</time>
             
 
             
@@ -383,8 +383,8 @@
 <li><p><strong>区间乘法的LazyTag</strong> </p>
 <ul>
 <li><p>我们来假设一下，我们现在有集合<strong>S{a,b,c}</strong>,当它们都<strong>加上一个数N</strong>，再<strong>乘上一个数M</strong>，会变成</p>
-<h4 id="S-a-N-M-b-N-M-c-N-M"><a href="#S-a-N-M-b-N-M-c-N-M" class="headerlink" title="S{ (a+N)  M), ((b+N)  M),((c+N)* M) }"></a>S{ (a+N) <em> M), ((b+N) </em> M),((c+N)* M) }</h4><p>则又可以化为</p>
-<h4 id="S-a-M-N-M-b-M-N-M-c-M-N-M"><a href="#S-a-M-N-M-b-M-N-M-c-M-N-M" class="headerlink" title="S{ (a  M+N  M), (b  M+N  M), (c  M+N  M) }"></a>S{ (a <em> M+N </em> M), (b <em> M+N </em> M), (c <em> M+N </em> M) }</h4><p>即<strong>乘法分配律</strong>，由此我们可得 <em><strong>子节点的加法标记</strong>要乘<strong>父节点的乘法标记</strong>加上<strong>父节点的加法标记</strong></em> ，化成代码即为</p>
+<h4 id="S-a-N-M-b-N-M-c-N-M"><a href="#S-a-N-M-b-N-M-c-N-M" class="headerlink" title="S{ (a+N) $$ M), ((b+N) $$ M),((c+N) $*$ M) }"></a>S{ (a+N) $<em>$ M), ((b+N) $</em>$ M),((c+N) $*$ M) }</h4><p>则又可以化为</p>
+<h4 id="S-a-M-N-M-b-M-N-M-c-M-N-M"><a href="#S-a-M-N-M-b-M-N-M-c-M-N-M" class="headerlink" title="S{ (a $$ M+N $$ M), (b $$ M+N $$ M), (c $$ M+N $$ M) }"></a>S{ (a $<em>$ M+N $</em>$ M), (b $<em>$ M+N $</em>$ M), (c $<em>$ M+N $</em>$ M) }</h4><p>即<strong>乘法分配律</strong>，由此我们可得 <em><strong>子节点的加法标记</strong>要乘<strong>父节点的乘法标记</strong>加上<strong>父节点的加法标记</strong></em> ，化成代码即为</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">add[子节点]=(add[子节点]*mul[父节点]+add[父节点])%p;</span><br><span class="line">mul[子节点]=(mul[子节点]*mul[父节点])%p;</span><br><span class="line">data[子节点]=(data[子节点]*mul[父节点]+(r-l+<span class="number">1</span>)*add[父节点])%p;</span><br></pre></td></tr></table></figure>
 <p>所以这道题这样做就可以AC了！</p>
 </li>
@@ -489,10 +489,10 @@
       
         <ul class="sidebar-nav motion-element">
           <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            Table Des Matières
+            Daftar Isi
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            Ensemble
+            Ikhtisar
           </li>
         </ul>
       
@@ -513,7 +513,7 @@
                   <a href="/archives/">
                 
                     <span class="site-state-item-count">11</span>
-                    <span class="site-state-item-name">articles</span>
+                    <span class="site-state-item-name">posting</span>
                   </a>
                 </div>
               
@@ -583,7 +583,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#S-a-N-M-b-N-M-c-N-M"><span class="nav-number">1.</span> <span class="nav-text">S{ (a+N)  M), ((b+N)  M),((c+N)* M) }</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#S-a-M-N-M-b-M-N-M-c-M-N-M"><span class="nav-number">2.</span> <span class="nav-text">S{ (a  M+N  M), (b  M+N  M), (c  M+N  M) }</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#RP"><span class="nav-number">3.</span> <span class="nav-text">RP++</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#S-a-N-M-b-N-M-c-N-M"><span class="nav-number">1.</span> <span class="nav-text">S{ (a+N) $$ M), ((b+N) $$ M),((c+N) $*$ M) }</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#S-a-M-N-M-b-M-N-M-c-M-N-M"><span class="nav-number">2.</span> <span class="nav-text">S{ (a $$ M+N $$ M), (b $$ M+N $$ M), (c $$ M+N $$ M) }</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#RP"><span class="nav-number">3.</span> <span class="nav-text">RP++</span></a></li></ol></div>
             
 
           </div>
@@ -624,7 +624,7 @@
 
 
 
-  <div class="theme-info">Thème – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.0.1</div>
+  <div class="theme-info">Tema – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.0.1</div>
 
 
 
