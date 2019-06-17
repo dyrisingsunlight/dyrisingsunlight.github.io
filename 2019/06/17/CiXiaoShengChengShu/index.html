@@ -96,17 +96,18 @@
 
 
 
-  <meta name="description" content="title:【模板】严格次小生成树[BJWC2010]date:2019.6.17 tags:[LCA,克鲁斯卡尔,MST] 题目思路：先搞一个最小生成树，把用到的边做一个标记，然后跑一遍LCA预处理，但是要倍增维护一个最大值和一个次大值。弄完后枚举MST没用到的边，求出两个值——一个是一点到这两点LCA的边权最大值，另一个是另一个点到LCA的边权最大值。然后比较一下取min。 代码123456">
+  <meta name="description" content="题目思路：先搞一个最小生成树，把用到的边做一个标记，然后跑一遍LCA预处理，但是要倍增维护一个最大值和一个次大值。弄完后枚举MST没用到的边，求出两个值——一个是一点到这两点LCA的边权最大值，另一个是另一个点到LCA的边权最大值。然后比较一下取min。 代码123456789101112131415161718192021222324252627282930313233343536373839">
+<meta name="keywords" content="LCA,克鲁斯卡尔,MST">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Dy_RisingSunlight">
+<meta property="og:title" content="【模板】严格次小生成树[BJWC2010]">
 <meta property="og:url" content="https://dyrisingsunlight.github.io/2019/06/17/CiXiaoShengChengShu/index.html">
 <meta property="og:site_name" content="Dy_RisingSunlight">
-<meta property="og:description" content="title:【模板】严格次小生成树[BJWC2010]date:2019.6.17 tags:[LCA,克鲁斯卡尔,MST] 题目思路：先搞一个最小生成树，把用到的边做一个标记，然后跑一遍LCA预处理，但是要倍增维护一个最大值和一个次大值。弄完后枚举MST没用到的边，求出两个值——一个是一点到这两点LCA的边权最大值，另一个是另一个点到LCA的边权最大值。然后比较一下取min。 代码123456">
+<meta property="og:description" content="题目思路：先搞一个最小生成树，把用到的边做一个标记，然后跑一遍LCA预处理，但是要倍增维护一个最大值和一个次大值。弄完后枚举MST没用到的边，求出两个值——一个是一点到这两点LCA的边权最大值，另一个是另一个点到LCA的边权最大值。然后比较一下取min。 代码123456789101112131415161718192021222324252627282930313233343536373839">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-06-17T14:50:05.738Z">
+<meta property="og:updated_time" content="2019-06-17T14:52:30.146Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Dy_RisingSunlight">
-<meta name="twitter:description" content="title:【模板】严格次小生成树[BJWC2010]date:2019.6.17 tags:[LCA,克鲁斯卡尔,MST] 题目思路：先搞一个最小生成树，把用到的边做一个标记，然后跑一遍LCA预处理，但是要倍增维护一个最大值和一个次大值。弄完后枚举MST没用到的边，求出两个值——一个是一点到这两点LCA的边权最大值，另一个是另一个点到LCA的边权最大值。然后比较一下取min。 代码123456">
+<meta name="twitter:title" content="【模板】严格次小生成树[BJWC2010]">
+<meta name="twitter:description" content="题目思路：先搞一个最小生成树，把用到的边做一个标记，然后跑一遍LCA预处理，但是要倍增维护一个最大值和一个次大值。弄完后枚举MST没用到的边，求出两个值——一个是一点到这两点LCA的边权最大值，另一个是另一个点到LCA的边权最大值。然后比较一下取min。 代码123456789101112131415161718192021222324252627282930313233343536373839">
 
 
 
@@ -123,7 +124,7 @@
   };
 </script>
 
-  <title> | Dy_RisingSunlight</title>
+  <title>【模板】严格次小生成树[BJWC2010] | Dy_RisingSunlight</title>
   
 
 
@@ -223,7 +224,7 @@
 
     
 
-    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Startseite</a>
 
   </li>
         
@@ -240,7 +241,7 @@
 
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archiv</a>
 
   </li>
 
@@ -309,7 +310,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
+          <h1 class="post-title" itemprop="name headline">【模板】严格次小生成树[BJWC2010]
 
               
             
@@ -328,14 +329,14 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
 
               
                 
               
 
-              <time title="Created: 2019-06-17 22:45:39 / Modified: 22:50:05" itemprop="dateCreated datePublished" datetime="2019-06-17T22:45:39+08:00">2019-06-17</time>
+              <time title="Post created: 2019-06-17 00:00:00 / Updated at: 22:52:30" itemprop="dateCreated datePublished" datetime="2019-06-17T00:00:00+08:00">2019-06-17</time>
             
 
             
@@ -374,9 +375,7 @@
       
 
       
-        <hr>
-<p>title:【模板】严格次小生成树[BJWC2010]<br>date:2019.6.17</p>
-<h2 id="tags-LCA-克鲁斯卡尔-MST"><a href="#tags-LCA-克鲁斯卡尔-MST" class="headerlink" title="tags:[LCA,克鲁斯卡尔,MST]"></a>tags:[LCA,克鲁斯卡尔,MST]</h2><ul>
+        <ul>
 <li>题目思路：先搞一个最小生成树，把用到的边做一个标记，然后跑一遍LCA预处理，但是要倍增维护一个最大值和一个次大值。弄完后枚举MST没用到的边，求出两个值——一个是一点到这两点LCA的边权最大值，另一个是另一个点到LCA的边权最大值。然后比较一下取min。</li>
 <li>代码<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> gc getchar()</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> Maxn 100010</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> Maxm 300010</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> INF 2147483647000000000ll</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ll long long</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function">ll <span class="title">sc</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	ll xx=<span class="number">0</span>,ff=<span class="number">1</span>; <span class="keyword">char</span> cch;</span><br><span class="line">	<span class="keyword">while</span>(cch&lt;<span class="string">'0'</span>|| cch&gt;<span class="string">'9'</span>) &#123;</span><br><span class="line">		<span class="keyword">if</span>(cch==<span class="string">'-'</span>) ff=-ff; cch=gc;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">while</span>(cch&gt;=<span class="string">'0'</span>&amp;&amp; cch&lt;=<span class="string">'9'</span>) &#123;</span><br><span class="line">		xx=xx*<span class="number">10</span>+(cch<span class="number">-48</span>); cch=gc;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> xx*ff;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">EDGE</span> &#123;</span></span><br><span class="line">	ll u,v,dis;</span><br><span class="line">	<span class="keyword">bool</span> <span class="keyword">operator</span> &lt; (<span class="keyword">const</span> EDGE &amp;x) <span class="keyword">const</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> dis&lt;x.dis;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;a[Maxm*<span class="number">2</span>];</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">TREE</span> &#123;</span></span><br><span class="line">	ll next,to,dis;</span><br><span class="line">&#125;edge[Maxn*<span class="number">2</span>];</span><br><span class="line">ll n,m,cnt,ans,num;</span><br><span class="line">ll head[Maxn*<span class="number">2</span>],father[Maxn],deep[Maxn];</span><br><span class="line"><span class="keyword">bool</span> vis[Maxm];</span><br><span class="line">ll f[Maxn][<span class="number">22</span>];</span><br><span class="line">ll ma[Maxn][<span class="number">22</span>][<span class="number">3</span>];</span><br><span class="line"><span class="keyword">namespace</span> DY &#123;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">ADD</span><span class="params">(ll from,ll to,ll dis)</span> </span>&#123;</span><br><span class="line">		edge[++cnt].next=head[from];</span><br><span class="line">		edge[cnt].to=to;</span><br><span class="line">		edge[cnt].dis=dis;</span><br><span class="line">		head[from]=cnt;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function">ll <span class="title">find</span><span class="params">(ll x)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> x==father[x]? x: father[x]=find(father[x]);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">D_F</span><span class="params">(ll son,ll fa)</span> </span>&#123;</span><br><span class="line">		deep[son]=deep[fa]+<span class="number">1</span>;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=head[son]; i; i=edge[i].next) &#123;</span><br><span class="line">			ll to=edge[i].to;</span><br><span class="line">			<span class="keyword">if</span>(to==fa) <span class="keyword">continue</span>;</span><br><span class="line">			ma[to][<span class="number">0</span>][<span class="number">0</span>]=edge[i].dis;</span><br><span class="line">			ma[to][<span class="number">0</span>][<span class="number">1</span>]=-INF;</span><br><span class="line">			f[to][<span class="number">0</span>]=son;</span><br><span class="line">			D_F(to,son);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">d_f</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;=<span class="number">18</span>; i++)</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>; j&lt;=n; j++) &#123;</span><br><span class="line">				f[j][i]=f[f[j][i<span class="number">-1</span>]][i<span class="number">-1</span>];</span><br><span class="line">				ma[j][i][<span class="number">0</span>]=max(ma[j][i<span class="number">-1</span>][<span class="number">0</span>], ma[f[j][i<span class="number">-1</span>]][i<span class="number">-1</span>][<span class="number">0</span>]);</span><br><span class="line">				ma[j][i][<span class="number">1</span>]=max(ma[j][i<span class="number">-1</span>][<span class="number">1</span>], ma[f[j][i<span class="number">-1</span>]][i<span class="number">-1</span>][<span class="number">1</span>]);</span><br><span class="line">				<span class="keyword">if</span>(ma[j][i<span class="number">-1</span>][<span class="number">0</span>]&gt;ma[f[j][i<span class="number">-1</span>]][i<span class="number">-1</span>][<span class="number">0</span>])</span><br><span class="line">					ma[j][i][<span class="number">1</span>]=max(ma[j][i][<span class="number">1</span>], ma[f[j][i<span class="number">-1</span>]][i<span class="number">-1</span>][<span class="number">0</span>]);</span><br><span class="line">				<span class="keyword">else</span> <span class="keyword">if</span>(ma[j][i<span class="number">-1</span>][<span class="number">0</span>]&lt;ma[f[j][i<span class="number">-1</span>]][i<span class="number">-1</span>][<span class="number">0</span>])</span><br><span class="line">					ma[j][i][<span class="number">1</span>]=max(ma[j][i][<span class="number">1</span>], ma[j][i<span class="number">-1</span>][<span class="number">0</span>]);</span><br><span class="line">			&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function">ll <span class="title">LCA</span><span class="params">(ll x,ll y)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">if</span>(deep[x]&lt;deep[y]) swap(x,y);</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">18</span>; i&gt;=<span class="number">0</span>; i--)</span><br><span class="line">			<span class="keyword">if</span>(deep[f[x][i]]&gt;=deep[y])</span><br><span class="line">				x=f[x][i];</span><br><span class="line">		<span class="keyword">if</span>(x==y) <span class="keyword">return</span> y;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">18</span>; i&gt;=<span class="number">0</span>; i--) &#123;</span><br><span class="line">			<span class="keyword">if</span>(f[x][i]!=f[y][i])</span><br><span class="line">				x=f[x][i],y=f[y][i];</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> f[x][<span class="number">0</span>];</span><br><span class="line">	&#125; </span><br><span class="line">	<span class="function">ll <span class="title">calc</span><span class="params">(ll u,ll v,ll maxx)</span> </span>&#123;</span><br><span class="line">		ll res=-INF;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">18</span>; i&gt;=<span class="number">0</span>; i--) &#123;</span><br><span class="line">			<span class="keyword">if</span>(deep[f[u][i]]&gt;=deep[v]) &#123;</span><br><span class="line">				<span class="keyword">if</span>(maxx!=ma[u][i][<span class="number">0</span>])</span><br><span class="line">					res=max(res,ma[u][i][<span class="number">0</span>]);</span><br><span class="line">				<span class="keyword">else</span> res=max(res,ma[u][i][<span class="number">1</span>]);</span><br><span class="line">				u=f[u][i];</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> res;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">AKNOIP</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		n=sc(); m=sc();</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;=m; i++) &#123;</span><br><span class="line">			a[i].u=sc(); a[i].v=sc(); a[i].dis=sc();</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;=n; i++)</span><br><span class="line">			father[i]=i;</span><br><span class="line">		sort(a+<span class="number">1</span>,a+<span class="number">1</span>+m);</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;=m; i++) &#123;</span><br><span class="line">			ll aa=find(a[i].u);</span><br><span class="line">			ll bb=find(a[i].v);</span><br><span class="line">			<span class="keyword">if</span>(aa!=bb) &#123;</span><br><span class="line">				num+=a[i].dis;</span><br><span class="line">				father[aa]=bb;</span><br><span class="line">				ADD(a[i].u,a[i].v,a[i].dis);</span><br><span class="line">				ADD(a[i].v,a[i].u,a[i].dis);</span><br><span class="line">				vis[i]=<span class="number">1</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		ma[<span class="number">1</span>][<span class="number">0</span>][<span class="number">1</span>]=-INF;</span><br><span class="line">		D_F(<span class="number">1</span>,<span class="number">0</span>);</span><br><span class="line">		d_f();</span><br><span class="line">		ans=INF;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;=m; i++) &#123;</span><br><span class="line">			<span class="keyword">if</span>(!vis[i]) &#123;</span><br><span class="line">				ll lca=LCA(a[i].u,a[i].v);</span><br><span class="line">				ll maxu=calc(a[i].u,lca,a[i].dis);</span><br><span class="line">				ll maxv=calc(a[i].v,lca,a[i].dis);</span><br><span class="line">				ans=min(ans,num-max(maxu,maxv)+a[i].dis);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"%lld"</span>,ans);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	DY::AKNOIP();</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 </ul>
@@ -401,6 +400,16 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/LCA/" rel="tag"># LCA</a>
+          
+            <a href="/tags/克鲁斯卡尔/" rel="tag"># 克鲁斯卡尔</a>
+          
+            <a href="/tags/MST/" rel="tag"># MST</a>
+          
+        </div>
+      
 
       
       
@@ -410,8 +419,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/06/17/FeiBoNaQi/" rel="next" title>
-                <i class="fa fa-chevron-left"></i> 
+              <a href="/2019/06/17/FeiBoNaQi/" rel="next" title="斐波那契">
+                <i class="fa fa-chevron-left"></i> 斐波那契
               </a>
             
           </div>
@@ -420,8 +429,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/06/17/YiQingKongZhi/" rel="prev" title>
-                 <i class="fa fa-chevron-right"></i>
+              <a href="/2020/01/01/Blog introduction and index/" rel="prev" title="Blog介绍 & 索引">
+                Blog介绍 & 索引 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -466,17 +475,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            Table of Contents
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            Overview
-          </li>
-        </ul>
-      
 
-      <div class="site-overview-wrap sidebar-panel">
+      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -492,7 +492,7 @@
                   <a href="/archives/">
                 
                     <span class="site-state-item-count">20</span>
-                    <span class="site-state-item-name">posts</span>
+                    <span class="site-state-item-name">Artikel</span>
                   </a>
                 </div>
               
@@ -528,8 +528,18 @@
                     
                       
                     
-                    <span class="site-state-item-count">11</span>
-                    <span class="site-state-item-name">tags</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">16</span>
+                    <span class="site-state-item-name">Tags</span>
                   
                 </div>
               
@@ -553,23 +563,6 @@
         </div>
       </div>
 
-      
-      <!--noindex-->
-        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-            
-            
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#tags-LCA-克鲁斯卡尔-MST"><span class="nav-number">1.</span> <span class="nav-text">tags:[LCA,克鲁斯卡尔,MST]</span></a></li></ol></div>
-            
-
-          </div>
-        </div>
-      <!--/noindex-->
       
 
       
@@ -597,7 +590,7 @@
 </div>
 
 
-  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0</div>
+  <div class="powered-by">Erstellt mit  <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0</div>
 
 
 
