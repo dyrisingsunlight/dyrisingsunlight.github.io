@@ -9,7 +9,7 @@
   <title>砝码称重 | Dy_RisingSunlight</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="题目思路：根据数据范围，我们可以爆搜枚举每一种情况，然后到达边界时dp一下。dp其实是一个变式01背包，以它们之累加和为容量跑一遍，更新答案。 代码1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859#include&amp;lt;iost">
-<meta name="keywords" content="dfs,dp">
+<meta name="keywords" content="dp,dfs">
 <meta property="og:type" content="article">
 <meta property="og:title" content="砝码称重">
 <meta property="og:url" content="https://dyrisingsunlight.github.io/2019/06/17/famachengzhong/index.html">
@@ -177,11 +177,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">dfs</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">dp</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">dp</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">dfs</a>
         		</li>
       		
 		</ul>
@@ -251,18 +251,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2019/06/17/YiQingKongZhi/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2019/06/17/CiXiaoShengChengShu/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          疫情控制
+          【模板】严格次小生成树[BJWC2010]
         
       </div>
     </a>
   
   
-    <a href="/2019/06/17/CiXiaoShengChengShu/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">【模板】严格次小生成树[BJWC2010]</div>
+    <a href="/2019/06/17/YiQingKongZhi/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">疫情控制</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -422,15 +422,11 @@ MathJax.Hub.Queue(function() {
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">dfs</a>
+                <a href="javascript:void(0)" class="js-tag color4">LCA</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">模拟</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">LCA</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -442,27 +438,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">状压</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">dp</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">并查集</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">拓扑</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">二叉树</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">栈</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -470,7 +446,27 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">bfs</a>
+                <a href="javascript:void(0)" class="js-tag color4">dfs</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">状压</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">并查集</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">二叉树</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">拓扑</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">栈</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -483,6 +479,10 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">贪心</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">bfs</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -553,7 +553,7 @@ MathJax.Hub.Queue(function() {
     
     	<section class="tools-section tools-section-me" q-show="aboutme">
   	  	
-  	  		<div class="aboutme-wrap" id="js-aboutme">本人为SD一位OIer，今年高一，志同道合者可加Q：1850980308.</div>
+  	  		<div class="aboutme-wrap" id="js-aboutme">我是_Dy，山东NOIP提高组OIer，于2017年省选前入役。本博客记录了本人学习信竞时部分题解及学习笔记。祝你rp++！</div>
   	  	
     	</section>
     
