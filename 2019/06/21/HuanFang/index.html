@@ -8,20 +8,23 @@
   <link rel="dns-prefetch" href="https://dyrisingsunlight.github.io">
   <title>幻方 | Dy_RisingSunlight</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="题目链接：幻方 题目思路：通过读题，发现题目的重点是读入，我们通过自己画一个图来把数据转化成一个三维图形（输入的数据相当于自己站在正方体里面看六个面，要转化为站在外面看六个面），在通过状压的方式记录来自不同方向的激光，最后枚举判断即可。本题的重点难点在于转化图形建模。 附件：可以根据下图来转化。  代码12345678910111213141516171819202122232425262728">
+  <meta name="description" content="题目链接：幻方 如果没有权限看题，请看下图       题目思路：通过读题，发现题目的重点是读入，我们通过自己画一个图来把数据转化成一个三维图形（输入的数据相当于自己站在正方体里面看六个面，要转化为站在外面看六个面），在通过状压的方式记录来自不同方向的激光，最后枚举判断即可。本题的重点难点在于转化图形建模。 附件：可以根据下图来转化。  代码123456789101112131415161718">
 <meta name="keywords" content="模拟,状压">
 <meta property="og:type" content="article">
 <meta property="og:title" content="幻方">
 <meta property="og:url" content="https://dyrisingsunlight.github.io/2019/06/21/HuanFang/index.html">
 <meta property="og:site_name" content="Dy_RisingSunlight">
-<meta property="og:description" content="题目链接：幻方 题目思路：通过读题，发现题目的重点是读入，我们通过自己画一个图来把数据转化成一个三维图形（输入的数据相当于自己站在正方体里面看六个面，要转化为站在外面看六个面），在通过状压的方式记录来自不同方向的激光，最后枚举判断即可。本题的重点难点在于转化图形建模。 附件：可以根据下图来转化。  代码12345678910111213141516171819202122232425262728">
+<meta property="og:description" content="题目链接：幻方 如果没有权限看题，请看下图       题目思路：通过读题，发现题目的重点是读入，我们通过自己画一个图来把数据转化成一个三维图形（输入的数据相当于自己站在正方体里面看六个面，要转化为站在外面看六个面），在通过状压的方式记录来自不同方向的激光，最后枚举判断即可。本题的重点难点在于转化图形建模。 附件：可以根据下图来转化。  代码123456789101112131415161718">
 <meta property="og:locale" content="default">
+<meta property="og:image" content="https://dyrisingsunlight.github.io/2019/06/21/HuanFang/1.jpg">
+<meta property="og:image" content="https://dyrisingsunlight.github.io/2019/06/21/HuanFang/2.jpg">
+<meta property="og:image" content="https://dyrisingsunlight.github.io/2019/06/21/HuanFang/3.jpg">
 <meta property="og:image" content="https://dyrisingsunlight.github.io/2019/06/21/HuanFang/0.jpg">
-<meta property="og:updated_time" content="2019-06-21T15:22:21.303Z">
+<meta property="og:updated_time" content="2019-06-24T05:55:57.599Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="幻方">
-<meta name="twitter:description" content="题目链接：幻方 题目思路：通过读题，发现题目的重点是读入，我们通过自己画一个图来把数据转化成一个三维图形（输入的数据相当于自己站在正方体里面看六个面，要转化为站在外面看六个面），在通过状压的方式记录来自不同方向的激光，最后枚举判断即可。本题的重点难点在于转化图形建模。 附件：可以根据下图来转化。  代码12345678910111213141516171819202122232425262728">
-<meta name="twitter:image" content="https://dyrisingsunlight.github.io/2019/06/21/HuanFang/0.jpg">
+<meta name="twitter:description" content="题目链接：幻方 如果没有权限看题，请看下图       题目思路：通过读题，发现题目的重点是读入，我们通过自己画一个图来把数据转化成一个三维图形（输入的数据相当于自己站在正方体里面看六个面，要转化为站在外面看六个面），在通过状压的方式记录来自不同方向的激光，最后枚举判断即可。本题的重点难点在于转化图形建模。 附件：可以根据下图来转化。  代码123456789101112131415161718">
+<meta name="twitter:image" content="https://dyrisingsunlight.github.io/2019/06/21/HuanFang/1.jpg">
   
   
     <link rel="icon" href="/favicon.png">
@@ -168,6 +171,7 @@
       
         <ul>
 <li>题目链接：<a href="https://vijos.org/d/zcyz/homework/5d0c8d45f4136234c8c2968e/1006" target="_blank" rel="noopener">幻方</a></li>
+<li>如果没有权限看题，请看下图<br>  <img src="/2019/06/21/HuanFang/1.jpg" alt><br>  <img src="/2019/06/21/HuanFang/2.jpg" alt><br>  <img src="/2019/06/21/HuanFang/3.jpg" alt></li>
 <li>题目思路：通过读题，发现题目的重点是读入，我们通过自己画一个图来把数据转化成一个三维图形（<strong>输入的数据相当于自己站在正方体里面看六个面，要转化为站在外面看六个面</strong>），在通过状压的方式记录来自不同方向的激光，最后枚举判断即可。本题的重点难点在于转化图形建模。</li>
 <li>附件：可以根据下图来转化。 <img src="/2019/06/21/HuanFang/0.jpg" alt></li>
 <li>代码<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">int</span> n;</span><br><span class="line"><span class="comment">// int f[210][210],b[210][210],u[210][210],d[210][210],l[210][210],r[210][210];</span></span><br><span class="line"><span class="keyword">int</span> vis[<span class="number">210</span>][<span class="number">210</span>][<span class="number">210</span>],ans;</span><br><span class="line"><span class="keyword">char</span> now[<span class="number">210</span>];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">while</span>(<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n)!=EOF) &#123;</span><br><span class="line">		<span class="built_in">memset</span>(vis,<span class="number">0</span>,<span class="keyword">sizeof</span>(vis));</span><br><span class="line">		ans=<span class="number">0</span>; </span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) &#123;       <span class="comment">//line of read              //front</span></span><br><span class="line">			<span class="built_in">scanf</span>(<span class="string">"%s"</span>,now+<span class="number">1</span>);</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=n;j++)     <span class="comment">//row of read</span></span><br><span class="line">				<span class="keyword">if</span>(now[j]==<span class="string">'#'</span>)</span><br><span class="line">					<span class="keyword">for</span>(<span class="keyword">int</span> k=<span class="number">1</span>;k&lt;=n;k++)    <span class="comment">//other</span></span><br><span class="line">						vis[n-j+<span class="number">1</span>][k][n-i+<span class="number">1</span>]|=<span class="number">1</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) &#123;                           <span class="comment">//back</span></span><br><span class="line">			<span class="built_in">scanf</span>(<span class="string">"%s"</span>,now+<span class="number">1</span>);</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=n;j++)</span><br><span class="line">				<span class="keyword">if</span>(now[j]==<span class="string">'#'</span>)</span><br><span class="line">					<span class="keyword">for</span>(<span class="keyword">int</span> k=<span class="number">1</span>;k&lt;=n;k++)</span><br><span class="line">						vis[j][k][n-i+<span class="number">1</span>]|=<span class="number">1</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) &#123;             <span class="comment">//left</span></span><br><span class="line">			<span class="built_in">scanf</span>(<span class="string">"%s"</span>,now+<span class="number">1</span>);</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=n;j++)</span><br><span class="line">				<span class="keyword">if</span>(now[j]==<span class="string">'#'</span>)</span><br><span class="line">					<span class="keyword">for</span>(<span class="keyword">int</span> k=<span class="number">1</span>;k&lt;=n;k++)</span><br><span class="line">						vis[k][j][n-i+<span class="number">1</span>]|=(<span class="number">1</span>&lt;&lt;<span class="number">1</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) &#123;           <span class="comment">//right</span></span><br><span class="line">			<span class="built_in">scanf</span>(<span class="string">"%s"</span>,now+<span class="number">1</span>);</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=n;j++)</span><br><span class="line">				<span class="keyword">if</span>(now[j]==<span class="string">'#'</span>)</span><br><span class="line">					<span class="keyword">for</span>(<span class="keyword">int</span> k=<span class="number">1</span>;k&lt;=n;k++)</span><br><span class="line">						vis[k][n-j+<span class="number">1</span>][n-i+<span class="number">1</span>]|=(<span class="number">1</span>&lt;&lt;<span class="number">1</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) &#123;     <span class="comment">//up</span></span><br><span class="line">			<span class="built_in">scanf</span>(<span class="string">"%s"</span>,now+<span class="number">1</span>);</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=n;j++)</span><br><span class="line">				<span class="keyword">if</span>(now[j]==<span class="string">'#'</span>)</span><br><span class="line">					<span class="keyword">for</span>(<span class="keyword">int</span> k=<span class="number">1</span>;k&lt;=n;k++)</span><br><span class="line">						vis[j][i][k]|=(<span class="number">1</span>&lt;&lt;<span class="number">2</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) &#123;     <span class="comment">//down</span></span><br><span class="line">			<span class="built_in">scanf</span>(<span class="string">"%s"</span>,now+<span class="number">1</span>);</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=n;j++)</span><br><span class="line">				<span class="keyword">if</span>(now[j]==<span class="string">'#'</span>)</span><br><span class="line">					<span class="keyword">for</span>(<span class="keyword">int</span> k=<span class="number">1</span>;k&lt;=n;k++)</span><br><span class="line">						vis[j][n-i+<span class="number">1</span>][k]|=(<span class="number">1</span>&lt;&lt;<span class="number">2</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=n;j++)</span><br><span class="line">				<span class="keyword">for</span>(<span class="keyword">int</span> k=<span class="number">1</span>;k&lt;=n;k++)</span><br><span class="line">					<span class="keyword">if</span>(vis[i][j][k]==<span class="number">7</span>) ans++;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"%d\n"</span>,ans); </span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -260,18 +264,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2019/06/21/LingDian/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2019/06/21/BoYi/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          零点
+          博弈
         
       </div>
     </a>
   
   
-    <a href="/2019/06/21/LvYou/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">旅游</div>
+    <a href="/2019/06/21/LingDian/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">零点</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -443,10 +447,6 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">dp</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">克鲁斯卡尔</a>
               </li>
              
@@ -455,11 +455,23 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">状压</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">递推</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">状压</a>
+                <a href="javascript:void(0)" class="js-tag color3">dp</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">树状数组</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">差分</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -479,10 +491,6 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">bfs</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">二分答案</a>
               </li>
              
@@ -492,6 +500,10 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">贪心</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">bfs</a>
               </li>
              
               <li class="article-tag-list-item">
