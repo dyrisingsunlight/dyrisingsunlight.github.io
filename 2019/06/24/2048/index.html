@@ -6,20 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="https://dyrisingsunlight.github.io">
-  <title>USACO13FEB 牛奶调度Milk Scheduling | Dy_RisingSunlight</title>
+  <title>2048 | Dy_RisingSunlight</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="本人思路：拓扑思想+简单模拟1这道题其实并不难，只是用到了拓扑的思想，A奶牛必须在B奶牛挤奶前挤奶，这就形成了一个有向图，点A指向点B。 我们只需要记一下总量（实际上是每只奶牛挤奶时间的总和），每一次循环将入度为0的奶牛加入要挤奶的数组，并且取挤奶数组的最小值，让在挤奶数组里的奶牛减去最小值，如果一个奶牛挤完奶了，那就删除与它相连的边，并且相连的点入度减一，总时间加上最小值，总量减去最小值*挤奶牛">
-<meta name="keywords" content="模拟,拓扑">
+  <meta name="description" content="题目链接：2048 题目思路：这种鬼题一看就要用dp，我们不妨用数组f[i]表示组成i的方案数，根据题意，有用的数是2的整数次幂，但最后答案的方案数要乘上2的无用的数次幂，我们可以用一个数组来存有用的数，以便于判断。 代码1234567891011121314151617181920212223242526272829303132333435363738394041424344454647#in">
+<meta name="keywords" content="dp">
 <meta property="og:type" content="article">
-<meta property="og:title" content="USACO13FEB 牛奶调度Milk Scheduling">
-<meta property="og:url" content="https://dyrisingsunlight.github.io/2019/03/15/TJ_Milk Scheduling/index.html">
+<meta property="og:title" content="2048">
+<meta property="og:url" content="https://dyrisingsunlight.github.io/2019/06/24/2048/index.html">
 <meta property="og:site_name" content="Dy_RisingSunlight">
-<meta property="og:description" content="本人思路：拓扑思想+简单模拟1这道题其实并不难，只是用到了拓扑的思想，A奶牛必须在B奶牛挤奶前挤奶，这就形成了一个有向图，点A指向点B。 我们只需要记一下总量（实际上是每只奶牛挤奶时间的总和），每一次循环将入度为0的奶牛加入要挤奶的数组，并且取挤奶数组的最小值，让在挤奶数组里的奶牛减去最小值，如果一个奶牛挤完奶了，那就删除与它相连的边，并且相连的点入度减一，总时间加上最小值，总量减去最小值*挤奶牛">
+<meta property="og:description" content="题目链接：2048 题目思路：这种鬼题一看就要用dp，我们不妨用数组f[i]表示组成i的方案数，根据题意，有用的数是2的整数次幂，但最后答案的方案数要乘上2的无用的数次幂，我们可以用一个数组来存有用的数，以便于判断。 代码1234567891011121314151617181920212223242526272829303132333435363738394041424344454647#in">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-03-14T17:51:43.771Z">
+<meta property="og:updated_time" content="2019-06-24T12:07:25.268Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="USACO13FEB 牛奶调度Milk Scheduling">
-<meta name="twitter:description" content="本人思路：拓扑思想+简单模拟1这道题其实并不难，只是用到了拓扑的思想，A奶牛必须在B奶牛挤奶前挤奶，这就形成了一个有向图，点A指向点B。 我们只需要记一下总量（实际上是每只奶牛挤奶时间的总和），每一次循环将入度为0的奶牛加入要挤奶的数组，并且取挤奶数组的最小值，让在挤奶数组里的奶牛减去最小值，如果一个奶牛挤完奶了，那就删除与它相连的边，并且相连的点入度减一，总时间加上最小值，总量减去最小值*挤奶牛">
+<meta name="twitter:title" content="2048">
+<meta name="twitter:description" content="题目链接：2048 题目思路：这种鬼题一看就要用dp，我们不妨用数组f[i]表示组成i的方案数，根据题意，有用的数是2的整数次幂，但最后答案的方案数要乘上2的无用的数次幂，我们可以用一个数组来存有用的数，以便于判断。 代码1234567891011121314151617181920212223242526272829303132333435363738394041424344454647#in">
   
   
     <link rel="icon" href="/favicon.png">
@@ -144,29 +144,33 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-TJ_Milk Scheduling" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-2048" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      USACO13FEB 牛奶调度Milk Scheduling
+      2048
     </h1>
   
 
         
-        <a href="/2019/03/15/TJ_Milk Scheduling/" class="archive-article-date">
-  	<time datetime="2019-03-14T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-15</time>
+        <a href="/2019/06/24/2048/" class="archive-article-date">
+  	<time datetime="2019-06-23T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-24</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="本人思路：拓扑思想-简单模拟"><a href="#本人思路：拓扑思想-简单模拟" class="headerlink" title="本人思路：拓扑思想+简单模拟"></a>本人思路：拓扑思想+简单模拟</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">这道题其实并不难，只是用到了拓扑的思想，A奶牛必须在B奶牛挤奶前挤奶，这就形成了一个有向图，点A指向点B。</span><br></pre></td></tr></table></figure>
-<h4 id="我们只需要记一下总量（实际上是每只奶牛挤奶时间的总和），每一次循环将入度为0的奶牛加入要挤奶的数组，并且取挤奶数组的最小值，让在挤奶数组里的奶牛减去最小值，如果一个奶牛挤完奶了，那就删除与它相连的边，并且相连的点入度减一，总时间加上最小值，总量减去最小值-挤奶牛数，直到总量为0结束-如果到这里还不懂可以看代码，代码有更详细的解释。"><a href="#我们只需要记一下总量（实际上是每只奶牛挤奶时间的总和），每一次循环将入度为0的奶牛加入要挤奶的数组，并且取挤奶数组的最小值，让在挤奶数组里的奶牛减去最小值，如果一个奶牛挤完奶了，那就删除与它相连的边，并且相连的点入度减一，总时间加上最小值，总量减去最小值-挤奶牛数，直到总量为0结束-如果到这里还不懂可以看代码，代码有更详细的解释。" class="headerlink" title="我们只需要记一下总量（实际上是每只奶牛挤奶时间的总和），每一次循环将入度为0的奶牛加入要挤奶的数组，并且取挤奶数组的最小值，让在挤奶数组里的奶牛减去最小值，如果一个奶牛挤完奶了，那就删除与它相连的边，并且相连的点入度减一，总时间加上最小值，总量减去最小值*挤奶牛数，直到总量为0结束,如果到这里还不懂可以看代码，代码有更详细的解释。"></a>我们只需要记一下总量（实际上是每只奶牛挤奶时间的总和），每一次循环将入度为0的奶牛加入要挤奶的数组，并且取挤奶数组的最小值，让在挤奶数组里的奶牛减去最小值，如果一个奶牛挤完奶了，那就删除与它相连的边，并且相连的点入度减一，总时间加上最小值，总量减去最小值*挤奶牛数，直到总量为0结束,如果到这里还不懂可以看代码，代码有更详细的解释。</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> maxn 10007</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">int</span> n,m,minn,ans,tot,len;  <span class="comment">//n奶牛数目 m有先后要求的量 minn挤奶数组的最小值 ans最后答案  tot总量 len挤奶数组长度 </span></span><br><span class="line"><span class="keyword">int</span> a[maxn],ru[maxn],q[maxn];  <span class="comment">//a[]每只奶牛挤奶时间 ru[]每只奶牛的入度 q[]挤奶数组 </span></span><br><span class="line"><span class="keyword">bool</span> edg[<span class="number">20000</span>][<span class="number">20000</span>];  <span class="comment">//二维数组建图（模拟大法好） </span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span>  <span class="comment">//程序开始 </span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;n,&amp;m);   </span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;a[i]),tot+=a[i];  <span class="comment">//输入，并且计算总量 </span></span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">int</span> x,y;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;x,&amp;y);</span><br><span class="line">		ru[y]++;  <span class="comment">//x指向y  y入度+1 </span></span><br><span class="line">		edg[x][y]=<span class="number">1</span>;  <span class="comment">//建图 </span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">while</span>(tot)  <span class="comment">//直到总量为0结束 </span></span><br><span class="line">	&#123;</span><br><span class="line">		minn=<span class="number">0x7fffffff</span>;  <span class="comment">//先赋一个最大值 </span></span><br><span class="line">		len=<span class="number">0</span>; </span><br><span class="line">		<span class="built_in">memset</span>(q,<span class="number">0</span>,<span class="keyword">sizeof</span>(q));  <span class="comment">//挤奶数组长度、内容清零 </span></span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span>(!ru[i]&amp;&amp;a[i]&gt;<span class="number">0</span>)  q[++len]=i,minn=min(minn,a[i]);  <span class="comment">//找还有奶并且入度为0的奶牛加入挤奶数组 &amp;&amp; 计算挤奶最小值 </span></span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=len;i++)</span><br><span class="line">		&#123;</span><br><span class="line">			a[q[i]]-=minn;  <span class="comment">//每只挤奶奶牛减去最小值 </span></span><br><span class="line">			<span class="keyword">if</span>(a[q[i]]&lt;=<span class="number">0</span>)  <span class="comment">//处理没奶的奶牛 </span></span><br><span class="line">			&#123;</span><br><span class="line">				<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=n;j++)</span><br><span class="line">				&#123;</span><br><span class="line">					<span class="keyword">if</span>(edg[q[i]][j]==<span class="number">1</span>)  ru[j]--,edg[q[i]][j]=<span class="number">0</span>;  <span class="comment">//删除和它相连的所有边以及和它相连点的入度 </span></span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		tot-=(minn*len);  <span class="comment">//总量减去（最小值*挤奶奶牛数） </span></span><br><span class="line">		ans+=minn;   <span class="comment">//需要时间（答案）加上最小值 </span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%d"</span>,ans);  <span class="comment">//输出 </span></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;  <span class="comment">//程序结束 </span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h5 id="另外嘱咐大家一句：数组一定要够大，否则RE"><a href="#另外嘱咐大家一句：数组一定要够大，否则RE" class="headerlink" title="另外嘱咐大家一句：数组一定要够大，否则RE"></a>另外嘱咐大家一句：数组一定要够大，否则<a href="https://www.luogu.org/record/show?rid=12080872" target="_blank" rel="noopener">RE</a></h5><h2 id="最后祝大家"><a href="#最后祝大家" class="headerlink" title="最后祝大家"></a>最后祝大家</h2><h1 id="RP-；"><a href="#RP-；" class="headerlink" title="RP++；"></a>RP++；</h1>
+        <ul>
+<li>题目链接：<a href="https://www.luogu.org/problemnew/show/U50121" target="_blank" rel="noopener">2048</a></li>
+<li>题目思路：这种鬼题一看就要用dp，我们不妨用数组f[i]表示组成i的方案数，根据题意，有用的数是2的整数次幂，但最后答案的方案数要乘上2的无用的数次幂，我们可以用一个数组来存有用的数，以便于判断。</li>
+<li>代码<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> gc getchar()</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ll long long</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> mo 998244353ll</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">sc</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> xx = <span class="number">0</span>, ff = <span class="number">1</span>; <span class="keyword">char</span> cch;</span><br><span class="line">	<span class="keyword">while</span> (cch &lt; <span class="string">'0'</span> || cch &gt; <span class="string">'9'</span>) &#123;</span><br><span class="line">		<span class="keyword">if</span> (cch == <span class="string">'-'</span>) ff = <span class="number">-1</span>; cch = gc;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">while</span> (cch &gt;= <span class="string">'0'</span>&amp;&amp; cch &lt;= <span class="string">'9'</span>) &#123;</span><br><span class="line">		xx = (xx &lt;&lt; <span class="number">1</span>) + (xx &lt;&lt; <span class="number">3</span>) + (cch ^ <span class="string">'0'</span>); cch = gc;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> xx * ff;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">int</span> num[<span class="number">2500</span>];</span><br><span class="line"><span class="keyword">int</span> n, tot;</span><br><span class="line">ll f[<span class="number">2500</span>];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= <span class="number">11</span>; i++) <span class="comment">//用num数组来存有用的数 </span></span><br><span class="line">		num[<span class="number">1</span>&lt;&lt;i] = i;</span><br><span class="line">	n = sc();</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">		<span class="keyword">int</span> x = sc();</span><br><span class="line">		<span class="keyword">if</span>(!num[x] &amp;&amp; x != <span class="number">1</span>) &#123; <span class="comment">// 要特判1 </span></span><br><span class="line">			tot++; <span class="comment">//无用数+1 </span></span><br><span class="line">			<span class="keyword">continue</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">2048</span>; j &gt;= <span class="number">1</span>; j--) &#123; <span class="comment">//倒序，相当于01背包，每个数只能用一次 </span></span><br><span class="line">			<span class="keyword">if</span>(f[j]) &#123;</span><br><span class="line">				<span class="keyword">if</span>(j + x &lt;= <span class="number">2048</span>) <span class="comment">//输入的数+循环的到的数小于2048 </span></span><br><span class="line">					f[j + x] = (f[j + x] + f[j]) % mo; <span class="comment">//方案数相加 </span></span><br><span class="line">				<span class="keyword">else</span> f[<span class="number">2048</span>] = (f[<span class="number">2048</span>] + f[j]) % mo; <span class="comment">//否则方案数加给2048 </span></span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		f[x]++; <span class="comment">//不要忘记给输入的数的方案数+1 </span></span><br><span class="line">	&#125;</span><br><span class="line"><span class="comment">//	cout &lt;&lt; tot &lt;&lt; endl;</span></span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= tot; i++) &#123; <span class="comment">//根据题意，最后答案要乘2的无用数数目次幂 </span></span><br><span class="line">		f[<span class="number">2048</span>] = (f[<span class="number">2048</span>] * <span class="number">2l</span>l) % mo;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">printf</span> (<span class="string">"%lld\n"</span>, f[<span class="number">2048</span>]);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h5 id="rp"><a href="#rp" class="headerlink" title="rp++"></a>rp++</h5>
       
 
       
@@ -179,11 +183,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">模拟</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">拓扑</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">dp</a>
         		</li>
       		
 		</ul>
@@ -239,7 +239,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=https://dyrisingsunlight.github.io/2019/03/15/TJ_Milk Scheduling/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=https://dyrisingsunlight.github.io/2019/06/24/2048/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -253,18 +253,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2019/03/15/TJ_logo language/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          logo语言
-        
-      </div>
-    </a>
   
-  
-    <a href="/2019/03/15/TJ_Uncle McDonald's problem/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">麦当劳叔叔的难题</div>
+    <a href="/2019/06/24/YinHeYingXiongChuanShuo/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">NOI_2002银河英雄传说</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -291,8 +282,8 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#本人思路：拓扑思想-简单模拟"><span class="toc-number">1.</span> <span class="toc-text">本人思路：拓扑思想+简单模拟</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#我们只需要记一下总量（实际上是每只奶牛挤奶时间的总和），每一次循环将入度为0的奶牛加入要挤奶的数组，并且取挤奶数组的最小值，让在挤奶数组里的奶牛减去最小值，如果一个奶牛挤完奶了，那就删除与它相连的边，并且相连的点入度减一，总时间加上最小值，总量减去最小值-挤奶牛数，直到总量为0结束-如果到这里还不懂可以看代码，代码有更详细的解释。"><span class="toc-number">1.0.1.</span> <span class="toc-text">我们只需要记一下总量（实际上是每只奶牛挤奶时间的总和），每一次循环将入度为0的奶牛加入要挤奶的数组，并且取挤奶数组的最小值，让在挤奶数组里的奶牛减去最小值，如果一个奶牛挤完奶了，那就删除与它相连的边，并且相连的点入度减一，总时间加上最小值，总量减去最小值*挤奶牛数，直到总量为0结束,如果到这里还不懂可以看代码，代码有更详细的解释。</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#另外嘱咐大家一句：数组一定要够大，否则RE"><span class="toc-number">1.0.1.1.</span> <span class="toc-text">另外嘱咐大家一句：数组一定要够大，否则RE</span></a></li></ol></li></ol></li></ol><li class="toc-item toc-level-2"><a class="toc-link" href="#最后祝大家"><span class="toc-number">2.</span> <span class="toc-text">最后祝大家</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#RP-；"><span class="toc-number"></span> <span class="toc-text">RP++；</span></a>
-                    </li></div>
+                    <ol class="toc"><li class="toc-item toc-level-5"><a class="toc-link" href="#rp"><span class="toc-number">1.</span> <span class="toc-text">rp++</span></a></li></ol>
+                    </div>
                 </span>
             </div>
         </div>

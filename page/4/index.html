@@ -144,19 +144,19 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-TJ_Milk Scheduling" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-TJ_Binary tree problem" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/03/15/TJ_Milk Scheduling/">USACO13FEB 牛奶调度Milk Scheduling</a>
+      <a class="article-title" href="/2019/03/15/TJ_Binary tree problem/">JLOI2009 二叉树问题</a>
     </h1>
   
 
         
-        <a href="/2019/03/15/TJ_Milk Scheduling/" class="archive-article-date">
+        <a href="/2019/03/15/TJ_Binary tree problem/" class="archive-article-date">
   	<time datetime="2019-03-14T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-15</time>
 </a>
         
@@ -164,9 +164,91 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="本人思路：拓扑思想-简单模拟"><a href="#本人思路：拓扑思想-简单模拟" class="headerlink" title="本人思路：拓扑思想+简单模拟"></a>本人思路：拓扑思想+简单模拟</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">这道题其实并不难，只是用到了拓扑的思想，A奶牛必须在B奶牛挤奶前挤奶，这就形成了一个有向图，点A指向点B。</span><br></pre></td></tr></table></figure>
-<h4 id="我们只需要记一下总量（实际上是每只奶牛挤奶时间的总和），每一次循环将入度为0的奶牛加入要挤奶的数组，并且取挤奶数组的最小值，让在挤奶数组里的奶牛减去最小值，如果一个奶牛挤完奶了，那就删除与它相连的边，并且相连的点入度减一，总时间加上最小值，总量减去最小值-挤奶牛数，直到总量为0结束-如果到这里还不懂可以看代码，代码有更详细的解释。"><a href="#我们只需要记一下总量（实际上是每只奶牛挤奶时间的总和），每一次循环将入度为0的奶牛加入要挤奶的数组，并且取挤奶数组的最小值，让在挤奶数组里的奶牛减去最小值，如果一个奶牛挤完奶了，那就删除与它相连的边，并且相连的点入度减一，总时间加上最小值，总量减去最小值-挤奶牛数，直到总量为0结束-如果到这里还不懂可以看代码，代码有更详细的解释。" class="headerlink" title="我们只需要记一下总量（实际上是每只奶牛挤奶时间的总和），每一次循环将入度为0的奶牛加入要挤奶的数组，并且取挤奶数组的最小值，让在挤奶数组里的奶牛减去最小值，如果一个奶牛挤完奶了，那就删除与它相连的边，并且相连的点入度减一，总时间加上最小值，总量减去最小值*挤奶牛数，直到总量为0结束,如果到这里还不懂可以看代码，代码有更详细的解释。"></a>我们只需要记一下总量（实际上是每只奶牛挤奶时间的总和），每一次循环将入度为0的奶牛加入要挤奶的数组，并且取挤奶数组的最小值，让在挤奶数组里的奶牛减去最小值，如果一个奶牛挤完奶了，那就删除与它相连的边，并且相连的点入度减一，总时间加上最小值，总量减去最小值*挤奶牛数，直到总量为0结束,如果到这里还不懂可以看代码，代码有更详细的解释。</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> maxn 10007</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">int</span> n,m,minn,ans,tot,len;  <span class="comment">//n奶牛数目 m有先后要求的量 minn挤奶数组的最小值 ans最后答案  tot总量 len挤奶数组长度 </span></span><br><span class="line"><span class="keyword">int</span> a[maxn],ru[maxn],q[maxn];  <span class="comment">//a[]每只奶牛挤奶时间 ru[]每只奶牛的入度 q[]挤奶数组 </span></span><br><span class="line"><span class="keyword">bool</span> edg[<span class="number">20000</span>][<span class="number">20000</span>];  <span class="comment">//二维数组建图（模拟大法好） </span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span>  <span class="comment">//程序开始 </span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;n,&amp;m);   </span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;a[i]),tot+=a[i];  <span class="comment">//输入，并且计算总量 </span></span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">int</span> x,y;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;x,&amp;y);</span><br><span class="line">		ru[y]++;  <span class="comment">//x指向y  y入度+1 </span></span><br><span class="line">		edg[x][y]=<span class="number">1</span>;  <span class="comment">//建图 </span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">while</span>(tot)  <span class="comment">//直到总量为0结束 </span></span><br><span class="line">	&#123;</span><br><span class="line">		minn=<span class="number">0x7fffffff</span>;  <span class="comment">//先赋一个最大值 </span></span><br><span class="line">		len=<span class="number">0</span>; </span><br><span class="line">		<span class="built_in">memset</span>(q,<span class="number">0</span>,<span class="keyword">sizeof</span>(q));  <span class="comment">//挤奶数组长度、内容清零 </span></span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span>(!ru[i]&amp;&amp;a[i]&gt;<span class="number">0</span>)  q[++len]=i,minn=min(minn,a[i]);  <span class="comment">//找还有奶并且入度为0的奶牛加入挤奶数组 &amp;&amp; 计算挤奶最小值 </span></span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=len;i++)</span><br><span class="line">		&#123;</span><br><span class="line">			a[q[i]]-=minn;  <span class="comment">//每只挤奶奶牛减去最小值 </span></span><br><span class="line">			<span class="keyword">if</span>(a[q[i]]&lt;=<span class="number">0</span>)  <span class="comment">//处理没奶的奶牛 </span></span><br><span class="line">			&#123;</span><br><span class="line">				<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=n;j++)</span><br><span class="line">				&#123;</span><br><span class="line">					<span class="keyword">if</span>(edg[q[i]][j]==<span class="number">1</span>)  ru[j]--,edg[q[i]][j]=<span class="number">0</span>;  <span class="comment">//删除和它相连的所有边以及和它相连点的入度 </span></span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		tot-=(minn*len);  <span class="comment">//总量减去（最小值*挤奶奶牛数） </span></span><br><span class="line">		ans+=minn;   <span class="comment">//需要时间（答案）加上最小值 </span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%d"</span>,ans);  <span class="comment">//输出 </span></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;  <span class="comment">//程序结束 </span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h5 id="另外嘱咐大家一句：数组一定要够大，否则RE"><a href="#另外嘱咐大家一句：数组一定要够大，否则RE" class="headerlink" title="另外嘱咐大家一句：数组一定要够大，否则RE"></a>另外嘱咐大家一句：数组一定要够大，否则<a href="https://www.luogu.org/record/show?rid=12080872" target="_blank" rel="noopener">RE</a></h5><h2 id="最后祝大家"><a href="#最后祝大家" class="headerlink" title="最后祝大家"></a>最后祝大家</h2><h1 id="RP-；"><a href="#RP-；" class="headerlink" title="RP++；"></a>RP++；</h1>
+        <p>这道题用到了树的一些概念，但主要算法还是搜索和模拟，我用了深搜（Deep First Search，简称DFS）。<br>主要思路：<br>1.用一个结构体来表示树，l表示左子树，r表示右子树，fa表示父节点，ceng表示当前节点的深度，数组下标表示当前节点的值。<br>2.深度用maxx来表示，每求出一个节点的ceng，就与maxx比较，取大者为maxx，最后的maxx即为深度。<br>3.宽度用一个数组num来记，假设下标为i，num[i]即为第i层有几个节点，通过扫描所有节点来记，记完后sort从大到小一遍，num[1]即为宽度。<br>4.计算距离用dfs函数，参数为now（当前节点），up（上行的次数）,down（下行的次数），加上简单的剪枝，求出结果ans=up*2+down。<br>具体解释见代码。<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">tree</span>//树，见思路 </span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">	<span class="keyword">int</span> fa;</span><br><span class="line">	<span class="keyword">int</span> l;</span><br><span class="line">	<span class="keyword">int</span> r;</span><br><span class="line">	<span class="keyword">int</span> ceng;</span><br><span class="line">&#125;t[<span class="number">787878</span>];</span><br><span class="line"><span class="keyword">int</span> n,u,v,ans,maxx=<span class="number">-7878</span>;<span class="comment">//n个节点,计算从u到v的距离，ans为距离，maxx为深度 </span></span><br><span class="line"><span class="keyword">int</span> num[<span class="number">787878</span>];<span class="comment">//计算宽度，见思路 </span></span><br><span class="line"><span class="keyword">bool</span> pd[<span class="number">787878</span>];<span class="comment">//用来dfs剪枝 </span></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">cmp</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span><span class="comment">//sort从大到小函数 </span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> a&gt;b;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> now,<span class="keyword">int</span> up,<span class="keyword">int</span> down)</span><span class="comment">//计算从u到v的距离 </span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(now==v)<span class="comment">//到达终点 </span></span><br><span class="line">	&#123;</span><br><span class="line">		ans=up*<span class="number">2</span>+down;<span class="comment">//计算距离 </span></span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span>(now&lt;<span class="number">1</span>||now&gt;n)  <span class="keyword">return</span>;<span class="comment">//剪枝 </span></span><br><span class="line">	pd[now]=<span class="literal">true</span>;<span class="comment">//记录 </span></span><br><span class="line">	<span class="keyword">if</span>(t[now].l&gt;=<span class="number">1</span>&amp;&amp;t[now].l&lt;=n&amp;&amp;pd[t[now].l]==<span class="literal">false</span>)  dfs(t[now].l,up,down+<span class="number">1</span>);<span class="comment">//搜索左子树，下行次数+1 </span></span><br><span class="line">	<span class="keyword">if</span>(t[now].r&gt;=<span class="number">1</span>&amp;&amp;t[now].r&lt;=n&amp;&amp;pd[t[now].r]==<span class="literal">false</span>)  dfs(t[now].r,up,down+<span class="number">1</span>);<span class="comment">//搜索右子树，下行次数+1 </span></span><br><span class="line">	<span class="keyword">if</span>(t[now].fa&gt;=<span class="number">1</span>&amp;&amp;t[now].fa&lt;=n&amp;&amp;pd[t[now].fa]==<span class="literal">false</span>)  dfs(t[now].fa,up+<span class="number">1</span>,down);<span class="comment">//搜索父节点，上行次数+1 </span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span><span class="comment">//主函数 </span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n);<span class="comment">//输入 </span></span><br><span class="line">	t[<span class="number">1</span>].fa=<span class="number">0</span>;  t[<span class="number">1</span>].ceng=<span class="number">1</span>;<span class="comment">//处理根节点 </span></span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=(n<span class="number">-1</span>);i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">int</span> x,y;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;x,&amp;y);<span class="comment">//输入 </span></span><br><span class="line">		<span class="keyword">if</span>(t[x].l==<span class="number">0</span>)  t[x].l=y;</span><br><span class="line">		<span class="keyword">else</span>  t[x].r=y;<span class="comment">//记录左右子树 </span></span><br><span class="line">		t[y].fa=x;<span class="comment">//记录父节点 </span></span><br><span class="line">		t[y].ceng=t[x].ceng+<span class="number">1</span>;<span class="comment">//记录层数 </span></span><br><span class="line">		maxx=max(maxx,t[y].ceng);<span class="comment">//计算深度 </span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;u,&amp;v);<span class="comment">//输入 </span></span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">		num[t[i].ceng]++;<span class="comment">//计算每一层节点的数量 </span></span><br><span class="line">	sort(num+<span class="number">1</span>,num+n+<span class="number">1</span>,cmp);<span class="comment">//排序，找出宽度 </span></span><br><span class="line">	dfs(u,<span class="number">0</span>,<span class="number">0</span>);<span class="comment">//搜索从u到v的距离 </span></span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%d\n%d\n%d"</span>,maxx,num[<span class="number">1</span>],ans);<span class="comment">//输出 </span></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;<span class="comment">//程序结束 </span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>希望我的代码能够帮助到大家！</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">dfs</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">二叉树</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/03/15/TJ_Binary tree problem/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-TJ_Postfix expression" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/03/15/TJ_Postfix expression/">后缀表达式</a>
+    </h1>
+  
+
+        
+        <a href="/2019/03/15/TJ_Postfix expression/" class="archive-article-date">
+  	<time datetime="2019-03-14T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-15</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>这道题应用到了栈的思想，也相当于一个模拟过程。</p>
+<p>处理过程：扫描后缀表达式，只要遇到操作数将其进栈，遇到运算符则从栈中弹出两个操作数进行相应运算，将运算结果进栈，然后继续扫描，直到扫完位置，这时，栈底的数即为该后缀表达式的值。</p>
+<p>发一下我的代码（C++）</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;  //头文件 </span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">int</span> edg[<span class="number">1010</span>];</span><br><span class="line"><span class="keyword">char</span> s[<span class="number">256</span>];  <span class="comment">//全局变量 </span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">dfs</span><span class="params">(<span class="keyword">char</span> s[<span class="number">256</span>])</span>  <span class="comment">//扫描后缀表达式 </span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i=<span class="number">0</span>,top=<span class="number">0</span>,e;</span><br><span class="line">    <span class="keyword">while</span>(i&lt;=<span class="built_in">strlen</span>(s)<span class="number">-2</span>)  <span class="comment">//扫描到strlen(s)-2</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">switch</span>(s[i])  <span class="comment">//判断 </span></span><br><span class="line">        &#123;</span><br><span class="line">            case'+':edg[--top]+=edg[top+1];break;  //+</span><br><span class="line">            case'-':edg[--top]-=edg[top+1];break;  //-</span><br><span class="line">            case'*':edg[--top]*=edg[top+1];break;  //*</span><br><span class="line">            case'/':edg[--top]/=edg[top+1];break;  ///</span><br><span class="line">            <span class="keyword">default</span>:e=<span class="number">0</span>;</span><br><span class="line">            <span class="keyword">while</span>(s[i]!=<span class="string">'.'</span>)</span><br><span class="line">                e=e*<span class="number">10</span>+s[i++]-<span class="string">'0'</span>;  <span class="comment">//检查是否扫描到间隔符号'.' </span></span><br><span class="line">                edg[++top]=e;<span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        i++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> edg[top];</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span>  <span class="comment">//主程序 </span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    gets(s);  <span class="comment">//输入 </span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d"</span>,dfs(s));  <span class="comment">//输出 </span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>希望我的代码能够帮助到大家！</p>
+
       
 
       
@@ -183,7 +265,7 @@
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">拓扑</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">栈</a>
         		</li>
       		
 		</ul>
@@ -193,7 +275,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2019/03/15/TJ_Milk Scheduling/">展开全文 >></a>
+          <a class="article-more-a" href="/2019/03/15/TJ_Postfix expression/">展开全文 >></a>
         </p>
       
 
@@ -341,6 +423,10 @@ MathJax.Hub.Queue(function() {
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">dp</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">模拟</a>
               </li>
              
@@ -361,15 +447,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">dp</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">并查集</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">递推</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -377,11 +455,19 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">拓扑</a>
+                <a href="javascript:void(0)" class="js-tag color3">递推</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">栈</a>
+                <a href="javascript:void(0)" class="js-tag color5">树状数组</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">差分</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">二叉树</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -397,19 +483,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">树状数组</a>
+                <a href="javascript:void(0)" class="js-tag color2">栈</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">差分</a>
+                <a href="javascript:void(0)" class="js-tag color3">拓扑</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">bfs</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">二叉树</a>
               </li>
              
               <li class="article-tag-list-item">
