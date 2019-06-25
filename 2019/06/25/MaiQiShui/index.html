@@ -6,18 +6,23 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="https://dyrisingsunlight.github.io">
-  <title>Tag: LCA | Dy_RisingSunlight</title>
+  <title>买汽水 | Dy_RisingSunlight</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="没有比脚更长的路，没有比人更高的山。">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Dy_RisingSunlight">
-<meta property="og:url" content="https://dyrisingsunlight.github.io/tags/LCA/index.html">
+  <meta name="description" content="题面 题目思路：这是一道模拟赛压轴题，当时我天真的认为这是一道简单的01背包题，但一看数据范围，顿时懵逼，就算用map代替数组，但也会TLE。一般的背包题的物品数量和物品价值都是适量的，而本题物品数量不多，但物品价值远远超出了普通的限度。本题的正解是爆搜，高大上一点叫折半搜索，英文名Meet In The Middle，即二分搜索，枚举方案数，最后将两边的方案数进行匹配。本题还有一些优化，类似于">
+<meta name="keywords" content="dfs">
+<meta property="og:type" content="article">
+<meta property="og:title" content="买汽水">
+<meta property="og:url" content="https://dyrisingsunlight.github.io/2019/06/25/MaiQiShui/index.html">
 <meta property="og:site_name" content="Dy_RisingSunlight">
-<meta property="og:description" content="没有比脚更长的路，没有比人更高的山。">
+<meta property="og:description" content="题面 题目思路：这是一道模拟赛压轴题，当时我天真的认为这是一道简单的01背包题，但一看数据范围，顿时懵逼，就算用map代替数组，但也会TLE。一般的背包题的物品数量和物品价值都是适量的，而本题物品数量不多，但物品价值远远超出了普通的限度。本题的正解是爆搜，高大上一点叫折半搜索，英文名Meet In The Middle，即二分搜索，枚举方案数，最后将两边的方案数进行匹配。本题还有一些优化，类似于">
 <meta property="og:locale" content="default">
+<meta property="og:image" content="https://dyrisingsunlight.github.io/2019/06/25/MaiQiShui/0.jpg">
+<meta property="og:image" content="https://dyrisingsunlight.github.io/2019/06/25/MaiQiShui/1.jpg">
+<meta property="og:updated_time" content="2019-06-25T15:55:32.122Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Dy_RisingSunlight">
-<meta name="twitter:description" content="没有比脚更长的路，没有比人更高的山。">
+<meta name="twitter:title" content="买汽水">
+<meta name="twitter:description" content="题面 题目思路：这是一道模拟赛压轴题，当时我天真的认为这是一道简单的01背包题，但一看数据范围，顿时懵逼，就算用map代替数组，但也会TLE。一般的背包题的物品数量和物品价值都是适量的，而本题物品数量不多，但物品价值远远超出了普通的限度。本题的正解是爆搜，高大上一点叫折半搜索，英文名Meet In The Middle，即二分搜索，枚举方案数，最后将两边的方案数进行匹配。本题还有一些优化，类似于">
+<meta name="twitter:image" content="https://dyrisingsunlight.github.io/2019/06/25/MaiQiShui/0.jpg">
   
   
     <link rel="icon" href="/favicon.png">
@@ -142,262 +147,164 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-MaiQiShui" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      买汽水
+    </h1>
+  
+
+        
+        <a href="/2019/06/25/MaiQiShui/" class="archive-article-date">
+  	<time datetime="2019-06-24T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-25</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ul>
+<li>题面<br><img src="/2019/06/25/MaiQiShui/0.jpg" alt><br><img src="/2019/06/25/MaiQiShui/1.jpg" alt></li>
+<li>题目思路：这是一道模拟赛压轴题，当时我天真的认为这是一道简单的01背包题，但一看数据范围，顿时懵逼，就算用map代替数组，但也会TLE。一般的背包题的物品数量和物品价值都是适量的，而本题物品数量不多，但物品价值远远超出了普通的限度。本题的正解是<strong>爆搜</strong>，高大上一点叫<strong>折半搜索</strong>，英文名<em>Meet In The Middle</em>，即二分搜索，枚举方案数，最后将两边的方案数进行匹配。本题还有一些优化，类似于dfs中进行归并排序，优化常数，但这些我不会。。。</li>
+<li>代码<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> gc getchar()</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ll long long</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> Maxn 50</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> Maxm 1000010</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">sc</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> xx = <span class="number">0</span>, ff = <span class="number">1</span>; <span class="keyword">char</span> cch = gc;</span><br><span class="line">	<span class="keyword">while</span> (cch &lt; <span class="string">'0'</span> || cch &gt; <span class="string">'9'</span>) &#123;</span><br><span class="line">		<span class="keyword">if</span> (cch == <span class="string">'-'</span>) ff = <span class="number">-1</span>; cch = gc;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">while</span> (cch &gt;= <span class="string">'0'</span>&amp;&amp; cch &lt;= <span class="string">'9'</span>) &#123;</span><br><span class="line">		xx = (xx &lt;&lt; <span class="number">1</span>) + (xx &lt;&lt; <span class="number">3</span>) + (cch ^ <span class="string">'0'</span>); cch = gc;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> xx * ff;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">int</span> n, m;</span><br><span class="line">ll len1, len2, now;</span><br><span class="line">ll a[Maxm&lt;&lt;<span class="number">1</span>], b[Maxm&lt;&lt;<span class="number">1</span>];</span><br><span class="line"><span class="keyword">int</span> v[Maxn];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs1</span><span class="params">(<span class="keyword">int</span> nowl,<span class="keyword">int</span> nowr, <span class="keyword">int</span> sum)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(nowl == nowr) &#123;</span><br><span class="line">		a[++len1] = sum;</span><br><span class="line">		<span class="keyword">if</span>(sum + v[nowl] &lt;=m)</span><br><span class="line">			a[++len1] = sum + v[nowl];</span><br><span class="line">		<span class="keyword">return</span> ;</span><br><span class="line">	&#125;</span><br><span class="line">	dfs1(nowl + <span class="number">1</span>, nowr, sum); <span class="comment">//两种选择，选 或 不选 </span></span><br><span class="line">	<span class="keyword">if</span>(sum + v[nowl] &lt;= m)</span><br><span class="line">		dfs1(nowl + <span class="number">1</span>, nowr, sum + v[nowl]);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs2</span><span class="params">(<span class="keyword">int</span> nowl,<span class="keyword">int</span> nowr, <span class="keyword">int</span> sum)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(nowl == nowr) &#123;</span><br><span class="line">		b[++len2] = sum;</span><br><span class="line">		<span class="keyword">if</span>(sum + v[nowl] &lt;=m)</span><br><span class="line">			b[++len2] = sum + v[nowl];</span><br><span class="line">		<span class="keyword">return</span> ;</span><br><span class="line">	&#125;</span><br><span class="line">	dfs2(nowl + <span class="number">1</span>, nowr, sum);</span><br><span class="line">	<span class="keyword">if</span>(sum + v[nowl] &lt;= m)</span><br><span class="line">		dfs2(nowl + <span class="number">1</span>, nowr, sum + v[nowl]);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	n = sc(); m = sc();</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">		v[i] = sc();</span><br><span class="line">	<span class="keyword">int</span> L = n &gt;&gt; <span class="number">1</span>;</span><br><span class="line">	dfs1(<span class="number">1</span>, L, <span class="number">0</span>); <span class="comment">//折半搜索 </span></span><br><span class="line">	dfs2(L + <span class="number">1</span>, n, <span class="number">0</span>);</span><br><span class="line">	sort(a + <span class="number">1</span>, a + len1 + <span class="number">1</span>);</span><br><span class="line">	sort(b + <span class="number">1</span>, b + len2 + <span class="number">1</span>);</span><br><span class="line">	<span class="keyword">int</span> l = <span class="number">1</span>, r = len2; <span class="comment">//进行匹配，伪指针优化 </span></span><br><span class="line">	<span class="keyword">while</span>(l &lt;= len1) &#123; <span class="comment">//因为序列是有序的，所以我们可以用一个变量当做指针，每次匹配时直接从上一个匹配完的位置开始即可 </span></span><br><span class="line">		<span class="keyword">while</span>(l &lt;= len1 &amp;&amp; a[l] + b[r] &lt;= m) &#123; <span class="comment">//可以优化时间 </span></span><br><span class="line">			<span class="keyword">if</span>(now &lt; a[l] + b[r])</span><br><span class="line">				now = a[l] + b[r];</span><br><span class="line">			l++;</span><br><span class="line">		&#125;</span><br><span class="line">		r--;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%lld\n"</span>, now);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h5 id="rp"><a href="#rp" class="headerlink" title="rp++"></a>rp++</h5>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/06/18/CangShuZhaoSugar/" class="archive-article-date">
-  	<time datetime="2019-06-17T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-18</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/06/18/CangShuZhaoSugar/">仓鼠找sugar</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">LCA</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">dfs</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=https://dyrisingsunlight.github.io/2019/06/25/MaiQiShui/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/06/17/YiQingKongZhi/" class="archive-article-date">
-  	<time datetime="2019-06-16T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-17</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2019/06/25/mst/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">mst</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/06/17/YiQingKongZhi/">疫情控制</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">LCA</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-5"><a class="toc-link" href="#rp"><span class="toc-number">1.</span> <span class="toc-text">rp++</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+        
+    </div>
+</aside>
+
+
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/06/17/CiXiaoShengChengShu/" class="archive-article-date">
-  	<time datetime="2019-06-16T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-17</time>
-</a>
-        </div>
-    	 
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/06/17/CiXiaoShengChengShu/">【模板】严格次小生成树[BJWC2010]</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">LCA</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">克鲁斯卡尔</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">MST</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/06/17/FeiBoNaQi/" class="archive-article-date">
-  	<time datetime="2019-06-16T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-17</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/06/17/FeiBoNaQi/">斐波那契</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">LCA</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">递推</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/04/14/TJ_andesuolian/" class="archive-article-date">
-  	<time datetime="2019-04-13T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-14</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/04/14/TJ_andesuolian/">暗的连锁</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">LCA</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/04/13/TJ_LCA/" class="archive-article-date">
-  	<time datetime="2019-04-12T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-13</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/04/13/TJ_LCA/">模板_最近公共祖先（LCA）</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">LCA</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
 
 
           </div>
@@ -420,9 +327,9 @@
 	var yiliaConfig = {
 		mathjax: true,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: true,
 		toc_hide_index: true,
