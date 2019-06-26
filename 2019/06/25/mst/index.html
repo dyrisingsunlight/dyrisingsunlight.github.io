@@ -20,7 +20,8 @@
 <meta property="og:image" content="https://dyrisingsunlight.github.io/2019/06/25/mst/2.jpg">
 <meta property="og:image" content="https://dyrisingsunlight.github.io/2019/06/25/mst/1.jpg">
 <meta property="og:image" content="https://dyrisingsunlight.github.io/2019/06/25/mst/3.jpg">
-<meta property="og:updated_time" content="2019-06-25T13:09:34.937Z">
+<meta property="og:image" content="https://dyrisingsunlight.github.io/2019/06/25/mst/4.jpg">
+<meta property="og:updated_time" content="2019-06-26T08:51:46.623Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="mst">
 <meta name="twitter:description" content="题面  题目思路：根据题意，我们可以和jmy一样一眼看出最小生成树的边权和，因为每条边的边权为gcd(i,j)，如果两个数互质，即gcd(i,j)=1，则边权为最小，所以MST的边权和为n-1（即每条边边权都为1），那么怎样求MST的个数呢？  我们假设已经枚举到了第i个点，与i互质的点有k个，那么根据乘法原理，总方案数要乘上k，所以这个题目可以转换成从第2个点到第n个点比小于等于它且与它互质的">
@@ -186,7 +187,8 @@
 <pre><code><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">线性筛：为埃拉托色尼筛法的进阶版，时间复杂度为O(n)，可以保证每个数只被筛一次，具体代码及解释如下</span><br></pre></td></tr></table></figure>
 </code></pre>  <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= n; i++) &#123; <span class="comment">//从2开始枚举 </span></span><br><span class="line"><span class="keyword">if</span>(! pd[i]) a[++cnt] = i; <span class="comment">//如果当前数为质数，加到a数组中 </span></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= cnt &amp;&amp; i * a[j] &lt;= n; j++) &#123; </span><br><span class="line">pd[i * a[j]] = <span class="number">1</span>; <span class="comment">//标记合数 </span></span><br><span class="line"><span class="keyword">if</span>(i % a[j] == <span class="number">0</span>) <span class="keyword">break</span>; <span class="comment">//重点！如果i % a[j] == 0，说明a[j]为i的最小因数，如果继续循环，则a[j+1]可能等于a[i]*一个未知数，这样就不能保证每个数只判断一次 </span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <ul>
-<li>8.我们再来说一下如何用线性筛求欧拉函数，因为欧拉函数为积性函数，如果i mod p != 0, 那么 φ(i <em> p) = φ(i) </em> φ(p)，如果 i mod p == 0, 那么 φ(i <em> p) == p </em> φ(i)。我们这样就AC了 <img src="/2019/06/25/mst/3.jpg" alt></li>
+<li>8.0 我们再来说一下如何用线性筛求欧拉函数，因为欧拉函数为积性函数，如果i mod p != 0, 那么 φ(i <em> p) = φ(i) </em> φ(p)，如果 i mod p == 0, 那么 φ(i <em> p) == p </em> φ(i)。我们这样就AC了 <img src="/2019/06/25/mst/3.jpg" alt></li>
+<li>8.1 关于i mod p == 0, 那么 φ(i <em> p) == p </em> φ(i) 的证明，见下图 <img src="/2019/06/25/mst/4.jpg" alt></li>
 </ul>
 </li>
 </ul>
@@ -279,18 +281,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2019/06/25/MaiQiShui/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          买汽水
-        
-      </div>
-    </a>
   
-  
-    <a href="/2019/06/24/MuBanShuZhuangShuZu/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">模板_树状数组2</div>
+    <a href="/2019/06/25/MaiQiShui/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">买汽水</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -450,19 +443,15 @@ MathJax.Hub.Queue(function() {
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">LCA</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">克鲁斯卡尔</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">MST</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">dp</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">模拟</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">LCA</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -478,7 +467,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">模拟</a>
+                <a href="javascript:void(0)" class="js-tag color1">克鲁斯卡尔</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">MST</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">状压</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -490,15 +487,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">拓扑</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">二叉树</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">bfs</a>
+                <a href="javascript:void(0)" class="js-tag color3">拓扑</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -514,7 +507,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">状压</a>
+                <a href="javascript:void(0)" class="js-tag color4">bfs</a>
               </li>
              
               <li class="article-tag-list-item">
