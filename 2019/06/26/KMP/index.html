@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="https://dyrisingsunlight.github.io">
   <title>模板_KMP字符串匹配 | Dy_RisingSunlight</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="题目链接： 模板_KMP字符串匹配 KMP算法  此算法为字符串匹配算法，此算法的优点在于，如果在匹配过程中失配，我们不需要从头开始，而是直接从某一特定位置开始，这样可以极大地节省时间复杂度，此算法的时间复杂度为θ(n) 关于特定位置  我们来看一组样例   12模式串：abcab文本串：abcacababcab   首先，前四位按位匹配成功，遇到第五位不同，而这时，我们选择将abcababca">
+  <meta name="description" content="题目链接： 模板_KMP字符串匹配 KMP算法  此算法为字符串匹配算法，此算法的优点在于，如果在匹配过程中失配，我们不需要从头开始，而是直接从某一特定位置开始，这样可以极大地节省时间复杂度，此算法的时间复杂度为θ(n) 关于特定位置  我们来看一组样例   12模式串：abcab文本串：abcacababcab   首先，前四位按位匹配成功，遇到第五位不同，而这时，我们选择将abcab向右移三">
 <meta name="keywords" content="KMP">
 <meta property="og:type" content="article">
 <meta property="og:title" content="模板_KMP字符串匹配">
 <meta property="og:url" content="https://dyrisingsunlight.github.io/2019/06/26/KMP/index.html">
 <meta property="og:site_name" content="Dy_RisingSunlight">
-<meta property="og:description" content="题目链接： 模板_KMP字符串匹配 KMP算法  此算法为字符串匹配算法，此算法的优点在于，如果在匹配过程中失配，我们不需要从头开始，而是直接从某一特定位置开始，这样可以极大地节省时间复杂度，此算法的时间复杂度为θ(n) 关于特定位置  我们来看一组样例   12模式串：abcab文本串：abcacababcab   首先，前四位按位匹配成功，遇到第五位不同，而这时，我们选择将abcababca">
+<meta property="og:description" content="题目链接： 模板_KMP字符串匹配 KMP算法  此算法为字符串匹配算法，此算法的优点在于，如果在匹配过程中失配，我们不需要从头开始，而是直接从某一特定位置开始，这样可以极大地节省时间复杂度，此算法的时间复杂度为θ(n) 关于特定位置  我们来看一组样例   12模式串：abcab文本串：abcacababcab   首先，前四位按位匹配成功，遇到第五位不同，而这时，我们选择将abcab向右移三">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-06-26T09:37:03.665Z">
+<meta property="og:updated_time" content="2019-06-28T03:06:42.623Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="模板_KMP字符串匹配">
-<meta name="twitter:description" content="题目链接： 模板_KMP字符串匹配 KMP算法  此算法为字符串匹配算法，此算法的优点在于，如果在匹配过程中失配，我们不需要从头开始，而是直接从某一特定位置开始，这样可以极大地节省时间复杂度，此算法的时间复杂度为θ(n) 关于特定位置  我们来看一组样例   12模式串：abcab文本串：abcacababcab   首先，前四位按位匹配成功，遇到第五位不同，而这时，我们选择将abcababca">
+<meta name="twitter:description" content="题目链接： 模板_KMP字符串匹配 KMP算法  此算法为字符串匹配算法，此算法的优点在于，如果在匹配过程中失配，我们不需要从头开始，而是直接从某一特定位置开始，这样可以极大地节省时间复杂度，此算法的时间复杂度为θ(n) 关于特定位置  我们来看一组样例   12模式串：abcab文本串：abcacababcab   首先，前四位按位匹配成功，遇到第五位不同，而这时，我们选择将abcab向右移三">
   
   
     <link rel="icon" href="/favicon.png">
@@ -169,7 +169,7 @@
 <li><h2 id="KMP算法"><a href="#KMP算法" class="headerlink" title="KMP算法"></a>KMP算法</h2>  此算法为字符串匹配算法，此算法的优点在于，如果在匹配过程中失配，我们不需要从头开始，而是直接从某一特定位置开始，这样可以极大地节省时间复杂度，此算法的时间复杂度为θ(n)</li>
 <li><h2 id="关于特定位置"><a href="#关于特定位置" class="headerlink" title="关于特定位置"></a>关于特定位置</h2><p>  我们来看一组样例</p>
   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">模式串：abcab</span><br><span class="line">文本串：abcacababcab</span><br></pre></td></tr></table></figure>
-<p>  首先，前四位按位匹配成功，遇到第五位不同，而这时，我们选择将abcababcab向右移三位，或者可以直接理解为移动到模式串中与失配字符相同的那一位。可以简单地理解为，我们将两个已经遍历过的模式串字符重合，导致我们可以不用一位一位地移动，而是根据相同的字符来实现快速移动。<br>  即变为</p>
+<p>  首先，前四位按位匹配成功，遇到第五位不同，而这时，我们选择将abcab向右移三位，或者可以直接理解为移动到模式串中与失配字符相同的那一位。可以简单地理解为，我们将两个已经遍历过的模式串字符重合，导致我们可以不用一位一位地移动，而是根据相同的字符来实现快速移动。<br>  即变为</p>
   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">模式串：   abcabc</span><br><span class="line">文本串：abcabdababcabc</span><br></pre></td></tr></table></figure>
 <p>  所以，对于模式串中的某一位置i，i的特定位置为j，满足j≤i 并且满足str1(i)=str1(j)str1(i)=str1(j) 并且在 j!=1j!=1 时理应满足 str1(1)str1(1)至str1(j-1)str1(j−1) 分别与 str(i-j+1)str(i−j+1)~str1(i-1)str1(i−1) 按位相等，我们把i的特殊位置用一个next数组来存</p>
 </li>
@@ -260,11 +260,11 @@
   
 <nav id="article-nav">
   
-    <a href="/2019/06/27/exgcdNiYuan/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2019/06/27/XiaoZDBiJi/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          exgcd及逆元
+          小Z的笔记/笔记
         
       </div>
     </a>
@@ -431,10 +431,6 @@ MathJax.Hub.Queue(function() {
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">dp</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">模拟</a>
               </li>
              
@@ -447,6 +443,10 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">递推</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">克鲁斯卡尔</a>
               </li>
              
@@ -455,11 +455,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">并查集</a>
+                <a href="javascript:void(0)" class="js-tag color4">KMP</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">递推</a>
+                <a href="javascript:void(0)" class="js-tag color3">dp</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">并查集</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -467,7 +471,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">KMP</a>
+                <a href="javascript:void(0)" class="js-tag color4">二叉树</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -479,11 +483,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">栈</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">二叉树</a>
+                <a href="javascript:void(0)" class="js-tag color3">拓扑</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -499,7 +499,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">拓扑</a>
+                <a href="javascript:void(0)" class="js-tag color4">线段树</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -507,7 +507,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">线段树</a>
+                <a href="javascript:void(0)" class="js-tag color2">栈</a>
               </li>
              
               <li class="article-tag-list-item">
