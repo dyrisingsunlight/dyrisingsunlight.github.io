@@ -6,20 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="https://dyrisingsunlight.github.io">
-  <title>后缀表达式 | Dy_RisingSunlight</title>
+  <title>模板_最长公共子序列 | Dy_RisingSunlight</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="这道题应用到了栈的思想，也相当于一个模拟过程。 处理过程：扫描后缀表达式，只要遇到操作数将其进栈，遇到运算符则从栈中弹出两个操作数进行相应运算，将运算结果进栈，然后继续扫描，直到扫完位置，这时，栈底的数即为该后缀表达式的值。 发一下我的代码（C++） 123456789101112131415161718192021222324252627282930313233#include&amp;lt;iostr">
-<meta name="keywords" content="模拟,栈">
+  <meta name="description" content="Problem’s Website 【模板】最长公共子序列Solution P.s. : LIS = Longest Increasing Subsequence，最长上升子序列 LCS = Longest Common Subsequence，最长公共子序列 这道题是LCS问题 首先我们来考虑朴素一点的dp，设f[i][j]为第一个序列到i，第二个序列到j的LCS，答案为f[n][n]，状态转移">
+<meta name="keywords" content="dp">
 <meta property="og:type" content="article">
-<meta property="og:title" content="后缀表达式">
-<meta property="og:url" content="https://dyrisingsunlight.github.io/2019/03/15/TJ_Postfix expression/index.html">
+<meta property="og:title" content="模板_最长公共子序列">
+<meta property="og:url" content="https://dyrisingsunlight.github.io/2019/07/04/LCS/index.html">
 <meta property="og:site_name" content="Dy_RisingSunlight">
-<meta property="og:description" content="这道题应用到了栈的思想，也相当于一个模拟过程。 处理过程：扫描后缀表达式，只要遇到操作数将其进栈，遇到运算符则从栈中弹出两个操作数进行相应运算，将运算结果进栈，然后继续扫描，直到扫完位置，这时，栈底的数即为该后缀表达式的值。 发一下我的代码（C++） 123456789101112131415161718192021222324252627282930313233#include&amp;lt;iostr">
+<meta property="og:description" content="Problem’s Website 【模板】最长公共子序列Solution P.s. : LIS = Longest Increasing Subsequence，最长上升子序列 LCS = Longest Common Subsequence，最长公共子序列 这道题是LCS问题 首先我们来考虑朴素一点的dp，设f[i][j]为第一个序列到i，第二个序列到j的LCS，答案为f[n][n]，状态转移">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-03-16T17:20:02.463Z">
+<meta property="og:updated_time" content="2019-07-04T10:15:49.470Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="后缀表达式">
-<meta name="twitter:description" content="这道题应用到了栈的思想，也相当于一个模拟过程。 处理过程：扫描后缀表达式，只要遇到操作数将其进栈，遇到运算符则从栈中弹出两个操作数进行相应运算，将运算结果进栈，然后继续扫描，直到扫完位置，这时，栈底的数即为该后缀表达式的值。 发一下我的代码（C++） 123456789101112131415161718192021222324252627282930313233#include&amp;lt;iostr">
+<meta name="twitter:title" content="模板_最长公共子序列">
+<meta name="twitter:description" content="Problem’s Website 【模板】最长公共子序列Solution P.s. : LIS = Longest Increasing Subsequence，最长上升子序列 LCS = Longest Common Subsequence，最长公共子序列 这道题是LCS问题 首先我们来考虑朴素一点的dp，设f[i][j]为第一个序列到i，第二个序列到j的LCS，答案为f[n][n]，状态转移">
   
   
     <link rel="icon" href="/favicon.png">
@@ -144,31 +144,47 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-TJ_Postfix expression" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-LCS" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      后缀表达式
+      模板_最长公共子序列
     </h1>
   
 
         
-        <a href="/2019/03/15/TJ_Postfix expression/" class="archive-article-date">
-  	<time datetime="2019-03-14T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-15</time>
+        <a href="/2019/07/04/LCS/" class="archive-article-date">
+  	<time datetime="2019-07-03T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-04</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>这道题应用到了栈的思想，也相当于一个模拟过程。</p>
-<p>处理过程：扫描后缀表达式，只要遇到操作数将其进栈，遇到运算符则从栈中弹出两个操作数进行相应运算，将运算结果进栈，然后继续扫描，直到扫完位置，这时，栈底的数即为该后缀表达式的值。</p>
-<p>发一下我的代码（C++）</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;  //头文件 </span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">int</span> edg[<span class="number">1010</span>];</span><br><span class="line"><span class="keyword">char</span> s[<span class="number">256</span>];  <span class="comment">//全局变量 </span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">dfs</span><span class="params">(<span class="keyword">char</span> s[<span class="number">256</span>])</span>  <span class="comment">//扫描后缀表达式 </span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i=<span class="number">0</span>,top=<span class="number">0</span>,e;</span><br><span class="line">    <span class="keyword">while</span>(i&lt;=<span class="built_in">strlen</span>(s)<span class="number">-2</span>)  <span class="comment">//扫描到strlen(s)-2</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">switch</span>(s[i])  <span class="comment">//判断 </span></span><br><span class="line">        &#123;</span><br><span class="line">            case'+':edg[--top]+=edg[top+1];break;  //+</span><br><span class="line">            case'-':edg[--top]-=edg[top+1];break;  //-</span><br><span class="line">            case'*':edg[--top]*=edg[top+1];break;  //*</span><br><span class="line">            case'/':edg[--top]/=edg[top+1];break;  ///</span><br><span class="line">            <span class="keyword">default</span>:e=<span class="number">0</span>;</span><br><span class="line">            <span class="keyword">while</span>(s[i]!=<span class="string">'.'</span>)</span><br><span class="line">                e=e*<span class="number">10</span>+s[i++]-<span class="string">'0'</span>;  <span class="comment">//检查是否扫描到间隔符号'.' </span></span><br><span class="line">                edg[++top]=e;<span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        i++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> edg[top];</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span>  <span class="comment">//主程序 </span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    gets(s);  <span class="comment">//输入 </span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d"</span>,dfs(s));  <span class="comment">//输出 </span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>希望我的代码能够帮助到大家！</p>
+        <h2 id="Problem’s-Website"><a href="#Problem’s-Website" class="headerlink" title="Problem’s Website"></a>Problem’s Website</h2><ul>
+<li><a href="https://www.luogu.org/problemnew/show/P1439" target="_blank" rel="noopener">【模板】最长公共子序列</a><h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2></li>
+<li>P.s. : <em>LIS = Longest Increasing Subsequence，最长上升子序列 LCS = Longest Common Subsequence，最长公共子序列</em></li>
+<li>这道题是LCS问题</li>
+<li><p>首先我们来考虑朴素一点的dp，设f[i][j]为第一个序列到i，第二个序列到j的LCS，答案为f[n][n]，状态转移方程显然得</p>
+  <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(a[i - <span class="number">1</span>] == b[j - <span class="number">1</span>])</span><br><span class="line">   	f[i][j] = max(f[i][j], f[i - <span class="number">1</span>][j - <span class="number">1</span>] + <span class="number">1</span>);</span><br><span class="line">   <span class="keyword">else</span></span><br><span class="line">   	f[i][j] = max(f[i][j], max(f[i - <span class="number">1</span>][j], f[i][j - <span class="number">1</span>]));</span><br></pre></td></tr></table></figure>
+<p>  这种方法的时间复杂度为θ(n^2)，对这道题来说，肯定会超时，但可以水过这道题<a href="http://noi.openjudge.cn/ch0206/1808/" target="_blank" rel="noopener">Openjudge_1808:公共子序列</a></p>
+</li>
+<li>我们再来考虑正解，我们可以用一个数组Map[i]来记录i这个数在a[]中出现的位置，也就是离散化，然后LCS的长度为<strong>Map[b[i]]的LIS长度</strong>，因为离散化后，a[]数组相当于进行了升序排序，Map[b[i]]即a[i]==b[j]时，a[i]在a[]中的位置，对位置求出LIS，就相当于求出了a[]与b[]的LIS，关于LIS的求法，不会的见下文，这种方法的时间复杂度为θ(nlogn)，可以A掉这道题。</li>
+<li>LIS问题</li>
+<li><p>θ(n^2)的求法为设f[i]为到第i为的LIS长度，则基本代码为</p>
+  <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">   dp[<span class="number">1</span>] = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= n; i++) &#123;</span><br><span class="line">	dp[i] = <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= i; j++) &#123;</span><br><span class="line">		<span class="keyword">if</span>(a[i] &gt; a[j] &amp;&amp; dp[j] + <span class="number">1</span> &gt; dp[i])</span><br><span class="line">			dp[i] = dp[j] + <span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>优化。假设我们已经枚举到了i，下一位为j，如果a[j]&gt;a[i]，那么LIS长度可以+1，如果a[j]&lt;a[i]，我们可以二分找到在a[i]之前且刚好比a[j]大的数，用a[j]替换掉，运用人类智慧，显然这样是正确的，代码为</p>
+  <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">   <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">	<span class="keyword">int</span> x;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;x);</span><br><span class="line">	<span class="keyword">if</span>(x &gt; a[top]) a[++top] = x;</span><br><span class="line">	<span class="keyword">else</span> &#123;</span><br><span class="line">		<span class="keyword">int</span> id = upper_bound(a + <span class="number">1</span>, a + top + <span class="number">1</span>, x) - a;</span><br><span class="line">		a[id] = x;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">   <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, top);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>以上两种求LIS的方法都可以把<a href="http://noi.openjudge.cn/ch0206/1759/" target="_blank" rel="noopener">Openjudge_1759:最长上升子序列</a>水掉</p>
+<h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> gc getchar()</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">sc</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> xx = <span class="number">0</span>, ff = <span class="number">1</span>; <span class="keyword">char</span> cch = gc;</span><br><span class="line">	<span class="keyword">while</span>(cch &lt; <span class="string">'0'</span> || cch &gt; <span class="string">'9'</span>) &#123;</span><br><span class="line">		<span class="keyword">if</span>(cch == <span class="string">'-'</span>) ff = <span class="number">-1</span>; cch = gc;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">while</span>(cch &gt;= <span class="string">'0'</span> &amp;&amp; cch &lt;= <span class="string">'9'</span>) &#123;</span><br><span class="line">		xx = (xx &lt;&lt; <span class="number">1</span>) + (xx &lt;&lt; <span class="number">3</span>) + (cch ^ <span class="string">'0'</span>); cch = gc;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> xx * ff;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">int</span> n, top;</span><br><span class="line"><span class="keyword">int</span> a[<span class="number">100010</span>], b[<span class="number">100010</span>], Map[<span class="number">100010</span>], f[<span class="number">100010</span>];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	n = sc();</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">		a[i] = sc(), Map[a[i]] = i;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">		b[i] = sc();</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">		<span class="keyword">if</span>(f[top] &lt; Map[b[i]])</span><br><span class="line">			f[++top] = Map[b[i]];</span><br><span class="line">		<span class="keyword">else</span> &#123;</span><br><span class="line">			<span class="keyword">int</span> id = upper_bound(f + <span class="number">1</span>, f + top + <span class="number">1</span>, Map[b[i]]) - f;</span><br><span class="line">			f[id] = Map[b[i]];</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%d\n"</span>, top);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><strong>rp++</strong></p>
 
       
 
@@ -182,11 +198,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">模拟</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">栈</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">dp</a>
         		</li>
       		
 		</ul>
@@ -242,7 +254,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=https://dyrisingsunlight.github.io/2019/03/15/TJ_Postfix expression/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=https://dyrisingsunlight.github.io/2019/07/04/LCS/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -256,18 +268,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2019/03/16/TJ_The cow dance/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          USACO17JAN Cow Dance Show奶牛舞蹈
-        
-      </div>
-    </a>
   
-  
-    <a href="/2019/03/15/TJ_Uncle McDonald's problem/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">麦当劳叔叔的难题</div>
+    <a href="/2019/07/03/SeBanYouXi/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">色板游戏</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -294,7 +297,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    目录，不存在的…
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Problem’s-Website"><span class="toc-number">1.</span> <span class="toc-text">Problem’s Website</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Solution"><span class="toc-number">2.</span> <span class="toc-text">Solution</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Code"><span class="toc-number">3.</span> <span class="toc-text">Code</span></a></li></ol>
                     </div>
                 </span>
             </div>
