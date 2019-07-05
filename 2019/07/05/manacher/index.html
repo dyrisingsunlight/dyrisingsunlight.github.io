@@ -6,18 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="https://dyrisingsunlight.github.io">
-  <title>Archives: 2019 | Dy_RisingSunlight</title>
+  <title>马拉车算法 | Dy_RisingSunlight</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="路漫漫其修远兮，吾将上下而求索。">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Dy_RisingSunlight">
-<meta property="og:url" content="https://dyrisingsunlight.github.io/archives/2019/page/4/index.html">
+  <meta name="description" content="Problems Website 【模板】manacher算法Solution 这道题要判断最大回文串的长度，根据数据范围，朴素算法肯定会超时，于是我们要用到一种新算法，manacher算法（马拉车算法）。 通过观察，我们发现回文串按长度可分为两种，一种为奇数串，一种为偶数串，奇数串的回文中心为一个，而偶数串的回文中心有两个，例如   1234ABCBA奇数串，回文中心为CABCCBA偶数串，回文">
+<meta name="keywords" content="马拉车">
+<meta property="og:type" content="article">
+<meta property="og:title" content="马拉车算法">
+<meta property="og:url" content="https://dyrisingsunlight.github.io/2019/07/05/manacher/index.html">
 <meta property="og:site_name" content="Dy_RisingSunlight">
-<meta property="og:description" content="路漫漫其修远兮，吾将上下而求索。">
+<meta property="og:description" content="Problems Website 【模板】manacher算法Solution 这道题要判断最大回文串的长度，根据数据范围，朴素算法肯定会超时，于是我们要用到一种新算法，manacher算法（马拉车算法）。 通过观察，我们发现回文串按长度可分为两种，一种为奇数串，一种为偶数串，奇数串的回文中心为一个，而偶数串的回文中心有两个，例如   1234ABCBA奇数串，回文中心为CABCCBA偶数串，回文">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-07-05T11:39:35.638Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Dy_RisingSunlight">
-<meta name="twitter:description" content="路漫漫其修远兮，吾将上下而求索。">
+<meta name="twitter:title" content="马拉车算法">
+<meta name="twitter:description" content="Problems Website 【模板】manacher算法Solution 这道题要判断最大回文串的长度，根据数据范围，朴素算法肯定会超时，于是我们要用到一种新算法，manacher算法（马拉车算法）。 通过观察，我们发现回文串按长度可分为两种，一种为奇数串，一种为偶数串，奇数串的回文中心为一个，而偶数串的回文中心有两个，例如   1234ABCBA奇数串，回文中心为CABCCBA偶数串，回文">
   
   
     <link rel="icon" href="/favicon.png">
@@ -142,421 +144,185 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-manacher" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      马拉车算法
+    </h1>
+  
+
+        
+        <a href="/2019/07/05/manacher/" class="archive-article-date">
+  	<time datetime="2019-07-04T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-05</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Problems-Website"><a href="#Problems-Website" class="headerlink" title="Problems Website"></a>Problems Website</h2><ul>
+<li><a href="https://www.luogu.org/problemnew/show/P3805" target="_blank" rel="noopener">【模板】manacher算法</a><h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2></li>
+<li>这道题要判断最大回文串的长度，根据数据范围，朴素算法肯定会超时，于是我们要用到一种新算法，<strong>manacher算法（马拉车算法）</strong>。</li>
+<li><p>通过观察，我们发现回文串按长度可分为两种，一种为奇数串，一种为偶数串，奇数串的回文中心为一个，而偶数串的回文中心有两个，例如</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ABCBA</span><br><span class="line">奇数串，回文中心为C</span><br><span class="line">ABCCBA</span><br><span class="line">偶数串，回文中心为CC</span><br></pre></td></tr></table></figure>
+<p>  我们可以将上面的两个串变为</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">~|A|B|C|B|A|</span><br><span class="line">~|A|B|C|C|B|A|</span><br></pre></td></tr></table></figure>
+<p>  就可以保证对称中心为一个字符。</p>
+</li>
+<li><p>下面是一些回文串的性质，内容为转载，来自<a href="https://winlere.blog.luogu.org/solution-p3805" target="_blank" rel="noopener">洛谷</a></p>
+<ul>
+<li><p>对于一个回文串，有且仅有一个对称中心。且叫它回文对称中心。</p>
+</li>
+<li><p>在一个回文串内，任选一段区间 X ，一定存在关于”回文对称中心“对称的一个区间，且把这个区间叫做关于区间X的对称区间。</p>
+</li>
+<li><p>区间和对称区间一定全等。（ 1）(十分显然)</p>
+</li>
+<li><p>由（1）得 ,若一个区间的对称区间是回文串，这个区间必定是一个回文串。在大的回文串内，它们回文半径相等。 (2)然而我们通过确定关系预先得到的回文半径，它的数值，必定小于等于这个位置真实的回文串半径。（十分显然）<br>以上内容可以帮助理解马拉车算法，也可以解释马拉车算法为何有很优秀的复杂度。</p>
+</li>
+</ul>
+</li>
+<li><p>马拉车算法的基本思路：根据(2)，我们只需要记录每个回文串的回文中心以及对应的回文半径，我们设p[i]为以字符i为回文中心的最大回文串的<strong>半径</strong>，mid为已知回文串中最右侧回文串的回文中心，r为已知回文串中最右侧回文串的最右端，转移过程如下</p>
+  <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> i的对称点为j，且mid &lt;= i &lt; r</span><br><span class="line">	p[i] = min(p[mid*<span class="number">2</span>-i], r-i);</span><br><span class="line"><span class="comment">//因为(i+j)/2 = mid</span></span><br><span class="line"><span class="comment">//移项得</span></span><br><span class="line"><span class="comment">//j = 2 * mid - i</span></span><br><span class="line"><span class="comment">// r-i为我们已知的范围剩余长度</span></span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">	p[i] = <span class="number">1</span>;</span><br></pre></td></tr></table></figure>
+<p>  最后答案即为max(p[i] - 1)，因为p[]存的是回文串的半径。</p>
+<h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> gc getchar()</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">char</span> s[<span class="number">11000010</span> &lt;&lt; <span class="number">1</span>];</span><br><span class="line"><span class="keyword">int</span> cnt = <span class="number">1</span>, r, mid, ans;</span><br><span class="line"><span class="keyword">int</span> p[<span class="number">11000010</span> &lt;&lt; <span class="number">1</span>];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">sc</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">char</span> cch = gc;</span><br><span class="line">	s[<span class="number">0</span>] = <span class="string">'~'</span>; s[<span class="number">1</span>] = <span class="string">'|'</span>;</span><br><span class="line">	<span class="keyword">while</span>(cch &lt; <span class="string">'a'</span> || cch &gt; <span class="string">'z'</span>)</span><br><span class="line">		cch = gc;</span><br><span class="line">	<span class="keyword">while</span>(cch &gt;= <span class="string">'a'</span> &amp;&amp; cch &lt;= <span class="string">'z'</span>) &#123;</span><br><span class="line">		s[++cnt] = cch;</span><br><span class="line">		s[++cnt] = <span class="string">'|'</span>;</span><br><span class="line">		cch = gc;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	sc();</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= cnt; i++) &#123;</span><br><span class="line">		<span class="keyword">if</span>(p[i] &lt; r)</span><br><span class="line">			p[i] = min(r - i, p[(mid &lt;&lt; <span class="number">1</span>) - i]);</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">			p[i] = <span class="number">1</span>;</span><br><span class="line">		<span class="keyword">while</span>(s[i + p[i]] == s[i - p[i]]) <span class="comment">//为了防止下标溢出，我们才在字符串最前面加了'~' </span></span><br><span class="line">			p[i]++;</span><br><span class="line">		<span class="keyword">if</span>(p[i] + i&gt; r) <span class="comment">//更新 </span></span><br><span class="line">			r = p[i] + i, mid = i;</span><br><span class="line">		<span class="keyword">if</span>(p[i] &gt; ans)</span><br><span class="line">			ans = p[i] - <span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%d\n"</span>, ans);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><strong>rp++</strong></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/06/17/FeiBoNaQi/" class="archive-article-date">
-  	<time datetime="2019-06-16T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-17</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/06/17/FeiBoNaQi/">斐波那契</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">LCA</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">递推</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">马拉车</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=https://dyrisingsunlight.github.io/2019/07/05/manacher/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/04/14/TJ_andesuolian/" class="archive-article-date">
-  	<time datetime="2019-04-13T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-14</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2019/07/05/ShuJuBaoDeDiaoDuJiZhi/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">数据包的调度机制</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/04/14/TJ_andesuolian/">暗的连锁</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">LCA</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Problems-Website"><span class="toc-number">1.</span> <span class="toc-text">Problems Website</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Solution"><span class="toc-number">2.</span> <span class="toc-text">Solution</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Code"><span class="toc-number">3.</span> <span class="toc-text">Code</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+        
+    </div>
+</aside>
+
+
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/04/13/TJ_LCA/" class="archive-article-date">
-  	<time datetime="2019-04-12T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-13</time>
-</a>
-        </div>
-    	 
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/04/13/TJ_LCA/">模板_最近公共祖先（LCA）</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">LCA</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/04/13/TJ_xuliecaozuo/" class="archive-article-date">
-  	<time datetime="2019-04-12T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-13</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/04/13/TJ_xuliecaozuo/">SCOI2010_序列操作</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">线段树</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/04/06/TJ_zhongweishu/" class="archive-article-date">
-  	<time datetime="2019-04-05T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-06</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/04/06/TJ_zhongweishu/">中位数</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">线段树</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/04/05/TJ_haoyigeyizhongyaogu/" class="archive-article-date">
-  	<time datetime="2019-04-04T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-05</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/04/05/TJ_haoyigeyizhongyaogu/">好一个一中腰鼓！</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">线段树</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/03/31/TJ_muban segment tree2/" class="archive-article-date">
-  	<time datetime="2019-03-30T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-31</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/03/31/TJ_muban segment tree2/">模板_线段树2</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">线段树</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/03/30/TJ_huashenyouligeguo/" class="archive-article-date">
-  	<time datetime="2019-03-29T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-30</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/03/30/TJ_huashenyouligeguo/">上帝造题的七分钟2 / 花神游历各国</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">线段树</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/03/17/TJ_diffusion/" class="archive-article-date">
-  	<time datetime="2019-03-16T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-17</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/03/17/TJ_diffusion/">「一本通 1.2 练习 2」扩散</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">二分答案</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">bfs</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/03/16/TJ_The cow dance/" class="archive-article-date">
-  	<time datetime="2019-03-15T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-16</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/03/16/TJ_The cow dance/">USACO17JAN Cow Dance Show奶牛舞蹈</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">二分答案</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">优先队列</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">贪心</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/2019/page/3/">&laquo; Prev</a><a class="page-number" href="/archives/2019/">1</a><a class="page-number" href="/archives/2019/page/2/">2</a><a class="page-number" href="/archives/2019/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/archives/2019/page/5/">5</a><a class="extend next" rel="next" href="/archives/2019/page/5/">Next &raquo;</a>
-    </nav>
   
 
 
@@ -580,8 +346,8 @@
 	var yiliaConfig = {
 		mathjax: true,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: true,

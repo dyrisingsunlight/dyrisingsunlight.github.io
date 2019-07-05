@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="Dy_RisingSunlight">
 <meta property="og:description" content="Problem’s Website 乘积最大Solution 首先这道题要dp求解，其次根据数据范围，在计算过程中要用高精。 dp：我们设f[i][j]表示第i个数后放第j个乘号的最大值，dp[i]表示最最后一个乘号放在第i位数的最大值。我们首先枚举i，f[i][1]可以直接计算，再从2到k枚举j,枚举i之前的数，进行转移，方程为   123if(f[rei][j - 1].vis) &amp;#123;">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-07-04T13:45:23.032Z">
+<meta property="og:updated_time" content="2019-07-04T13:46:39.578Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="乘积最大">
 <meta name="twitter:description" content="Problem’s Website 乘积最大Solution 首先这道题要dp求解，其次根据数据范围，在计算过程中要用高精。 dp：我们设f[i][j]表示第i个数后放第j个乘号的最大值，dp[i]表示最最后一个乘号放在第i位数的最大值。我们首先枚举i，f[i][1]可以直接计算，再从2到k枚举j,枚举i之前的数，进行转移，方程为   123if(f[rei][j - 1].vis) &amp;#123;">
@@ -170,7 +170,7 @@
 <li><p><em>dp</em>：我们设f[i][j]表示第i个数后放第j个乘号的最大值，dp[i]表示最<strong>最后一个乘号</strong>放在第i位数的最大值。我们首先枚举i，f[i][1]可以直接计算，再从2到k枚举j,枚举i之前的数，进行转移，方程为</p>
   <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(f[rei][j - <span class="number">1</span>].vis) &#123;</span><br><span class="line">	f[i][j] = Max(f[i][j], GJ(f[rei][j - <span class="number">1</span>], calc(rei + <span class="number">1</span>, i));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>  dp[i]在之后转移，方程为</p>
-  <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(f[i][j].vis)</span><br><span class="line">	dp[i] = calc(f[i][j], calc(i + <span class="number">1</span>, n));</span><br></pre></td></tr></table></figure>
+  <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(f[i][j].vis)</span><br><span class="line">	dp[i] = GJ(f[i][j], calc(i + <span class="number">1</span>, n));</span><br></pre></td></tr></table></figure>
 </li>
 <li><p><em>高精</em>，具体说是高精乘，本人表示不想解释，因为自己都快忘了。。。</p>
 <h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">node</span> &#123;</span></span><br><span class="line">	<span class="keyword">bool</span> vis;</span><br><span class="line">	<span class="keyword">int</span> bit;</span><br><span class="line">	<span class="keyword">int</span> num[<span class="number">50</span>];</span><br><span class="line">&#125;f[<span class="number">50</span>][<span class="number">10</span>], dp[<span class="number">50</span>];</span><br><span class="line"><span class="keyword">int</span> n, k;</span><br><span class="line"><span class="keyword">char</span> s[<span class="number">50</span>];</span><br><span class="line"><span class="keyword">int</span> a[<span class="number">50</span>];</span><br><span class="line"><span class="function">node <span class="title">calc</span><span class="params">(<span class="keyword">int</span> l, <span class="keyword">int</span> r)</span> </span>&#123;</span><br><span class="line">	node aa;</span><br><span class="line">	aa.bit = r - l + <span class="number">1</span>;</span><br><span class="line">	aa.vis = <span class="literal">true</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= aa.bit; i++)</span><br><span class="line">		aa.num[i] = a[r - i + <span class="number">1</span>];</span><br><span class="line">	<span class="keyword">return</span> aa;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function">node <span class="title">Max</span><span class="params">(node a, node b)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(!a.vis || a.bit &lt; b.bit) <span class="keyword">return</span> b;</span><br><span class="line">	<span class="keyword">if</span>(!b.vis || a.bit &gt; b.bit) <span class="keyword">return</span> a;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = a.bit; i &gt;= <span class="number">1</span>; i--)</span><br><span class="line">		<span class="keyword">if</span>(a.num[i] &gt; b.num[i]) <span class="keyword">return</span> a;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span>(a.num[i] &lt; b.num[i]) <span class="keyword">return</span> b;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function">node <span class="title">GJ</span><span class="params">(node a, node b)</span> </span>&#123;</span><br><span class="line">	node aa;</span><br><span class="line">	aa.vis = <span class="literal">true</span>;</span><br><span class="line">	aa.bit = a.bit + b.bit - <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= aa.bit; i++)</span><br><span class="line">		aa.num[i] = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= a.bit; i++)</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= b.bit; j++)</span><br><span class="line">			aa.num[i + j - <span class="number">1</span>] += a.num[i] * b.num[j];</span><br><span class="line">	<span class="keyword">int</span> mod = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= aa.bit; i++) &#123;</span><br><span class="line">		aa.num[i] += mod;</span><br><span class="line">		mod = aa.num[i] / <span class="number">10</span>;</span><br><span class="line">		aa.num[i] %= <span class="number">10</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">while</span>(mod &gt; <span class="number">0</span>) &#123;</span><br><span class="line">		aa.num[++aa.bit] = mod % <span class="number">10</span>;</span><br><span class="line">		mod /= <span class="number">10</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> aa;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d%d"</span>, &amp;n, &amp;k);</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%s"</span>, s + <span class="number">1</span>);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= <span class="built_in">strlen</span>(s + <span class="number">1</span>); i++)</span><br><span class="line">		a[i] = s[i] - <span class="string">'0'</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">		dp[i].vis = <span class="literal">false</span>;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= k; j++)</span><br><span class="line">			f[i][j].vis = <span class="literal">false</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n - <span class="number">1</span>; i++) &#123;</span><br><span class="line">		f[i][<span class="number">1</span>] = calc(<span class="number">1</span>, i);</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">2</span>; j &lt;= k; j++) &#123;</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> rei = j - <span class="number">1</span>; rei &lt; i; rei++) &#123;</span><br><span class="line">				<span class="keyword">if</span>(f[rei][j - <span class="number">1</span>].vis)</span><br><span class="line">					f[i][j] = Max(f[i][j], GJ(f[rei][j - <span class="number">1</span>], calc(rei + <span class="number">1</span>, i)));</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span>(f[i][k].vis)</span><br><span class="line">			dp[i] = GJ(f[i][k], calc(i + <span class="number">1</span>, n));</span><br><span class="line">	&#125;</span><br><span class="line">	node ans;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n - <span class="number">1</span>; i++) &#123;</span><br><span class="line">		node tmp = Max(dp[i], ans);</span><br><span class="line">		ans = tmp;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = ans.bit; i &gt;= <span class="number">1</span>; i--)</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"%d"</span>, ans.num[i]);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -263,6 +263,15 @@
 
   
 <nav id="article-nav">
+  
+    <a href="/2019/07/05/ShuJuBaoDeDiaoDuJiZhi/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          数据包的调度机制
+        
+      </div>
+    </a>
   
   
     <a href="/2019/07/04/LCS/" id="article-nav-older" class="article-nav-link-wrap">
@@ -434,11 +443,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">LCA</a>
+                <a href="javascript:void(0)" class="js-tag color4">高精度</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">高精度</a>
+                <a href="javascript:void(0)" class="js-tag color4">LCA</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -454,11 +463,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">状压</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">KMP</a>
+                <a href="javascript:void(0)" class="js-tag color3">递推</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -466,7 +471,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">递推</a>
+                <a href="javascript:void(0)" class="js-tag color4">KMP</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -478,6 +483,14 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">线段树</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">状压</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">最短路</a>
               </li>
              
@@ -486,23 +499,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">kmp</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">二叉树</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">线段树</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">拓扑</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">栈</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -519,6 +520,18 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">bfs</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">kmp</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">栈</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">马拉车</a>
               </li>
              
               <li class="article-tag-list-item">
