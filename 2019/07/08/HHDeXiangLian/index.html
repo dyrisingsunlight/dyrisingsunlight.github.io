@@ -6,28 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="https://dyrisingsunlight.github.io">
-  <title>模板_树状数组2 | Dy_RisingSunlight</title>
+  <title>HH的项链 | Dy_RisingSunlight</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="题目链接：【模板】树状数组 2 题目思路：基本的树状数组操作就不讲了，讲一下对于本题的差分思路。 差分：  原数组    差分数组    即为    我们可以得出    即    如果我们把原数组都加上2，即变为    差分数组变为    因为a[i]-a[i-1]是不变的，变得只有b[1]和b[3 + 1] (在这个样例中后者可以省略)  所以对a[x,y]进行修改,只用修改b[x]与b[y+">
-<meta name="keywords" content="树状数组,差分">
+  <meta name="description" content="Problem’s Website [SDOI2009]HH的项链Solution 首先这道题模拟是不可能AC的。 其次这道题可以用莫队AC，但我不会。 我们来说一下比较大众化的做法，离线处理+树状数组，我们可以先按照询问区间的右端点升序排序，然后用一个数组存一个元素在一个区间中出现的位置，用树状数组记录区间内的元素个数。Code1234567891011121314151617181920212">
+<meta name="keywords" content="树状数组">
 <meta property="og:type" content="article">
-<meta property="og:title" content="模板_树状数组2">
-<meta property="og:url" content="https://dyrisingsunlight.github.io/2019/06/24/MuBanShuZhuangShuZu/index.html">
+<meta property="og:title" content="HH的项链">
+<meta property="og:url" content="https://dyrisingsunlight.github.io/2019/07/08/HHDeXiangLian/index.html">
 <meta property="og:site_name" content="Dy_RisingSunlight">
-<meta property="og:description" content="题目链接：【模板】树状数组 2 题目思路：基本的树状数组操作就不讲了，讲一下对于本题的差分思路。 差分：  原数组    差分数组    即为    我们可以得出    即    如果我们把原数组都加上2，即变为    差分数组变为    因为a[i]-a[i-1]是不变的，变得只有b[1]和b[3 + 1] (在这个样例中后者可以省略)  所以对a[x,y]进行修改,只用修改b[x]与b[y+">
+<meta property="og:description" content="Problem’s Website [SDOI2009]HH的项链Solution 首先这道题模拟是不可能AC的。 其次这道题可以用莫队AC，但我不会。 我们来说一下比较大众化的做法，离线处理+树状数组，我们可以先按照询问区间的右端点升序排序，然后用一个数组存一个元素在一个区间中出现的位置，用树状数组记录区间内的元素个数。Code1234567891011121314151617181920212">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://dyrisingsunlight.github.io/2019/06/24/MuBanShuZhuangShuZu/0.jpg">
-<meta property="og:image" content="https://dyrisingsunlight.github.io/2019/06/24/MuBanShuZhuangShuZu/1.jpg">
-<meta property="og:image" content="https://dyrisingsunlight.github.io/2019/06/24/MuBanShuZhuangShuZu/2.jpg">
-<meta property="og:image" content="https://dyrisingsunlight.github.io/2019/06/24/MuBanShuZhuangShuZu/3.jpg">
-<meta property="og:image" content="https://dyrisingsunlight.github.io/2019/06/24/MuBanShuZhuangShuZu/4.jpg">
-<meta property="og:image" content="https://dyrisingsunlight.github.io/2019/06/24/MuBanShuZhuangShuZu/5.jpg">
-<meta property="og:image" content="https://dyrisingsunlight.github.io/2019/06/24/MuBanShuZhuangShuZu/6.jpg">
-<meta property="og:updated_time" content="2019-06-27T05:59:07.292Z">
+<meta property="og:updated_time" content="2019-07-09T02:38:08.160Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="模板_树状数组2">
-<meta name="twitter:description" content="题目链接：【模板】树状数组 2 题目思路：基本的树状数组操作就不讲了，讲一下对于本题的差分思路。 差分：  原数组    差分数组    即为    我们可以得出    即    如果我们把原数组都加上2，即变为    差分数组变为    因为a[i]-a[i-1]是不变的，变得只有b[1]和b[3 + 1] (在这个样例中后者可以省略)  所以对a[x,y]进行修改,只用修改b[x]与b[y+">
-<meta name="twitter:image" content="https://dyrisingsunlight.github.io/2019/06/24/MuBanShuZhuangShuZu/0.jpg">
+<meta name="twitter:title" content="HH的项链">
+<meta name="twitter:description" content="Problem’s Website [SDOI2009]HH的项链Solution 首先这道题模拟是不可能AC的。 其次这道题可以用莫队AC，但我不会。 我们来说一下比较大众化的做法，离线处理+树状数组，我们可以先按照询问区间的右端点升序排序，然后用一个数组存一个元素在一个区间中出现的位置，用树状数组记录区间内的元素个数。Code1234567891011121314151617181920212">
   
   
     <link rel="icon" href="/favicon.png">
@@ -152,37 +144,35 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-MuBanShuZhuangShuZu" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-HHDeXiangLian" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      模板_树状数组2
+      HH的项链
     </h1>
   
 
         
-        <a href="/2019/06/24/MuBanShuZhuangShuZu/" class="archive-article-date">
-  	<time datetime="2019-06-23T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-24</time>
+        <a href="/2019/07/08/HHDeXiangLian/" class="archive-article-date">
+  	<time datetime="2019-07-07T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-08</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <ul>
-<li>题目链接：<a href="https://www.luogu.org/problemnew/show/P3368" target="_blank" rel="noopener">【模板】树状数组 2</a></li>
-<li>题目思路：基本的树状数组操作就不讲了，讲一下对于本题的差分思路。<ul>
-<li><h3 id="差分："><a href="#差分：" class="headerlink" title="差分："></a>差分：</h3>  原数组<br>  <img src="/2019/06/24/MuBanShuZhuangShuZu/0.jpg" alt><br>  差分数组<br>  <img src="/2019/06/24/MuBanShuZhuangShuZu/1.jpg" alt><br>  即为<br>  <img src="/2019/06/24/MuBanShuZhuangShuZu/2.jpg" alt><br>  我们可以得出<br>  <img src="/2019/06/24/MuBanShuZhuangShuZu/3.jpg" alt><br>  即<br>  <img src="/2019/06/24/MuBanShuZhuangShuZu/4.jpg" alt><br>  如果我们把原数组都加上2，即变为<br>  <img src="/2019/06/24/MuBanShuZhuangShuZu/5.jpg" alt><br>  差分数组变为<br>  <img src="/2019/06/24/MuBanShuZhuangShuZu/6.jpg" alt><br>  因为a[i]-a[i-1]是不变的，变得只有b[1]和b[3 + 1] <em>(在这个样例中后者可以省略)</em><br>  所以<strong>对a[x,y]进行修改,只用修改b[x]与b[y+1]</strong></li>
-<li>对于本题，我们可以把原数组记录下来，在用树状数组维护差分数组（即在原数基础上的变化），输出原数组加上变化值即可。</li>
-</ul>
-</li>
-<li>代码<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">int</span> n, m;</span><br><span class="line"><span class="keyword">int</span> a[<span class="number">500010</span>], b[<span class="number">500010</span>];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">qwery</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span>(x &gt; <span class="number">0</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        sum += a[x];</span><br><span class="line">        x -= ( x &amp; -x);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> sum;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">updata</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> i)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">while</span>( x &lt;= n)</span><br><span class="line">    &#123;</span><br><span class="line">        a[x] += i;</span><br><span class="line">        x += (x &amp; -x);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>, &amp;n, &amp;m); </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span> ;i &lt;= n; i++)</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;b[i]);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;i++) &#123;</span><br><span class="line">        <span class="keyword">char</span> c;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; c;</span><br><span class="line">        <span class="keyword">if</span>(c == <span class="string">'1'</span>) &#123;</span><br><span class="line">            <span class="keyword">int</span> x, y, k;</span><br><span class="line">            <span class="built_in">scanf</span>(<span class="string">"%d%d%d"</span>, &amp;x, &amp;y, &amp;k);</span><br><span class="line">            updata(x, k);</span><br><span class="line">            updata(y + <span class="number">1</span>, -k);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(c==<span class="string">'2'</span>) &#123;</span><br><span class="line">            <span class="keyword">int</span> x;</span><br><span class="line">            <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;x);</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, b[x] + qwery(x));</span><br><span class="line">        &#125; </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <h2 id="Problem’s-Website"><a href="#Problem’s-Website" class="headerlink" title="Problem’s Website"></a>Problem’s Website</h2><ul>
+<li><a href="https://www.luogu.org/problemnew/show/P1972" target="_blank" rel="noopener">[SDOI2009]HH的项链</a><h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2></li>
+<li>首先这道题模拟是不可能AC的。</li>
+<li>其次这道题可以用莫队AC，但我不会。</li>
+<li>我们来说一下比较大众化的做法，<strong><em>离线处理+树状数组</em></strong>，我们可以先按照询问区间的右端点升序排序，然后用一个数组存一个元素在一个区间中出现的位置，用树状数组记录区间内的元素个数。<h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> gc getchar()</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">sc</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> xx = <span class="number">0</span>, ff = <span class="number">1</span>; <span class="keyword">char</span> cch = gc;</span><br><span class="line">	<span class="keyword">while</span>(cch &lt; <span class="string">'0'</span> || cch &gt; <span class="string">'9'</span>) &#123;</span><br><span class="line">		<span class="keyword">if</span>(cch == <span class="string">'-'</span>) ff = <span class="number">-1</span>; cch = gc;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">while</span>(cch &gt;= <span class="string">'0'</span> &amp;&amp; cch &lt;= <span class="string">'9'</span>) &#123;</span><br><span class="line">		xx = (xx &lt;&lt; <span class="number">1</span>) + (xx &lt;&lt; <span class="number">3</span>) + (cch ^ <span class="string">'0'</span>); cch = gc;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> xx * ff;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">node</span> &#123;</span></span><br><span class="line">	<span class="keyword">int</span> l, r, id;</span><br><span class="line">	<span class="keyword">bool</span> <span class="keyword">operator</span> &lt; (<span class="keyword">const</span> node &amp;x) <span class="keyword">const</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> r &lt; x.r;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;b[<span class="number">500010</span>];</span><br><span class="line"><span class="keyword">int</span> n, m;</span><br><span class="line"><span class="keyword">int</span> a[<span class="number">500010</span>], ans[<span class="number">500010</span>], tree[<span class="number">1000010</span>], place[<span class="number">1000010</span>];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">lowbit</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> x &amp; (-x);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">update</span><span class="params">(<span class="keyword">int</span> id, <span class="keyword">int</span> num)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">while</span>(id &lt;= n) &#123;</span><br><span class="line">		tree[id] += num;</span><br><span class="line">		id += lowbit(id);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">query</span><span class="params">(<span class="keyword">int</span> id)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">while</span>(id &gt; <span class="number">0</span>) &#123;</span><br><span class="line">		sum += tree[id];</span><br><span class="line">		id -= lowbit(id);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> sum;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	n = sc();</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">		a[i] = sc();</span><br><span class="line">	m = sc();</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= m; i++) &#123;</span><br><span class="line">		b[i].l = sc();</span><br><span class="line">		b[i].r = sc();</span><br><span class="line">		b[i].id = i;</span><br><span class="line">	&#125;</span><br><span class="line">	sort(b + <span class="number">1</span>, b + <span class="number">1</span> + m);</span><br><span class="line">	<span class="keyword">int</span> next = <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= m; i++) &#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j = next; j &lt;= b[i].r; j++) &#123;</span><br><span class="line">			<span class="keyword">if</span>(place[a[j]])</span><br><span class="line">				update(place[a[j]], <span class="number">-1</span>);</span><br><span class="line">			update(j, <span class="number">1</span>);</span><br><span class="line">			place[a[j]] = j;</span><br><span class="line">		&#125;</span><br><span class="line">		next = b[i].r + <span class="number">1</span>;</span><br><span class="line">		ans[b[i].id] = query(b[i].r) - query(b[i].l - <span class="number">1</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= m; i++)</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"%d\n"</span>, ans[i]);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<h5 id="rp"><a href="#rp" class="headerlink" title="rp++"></a>rp++</h5>
+<p><strong>rp++</strong></p>
+
       
 
       
@@ -196,10 +186,6 @@
 			 
         		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">树状数组</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">差分</a>
         		</li>
       		
 		</ul>
@@ -255,7 +241,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=https://dyrisingsunlight.github.io/2019/06/24/MuBanShuZhuangShuZu/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=https://dyrisingsunlight.github.io/2019/07/08/HHDeXiangLian/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -269,18 +255,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2019/06/24/YinHeYingXiongChuanShuo/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          NOI_2002银河英雄传说
-        
-      </div>
-    </a>
   
-  
-    <a href="/2019/06/24/GuanYaZuiFan/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">NOI_2001食物链</div>
+    <a href="/2019/07/08/LaJiXianJing/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">垃圾陷阱</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -307,7 +284,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#差分："><span class="toc-number">1.</span> <span class="toc-text">差分：</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#rp"><span class="toc-number">1.0.1.</span> <span class="toc-text">rp++</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Problem’s-Website"><span class="toc-number">1.</span> <span class="toc-text">Problem’s Website</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Solution"><span class="toc-number">2.</span> <span class="toc-text">Solution</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Code"><span class="toc-number">3.</span> <span class="toc-text">Code</span></a></li></ol>
                     </div>
                 </span>
             </div>
