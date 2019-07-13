@@ -6,20 +6,18 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="https://dyrisingsunlight.github.io">
-  <title>创意吃鱼法 | Dy_RisingSunlight</title>
+  <title>Archives: 2019/7 | Dy_RisingSunlight</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Problem’s Website 创意吃鱼法Solution 这道题类似于[USACO5.3]巨大的牛棚Big Barn，这道题要求出子矩阵中1组成的最长的对角线长度，我们回想一下巨大的牛棚是如何AC的，那道题我们设f[i][j]为以i,j为右下角的最大正方形边长，状态转移方程为   12if(!Map[i][j])	f[i][j] = min(f[i - 1][j - 1], min(f[i">
-<meta name="keywords" content="dp">
-<meta property="og:type" content="article">
-<meta property="og:title" content="创意吃鱼法">
-<meta property="og:url" content="https://dyrisingsunlight.github.io/2019/07/07/ChungYiChiYuFa/index.html">
+  <meta name="description" content="路漫漫其修远兮，吾将上下而求索。">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Dy_RisingSunlight">
+<meta property="og:url" content="https://dyrisingsunlight.github.io/archives/2019/07/page/3/index.html">
 <meta property="og:site_name" content="Dy_RisingSunlight">
-<meta property="og:description" content="Problem’s Website 创意吃鱼法Solution 这道题类似于[USACO5.3]巨大的牛棚Big Barn，这道题要求出子矩阵中1组成的最长的对角线长度，我们回想一下巨大的牛棚是如何AC的，那道题我们设f[i][j]为以i,j为右下角的最大正方形边长，状态转移方程为   12if(!Map[i][j])	f[i][j] = min(f[i - 1][j - 1], min(f[i">
+<meta property="og:description" content="路漫漫其修远兮，吾将上下而求索。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-07-07T09:44:51.171Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="创意吃鱼法">
-<meta name="twitter:description" content="Problem’s Website 创意吃鱼法Solution 这道题类似于[USACO5.3]巨大的牛棚Big Barn，这道题要求出子矩阵中1组成的最长的对角线长度，我们回想一下巨大的牛棚是如何AC的，那道题我们设f[i][j]为以i,j为右下角的最大正方形边长，状态转移方程为   12if(!Map[i][j])	f[i][j] = min(f[i - 1][j - 1], min(f[i">
+<meta name="twitter:title" content="Dy_RisingSunlight">
+<meta name="twitter:description" content="路漫漫其修远兮，吾将上下而求索。">
   
   
     <link rel="icon" href="/favicon.png">
@@ -144,177 +142,63 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-ChungYiChiYuFa" class="article article-type-post " itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+            
   
-    <h1 class="article-title" itemprop="name">
-      创意吃鱼法
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2019" class="archive-year">2019</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2019/07/02/PowerStrings/" class="archive-article-date">
+  	<time datetime="2019-07-01T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-02</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2019/07/02/PowerStrings/">Power Strings</a>
     </h1>
   
 
-        
-        <a href="/2019/07/07/ChungYiChiYuFa/" class="archive-article-date">
-  	<time datetime="2019-07-06T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-07</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="Problem’s-Website"><a href="#Problem’s-Website" class="headerlink" title="Problem’s Website"></a>Problem’s Website</h2><ul>
-<li><a href="https://www.luogu.org/problemnew/show/P1736" target="_blank" rel="noopener">创意吃鱼法</a><h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2></li>
-<li><p>这道题类似于<a href="https://www.luogu.org/problemnew/show/P2701" target="_blank" rel="noopener">[USACO5.3]巨大的牛棚Big Barn</a>，这道题要求出子矩阵中1组成的最长的对角线长度，我们回想一下巨大的牛棚是如何AC的，那道题我们设f[i][j]为以i,j为右下角的最大正方形边长，状态转移方程为</p>
-  <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(!Map[i][j])</span><br><span class="line">	f[i][j] = min(f[i - <span class="number">1</span>][j - <span class="number">1</span>], min(f[i - <span class="number">1</span>][j], f[i][j - <span class="number">1</span>]));</span><br></pre></td></tr></table></figure>
-<p>  这道题我们可以设f[i][j]为以i,j为右下角的正方形1组成最大对角线的长度，对于f[i][j]，我们肯定要和f[i - 1][j - 1]比较，同时，既然是1组成的对角线，我们可以记录两个数组分别存从i,j向上下、左右一直为0的长度，我们就可以与这两个数组相比，状态转移方程为</p>
-  <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(Map[i][j])</span><br><span class="line">	f[i][j] = min(f[i - <span class="number">1</span>][j - <span class="number">1</span>], min(s1[i][j - <span class="number">1</span>], s2[i - <span class="number">1</span>][j]));</span><br></pre></td></tr></table></figure>
-<p>  当然这道题遍历两遍，一遍从左上角到右下角，一遍从右上角到左下角，状态转移方程稍有不同，请读者自行查看Code</p>
-<h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> gc getchar()</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">sc</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> xx = <span class="number">0</span>, ff = <span class="number">1</span>; <span class="keyword">char</span> cch = gc;</span><br><span class="line">	<span class="keyword">while</span>(cch &lt; <span class="string">'0'</span> || cch &gt; <span class="string">'9'</span>) &#123;</span><br><span class="line">		<span class="keyword">if</span>(cch == <span class="string">'-'</span>) ff = <span class="number">-1</span>; cch = gc;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">while</span>(cch &gt;= <span class="string">'0'</span> &amp;&amp; cch &lt;= <span class="string">'9'</span>) &#123;</span><br><span class="line">		xx = (xx &lt;&lt; <span class="number">1</span>) + (xx &lt;&lt; <span class="number">3</span>) + (cch ^ <span class="string">'0'</span>); cch = gc;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> xx * ff;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">int</span> n, m, ans;</span><br><span class="line"><span class="keyword">int</span> Map[<span class="number">2510</span>][<span class="number">2510</span>], f[<span class="number">2510</span>][<span class="number">2510</span>], s1[<span class="number">2510</span>][<span class="number">2510</span>], s2[<span class="number">2510</span>][<span class="number">2510</span>];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	n = sc(); m = sc();</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)&#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= m; j++) &#123;</span><br><span class="line">			Map[i][j] = sc();</span><br><span class="line">			<span class="keyword">if</span>(!Map[i][j]) &#123;</span><br><span class="line">				s1[i][j] = s1[i][j - <span class="number">1</span>] + <span class="number">1</span>;</span><br><span class="line">				s2[i][j] = s2[i - <span class="number">1</span>][j] + <span class="number">1</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">if</span>(Map[i][j]) f[i][j] = min(f[i - <span class="number">1</span>][j - <span class="number">1</span>], min(s2[i - <span class="number">1</span>][j], s1[i][j - <span class="number">1</span>])) + <span class="number">1</span>;</span><br><span class="line">			ans = max(ans, f[i][j]);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">memset</span>(s1, <span class="number">0</span>, <span class="keyword">sizeof</span>(s1));</span><br><span class="line">	<span class="built_in">memset</span>(s2, <span class="number">0</span>, <span class="keyword">sizeof</span>(s2));</span><br><span class="line">	<span class="built_in">memset</span>(f, <span class="number">0</span>, <span class="keyword">sizeof</span>(f));</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j = m; j &gt;= <span class="number">1</span>; j--) &#123;</span><br><span class="line">			<span class="keyword">if</span>(!Map[i][j])&#123;</span><br><span class="line">				s1[i][j] = s1[i][j + <span class="number">1</span>] + <span class="number">1</span>;</span><br><span class="line">				s2[i][j] = s2[i - <span class="number">1</span>][j] + <span class="number">1</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">if</span>(Map[i][j]) f[i][j] = min(f[i - <span class="number">1</span>][j + <span class="number">1</span>], min(s1[i][j + <span class="number">1</span>], s2[i - <span class="number">1</span>][j])) + <span class="number">1</span>;</span><br><span class="line">			ans = max(ans, f[i][j]);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%d\n"</span>, ans);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<p><strong>rp++</strong>\</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
+        <div class="article-info info-on-right">
+          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">dp</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">KMP</a>
         		</li>
       		
 		</ul>
 	</div>
 
-      
+          
 
-      
-
-      
-        
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
         </div>
-      </div>
-    </span>
-  </div>
-</div>
-
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=https://dyrisingsunlight.github.io/2019/07/07/ChungYiChiYuFa/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
-      
-      <div class="clearfix"></div>
-    </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-  
-<nav id="article-nav">
-  
-    <a href="/2019/07/07/MaLiKa/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          玛丽卡
-        
-      </div>
-    </a>
   
   
-    <a href="/2019/07/07/DanDiaoZhan/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">单调栈</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-        <div class="toc-container tooltip-left">
-            <i class="icon-font icon-category"></i>
-            <div class="tooltip tooltip-east">
-                <span class="tooltip-item">
-                </span>
-                <span class="tooltip-content">
-                    <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Problem’s-Website"><span class="toc-number">1.</span> <span class="toc-text">Problem’s Website</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Solution"><span class="toc-number">2.</span> <span class="toc-text">Solution</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Code"><span class="toc-number">3.</span> <span class="toc-text">Code</span></a></li></ol>
-                    </div>
-                </span>
-            </div>
-        </div>
-        
-    </div>
-</aside>
-
-
-
-  
-  
+    </div></section>
   
 
-  
-
-  
-
+    
+    <nav id="page-nav">
+      <a class="extend prev" rel="prev" href="/archives/2019/07/page/2/">&laquo; Prev</a><a class="page-number" href="/archives/2019/07/">1</a><a class="page-number" href="/archives/2019/07/page/2/">2</a><span class="page-number current">3</span>
+    </nav>
   
 
 
@@ -338,8 +222,8 @@
 	var yiliaConfig = {
 		mathjax: true,
 		isHome: false,
-		isPost: true,
-		isArchive: false,
+		isPost: false,
+		isArchive: true,
 		isTag: false,
 		isCategory: false,
 		open_in_new: true,
