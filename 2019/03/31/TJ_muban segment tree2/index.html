@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="https://dyrisingsunlight.github.io">
   <title>模板_线段树2 | Dy_RisingSunlight</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="题目链接：【模板】线段树 2 （区间加法、乘法、查询） 题目标签：线段树 题目大意：给定一个序列，支持三种操作：区间加法、区间乘法和区间查询，输出每一次 查询mod p 的结果。 题目分析：对于区间加法和区间查询，相信大家在AC完模板1后已经掌握了，那我们着重来分析一下 区间乘法 ，根据模板1的经验，我们可以想到——肯定还要打标记，但是怎样打一个合适的懒标记呢？ 区间乘法的LazyTag   我">
+  <meta name="description" content="题目链接：【模板】线段树 2 （区间加法、乘法、查询） 题目标签：线段树 题目大意：给定一个序列，支持三种操作：区间加法、区间乘法和区间查询，输出每一次 _查询mod p_ 的结果。 题目分析：对于区间加法和区间查询，相信大家在AC完模板1后已经掌握了，那我们着重来分析一下 _区间乘法_ ，根据模板1的经验，我们可以想到——肯定还要打标记，但是怎样打一个合适的懒标记呢？ 区间乘法的LazyTag">
 <meta name="keywords" content="线段树">
 <meta property="og:type" content="article">
 <meta property="og:title" content="模板_线段树2">
 <meta property="og:url" content="https://dyrisingsunlight.github.io/2019/03/31/TJ_muban segment tree2/index.html">
 <meta property="og:site_name" content="Dy_RisingSunlight">
-<meta property="og:description" content="题目链接：【模板】线段树 2 （区间加法、乘法、查询） 题目标签：线段树 题目大意：给定一个序列，支持三种操作：区间加法、区间乘法和区间查询，输出每一次 查询mod p 的结果。 题目分析：对于区间加法和区间查询，相信大家在AC完模板1后已经掌握了，那我们着重来分析一下 区间乘法 ，根据模板1的经验，我们可以想到——肯定还要打标记，但是怎样打一个合适的懒标记呢？ 区间乘法的LazyTag   我">
+<meta property="og:description" content="题目链接：【模板】线段树 2 （区间加法、乘法、查询） 题目标签：线段树 题目大意：给定一个序列，支持三种操作：区间加法、区间乘法和区间查询，输出每一次 _查询mod p_ 的结果。 题目分析：对于区间加法和区间查询，相信大家在AC完模板1后已经掌握了，那我们着重来分析一下 _区间乘法_ ，根据模板1的经验，我们可以想到——肯定还要打标记，但是怎样打一个合适的懒标记呢？ 区间乘法的LazyTag">
 <meta property="og:locale" content="default">
 <meta property="og:updated_time" content="2019-03-30T17:58:07.977Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="模板_线段树2">
-<meta name="twitter:description" content="题目链接：【模板】线段树 2 （区间加法、乘法、查询） 题目标签：线段树 题目大意：给定一个序列，支持三种操作：区间加法、区间乘法和区间查询，输出每一次 查询mod p 的结果。 题目分析：对于区间加法和区间查询，相信大家在AC完模板1后已经掌握了，那我们着重来分析一下 区间乘法 ，根据模板1的经验，我们可以想到——肯定还要打标记，但是怎样打一个合适的懒标记呢？ 区间乘法的LazyTag   我">
+<meta name="twitter:description" content="题目链接：【模板】线段树 2 （区间加法、乘法、查询） 题目标签：线段树 题目大意：给定一个序列，支持三种操作：区间加法、区间乘法和区间查询，输出每一次 _查询mod p_ 的结果。 题目分析：对于区间加法和区间查询，相信大家在AC完模板1后已经掌握了，那我们着重来分析一下 _区间乘法_ ，根据模板1的经验，我们可以想到——肯定还要打标记，但是怎样打一个合适的懒标记呢？ 区间乘法的LazyTag">
   
   
     <link rel="icon" href="/favicon.png">
@@ -167,13 +167,13 @@
         <ul>
 <li>题目链接：<a href="https://www.luogu.org/problemnew/show/P3373" target="_blank" rel="noopener">【模板】线段树 2 （区间加法、乘法、查询）</a></li>
 <li>题目标签：<strong>线段树</strong></li>
-<li>题目大意：给定一个序列，支持三种操作：区间加法、区间乘法和区间查询，输出每一次 <em>查询mod p</em> 的结果。</li>
-<li>题目分析：对于区间加法和区间查询，相信大家在AC完<a href="https://www.luogu.org/problemnew/show/P3372" target="_blank" rel="noopener">模板1</a>后<del>已经掌握了</del>，那我们着重来分析一下 <em><strong>区间乘法</strong></em> ，根据模板1的经验，我们可以想到——肯定还要打标记，但是怎样打一个合适的懒标记呢？</li>
+<li>题目大意：给定一个序列，支持三种操作：区间加法、区间乘法和区间查询，输出每一次 _查询mod p_ 的结果。</li>
+<li>题目分析：对于区间加法和区间查询，相信大家在AC完<a href="https://www.luogu.org/problemnew/show/P3372" target="_blank" rel="noopener">模板1</a>后<del>已经掌握了</del>，那我们着重来分析一下 _<strong>区间乘法</strong>_ ，根据模板1的经验，我们可以想到——肯定还要打标记，但是怎样打一个合适的懒标记呢？</li>
 <li><p><strong>区间乘法的LazyTag</strong> </p>
 <ul>
 <li><p>我们来假设一下，我们现在有集合<strong>S{a,b,c}</strong>,当它们都<strong>加上一个数N</strong>，再<strong>乘上一个数M</strong>，会变成</p>
 <h4 id="S-a-N-X-M-b-N-X-M-c-N-X-M"><a href="#S-a-N-X-M-b-N-X-M-c-N-X-M" class="headerlink" title="S{ (a+N) X M), ((b+N) X M),((c+N) X M) }"></a>S{ (a+N) X M), ((b+N) X M),((c+N) X M) }</h4><p>(X意为乘号) 则又可以化为</p>
-<h4 id="S-a-X-M-N-X-M-b-X-M-N-X-M-c-X-M-N-X-M"><a href="#S-a-X-M-N-X-M-b-X-M-N-X-M-c-X-M-N-X-M" class="headerlink" title="S{ (a X M+N X M), (b X M+N X M), (c X M+N X M) }"></a>S{ (a X M+N X M), (b X M+N X M), (c X M+N X M) }</h4><p>即<strong>乘法分配律</strong>，由此我们可得 <em><strong>子节点的加法标记</strong>要乘<strong>父节点的乘法标记</strong>加上<strong>父节点的加法标记</strong></em> ，化成代码即为</p>
+<h4 id="S-a-X-M-N-X-M-b-X-M-N-X-M-c-X-M-N-X-M"><a href="#S-a-X-M-N-X-M-b-X-M-N-X-M-c-X-M-N-X-M" class="headerlink" title="S{ (a X M+N X M), (b X M+N X M), (c X M+N X M) }"></a>S{ (a X M+N X M), (b X M+N X M), (c X M+N X M) }</h4><p>即<strong>乘法分配律</strong>，由此我们可得 _<strong>子节点的加法标记</strong>要乘<strong>父节点的乘法标记</strong>加上<strong>父节点的加法标记</strong>_ ，化成代码即为</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">add[子节点]=(add[子节点]*mul[父节点]+add[父节点])%p;</span><br><span class="line">mul[子节点]=(mul[子节点]*mul[父节点])%p;</span><br><span class="line">data[子节点]=(data[子节点]*mul[父节点]+(r-l+<span class="number">1</span>)*add[父节点])%p;</span><br></pre></td></tr></table></figure>
 <p>所以这道题这样做就可以AC了！</p>
 </li>
@@ -438,11 +438,15 @@ MathJax.Hub.Queue(function() {
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">模拟</a>
+                <a href="javascript:void(0)" class="js-tag color3">dp</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">dp</a>
+                <a href="javascript:void(0)" class="js-tag color4">高精度</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">模拟</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -454,11 +458,23 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">高精度</a>
+                <a href="javascript:void(0)" class="js-tag color2">栈</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">递推</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">并查集</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">树状数组</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">状压</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -470,23 +486,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">栈</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">树状数组</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">并查集</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">KMP</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">乱搞</a>
+                <a href="javascript:void(0)" class="js-tag color4">最短路</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">分治</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -494,7 +502,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">最短路</a>
+                <a href="javascript:void(0)" class="js-tag color3">贪心</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">乱搞</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -506,7 +518,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">状压</a>
+                <a href="javascript:void(0)" class="js-tag color4">二叉树</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -514,19 +526,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">二叉树</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">二分答案</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">bfs</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">贪心</a>
+                <a href="javascript:void(0)" class="js-tag color5">二分答案</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -539,10 +543,6 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">马拉车</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">beta</a>
               </li>
             
             <div class="clearfix"></div>

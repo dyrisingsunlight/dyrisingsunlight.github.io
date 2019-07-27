@@ -9,7 +9,7 @@
   <title>「一本通 1.2 练习 2」扩散 | Dy_RisingSunlight</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="题目链接：「一本通 1.2 练习 2」扩散   题目算法：见 _标签_ （在最下面用’#’和’_’组成）  题目大意：有n个点，每个时间单位会向四周（上下左右）扩散一个点，并且定义一个概念连通块——图内任何两点都联通（即两个点以及扩散出去的点有公共部分），求形成连通块的最短时间。  题目分析：通过求最小值我们很容易就联想到二分。那么连通块如何求？根据定义，我们直接从第1个点开始广搜，搜完能够扩散">
-<meta name="keywords" content="二分答案,bfs">
+<meta name="keywords" content="bfs,二分答案">
 <meta property="og:type" content="article">
 <meta property="og:title" content="「一本通 1.2 练习 2」扩散">
 <meta property="og:url" content="https://dyrisingsunlight.github.io/2019/03/17/TJ_diffusion/index.html">
@@ -176,7 +176,7 @@
 </li>
 </ul>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;queue&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> gc getchar()</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> Maxn 60</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">sc</span><span class="params">()</span> </span>&#123; <span class="comment">//快读 </span></span><br><span class="line">	<span class="keyword">int</span> xx=<span class="number">0</span>,ff=<span class="number">1</span>; <span class="keyword">char</span> cch;</span><br><span class="line">	<span class="keyword">while</span>(cch&lt;<span class="string">'0'</span>|| cch&gt;<span class="string">'9'</span>) &#123;</span><br><span class="line">		<span class="keyword">if</span>(cch==<span class="string">'-'</span>) ff=-ff; cch=gc;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">while</span>(cch&gt;=<span class="string">'0'</span>&amp;&amp; cch&lt;=<span class="string">'9'</span>) &#123;</span><br><span class="line">		xx=xx*<span class="number">10</span>+(cch<span class="number">-48</span>); cch=gc;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> xx*ff;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Map</span> &#123;</span> <span class="comment">//建一个结构体来存坐标 </span></span><br><span class="line">	<span class="keyword">int</span> x,y;</span><br><span class="line">&#125;a[Maxn];</span><br><span class="line"><span class="keyword">int</span> n,l,r,ans; <span class="comment">//ans为最短时间 </span></span><br><span class="line"><span class="keyword">bool</span> pd[Maxn]; <span class="comment">//pd[]为从第1个点开始扩散能到达的点(pd[i]=1，即为第1个点和第i个点联通) </span></span><br><span class="line"><span class="built_in">queue</span> &lt;<span class="keyword">int</span>&gt; q; <span class="comment">//广搜标配——队列，存序号 </span></span><br><span class="line"><span class="keyword">namespace</span> DY &#123;</span><br><span class="line">	<span class="function"><span class="keyword">int</span> <span class="title">aabs</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123; <span class="comment">//绝对值函数，因为cmath里的abs()的返回值为double类型，安全起见，自己写int类型 </span></span><br><span class="line">		<span class="keyword">return</span> x&gt; <span class="number">0</span>? x: -x;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">int</span> <span class="title">Manhattan</span><span class="params">(<span class="keyword">int</span> u,<span class="keyword">int</span> v)</span> </span>&#123; <span class="comment">//求u,v两点的曼哈顿距离，用来判断从u能否扩散到v </span></span><br><span class="line">		<span class="keyword">return</span> aabs(a[u].x-a[v].x)+aabs(a[u].y-a[v].y);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">bool</span> <span class="title">check</span><span class="params">(<span class="keyword">int</span> mid)</span> </span>&#123; <span class="comment">//判断时间为mid时，能否形成连通块 </span></span><br><span class="line">		<span class="built_in">memset</span>(pd,<span class="number">0</span>,<span class="keyword">sizeof</span>(pd)); <span class="comment">//数组清零 </span></span><br><span class="line">		q=<span class="built_in">queue</span> &lt;<span class="keyword">int</span>&gt; (); <span class="comment">//队列清空 </span></span><br><span class="line">		q.push(<span class="number">1</span>); <span class="comment">//从第1个点出发，当然要入队且记录 </span></span><br><span class="line">		pd[<span class="number">1</span>]=<span class="number">1</span>; </span><br><span class="line">		<span class="keyword">while</span>(!q.empty()) &#123; <span class="comment">//bfs</span></span><br><span class="line">			<span class="keyword">int</span> now=q.front(); q.pop();</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;=n; i++) &#123; <span class="comment">//枚举每一个点 </span></span><br><span class="line">				<span class="keyword">if</span>(pd[i]|| Manhattan(now,i)&gt; <span class="number">2</span>*mid) <span class="keyword">continue</span>; <span class="comment">//如果这个点被访问过或两个点的曼哈顿距离超过两倍的时间，前者是不用再处理了，后者是不能扩散到。 </span></span><br><span class="line">				<span class="comment">//为什么曼哈顿距离小于2倍时间到达不了呢？</span></span><br><span class="line">				<span class="comment">/*当时间为mid时，第now个点最多扩散mid个距离，第i个点最多也是扩散mid个距离，</span></span><br><span class="line"><span class="comment">				当曼哈顿距离比最大扩散距离还大，当然是不能扩散到。*/</span> </span><br><span class="line">				pd[i]=<span class="number">1</span>; <span class="comment">//记录+入队 </span></span><br><span class="line">				q.push(i);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;=n; i++) <span class="comment">//判断是否到达每一个点 </span></span><br><span class="line">			<span class="keyword">if</span>(!pd[i]) <span class="keyword">return</span> <span class="number">0</span>; <span class="comment">//有 没有到达的点，跳出 </span></span><br><span class="line">		<span class="keyword">return</span> <span class="number">1</span>; <span class="comment">//形成连通块 </span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		n=sc(); <span class="comment">//输入 </span></span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;=n; i++) &#123;</span><br><span class="line">			a[i].x=sc(); a[i].y=sc();</span><br><span class="line">			r=max(r,max(a[i].x,a[i].y));</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">while</span>(l&lt;=r) &#123; <span class="comment">//二分模板 </span></span><br><span class="line">			<span class="keyword">int</span> mid=l+r&gt;&gt;<span class="number">1</span>;</span><br><span class="line">			<span class="keyword">if</span>(check(mid)) r=mid<span class="number">-1</span>,ans=mid; <span class="comment">//如果能形成连通块，时间越小越好，所以要缩小r </span></span><br><span class="line">			<span class="keyword">else</span> l=mid+<span class="number">1</span>; <span class="comment">//形成不了连通块，说明时间不够，所以要扩大l </span></span><br><span class="line">		&#125;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"%d"</span>,ans); <span class="comment">//输出 </span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	DY::main();</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>祝各位OIer( <em>Of course including me</em> ) </p>
+<p>祝各位OIer( _Of course including me_ ) </p>
 <h4 id="RP"><a href="#RP" class="headerlink" title="RP++;"></a>RP++;</h4>
       
 
@@ -190,11 +190,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">二分答案</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">bfs</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">bfs</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">二分答案</a>
         		</li>
       		
 		</ul>
@@ -435,11 +435,15 @@ MathJax.Hub.Queue(function() {
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">模拟</a>
+                <a href="javascript:void(0)" class="js-tag color3">dp</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">dp</a>
+                <a href="javascript:void(0)" class="js-tag color4">高精度</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">模拟</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -451,11 +455,23 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">高精度</a>
+                <a href="javascript:void(0)" class="js-tag color2">栈</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">递推</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">并查集</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">树状数组</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">状压</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -467,23 +483,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">栈</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">树状数组</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">并查集</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">KMP</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">乱搞</a>
+                <a href="javascript:void(0)" class="js-tag color4">最短路</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">分治</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -491,7 +499,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">最短路</a>
+                <a href="javascript:void(0)" class="js-tag color3">贪心</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">乱搞</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -503,7 +515,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">状压</a>
+                <a href="javascript:void(0)" class="js-tag color4">二叉树</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -511,19 +523,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">二叉树</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">二分答案</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">bfs</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">贪心</a>
+                <a href="javascript:void(0)" class="js-tag color5">二分答案</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -536,10 +540,6 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">马拉车</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">beta</a>
               </li>
             
             <div class="clearfix"></div>
