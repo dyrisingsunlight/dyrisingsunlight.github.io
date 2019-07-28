@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="https://dyrisingsunlight.github.io">
   <title>好一个一中腰鼓！ | Dy_RisingSunlight</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="题目链接：好一个一中腰鼓！ 题目标签：线段树 题意：给定一个01串，刚开始全为0（当然也可以为1，跟我所描述的相反即可），支持一种操作：将第u个数值反转。求每次反转之后，整个连续01串的最大值。 题目分析：这道题是关于线段树的应用问题，而不再是一些数值运算。现在线段树中一个节点要包含5个值：从左边开始连续01串的最大值，从右边开始连续01串的最大值，整个连续01串的最大值，01串左节点的值，01">
+  <meta name="description" content="题目链接：好一个一中腰鼓！">
 <meta name="keywords" content="线段树">
 <meta property="og:type" content="article">
 <meta property="og:title" content="好一个一中腰鼓！">
 <meta property="og:url" content="https://dyrisingsunlight.github.io/2019/04/05/TJ_haoyigeyizhongyaogu/index.html">
 <meta property="og:site_name" content="Dy_RisingSunlight">
-<meta property="og:description" content="题目链接：好一个一中腰鼓！ 题目标签：线段树 题意：给定一个01串，刚开始全为0（当然也可以为1，跟我所描述的相反即可），支持一种操作：将第u个数值反转。求每次反转之后，整个连续01串的最大值。 题目分析：这道题是关于线段树的应用问题，而不再是一些数值运算。现在线段树中一个节点要包含5个值：从左边开始连续01串的最大值，从右边开始连续01串的最大值，整个连续01串的最大值，01串左节点的值，01">
+<meta property="og:description" content="题目链接：好一个一中腰鼓！">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-04-02T17:20:57.611Z">
+<meta property="og:updated_time" content="2019-07-28T13:02:56.023Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="好一个一中腰鼓！">
-<meta name="twitter:description" content="题目链接：好一个一中腰鼓！ 题目标签：线段树 题意：给定一个01串，刚开始全为0（当然也可以为1，跟我所描述的相反即可），支持一种操作：将第u个数值反转。求每次反转之后，整个连续01串的最大值。 题目分析：这道题是关于线段树的应用问题，而不再是一些数值运算。现在线段树中一个节点要包含5个值：从左边开始连续01串的最大值，从右边开始连续01串的最大值，整个连续01串的最大值，01串左节点的值，01">
+<meta name="twitter:description" content="题目链接：好一个一中腰鼓！">
   
   
     <link rel="icon" href="/favicon.png">
@@ -165,7 +165,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <ul>
-<li>题目链接：<a href="https://www.luogu.org/problemnew/show/P2253" target="_blank" rel="noopener">好一个一中腰鼓！</a></li>
+<li>题目链接：<a href="https://www.luogu.org/problemnew/show/P2253" target="_blank" rel="noopener">好一个一中腰鼓！</a><a id="more"></a></li>
 <li>题目标签：线段树</li>
 <li>题意：给定一个01串，刚开始全为0（当然也可以为1，跟我所描述的相反即可），支持一种操作：<strong>将第u个数值反转</strong>。求每次反转之后，整个<strong>连续</strong>01串的最大值。</li>
 <li>题目分析：这道题是关于线段树的应用问题，而不再是一些数值运算。现在线段树中一个节点要包含5个值：<strong>从左边开始连续01串的最大值，从右边开始连续01串的最大值，整个连续01串的最大值，01串左节点的值，01串右节点的值，区间长度</strong>。具体怎么更新不太好解释，<strong>详见代码注释</strong>吧！</li>
@@ -433,11 +433,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">LCA</a>
+                <a href="javascript:void(0)" class="js-tag color3">模拟</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">模拟</a>
+                <a href="javascript:void(0)" class="js-tag color4">LCA</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -445,11 +445,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">高精度</a>
+                <a href="javascript:void(0)" class="js-tag color3">递推</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">栈</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">高精度</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -458,14 +462,6 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">MST</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">递推</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">并查集</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -481,7 +477,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">并查集</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">最短路</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">乱搞</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -489,15 +493,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">差分</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">贪心</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">乱搞</a>
+                <a href="javascript:void(0)" class="js-tag color3">差分</a>
               </li>
              
               <li class="article-tag-list-item">

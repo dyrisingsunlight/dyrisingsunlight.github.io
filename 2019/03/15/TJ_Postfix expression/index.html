@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="https://dyrisingsunlight.github.io">
   <title>后缀表达式 | Dy_RisingSunlight</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="这道题应用到了栈的思想，也相当于一个模拟过程。 处理过程：扫描后缀表达式，只要遇到操作数将其进栈，遇到运算符则从栈中弹出两个操作数进行相应运算，将运算结果进栈，然后继续扫描，直到扫完位置，这时，栈底的数即为该后缀表达式的值。 发一下我的代码（C++） 123456789101112131415161718192021222324252627282930313233#include&amp;lt;iostr">
+  <meta name="description" content="这道题应用到了栈的思想，也相当于一个模拟过程。 处理过程：扫描后缀表达式，只要遇到操作数将其进栈，遇到运算符则从栈中弹出两个操作数进行相应运算，将运算结果进栈，然后继续扫描，直到扫完位置，这时，栈底的数即为该后缀表达式的值。">
 <meta name="keywords" content="模拟,栈">
 <meta property="og:type" content="article">
 <meta property="og:title" content="后缀表达式">
 <meta property="og:url" content="https://dyrisingsunlight.github.io/2019/03/15/TJ_Postfix expression/index.html">
 <meta property="og:site_name" content="Dy_RisingSunlight">
-<meta property="og:description" content="这道题应用到了栈的思想，也相当于一个模拟过程。 处理过程：扫描后缀表达式，只要遇到操作数将其进栈，遇到运算符则从栈中弹出两个操作数进行相应运算，将运算结果进栈，然后继续扫描，直到扫完位置，这时，栈底的数即为该后缀表达式的值。 发一下我的代码（C++） 123456789101112131415161718192021222324252627282930313233#include&amp;lt;iostr">
+<meta property="og:description" content="这道题应用到了栈的思想，也相当于一个模拟过程。 处理过程：扫描后缀表达式，只要遇到操作数将其进栈，遇到运算符则从栈中弹出两个操作数进行相应运算，将运算结果进栈，然后继续扫描，直到扫完位置，这时，栈底的数即为该后缀表达式的值。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-03-16T17:20:02.463Z">
+<meta property="og:updated_time" content="2019-07-28T13:03:45.763Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="后缀表达式">
-<meta name="twitter:description" content="这道题应用到了栈的思想，也相当于一个模拟过程。 处理过程：扫描后缀表达式，只要遇到操作数将其进栈，遇到运算符则从栈中弹出两个操作数进行相应运算，将运算结果进栈，然后继续扫描，直到扫完位置，这时，栈底的数即为该后缀表达式的值。 发一下我的代码（C++） 123456789101112131415161718192021222324252627282930313233#include&amp;lt;iostr">
+<meta name="twitter:description" content="这道题应用到了栈的思想，也相当于一个模拟过程。 处理过程：扫描后缀表达式，只要遇到操作数将其进栈，遇到运算符则从栈中弹出两个操作数进行相应运算，将运算结果进栈，然后继续扫描，直到扫完位置，这时，栈底的数即为该后缀表达式的值。">
   
   
     <link rel="icon" href="/favicon.png">
@@ -166,6 +166,7 @@
       
         <p>这道题应用到了栈的思想，也相当于一个模拟过程。</p>
 <p>处理过程：扫描后缀表达式，只要遇到操作数将其进栈，遇到运算符则从栈中弹出两个操作数进行相应运算，将运算结果进栈，然后继续扫描，直到扫完位置，这时，栈底的数即为该后缀表达式的值。</p>
+<a id="more"></a>
 <p>发一下我的代码（C++）</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;  //头文件 </span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">int</span> edg[<span class="number">1010</span>];</span><br><span class="line"><span class="keyword">char</span> s[<span class="number">256</span>];  <span class="comment">//全局变量 </span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">dfs</span><span class="params">(<span class="keyword">char</span> s[<span class="number">256</span>])</span>  <span class="comment">//扫描后缀表达式 </span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i=<span class="number">0</span>,top=<span class="number">0</span>,e;</span><br><span class="line">    <span class="keyword">while</span>(i&lt;=<span class="built_in">strlen</span>(s)<span class="number">-2</span>)  <span class="comment">//扫描到strlen(s)-2</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">switch</span>(s[i])  <span class="comment">//判断 </span></span><br><span class="line">        &#123;</span><br><span class="line">            case'+':edg[--top]+=edg[top+1];break;  //+</span><br><span class="line">            case'-':edg[--top]-=edg[top+1];break;  //-</span><br><span class="line">            case'*':edg[--top]*=edg[top+1];break;  //*</span><br><span class="line">            case'/':edg[--top]/=edg[top+1];break;  ///</span><br><span class="line">            <span class="keyword">default</span>:e=<span class="number">0</span>;</span><br><span class="line">            <span class="keyword">while</span>(s[i]!=<span class="string">'.'</span>)</span><br><span class="line">                e=e*<span class="number">10</span>+s[i++]-<span class="string">'0'</span>;  <span class="comment">//检查是否扫描到间隔符号'.' </span></span><br><span class="line">                edg[++top]=e;<span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        i++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> edg[top];</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span>  <span class="comment">//主程序 </span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    gets(s);  <span class="comment">//输入 </span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d"</span>,dfs(s));  <span class="comment">//输出 </span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>希望我的代码能够帮助到大家！</p>
@@ -256,18 +257,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2019/03/15/TJ_Uncle McDonald's problem/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2019/03/16/TJ_The cow dance/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          麦当劳叔叔的难题
+          USACO17JAN Cow Dance Show奶牛舞蹈
         
       </div>
     </a>
   
   
-    <a href="/2019/03/15/TJ_Milk Scheduling/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">USACO13FEB 牛奶调度Milk Scheduling</div>
+    <a href="/2019/03/15/TJ_Uncle McDonald's problem/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">麦当劳叔叔的难题</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -431,11 +432,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">LCA</a>
+                <a href="javascript:void(0)" class="js-tag color3">模拟</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">模拟</a>
+                <a href="javascript:void(0)" class="js-tag color4">LCA</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -443,11 +444,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">高精度</a>
+                <a href="javascript:void(0)" class="js-tag color3">递推</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">栈</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">高精度</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -456,14 +461,6 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">MST</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">递推</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">并查集</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -479,7 +476,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">并查集</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">最短路</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">乱搞</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -487,15 +492,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">差分</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">贪心</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">乱搞</a>
+                <a href="javascript:void(0)" class="js-tag color3">差分</a>
               </li>
              
               <li class="article-tag-list-item">

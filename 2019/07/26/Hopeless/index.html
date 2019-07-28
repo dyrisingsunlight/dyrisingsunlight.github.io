@@ -8,19 +8,19 @@
   <link rel="dns-prefetch" href="https://dyrisingsunlight.github.io">
   <title>绝望 | Dy_RisingSunlight</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Problem’s Website] Hopeless  Solution Code123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354#include&amp;lt;iostream&amp;gt;#include&amp;lt;cstdio&amp;gt;#include&amp;lt;a">
+  <meta name="description" content="Problem’s Website] Hopeless">
 <meta name="keywords" content="dp">
 <meta property="og:type" content="article">
 <meta property="og:title" content="绝望">
 <meta property="og:url" content="https://dyrisingsunlight.github.io/2019/07/26/Hopeless/index.html">
 <meta property="og:site_name" content="Dy_RisingSunlight">
-<meta property="og:description" content="Problem’s Website] Hopeless  Solution Code123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354#include&amp;lt;iostream&amp;gt;#include&amp;lt;cstdio&amp;gt;#include&amp;lt;a">
+<meta property="og:description" content="Problem’s Website] Hopeless">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://dyrisingsunlight.github.io/2019/07/26/Hopeless/0.png">
-<meta property="og:updated_time" content="2019-07-26T11:54:05.140Z">
+<meta property="og:updated_time" content="2019-07-28T13:00:15.205Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="绝望">
-<meta name="twitter:description" content="Problem’s Website] Hopeless  Solution Code123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354#include&amp;lt;iostream&amp;gt;#include&amp;lt;cstdio&amp;gt;#include&amp;lt;a">
+<meta name="twitter:description" content="Problem’s Website] Hopeless">
 <meta name="twitter:image" content="https://dyrisingsunlight.github.io/2019/07/26/Hopeless/0.png">
   
   
@@ -169,6 +169,7 @@
         <h2 id="Problem’s-Website"><a href="#Problem’s-Website" class="headerlink" title="Problem’s Website]"></a>Problem’s Website]</h2><ul>
 <li><a href="https://www.luogu.org/paste/fewowcb3" target="_blank" rel="noopener">Hopeless</a></li>
 </ul>
+<a id="more"></a>
 <h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p><img src="/2019/07/26/Hopeless/0.png" alt></p>
 <h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> gc getchar()</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> pc(x) putchar(x)</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> Maxn = <span class="number">1e5</span> + <span class="number">10</span>;</span><br><span class="line"><span class="function">ll <span class="title">sc</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	ll xx = <span class="number">0</span>, ff = <span class="number">1</span>; <span class="keyword">char</span> cch = gc;</span><br><span class="line">	<span class="keyword">while</span>(cch &lt; <span class="string">'0'</span> || cch &gt; <span class="string">'9'</span>) &#123;</span><br><span class="line">		<span class="keyword">if</span>(cch == <span class="string">'-'</span>) ff = <span class="number">-1</span>; cch = gc;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">while</span>(cch &gt;= <span class="string">'0'</span> &amp;&amp; cch &lt;= <span class="string">'9'</span>) &#123;</span><br><span class="line">		xx = (xx &lt;&lt; <span class="number">1</span>) + (xx &lt;&lt; <span class="number">3</span>) + (cch ^ <span class="string">'0'</span>); cch = gc;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> xx * ff;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">out</span><span class="params">(ll x)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(x &gt;= <span class="number">10</span>)</span><br><span class="line">		out(x / <span class="number">10</span>);</span><br><span class="line">	pc(x % <span class="number">10</span> + <span class="string">'0'</span>);</span><br><span class="line">&#125;</span><br><span class="line">ll t, n, h;</span><br><span class="line">ll a[Maxn], f[Maxn];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	freopen(<span class="string">"hopeless.in"</span>, <span class="string">"r"</span>, <span class="built_in">stdin</span>);</span><br><span class="line">	freopen(<span class="string">"hopeless.out"</span>, <span class="string">"w"</span>, <span class="built_in">stdout</span>);</span><br><span class="line">	t = sc();</span><br><span class="line">	<span class="keyword">while</span>(t--) &#123;</span><br><span class="line">		n = sc();</span><br><span class="line">		f[h = <span class="number">0</span>] = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; ++i)</span><br><span class="line">			a[i] = sc();</span><br><span class="line">		<span class="built_in">std</span> :: sort(a, a + n);</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; ++i) &#123;</span><br><span class="line">			ll last = a[i];</span><br><span class="line">			<span class="keyword">while</span>(a[i] &gt;&gt; (h + <span class="number">1</span>))</span><br><span class="line">				f[++h] = <span class="number">0</span>;</span><br><span class="line">			ll t = <span class="number">1</span>;</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; h; ++j)</span><br><span class="line">				<span class="keyword">if</span>((last &gt;&gt; j) &amp; <span class="number">1</span>)</span><br><span class="line">					t += f[j];</span><br><span class="line">			f[h] = <span class="built_in">std</span> :: max(f[h], t);</span><br><span class="line">		&#125;</span><br><span class="line">		ll ans = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= h; ++i)</span><br><span class="line">			ans += f[i];</span><br><span class="line">		out(ans);</span><br><span class="line">		pc(<span class="string">'\n'</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// !dy</span></span><br></pre></td></tr></table></figure>
 <p><strong>rp++</strong></p>
@@ -255,18 +256,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2019/07/26/ShiZhong/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2019/07/27/Page/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          时钟
+          页面
         
       </div>
     </a>
   
   
-    <a href="/2019/07/13/RangWoMenYiHuoBa/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">让我们异或吧</div>
+    <a href="/2019/07/26/PandaDeFanNao/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">SHOI2001_Panda的烦恼</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -430,11 +431,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">LCA</a>
+                <a href="javascript:void(0)" class="js-tag color3">模拟</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">模拟</a>
+                <a href="javascript:void(0)" class="js-tag color4">LCA</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -442,11 +443,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">高精度</a>
+                <a href="javascript:void(0)" class="js-tag color3">递推</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">栈</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">高精度</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -455,14 +460,6 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">MST</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">递推</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">并查集</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -478,7 +475,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">并查集</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">最短路</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">乱搞</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -486,15 +491,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">差分</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">贪心</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">乱搞</a>
+                <a href="javascript:void(0)" class="js-tag color3">差分</a>
               </li>
              
               <li class="article-tag-list-item">

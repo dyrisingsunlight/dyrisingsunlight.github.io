@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="https://dyrisingsunlight.github.io">
   <title>USACO13FEB 牛奶调度Milk Scheduling | Dy_RisingSunlight</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="本人思路：拓扑思想+简单模拟1这道题其实并不难，只是用到了拓扑的思想，A奶牛必须在B奶牛挤奶前挤奶，这就形成了一个有向图，点A指向点B。 我们只需要记一下总量（实际上是每只奶牛挤奶时间的总和），每一次循环将入度为0的奶牛加入要挤奶的数组，并且取挤奶数组的最小值，让在挤奶数组里的奶牛减去最小值，如果一个奶牛挤完奶了，那就删除与它相连的边，并且相连的点入度减一，总时间加上最小值，总量减去最小值*挤奶牛">
+  <meta name="description" content="本人思路：拓扑思想+简单模拟1这道题其实并不难，只是用到了拓扑的思想，A奶牛必须在B奶牛挤奶前挤奶，这就形成了一个有向图，点A指向点B。">
 <meta name="keywords" content="模拟,拓扑">
 <meta property="og:type" content="article">
 <meta property="og:title" content="USACO13FEB 牛奶调度Milk Scheduling">
 <meta property="og:url" content="https://dyrisingsunlight.github.io/2019/03/15/TJ_Milk Scheduling/index.html">
 <meta property="og:site_name" content="Dy_RisingSunlight">
-<meta property="og:description" content="本人思路：拓扑思想+简单模拟1这道题其实并不难，只是用到了拓扑的思想，A奶牛必须在B奶牛挤奶前挤奶，这就形成了一个有向图，点A指向点B。 我们只需要记一下总量（实际上是每只奶牛挤奶时间的总和），每一次循环将入度为0的奶牛加入要挤奶的数组，并且取挤奶数组的最小值，让在挤奶数组里的奶牛减去最小值，如果一个奶牛挤完奶了，那就删除与它相连的边，并且相连的点入度减一，总时间加上最小值，总量减去最小值*挤奶牛">
+<meta property="og:description" content="本人思路：拓扑思想+简单模拟1这道题其实并不难，只是用到了拓扑的思想，A奶牛必须在B奶牛挤奶前挤奶，这就形成了一个有向图，点A指向点B。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-03-14T17:51:43.771Z">
+<meta property="og:updated_time" content="2019-07-28T13:03:36.027Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="USACO13FEB 牛奶调度Milk Scheduling">
-<meta name="twitter:description" content="本人思路：拓扑思想+简单模拟1这道题其实并不难，只是用到了拓扑的思想，A奶牛必须在B奶牛挤奶前挤奶，这就形成了一个有向图，点A指向点B。 我们只需要记一下总量（实际上是每只奶牛挤奶时间的总和），每一次循环将入度为0的奶牛加入要挤奶的数组，并且取挤奶数组的最小值，让在挤奶数组里的奶牛减去最小值，如果一个奶牛挤完奶了，那就删除与它相连的边，并且相连的点入度减一，总时间加上最小值，总量减去最小值*挤奶牛">
+<meta name="twitter:description" content="本人思路：拓扑思想+简单模拟1这道题其实并不难，只是用到了拓扑的思想，A奶牛必须在B奶牛挤奶前挤奶，这就形成了一个有向图，点A指向点B。">
   
   
     <link rel="icon" href="/favicon.png">
@@ -165,6 +165,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h2 id="本人思路：拓扑思想-简单模拟"><a href="#本人思路：拓扑思想-简单模拟" class="headerlink" title="本人思路：拓扑思想+简单模拟"></a>本人思路：拓扑思想+简单模拟</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">这道题其实并不难，只是用到了拓扑的思想，A奶牛必须在B奶牛挤奶前挤奶，这就形成了一个有向图，点A指向点B。</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
 <h4 id="我们只需要记一下总量（实际上是每只奶牛挤奶时间的总和），每一次循环将入度为0的奶牛加入要挤奶的数组，并且取挤奶数组的最小值，让在挤奶数组里的奶牛减去最小值，如果一个奶牛挤完奶了，那就删除与它相连的边，并且相连的点入度减一，总时间加上最小值，总量减去最小值-挤奶牛数，直到总量为0结束-如果到这里还不懂可以看代码，代码有更详细的解释。"><a href="#我们只需要记一下总量（实际上是每只奶牛挤奶时间的总和），每一次循环将入度为0的奶牛加入要挤奶的数组，并且取挤奶数组的最小值，让在挤奶数组里的奶牛减去最小值，如果一个奶牛挤完奶了，那就删除与它相连的边，并且相连的点入度减一，总时间加上最小值，总量减去最小值-挤奶牛数，直到总量为0结束-如果到这里还不懂可以看代码，代码有更详细的解释。" class="headerlink" title="我们只需要记一下总量（实际上是每只奶牛挤奶时间的总和），每一次循环将入度为0的奶牛加入要挤奶的数组，并且取挤奶数组的最小值，让在挤奶数组里的奶牛减去最小值，如果一个奶牛挤完奶了，那就删除与它相连的边，并且相连的点入度减一，总时间加上最小值，总量减去最小值*挤奶牛数，直到总量为0结束,如果到这里还不懂可以看代码，代码有更详细的解释。"></a>我们只需要记一下总量（实际上是每只奶牛挤奶时间的总和），每一次循环将入度为0的奶牛加入要挤奶的数组，并且取挤奶数组的最小值，让在挤奶数组里的奶牛减去最小值，如果一个奶牛挤完奶了，那就删除与它相连的边，并且相连的点入度减一，总时间加上最小值，总量减去最小值*挤奶牛数，直到总量为0结束,如果到这里还不懂可以看代码，代码有更详细的解释。</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> maxn 10007</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">int</span> n,m,minn,ans,tot,len;  <span class="comment">//n奶牛数目 m有先后要求的量 minn挤奶数组的最小值 ans最后答案  tot总量 len挤奶数组长度 </span></span><br><span class="line"><span class="keyword">int</span> a[maxn],ru[maxn],q[maxn];  <span class="comment">//a[]每只奶牛挤奶时间 ru[]每只奶牛的入度 q[]挤奶数组 </span></span><br><span class="line"><span class="keyword">bool</span> edg[<span class="number">20000</span>][<span class="number">20000</span>];  <span class="comment">//二维数组建图（模拟大法好） </span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span>  <span class="comment">//程序开始 </span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;n,&amp;m);   </span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;a[i]),tot+=a[i];  <span class="comment">//输入，并且计算总量 </span></span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">int</span> x,y;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;x,&amp;y);</span><br><span class="line">		ru[y]++;  <span class="comment">//x指向y  y入度+1 </span></span><br><span class="line">		edg[x][y]=<span class="number">1</span>;  <span class="comment">//建图 </span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">while</span>(tot)  <span class="comment">//直到总量为0结束 </span></span><br><span class="line">	&#123;</span><br><span class="line">		minn=<span class="number">0x7fffffff</span>;  <span class="comment">//先赋一个最大值 </span></span><br><span class="line">		len=<span class="number">0</span>; </span><br><span class="line">		<span class="built_in">memset</span>(q,<span class="number">0</span>,<span class="keyword">sizeof</span>(q));  <span class="comment">//挤奶数组长度、内容清零 </span></span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span>(!ru[i]&amp;&amp;a[i]&gt;<span class="number">0</span>)  q[++len]=i,minn=min(minn,a[i]);  <span class="comment">//找还有奶并且入度为0的奶牛加入挤奶数组 &amp;&amp; 计算挤奶最小值 </span></span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=len;i++)</span><br><span class="line">		&#123;</span><br><span class="line">			a[q[i]]-=minn;  <span class="comment">//每只挤奶奶牛减去最小值 </span></span><br><span class="line">			<span class="keyword">if</span>(a[q[i]]&lt;=<span class="number">0</span>)  <span class="comment">//处理没奶的奶牛 </span></span><br><span class="line">			&#123;</span><br><span class="line">				<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=n;j++)</span><br><span class="line">				&#123;</span><br><span class="line">					<span class="keyword">if</span>(edg[q[i]][j]==<span class="number">1</span>)  ru[j]--,edg[q[i]][j]=<span class="number">0</span>;  <span class="comment">//删除和它相连的所有边以及和它相连点的入度 </span></span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		tot-=(minn*len);  <span class="comment">//总量减去（最小值*挤奶奶牛数） </span></span><br><span class="line">		ans+=minn;   <span class="comment">//需要时间（答案）加上最小值 </span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%d"</span>,ans);  <span class="comment">//输出 </span></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;  <span class="comment">//程序结束 </span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h5 id="另外嘱咐大家一句：数组一定要够大，否则RE"><a href="#另外嘱咐大家一句：数组一定要够大，否则RE" class="headerlink" title="另外嘱咐大家一句：数组一定要够大，否则RE"></a>另外嘱咐大家一句：数组一定要够大，否则<a href="https://www.luogu.org/record/show?rid=12080872" target="_blank" rel="noopener">RE</a></h5><h2 id="最后祝大家"><a href="#最后祝大家" class="headerlink" title="最后祝大家"></a>最后祝大家</h2><h1 id="RP-；"><a href="#RP-；" class="headerlink" title="RP++；"></a>RP++；</h1>
       
@@ -253,18 +254,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2019/03/15/TJ_Postfix expression/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2019/03/15/TJ_Uncle McDonald's problem/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          后缀表达式
+          麦当劳叔叔的难题
         
       </div>
     </a>
   
   
-    <a href="/2019/03/15/TJ_logo language/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">logo语言</div>
+    <a href="/2019/03/15/TJ_Binary tree problem/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">JLOI2009 二叉树问题</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -428,11 +429,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">LCA</a>
+                <a href="javascript:void(0)" class="js-tag color3">模拟</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">模拟</a>
+                <a href="javascript:void(0)" class="js-tag color4">LCA</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -440,11 +441,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">高精度</a>
+                <a href="javascript:void(0)" class="js-tag color3">递推</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">栈</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">高精度</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -453,14 +458,6 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">MST</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">递推</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">并查集</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -476,7 +473,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">并查集</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">最短路</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">乱搞</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -484,15 +489,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">差分</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">贪心</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">乱搞</a>
+                <a href="javascript:void(0)" class="js-tag color3">差分</a>
               </li>
              
               <li class="article-tag-list-item">

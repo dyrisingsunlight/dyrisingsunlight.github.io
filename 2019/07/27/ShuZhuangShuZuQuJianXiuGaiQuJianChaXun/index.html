@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="https://dyrisingsunlight.github.io">
   <title>树状数组区间修改区间查询 | Dy_RisingSunlight</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="相关题目链接 线段树1Solution 首先看到题目标题，我们就知道要用线段树，但这道题还可以用其他方法来AC，比如树状数组，不仅代码量少，而且常数还小，根据树状数组模板2我们知道，树状数组的区间修改是要用差分的，这点我的另一篇Blog介绍过，不懂的点击这。 接下来我们直接将如果用树状数组实现区间修改区间查询。我们用a数组表示原序列，d数组表示差分数组,我们可得 $\sum\limits_{i=1">
+  <meta name="description" content="相关题目链接 线段树1">
 <meta name="keywords" content="树状数组">
 <meta property="og:type" content="article">
 <meta property="og:title" content="树状数组区间修改区间查询">
 <meta property="og:url" content="https://dyrisingsunlight.github.io/2019/07/27/ShuZhuangShuZuQuJianXiuGaiQuJianChaXun/index.html">
 <meta property="og:site_name" content="Dy_RisingSunlight">
-<meta property="og:description" content="相关题目链接 线段树1Solution 首先看到题目标题，我们就知道要用线段树，但这道题还可以用其他方法来AC，比如树状数组，不仅代码量少，而且常数还小，根据树状数组模板2我们知道，树状数组的区间修改是要用差分的，这点我的另一篇Blog介绍过，不懂的点击这。 接下来我们直接将如果用树状数组实现区间修改区间查询。我们用a数组表示原序列，d数组表示差分数组,我们可得 $\sum\limits_{i=1">
+<meta property="og:description" content="相关题目链接 线段树1">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-07-28T04:25:32.992Z">
+<meta property="og:updated_time" content="2019-07-28T13:02:24.624Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="树状数组区间修改区间查询">
-<meta name="twitter:description" content="相关题目链接 线段树1Solution 首先看到题目标题，我们就知道要用线段树，但这道题还可以用其他方法来AC，比如树状数组，不仅代码量少，而且常数还小，根据树状数组模板2我们知道，树状数组的区间修改是要用差分的，这点我的另一篇Blog介绍过，不懂的点击这。 接下来我们直接将如果用树状数组实现区间修改区间查询。我们用a数组表示原序列，d数组表示差分数组,我们可得 $\sum\limits_{i=1">
+<meta name="twitter:description" content="相关题目链接 线段树1">
   
   
     <link rel="icon" href="/favicon.png">
@@ -165,7 +165,8 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h2 id="相关题目链接"><a href="#相关题目链接" class="headerlink" title="相关题目链接"></a>相关题目链接</h2><ul>
-<li><a href="https://www.luogu.org/problem/P3372" target="_blank" rel="noopener">线段树1</a><h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2></li>
+<li><a href="https://www.luogu.org/problem/P3372" target="_blank" rel="noopener">线段树1</a><a id="more"></a>
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2></li>
 <li>首先看到题目标题，我们就知道要用线段树，但这道题还可以用其他方法来AC，比如树状数组，不仅代码量少，而且常数还小，根据<a href="https://www.luogu.org/problem/P3368" target="_blank" rel="noopener">树状数组模板2</a>我们知道，树状数组的区间修改是要用差分的，这点我的另一篇Blog介绍过，不懂的点击<a href="https://dyrisingsunlight.github.io/2019/06/24/MuBanShuZhuangShuZu/">这</a>。</li>
 <li>接下来我们直接将如果用树状数组实现区间修改区间查询。我们用a数组表示原序列，d数组表示差分数组,我们可得 $\sum\limits_{i=1}^{p}a[i]=\sum\limits_{i=1}^{p}\sum\limits_{j=1}^{i}d[j]$ ,在右侧的式子中，$d[1]$被用了$p$次，$d[2]$被用了$p-1$次,我们可以推出位置p的前缀和<br><script type="math/tex">\sum\limits_{i=1}^{p}\sum\limits_{j=1}^{i}d[j]=\sum\limits_{i=1}^{p}d[i]*(p*i-1)=\sum\limits_{i=1}^{p}d[i]-\sum\limits_{i=1}^{p}d[i]*i</script>,我们可以维护两个数组前缀和$sum1[i]=d[i]$,另一个数组$sum2[i]=d[i]*i$</li>
 <li>查询<br>  位置$p$的前缀和即： $(p + 1) * sum1$数组中$p$的前缀和- sum2数组中p的前缀和。区间[l, r]的和即：位置r的前缀和 - 位置l的前缀和。</li>
@@ -258,11 +259,11 @@
   
 <nav id="article-nav">
   
-    <a href="/2019/07/27/Page/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2019/07/28/STBiaoMuBan/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          页面
+          STBiaoMuBan
         
       </div>
     </a>
@@ -433,11 +434,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">LCA</a>
+                <a href="javascript:void(0)" class="js-tag color3">模拟</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">模拟</a>
+                <a href="javascript:void(0)" class="js-tag color4">LCA</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -445,11 +446,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">高精度</a>
+                <a href="javascript:void(0)" class="js-tag color3">递推</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">栈</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">高精度</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -458,14 +463,6 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">MST</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">递推</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">并查集</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -481,7 +478,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">并查集</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">最短路</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">乱搞</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -489,15 +494,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">差分</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">贪心</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">乱搞</a>
+                <a href="javascript:void(0)" class="js-tag color3">差分</a>
               </li>
              
               <li class="article-tag-list-item">

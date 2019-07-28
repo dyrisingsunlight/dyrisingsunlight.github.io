@@ -8,13 +8,13 @@
   <link rel="dns-prefetch" href="https://dyrisingsunlight.github.io">
   <title>模板_树状数组2 | Dy_RisingSunlight</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="题目链接：【模板】树状数组 2 题目思路：基本的树状数组操作就不讲了，讲一下对于本题的差分思路。 差分：  原数组    差分数组    即为    我们可以得出    即    如果我们把原数组都加上2，即变为    差分数组变为    因为a[i]-a[i-1]是不变的，变得只有b[1]和b[3 + 1] (在这个样例中后者可以省略)  所以对a[x,y]进行修改,只用修改b[x]与b[y+">
+  <meta name="description" content="题目链接：【模板】树状数组 2">
 <meta name="keywords" content="树状数组,差分">
 <meta property="og:type" content="article">
 <meta property="og:title" content="模板_树状数组2">
 <meta property="og:url" content="https://dyrisingsunlight.github.io/2019/06/24/MuBanShuZhuangShuZu/index.html">
 <meta property="og:site_name" content="Dy_RisingSunlight">
-<meta property="og:description" content="题目链接：【模板】树状数组 2 题目思路：基本的树状数组操作就不讲了，讲一下对于本题的差分思路。 差分：  原数组    差分数组    即为    我们可以得出    即    如果我们把原数组都加上2，即变为    差分数组变为    因为a[i]-a[i-1]是不变的，变得只有b[1]和b[3 + 1] (在这个样例中后者可以省略)  所以对a[x,y]进行修改,只用修改b[x]与b[y+">
+<meta property="og:description" content="题目链接：【模板】树状数组 2">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://dyrisingsunlight.github.io/2019/06/24/MuBanShuZhuangShuZu/0.jpg">
 <meta property="og:image" content="https://dyrisingsunlight.github.io/2019/06/24/MuBanShuZhuangShuZu/1.jpg">
@@ -23,10 +23,10 @@
 <meta property="og:image" content="https://dyrisingsunlight.github.io/2019/06/24/MuBanShuZhuangShuZu/4.jpg">
 <meta property="og:image" content="https://dyrisingsunlight.github.io/2019/06/24/MuBanShuZhuangShuZu/5.jpg">
 <meta property="og:image" content="https://dyrisingsunlight.github.io/2019/06/24/MuBanShuZhuangShuZu/6.jpg">
-<meta property="og:updated_time" content="2019-06-27T05:59:07.292Z">
+<meta property="og:updated_time" content="2019-07-28T13:01:32.271Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="模板_树状数组2">
-<meta name="twitter:description" content="题目链接：【模板】树状数组 2 题目思路：基本的树状数组操作就不讲了，讲一下对于本题的差分思路。 差分：  原数组    差分数组    即为    我们可以得出    即    如果我们把原数组都加上2，即变为    差分数组变为    因为a[i]-a[i-1]是不变的，变得只有b[1]和b[3 + 1] (在这个样例中后者可以省略)  所以对a[x,y]进行修改,只用修改b[x]与b[y+">
+<meta name="twitter:description" content="题目链接：【模板】树状数组 2">
 <meta name="twitter:image" content="https://dyrisingsunlight.github.io/2019/06/24/MuBanShuZhuangShuZu/0.jpg">
   
   
@@ -173,7 +173,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <ul>
-<li>题目链接：<a href="https://www.luogu.org/problemnew/show/P3368" target="_blank" rel="noopener">【模板】树状数组 2</a></li>
+<li>题目链接：<a href="https://www.luogu.org/problemnew/show/P3368" target="_blank" rel="noopener">【模板】树状数组 2</a><a id="more"></a></li>
 <li>题目思路：基本的树状数组操作就不讲了，讲一下对于本题的差分思路。<ul>
 <li><h3 id="差分："><a href="#差分：" class="headerlink" title="差分："></a>差分：</h3>  原数组<br>  <img src="/2019/06/24/MuBanShuZhuangShuZu/0.jpg" alt><br>  差分数组<br>  <img src="/2019/06/24/MuBanShuZhuangShuZu/1.jpg" alt><br>  即为<br>  <img src="/2019/06/24/MuBanShuZhuangShuZu/2.jpg" alt><br>  我们可以得出<br>  <img src="/2019/06/24/MuBanShuZhuangShuZu/3.jpg" alt><br>  即<br>  <img src="/2019/06/24/MuBanShuZhuangShuZu/4.jpg" alt><br>  如果我们把原数组都加上2，即变为<br>  <img src="/2019/06/24/MuBanShuZhuangShuZu/5.jpg" alt><br>  差分数组变为<br>  <img src="/2019/06/24/MuBanShuZhuangShuZu/6.jpg" alt><br>  因为a[i]-a[i-1]是不变的，变得只有b[1]和b[3 + 1] <em>(在这个样例中后者可以省略)</em><br>  所以<strong>对a[x,y]进行修改,只用修改b[x]与b[y+1]</strong></li>
 <li>对于本题，我们可以把原数组记录下来，在用树状数组维护差分数组（即在原数基础上的变化），输出原数组加上变化值即可。</li>
@@ -269,18 +269,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2019/06/24/YinHeYingXiongChuanShuo/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2019/06/25/mst/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          NOI_2002银河英雄传说
+          mst
         
       </div>
     </a>
   
   
-    <a href="/2019/06/22/Blog introduction and index/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Blog介绍 &amp; 索引</div>
+    <a href="/2019/06/24/GuanYaZuiFan/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">NOI_2001食物链</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -444,11 +444,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">LCA</a>
+                <a href="javascript:void(0)" class="js-tag color3">模拟</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">模拟</a>
+                <a href="javascript:void(0)" class="js-tag color4">LCA</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -456,11 +456,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">高精度</a>
+                <a href="javascript:void(0)" class="js-tag color3">递推</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">栈</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">高精度</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -469,14 +473,6 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">MST</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">递推</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">并查集</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -492,7 +488,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">并查集</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">最短路</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">乱搞</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -500,15 +504,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">差分</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">贪心</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">乱搞</a>
+                <a href="javascript:void(0)" class="js-tag color3">差分</a>
               </li>
              
               <li class="article-tag-list-item">

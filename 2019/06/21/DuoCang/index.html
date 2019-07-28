@@ -8,21 +8,21 @@
   <link rel="dns-prefetch" href="https://dyrisingsunlight.github.io">
   <title>躲藏 | Dy_RisingSunlight</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="题目链接：躲藏 如果没有权限看题，请看下图     题目思路：dp，因为求的是Cwbc作为子序列出现的次数，且不区分大小写，那我们就把整个序列全化为大写，用四个变量（e1,e2,e3,e4）来记录以c、w、b、c出现的次数，我们不难得出 代码123456789101112131415161718192021222324252627282930#include&amp;lt;iostream&amp;gt;#in">
+  <meta name="description" content="题目链接：躲藏 如果没有权限看题，请看下图">
 <meta name="keywords" content="dp">
 <meta property="og:type" content="article">
 <meta property="og:title" content="躲藏">
 <meta property="og:url" content="https://dyrisingsunlight.github.io/2019/06/21/DuoCang/index.html">
 <meta property="og:site_name" content="Dy_RisingSunlight">
-<meta property="og:description" content="题目链接：躲藏 如果没有权限看题，请看下图     题目思路：dp，因为求的是Cwbc作为子序列出现的次数，且不区分大小写，那我们就把整个序列全化为大写，用四个变量（e1,e2,e3,e4）来记录以c、w、b、c出现的次数，我们不难得出 代码123456789101112131415161718192021222324252627282930#include&amp;lt;iostream&amp;gt;#in">
+<meta property="og:description" content="题目链接：躲藏 如果没有权限看题，请看下图">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://dyrisingsunlight.github.io/2019/06/21/DuoCang/1.jpg">
 <meta property="og:image" content="https://dyrisingsunlight.github.io/2019/06/21/DuoCang/2.jpg">
 <meta property="og:image" content="https://dyrisingsunlight.github.io/2019/06/21/DuoCang/0.jpg">
-<meta property="og:updated_time" content="2019-06-24T03:26:17.860Z">
+<meta property="og:updated_time" content="2019-07-28T12:59:26.183Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="躲藏">
-<meta name="twitter:description" content="题目链接：躲藏 如果没有权限看题，请看下图     题目思路：dp，因为求的是Cwbc作为子序列出现的次数，且不区分大小写，那我们就把整个序列全化为大写，用四个变量（e1,e2,e3,e4）来记录以c、w、b、c出现的次数，我们不难得出 代码123456789101112131415161718192021222324252627282930#include&amp;lt;iostream&amp;gt;#in">
+<meta name="twitter:description" content="题目链接：躲藏 如果没有权限看题，请看下图">
 <meta name="twitter:image" content="https://dyrisingsunlight.github.io/2019/06/21/DuoCang/1.jpg">
   
   
@@ -170,7 +170,7 @@
       
         <ul>
 <li>题目链接：<a href="https://vijos.org/d/zcyz/homework/5d0c8d45f4136234c8c2968e/1001" target="_blank" rel="noopener">躲藏</a></li>
-<li>如果没有权限看题，请看下图<br>  <img src="/2019/06/21/DuoCang/1.jpg" alt><br>  <img src="/2019/06/21/DuoCang/2.jpg" alt></li>
+<li>如果没有权限看题，请看下图<br>  <img src="/2019/06/21/DuoCang/1.jpg" alt><br>  <img src="/2019/06/21/DuoCang/2.jpg" alt><a id="more"></a></li>
 <li>题目思路：dp，因为求的是Cwbc作为子序列出现的次数，且不区分大小写，那我们就把整个序列全化为大写，用四个变量（e1,e2,e3,e4）来记录以c、w、b、c出现的次数，我们不难得出<img src="/2019/06/21/DuoCang/0.jpg" alt></li>
 <li>代码<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> gc getchar()</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ll long long</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> Maxn 200010</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> mo 2000120420010122</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">char</span> s[Maxn];</span><br><span class="line">ll e1,e2,e3,e4;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">while</span>(<span class="built_in">scanf</span>(<span class="string">"%s"</span>,s+<span class="number">1</span>)!=EOF) &#123;</span><br><span class="line">		e1=e2=e3=e4=<span class="number">0</span>;</span><br><span class="line">		<span class="keyword">int</span> lens=<span class="built_in">strlen</span>(s+<span class="number">1</span>);</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;=lens; i++) &#123;</span><br><span class="line">			<span class="keyword">if</span>(s[i]&gt;=<span class="string">'a'</span>&amp;&amp; s[i]&lt;=<span class="string">'z'</span>) s[i]-=<span class="number">32</span>;</span><br><span class="line">			<span class="keyword">if</span>(s[i]==<span class="string">'C'</span>)</span><br><span class="line">				e1++;</span><br><span class="line">			<span class="keyword">if</span>(s[i]==<span class="string">'W'</span>)</span><br><span class="line">				e2+=(e1)%mo;</span><br><span class="line">			<span class="keyword">if</span>(s[i]==<span class="string">'B'</span>)</span><br><span class="line">				e3+=(e2)%mo;</span><br><span class="line">			<span class="keyword">if</span>(s[i]==<span class="string">'C'</span>)</span><br><span class="line">				e4+=(e3)%mo;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"%lld\n"</span>,e4%mo);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
@@ -258,11 +258,11 @@
   
 <nav id="article-nav">
   
-    <a href="/2019/06/21/BoYi/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2019/06/21/HuanFang/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          博弈
+          幻方
         
       </div>
     </a>
@@ -433,11 +433,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">LCA</a>
+                <a href="javascript:void(0)" class="js-tag color3">模拟</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">模拟</a>
+                <a href="javascript:void(0)" class="js-tag color4">LCA</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -445,11 +445,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">高精度</a>
+                <a href="javascript:void(0)" class="js-tag color3">递推</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">栈</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">高精度</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -458,14 +462,6 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">MST</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">递推</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">并查集</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -481,7 +477,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">并查集</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">最短路</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">乱搞</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -489,15 +493,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">差分</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">贪心</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">乱搞</a>
+                <a href="javascript:void(0)" class="js-tag color3">差分</a>
               </li>
              
               <li class="article-tag-list-item">

@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="https://dyrisingsunlight.github.io">
   <title>Power Strings | Dy_RisingSunlight</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Problem’s Website Power StringsSolution 根据kmp算法，一个字符串循环节的长度为len-next[len]，不懂的可以自行模拟一下，那么对于这道题来说，如果有循环节，那么len-next[len] | len，这样我们就可以A掉这道题。Code1234567891011121314151617181920212223242526272829#include&amp;">
+  <meta name="description" content="Problem’s Website Power Strings">
 <meta name="keywords" content="KMP">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Power Strings">
 <meta property="og:url" content="https://dyrisingsunlight.github.io/2019/07/02/PowerStrings/index.html">
 <meta property="og:site_name" content="Dy_RisingSunlight">
-<meta property="og:description" content="Problem’s Website Power StringsSolution 根据kmp算法，一个字符串循环节的长度为len-next[len]，不懂的可以自行模拟一下，那么对于这道题来说，如果有循环节，那么len-next[len] | len，这样我们就可以A掉这道题。Code1234567891011121314151617181920212223242526272829#include&amp;">
+<meta property="og:description" content="Problem’s Website Power Strings">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-07-06T10:39:10.561Z">
+<meta property="og:updated_time" content="2019-07-28T13:01:58.753Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Power Strings">
-<meta name="twitter:description" content="Problem’s Website Power StringsSolution 根据kmp算法，一个字符串循环节的长度为len-next[len]，不懂的可以自行模拟一下，那么对于这道题来说，如果有循环节，那么len-next[len] | len，这样我们就可以A掉这道题。Code1234567891011121314151617181920212223242526272829#include&amp;">
+<meta name="twitter:description" content="Problem’s Website Power Strings">
   
   
     <link rel="icon" href="/favicon.png">
@@ -165,7 +165,8 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h3 id="Problem’s-Website"><a href="#Problem’s-Website" class="headerlink" title="Problem’s Website"></a>Problem’s Website</h3><ul>
-<li><a href="https://loj.ac/problem/10035" target="_blank" rel="noopener">Power Strings</a><h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h3></li>
+<li><a href="https://loj.ac/problem/10035" target="_blank" rel="noopener">Power Strings</a><a id="more"></a>
+<h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h3></li>
 <li>根据kmp算法，一个字符串循环节的长度为len-next[len]，不懂的可以自行模拟一下，那么对于这道题来说，如果有循环节，那么<strong>len-next[len] | len</strong>，这样我们就可以A掉这道题。<h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> Maxn 1000010</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">char</span> s[Maxn];</span><br><span class="line"><span class="keyword">int</span> next[Maxn];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">while</span>(<span class="number">1</span>) &#123;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%s"</span>, s + <span class="number">1</span>);</span><br><span class="line">		<span class="keyword">int</span> len = <span class="built_in">strlen</span>(s + <span class="number">1</span>);</span><br><span class="line">		<span class="keyword">if</span>(len == <span class="number">1</span> &amp;&amp; s[<span class="number">1</span>] == <span class="string">'.'</span>) <span class="keyword">break</span>;</span><br><span class="line">		<span class="built_in">memset</span>(next, <span class="number">0</span>,<span class="keyword">sizeof</span>(next));</span><br><span class="line">		<span class="keyword">int</span> j = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= len; i++) &#123;</span><br><span class="line">			<span class="keyword">if</span>(j &gt; <span class="number">0</span> &amp;&amp; s[j + <span class="number">1</span>] != s[i])</span><br><span class="line">				j = next[j];</span><br><span class="line">			<span class="keyword">if</span>(s[j + <span class="number">1</span>] == s[i])</span><br><span class="line">				j++;</span><br><span class="line">			next[i] = j;</span><br><span class="line">		&#125;	</span><br><span class="line">		<span class="keyword">if</span>(!(len % (len - next[len])))</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">"%d\n"</span>, len / (len - next[len]));</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">"1\n"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
@@ -428,11 +429,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">LCA</a>
+                <a href="javascript:void(0)" class="js-tag color3">模拟</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">模拟</a>
+                <a href="javascript:void(0)" class="js-tag color4">LCA</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -440,11 +441,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">高精度</a>
+                <a href="javascript:void(0)" class="js-tag color3">递推</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">栈</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">高精度</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -453,14 +458,6 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">MST</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">递推</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">并查集</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -476,7 +473,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">并查集</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">最短路</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">乱搞</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -484,15 +489,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">差分</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">贪心</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">乱搞</a>
+                <a href="javascript:void(0)" class="js-tag color3">差分</a>
               </li>
              
               <li class="article-tag-list-item">

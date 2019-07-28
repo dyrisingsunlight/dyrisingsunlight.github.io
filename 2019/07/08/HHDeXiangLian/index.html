@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="https://dyrisingsunlight.github.io">
   <title>HH的项链 | Dy_RisingSunlight</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Problem’s Website [SDOI2009]HH的项链Solution 首先这道题模拟是不可能AC的。 其次这道题可以用莫队AC，但我不会。 我们来说一下比较大众化的做法，离线处理+树状数组，我们可以先按照询问区间的右端点升序排序，然后用一个数组存一个元素在一个区间中出现的位置，用树状数组记录区间内的元素个数。Code1234567891011121314151617181920212">
+  <meta name="description" content="Problem’s Website [SDOI2009]HH的项链">
 <meta name="keywords" content="树状数组">
 <meta property="og:type" content="article">
 <meta property="og:title" content="HH的项链">
 <meta property="og:url" content="https://dyrisingsunlight.github.io/2019/07/08/HHDeXiangLian/index.html">
 <meta property="og:site_name" content="Dy_RisingSunlight">
-<meta property="og:description" content="Problem’s Website [SDOI2009]HH的项链Solution 首先这道题模拟是不可能AC的。 其次这道题可以用莫队AC，但我不会。 我们来说一下比较大众化的做法，离线处理+树状数组，我们可以先按照询问区间的右端点升序排序，然后用一个数组存一个元素在一个区间中出现的位置，用树状数组记录区间内的元素个数。Code1234567891011121314151617181920212">
+<meta property="og:description" content="Problem’s Website [SDOI2009]HH的项链">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-07-09T02:38:08.160Z">
+<meta property="og:updated_time" content="2019-07-28T13:00:08.675Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="HH的项链">
-<meta name="twitter:description" content="Problem’s Website [SDOI2009]HH的项链Solution 首先这道题模拟是不可能AC的。 其次这道题可以用莫队AC，但我不会。 我们来说一下比较大众化的做法，离线处理+树状数组，我们可以先按照询问区间的右端点升序排序，然后用一个数组存一个元素在一个区间中出现的位置，用树状数组记录区间内的元素个数。Code1234567891011121314151617181920212">
+<meta name="twitter:description" content="Problem’s Website [SDOI2009]HH的项链">
   
   
     <link rel="icon" href="/favicon.png">
@@ -165,7 +165,8 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h2 id="Problem’s-Website"><a href="#Problem’s-Website" class="headerlink" title="Problem’s Website"></a>Problem’s Website</h2><ul>
-<li><a href="https://www.luogu.org/problemnew/show/P1972" target="_blank" rel="noopener">[SDOI2009]HH的项链</a><h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2></li>
+<li><a href="https://www.luogu.org/problemnew/show/P1972" target="_blank" rel="noopener">[SDOI2009]HH的项链</a><a id="more"></a>
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2></li>
 <li>首先这道题模拟是不可能AC的。</li>
 <li>其次这道题可以用莫队AC，但我不会。</li>
 <li>我们来说一下比较大众化的做法，<strong><em>离线处理+树状数组</em></strong>，我们可以先按照询问区间的右端点升序排序，然后用一个数组存一个元素在一个区间中出现的位置，用树状数组记录区间内的元素个数。<h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> gc getchar()</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">sc</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> xx = <span class="number">0</span>, ff = <span class="number">1</span>; <span class="keyword">char</span> cch = gc;</span><br><span class="line">	<span class="keyword">while</span>(cch &lt; <span class="string">'0'</span> || cch &gt; <span class="string">'9'</span>) &#123;</span><br><span class="line">		<span class="keyword">if</span>(cch == <span class="string">'-'</span>) ff = <span class="number">-1</span>; cch = gc;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">while</span>(cch &gt;= <span class="string">'0'</span> &amp;&amp; cch &lt;= <span class="string">'9'</span>) &#123;</span><br><span class="line">		xx = (xx &lt;&lt; <span class="number">1</span>) + (xx &lt;&lt; <span class="number">3</span>) + (cch ^ <span class="string">'0'</span>); cch = gc;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> xx * ff;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">node</span> &#123;</span></span><br><span class="line">	<span class="keyword">int</span> l, r, id;</span><br><span class="line">	<span class="keyword">bool</span> <span class="keyword">operator</span> &lt; (<span class="keyword">const</span> node &amp;x) <span class="keyword">const</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> r &lt; x.r;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;b[<span class="number">500010</span>];</span><br><span class="line"><span class="keyword">int</span> n, m;</span><br><span class="line"><span class="keyword">int</span> a[<span class="number">500010</span>], ans[<span class="number">500010</span>], tree[<span class="number">1000010</span>], place[<span class="number">1000010</span>];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">lowbit</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> x &amp; (-x);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">update</span><span class="params">(<span class="keyword">int</span> id, <span class="keyword">int</span> num)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">while</span>(id &lt;= n) &#123;</span><br><span class="line">		tree[id] += num;</span><br><span class="line">		id += lowbit(id);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">query</span><span class="params">(<span class="keyword">int</span> id)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">while</span>(id &gt; <span class="number">0</span>) &#123;</span><br><span class="line">		sum += tree[id];</span><br><span class="line">		id -= lowbit(id);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> sum;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	n = sc();</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">		a[i] = sc();</span><br><span class="line">	m = sc();</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= m; i++) &#123;</span><br><span class="line">		b[i].l = sc();</span><br><span class="line">		b[i].r = sc();</span><br><span class="line">		b[i].id = i;</span><br><span class="line">	&#125;</span><br><span class="line">	sort(b + <span class="number">1</span>, b + <span class="number">1</span> + m);</span><br><span class="line">	<span class="keyword">int</span> next = <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= m; i++) &#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j = next; j &lt;= b[i].r; j++) &#123;</span><br><span class="line">			<span class="keyword">if</span>(place[a[j]])</span><br><span class="line">				update(place[a[j]], <span class="number">-1</span>);</span><br><span class="line">			update(j, <span class="number">1</span>);</span><br><span class="line">			place[a[j]] = j;</span><br><span class="line">		&#125;</span><br><span class="line">		next = b[i].r + <span class="number">1</span>;</span><br><span class="line">		ans[b[i].id] = query(b[i].r) - query(b[i].l - <span class="number">1</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= m; i++)</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"%d\n"</span>, ans[i]);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -255,11 +256,11 @@
   
 <nav id="article-nav">
   
-    <a href="/2019/07/09/YiXiangShi/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2019/07/09/TongJiDanCiGeShu/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          异象石
+          统计单词个数
         
       </div>
     </a>
@@ -430,11 +431,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">LCA</a>
+                <a href="javascript:void(0)" class="js-tag color3">模拟</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">模拟</a>
+                <a href="javascript:void(0)" class="js-tag color4">LCA</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -442,11 +443,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">高精度</a>
+                <a href="javascript:void(0)" class="js-tag color3">递推</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">栈</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">高精度</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -455,14 +460,6 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">MST</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">递推</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">并查集</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -478,7 +475,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">并查集</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">最短路</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">乱搞</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -486,15 +491,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">差分</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">贪心</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">乱搞</a>
+                <a href="javascript:void(0)" class="js-tag color3">差分</a>
               </li>
              
               <li class="article-tag-list-item">

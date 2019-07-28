@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="https://dyrisingsunlight.github.io">
   <title>棋盘制作 | Dy_RisingSunlight</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Problem’s Website [ZJOI2007]棋盘制作Solution 又是一个求最大矩阵和正方形的问题，方法还是dp，有个专有名词——悬线法，最普通的状态转移方程为   1f[i][j] = min(f[i - 1][j - 1], min(f[i - 1][j], f[i][j - 1]));   而这道题要满足是一个棋盘，我们可以设Left[i][j]为i，j能到达的最左位置，Ri">
+  <meta name="description" content="Problem’s Website [ZJOI2007]棋盘制作">
 <meta name="keywords" content="dp">
 <meta property="og:type" content="article">
 <meta property="og:title" content="棋盘制作">
 <meta property="og:url" content="https://dyrisingsunlight.github.io/2019/07/07/QiPanZhiZuo/index.html">
 <meta property="og:site_name" content="Dy_RisingSunlight">
-<meta property="og:description" content="Problem’s Website [ZJOI2007]棋盘制作Solution 又是一个求最大矩阵和正方形的问题，方法还是dp，有个专有名词——悬线法，最普通的状态转移方程为   1f[i][j] = min(f[i - 1][j - 1], min(f[i - 1][j], f[i][j - 1]));   而这道题要满足是一个棋盘，我们可以设Left[i][j]为i，j能到达的最左位置，Ri">
+<meta property="og:description" content="Problem’s Website [ZJOI2007]棋盘制作">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-07-07T09:57:44.490Z">
+<meta property="og:updated_time" content="2019-07-28T13:02:02.821Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="棋盘制作">
-<meta name="twitter:description" content="Problem’s Website [ZJOI2007]棋盘制作Solution 又是一个求最大矩阵和正方形的问题，方法还是dp，有个专有名词——悬线法，最普通的状态转移方程为   1f[i][j] = min(f[i - 1][j - 1], min(f[i - 1][j], f[i][j - 1]));   而这道题要满足是一个棋盘，我们可以设Left[i][j]为i，j能到达的最左位置，Ri">
+<meta name="twitter:description" content="Problem’s Website [ZJOI2007]棋盘制作">
   
   
     <link rel="icon" href="/favicon.png">
@@ -165,7 +165,8 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h2 id="Problem’s-Website"><a href="#Problem’s-Website" class="headerlink" title="Problem’s Website"></a>Problem’s Website</h2><ul>
-<li><a href="https://www.luogu.org/problemnew/show/P1169" target="_blank" rel="noopener">[ZJOI2007]棋盘制作</a><h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2></li>
+<li><a href="https://www.luogu.org/problemnew/show/P1169" target="_blank" rel="noopener">[ZJOI2007]棋盘制作</a><a id="more"></a>
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2></li>
 <li><p>又是一个求最大矩阵和正方形的问题，方法还是dp，有个专有名词——<strong>悬线法</strong>，最普通的状态转移方程为</p>
   <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">f[i][j] = min(f[i - <span class="number">1</span>][j - <span class="number">1</span>], min(f[i - <span class="number">1</span>][j], f[i][j - <span class="number">1</span>]));</span><br></pre></td></tr></table></figure>
 <p>  而这道题要满足是一个棋盘，我们可以设Left[i][j]为i，j能到达的最左位置，Right[i][j]为i,j能到达的最右位置，up[i][j]为i,j能向上延伸的最大长度，状态转移方程为</p>
@@ -268,8 +269,8 @@
     </a>
   
   
-    <a href="/2019/07/07/ChungYiChiYuFa/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">创意吃鱼法</div>
+    <a href="/2019/07/07/DanDiaoZhan/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">单调栈</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -433,11 +434,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">LCA</a>
+                <a href="javascript:void(0)" class="js-tag color3">模拟</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">模拟</a>
+                <a href="javascript:void(0)" class="js-tag color4">LCA</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -445,11 +446,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">高精度</a>
+                <a href="javascript:void(0)" class="js-tag color3">递推</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">栈</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">高精度</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -458,14 +463,6 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">MST</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">递推</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">并查集</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -481,7 +478,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">并查集</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">最短路</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">乱搞</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -489,15 +494,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">差分</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">贪心</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">乱搞</a>
+                <a href="javascript:void(0)" class="js-tag color3">差分</a>
               </li>
              
               <li class="article-tag-list-item">

@@ -8,21 +8,21 @@
   <link rel="dns-prefetch" href="https://dyrisingsunlight.github.io">
   <title>exgcd及逆元 | Dy_RisingSunlight</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="相关题目链接：  同余方程     模板_乘法逆元  题目相关内容：数论之exgcd以及线性递推求逆元。 exgcd  基本模型，形如ax+by=c的方程，要是方程有整数解，我们可得c=gcd(a,b)，我们可以用exgcd求出其最小整数解，我们已知a,b，当b=0是，显然得a=1，我们考虑一下gcd的过程，加入当前我们已求得bx2+a%by2=gcd(a,b)的解为x2,y2,那如何得出x1,">
+  <meta name="description" content="相关题目链接：  同余方程     模板_乘法逆元">
 <meta name="keywords" content="数论">
 <meta property="og:type" content="article">
 <meta property="og:title" content="exgcd及逆元">
 <meta property="og:url" content="https://dyrisingsunlight.github.io/2019/06/27/exgcdNiYuan/index.html">
 <meta property="og:site_name" content="Dy_RisingSunlight">
-<meta property="og:description" content="相关题目链接：  同余方程     模板_乘法逆元  题目相关内容：数论之exgcd以及线性递推求逆元。 exgcd  基本模型，形如ax+by=c的方程，要是方程有整数解，我们可得c=gcd(a,b)，我们可以用exgcd求出其最小整数解，我们已知a,b，当b=0是，显然得a=1，我们考虑一下gcd的过程，加入当前我们已求得bx2+a%by2=gcd(a,b)的解为x2,y2,那如何得出x1,">
+<meta property="og:description" content="相关题目链接：  同余方程     模板_乘法逆元">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://dyrisingsunlight.github.io/2019/06/27/exgcdNiYuan/exgcd证明.jpg">
 <meta property="og:image" content="https://dyrisingsunlight.github.io/2019/06/27/exgcdNiYuan/exgcd解同余方程.jpg">
 <meta property="og:image" content="https://dyrisingsunlight.github.io/2019/06/27/exgcdNiYuan/递推逆元.jpg">
-<meta property="og:updated_time" content="2019-06-27T16:58:05.972Z">
+<meta property="og:updated_time" content="2019-07-28T12:59:37.460Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="exgcd及逆元">
-<meta name="twitter:description" content="相关题目链接：  同余方程     模板_乘法逆元  题目相关内容：数论之exgcd以及线性递推求逆元。 exgcd  基本模型，形如ax+by=c的方程，要是方程有整数解，我们可得c=gcd(a,b)，我们可以用exgcd求出其最小整数解，我们已知a,b，当b=0是，显然得a=1，我们考虑一下gcd的过程，加入当前我们已求得bx2+a%by2=gcd(a,b)的解为x2,y2,那如何得出x1,">
+<meta name="twitter:description" content="相关题目链接：  同余方程     模板_乘法逆元">
 <meta name="twitter:image" content="https://dyrisingsunlight.github.io/2019/06/27/exgcdNiYuan/exgcd证明.jpg">
   
   
@@ -173,6 +173,7 @@
 </ul>
 <p><a href="https://www.luogu.org/problemnew/show/P1082" target="_blank" rel="noopener">同余方程</a>    </p>
 <p><a href="https://www.luogu.org/problemnew/show/P3811" target="_blank" rel="noopener">模板_乘法逆元</a></p>
+<a id="more"></a>
 <ul>
 <li>题目相关内容：<strong>数论之exgcd</strong>以及<strong>线性递推求逆元</strong>。</li>
 <li><h2 id="exgcd"><a href="#exgcd" class="headerlink" title="exgcd"></a>exgcd</h2>  基本模型，形如ax+by=c的方程，要是方程有整数解，我们可得c=gcd(a,b)，我们可以用exgcd求出其最小整数解，我们已知a,b，当b=0是，显然得a=1，我们考虑一下gcd的过程，加入当前我们已求得bx2+a%by2=gcd(a,b)的解为x2,y2,那如何得出x1,y1呢？具体证明过程请见下图 <img src="/2019/06/27/exgcdNiYuan/exgcd证明.jpg" alt><br>  exgcd的时间复杂度与gcd类似，最坏情况下为θ(nlogn)</li>
@@ -449,11 +450,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">LCA</a>
+                <a href="javascript:void(0)" class="js-tag color3">模拟</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">模拟</a>
+                <a href="javascript:void(0)" class="js-tag color4">LCA</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -461,11 +462,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">高精度</a>
+                <a href="javascript:void(0)" class="js-tag color3">递推</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">栈</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">高精度</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -474,14 +479,6 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">MST</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">递推</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">并查集</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -497,7 +494,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">并查集</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">最短路</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">乱搞</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -505,15 +510,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">差分</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">贪心</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">乱搞</a>
+                <a href="javascript:void(0)" class="js-tag color3">差分</a>
               </li>
              
               <li class="article-tag-list-item">

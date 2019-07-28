@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="https://dyrisingsunlight.github.io">
   <title>SHOI2001_Panda的烦恼 | Dy_RisingSunlight</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Problem’s Website SHOI2001_Panda的烦恼Solution 这道题我们可以乱搞，用一个数组存计算的数，另一个数组存下一步要乘的数，这个方法是借鉴了洛谷首篇题解的方法。Code123456789101112131415161718192021222324252627282930313233343536373839404142#include&amp;lt;iostream&amp;gt;">
+  <meta name="description" content="Problem’s Website SHOI2001_Panda的烦恼">
 <meta name="keywords" content="乱搞">
 <meta property="og:type" content="article">
 <meta property="og:title" content="SHOI2001_Panda的烦恼">
 <meta property="og:url" content="https://dyrisingsunlight.github.io/2019/07/26/PandaDeFanNao/index.html">
 <meta property="og:site_name" content="Dy_RisingSunlight">
-<meta property="og:description" content="Problem’s Website SHOI2001_Panda的烦恼Solution 这道题我们可以乱搞，用一个数组存计算的数，另一个数组存下一步要乘的数，这个方法是借鉴了洛谷首篇题解的方法。Code123456789101112131415161718192021222324252627282930313233343536373839404142#include&amp;lt;iostream&amp;gt;">
+<meta property="og:description" content="Problem’s Website SHOI2001_Panda的烦恼">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-07-26T12:33:38.777Z">
+<meta property="og:updated_time" content="2019-07-28T13:01:40.129Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SHOI2001_Panda的烦恼">
-<meta name="twitter:description" content="Problem’s Website SHOI2001_Panda的烦恼Solution 这道题我们可以乱搞，用一个数组存计算的数，另一个数组存下一步要乘的数，这个方法是借鉴了洛谷首篇题解的方法。Code123456789101112131415161718192021222324252627282930313233343536373839404142#include&amp;lt;iostream&amp;gt;">
+<meta name="twitter:description" content="Problem’s Website SHOI2001_Panda的烦恼">
   
   
     <link rel="icon" href="/favicon.png">
@@ -165,7 +165,8 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h2 id="Problem’s-Website"><a href="#Problem’s-Website" class="headerlink" title="Problem’s Website"></a>Problem’s Website</h2><ul>
-<li><a href="https://www.luogu.org/fe/problem/P2527" target="_blank" rel="noopener">SHOI2001_Panda的烦恼</a><h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2></li>
+<li><a href="https://www.luogu.org/fe/problem/P2527" target="_blank" rel="noopener">SHOI2001_Panda的烦恼</a><a id="more"></a>
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2></li>
 <li>这道题我们可以<del>乱搞</del>，用一个数组存计算的数，另一个数组存下一步要乘的数，这个方法是借鉴了洛谷首篇题解的方法。<h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> gc getchar()</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> Maxn 100010</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">sc</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> xx=<span class="number">0</span>,ff=<span class="number">1</span>; <span class="keyword">char</span> cch;</span><br><span class="line">	<span class="keyword">while</span>(cch&lt;<span class="string">'0'</span>|| cch&gt;<span class="string">'9'</span>) &#123;</span><br><span class="line">		<span class="keyword">if</span>(cch==<span class="string">'-'</span>) ff=-ff; cch=gc;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">while</span>(cch&gt;=<span class="string">'0'</span>&amp;&amp; cch&lt;=<span class="string">'9'</span>) &#123;</span><br><span class="line">		xx=xx*<span class="number">10</span>+(cch<span class="number">-48</span>); cch=gc;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> xx*ff;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">int</span> n,k,cnt;</span><br><span class="line"><span class="keyword">int</span> a[Maxn],ans[Maxn]=&#123;<span class="number">1</span>&#125;,b[Maxn];</span><br><span class="line"><span class="keyword">namespace</span> Dy &#123;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">RPpp</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		n=sc(); k=sc();</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;=n; i++)</span><br><span class="line">			a[i]=sc();</span><br><span class="line">		<span class="keyword">while</span>(cnt&lt;k) &#123;</span><br><span class="line">			<span class="keyword">int</span> maxx=<span class="number">0x7fffffff</span>,maxi;</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;=n; i++) &#123;</span><br><span class="line">				<span class="keyword">if</span>(ans[b[i]]*a[i]&lt;maxx) &#123;</span><br><span class="line">					maxx=ans[b[i]]*a[i];</span><br><span class="line">					maxi=i;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			b[maxi]++;</span><br><span class="line">			<span class="keyword">if</span>(ans[cnt]!=maxx) ans[++cnt]=maxx;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"%d"</span>,ans[k]);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	Dy::RPpp();</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
@@ -253,18 +254,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2019/07/27/Manhattan/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2019/07/26/Hopeless/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          曼哈顿
+          绝望
         
       </div>
     </a>
   
   
-    <a href="/2019/07/26/ZiChuanBianHua/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">子串变换</div>
+    <a href="/2019/07/26/ShiZhong/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">时钟</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -428,11 +429,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">LCA</a>
+                <a href="javascript:void(0)" class="js-tag color3">模拟</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">模拟</a>
+                <a href="javascript:void(0)" class="js-tag color4">LCA</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -440,11 +441,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">高精度</a>
+                <a href="javascript:void(0)" class="js-tag color3">递推</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">栈</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">高精度</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -453,14 +458,6 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">MST</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">递推</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">并查集</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -476,7 +473,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">并查集</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">最短路</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">乱搞</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -484,15 +489,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">差分</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">贪心</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">乱搞</a>
+                <a href="javascript:void(0)" class="js-tag color3">差分</a>
               </li>
              
               <li class="article-tag-list-item">

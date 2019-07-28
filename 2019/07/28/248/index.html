@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="https://dyrisingsunlight.github.io">
   <title>248 | Dy_RisingSunlight</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Problem’s Website 248Solution 这道题是一道区间dp模板题，区间dp，根据名称，我们可以得出是在区间内做dp，一般设$f[i][j]$为左端点为$i$,右端点为$j$是的某一状态，对于这道题来说，$f[i][j]$为把$i$到$j$合并的最大值。 我们首先从大到小枚举左右端点，如果相邻两个相等，就可以合并，所以伪代码为   123456for i (n-1) ~ 1	f">
+  <meta name="description" content="Problem’s Website 248">
 <meta name="keywords" content="dp">
 <meta property="og:type" content="article">
 <meta property="og:title" content="248">
 <meta property="og:url" content="https://dyrisingsunlight.github.io/2019/07/28/248/index.html">
 <meta property="og:site_name" content="Dy_RisingSunlight">
-<meta property="og:description" content="Problem’s Website 248Solution 这道题是一道区间dp模板题，区间dp，根据名称，我们可以得出是在区间内做dp，一般设$f[i][j]$为左端点为$i$,右端点为$j$是的某一状态，对于这道题来说，$f[i][j]$为把$i$到$j$合并的最大值。 我们首先从大到小枚举左右端点，如果相邻两个相等，就可以合并，所以伪代码为   123456for i (n-1) ~ 1	f">
+<meta property="og:description" content="Problem’s Website 248">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-07-28T05:05:05.015Z">
+<meta property="og:updated_time" content="2019-07-28T12:57:37.485Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="248">
-<meta name="twitter:description" content="Problem’s Website 248Solution 这道题是一道区间dp模板题，区间dp，根据名称，我们可以得出是在区间内做dp，一般设$f[i][j]$为左端点为$i$,右端点为$j$是的某一状态，对于这道题来说，$f[i][j]$为把$i$到$j$合并的最大值。 我们首先从大到小枚举左右端点，如果相邻两个相等，就可以合并，所以伪代码为   123456for i (n-1) ~ 1	f">
+<meta name="twitter:description" content="Problem’s Website 248">
   
   
     <link rel="icon" href="/favicon.png">
@@ -165,7 +165,8 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h2 id="Problem’s-Website"><a href="#Problem’s-Website" class="headerlink" title="Problem’s Website"></a>Problem’s Website</h2><ul>
-<li><a href="https://www.luogu.org/problem/P3146" target="_blank" rel="noopener">248</a><h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2></li>
+<li><a href="https://www.luogu.org/problem/P3146" target="_blank" rel="noopener">248</a><a id="more"></a>
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2></li>
 <li>这道题是一道区间dp模板题，区间dp，根据名称，我们可以得出是在区间内做dp，一般设$f[i][j]$为左端点为$i$,右端点为$j$是的某一状态，对于这道题来说，$f[i][j]$为把$i$到$j$合并的最大值。</li>
 <li><p>我们首先从大到小枚举左右端点，如果相邻两个相等，就可以合并，所以伪代码为</p>
   <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">for i (n-1) ~ 1</span><br><span class="line">	for j (i+1) ~ n</span><br><span class="line">    	<span class="keyword">for</span> k i ~ j</span><br><span class="line">            <span class="keyword">if</span>(f[i][k] == f[k+<span class="number">1</span>][j])</span><br><span class="line">            	f[i][j] = max(~, f[i][k]+<span class="number">1</span>);</span><br><span class="line">            ans = max(~, f[i][j]);</span><br></pre></td></tr></table></figure>
@@ -258,8 +259,8 @@
 <nav id="article-nav">
   
   
-    <a href="/2019/07/27/Page/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">页面</div>
+    <a href="/2019/07/28/STBiaoMuBan/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">STBiaoMuBan</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -423,11 +424,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">LCA</a>
+                <a href="javascript:void(0)" class="js-tag color3">模拟</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">模拟</a>
+                <a href="javascript:void(0)" class="js-tag color4">LCA</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -435,11 +436,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">高精度</a>
+                <a href="javascript:void(0)" class="js-tag color3">递推</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">栈</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">高精度</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -448,14 +453,6 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">MST</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">递推</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">并查集</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -471,7 +468,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">并查集</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">最短路</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">乱搞</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -479,15 +484,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">差分</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">贪心</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">乱搞</a>
+                <a href="javascript:void(0)" class="js-tag color3">差分</a>
               </li>
              
               <li class="article-tag-list-item">

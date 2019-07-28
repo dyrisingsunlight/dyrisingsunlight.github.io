@@ -8,20 +8,20 @@
   <link rel="dns-prefetch" href="https://dyrisingsunlight.github.io">
   <title>传染病控制 | Dy_RisingSunlight</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="题目链接：传染病控制 题目思路： 第一种思路：贪心，由题意得，本题可以建模为一棵树，在每一层上切断一条边，让被感染的节点数最少。如果我们用一个数组把每个子树所包含的节点数记录下来，在每次切割时切节点数最大的节点，这其实是不对的，下图为HACK数据。 第二种思路（正解）：对于切割一条边，我们可以换一种想法，假设当前一层有x,y,z三个节点，我们要切掉x，那么y、z会被感染，那么其实z的子节点可以合">
+  <meta name="description" content="题目链接：传染病控制">
 <meta name="keywords" content="dfs">
 <meta property="og:type" content="article">
 <meta property="og:title" content="传染病控制">
 <meta property="og:url" content="https://dyrisingsunlight.github.io/2019/06/19/ChuanRanBingKongZhi/index.html">
 <meta property="og:site_name" content="Dy_RisingSunlight">
-<meta property="og:description" content="题目链接：传染病控制 题目思路： 第一种思路：贪心，由题意得，本题可以建模为一棵树，在每一层上切断一条边，让被感染的节点数最少。如果我们用一个数组把每个子树所包含的节点数记录下来，在每次切割时切节点数最大的节点，这其实是不对的，下图为HACK数据。 第二种思路（正解）：对于切割一条边，我们可以换一种想法，假设当前一层有x,y,z三个节点，我们要切掉x，那么y、z会被感染，那么其实z的子节点可以合">
+<meta property="og:description" content="题目链接：传染病控制">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://dyrisingsunlight.github.io/2019/06/19/ChuanRanBingKongZhi/0.jpg">
 <meta property="og:image" content="https://dyrisingsunlight.github.io/2019/06/19/ChuanRanBingKongZhi/1.jpg">
-<meta property="og:updated_time" content="2019-06-19T16:10:35.252Z">
+<meta property="og:updated_time" content="2019-07-28T12:57:57.584Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="传染病控制">
-<meta name="twitter:description" content="题目链接：传染病控制 题目思路： 第一种思路：贪心，由题意得，本题可以建模为一棵树，在每一层上切断一条边，让被感染的节点数最少。如果我们用一个数组把每个子树所包含的节点数记录下来，在每次切割时切节点数最大的节点，这其实是不对的，下图为HACK数据。 第二种思路（正解）：对于切割一条边，我们可以换一种想法，假设当前一层有x,y,z三个节点，我们要切掉x，那么y、z会被感染，那么其实z的子节点可以合">
+<meta name="twitter:description" content="题目链接：传染病控制">
 <meta name="twitter:image" content="https://dyrisingsunlight.github.io/2019/06/19/ChuanRanBingKongZhi/0.jpg">
   
   
@@ -168,7 +168,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <ul>
-<li>题目链接：<a href="https://www.luogu.org/problemnew/show/P1041" target="_blank" rel="noopener">传染病控制</a></li>
+<li>题目链接：<a href="https://www.luogu.org/problemnew/show/P1041" target="_blank" rel="noopener">传染病控制</a><a id="more"></a></li>
 <li>题目思路：<ul>
 <li>第一种思路：贪心，由题意得，本题可以建模为一棵树，在每一层上切断一条边，让被感染的节点数最少。如果我们用一个数组把每个子树所包含的节点数记录下来，在每次切割时切节点数最大的节点，这其实是不对的，下图为HACK数据。<br><img src="/2019/06/19/ChuanRanBingKongZhi/0.jpg" alt="0"></li>
 <li>第二种思路（正解）：对于切割一条边，我们可以换一种想法，假设当前一层有x,y,z三个节点，我们要切掉x，那么y、z会被感染，那么其实<strong>z的子节点可以合并到y上</strong>，这样就方便我们爆搜。如下图所示。<br><img src="/2019/06/19/ChuanRanBingKongZhi/1.jpg" alt="1"><br>根据数据范围，我们可以简单地用邻接矩阵来建树，具体含义见代码。</li>
@@ -260,11 +260,11 @@
   
 <nav id="article-nav">
   
-    <a href="/2019/06/21/HuanFang/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2019/06/21/BoYi/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          幻方
+          博弈
         
       </div>
     </a>
@@ -435,11 +435,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">LCA</a>
+                <a href="javascript:void(0)" class="js-tag color3">模拟</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">模拟</a>
+                <a href="javascript:void(0)" class="js-tag color4">LCA</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -447,11 +447,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">高精度</a>
+                <a href="javascript:void(0)" class="js-tag color3">递推</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">栈</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">高精度</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -460,14 +464,6 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">MST</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">递推</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">并查集</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -483,7 +479,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">并查集</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">最短路</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">乱搞</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -491,15 +495,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">差分</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">贪心</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">乱搞</a>
+                <a href="javascript:void(0)" class="js-tag color3">差分</a>
               </li>
              
               <li class="article-tag-list-item">

@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="https://dyrisingsunlight.github.io">
   <title>USACO17JAN Cow Dance Show奶牛舞蹈 | Dy_RisingSunlight</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="题目链接：USACO17JAN Cow Dance Show奶牛舞蹈  这是一道二分答案结合优先队列的题目，自我感觉对二分和贪心都有一定的帮助，毕竟是USACO的题目。。。  大体说一下题意：你有n头奶牛，要进行一场表演，表演有一定的时间限制T，每头奶牛要表演a[i]个时间，你可以要求K头奶牛同时表演，求K的最小值。  题目思路：我们不妨设二分的左右变量为奶牛同时表演的数目，同一个函数来判断当前">
+  <meta name="description" content="题目链接：USACO17JAN Cow Dance Show奶牛舞蹈  这是一道二分答案结合优先队列的题目，自我感觉对二分和贪心都有一定的帮助，毕竟是USACO的题目。。。  大体说一下题意：你有n头奶牛，要进行一场表演，表演有一定的时间限制T，每头奶牛要表演a[i]个时间，你可以要求K头奶牛同时表演，求K的最小值。">
 <meta name="keywords" content="贪心,二分答案,优先队列">
 <meta property="og:type" content="article">
 <meta property="og:title" content="USACO17JAN Cow Dance Show奶牛舞蹈">
 <meta property="og:url" content="https://dyrisingsunlight.github.io/2019/03/16/TJ_The cow dance/index.html">
 <meta property="og:site_name" content="Dy_RisingSunlight">
-<meta property="og:description" content="题目链接：USACO17JAN Cow Dance Show奶牛舞蹈  这是一道二分答案结合优先队列的题目，自我感觉对二分和贪心都有一定的帮助，毕竟是USACO的题目。。。  大体说一下题意：你有n头奶牛，要进行一场表演，表演有一定的时间限制T，每头奶牛要表演a[i]个时间，你可以要求K头奶牛同时表演，求K的最小值。  题目思路：我们不妨设二分的左右变量为奶牛同时表演的数目，同一个函数来判断当前">
+<meta property="og:description" content="题目链接：USACO17JAN Cow Dance Show奶牛舞蹈  这是一道二分答案结合优先队列的题目，自我感觉对二分和贪心都有一定的帮助，毕竟是USACO的题目。。。  大体说一下题意：你有n头奶牛，要进行一场表演，表演有一定的时间限制T，每头奶牛要表演a[i]个时间，你可以要求K头奶牛同时表演，求K的最小值。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-03-14T17:48:59.048Z">
+<meta property="og:updated_time" content="2019-07-28T13:03:56.062Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="USACO17JAN Cow Dance Show奶牛舞蹈">
-<meta name="twitter:description" content="题目链接：USACO17JAN Cow Dance Show奶牛舞蹈  这是一道二分答案结合优先队列的题目，自我感觉对二分和贪心都有一定的帮助，毕竟是USACO的题目。。。  大体说一下题意：你有n头奶牛，要进行一场表演，表演有一定的时间限制T，每头奶牛要表演a[i]个时间，你可以要求K头奶牛同时表演，求K的最小值。  题目思路：我们不妨设二分的左右变量为奶牛同时表演的数目，同一个函数来判断当前">
+<meta name="twitter:description" content="题目链接：USACO17JAN Cow Dance Show奶牛舞蹈  这是一道二分答案结合优先队列的题目，自我感觉对二分和贪心都有一定的帮助，毕竟是USACO的题目。。。  大体说一下题意：你有n头奶牛，要进行一场表演，表演有一定的时间限制T，每头奶牛要表演a[i]个时间，你可以要求K头奶牛同时表演，求K的最小值。">
   
   
     <link rel="icon" href="/favicon.png">
@@ -171,6 +171,9 @@
 </li>
 <li><p>大体说一下题意：你有n头奶牛，要进行一场表演，表演有一定的时间限制T，每头奶牛要表演a[i]个时间，你可以要求K头奶牛同时表演，求K的最小值。</p>
 </li>
+</ul>
+<a id="more"></a>
+<ul>
 <li><p>题目思路：我们不妨设二分的左右变量为<strong>奶牛同时表演的数目</strong>，同一个函数来判断当前mid是否符合题意，如果符合则缩小r，反之则扩大l，最终答案即为l。</p>
 </li>
 <li><p>但是 _<strong>判断函数</strong>_ 怎么写？</p>
@@ -289,8 +292,8 @@
     </a>
   
   
-    <a href="/2019/03/15/TJ_Uncle McDonald's problem/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">麦当劳叔叔的难题</div>
+    <a href="/2019/03/15/TJ_Postfix expression/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">后缀表达式</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -454,11 +457,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">LCA</a>
+                <a href="javascript:void(0)" class="js-tag color3">模拟</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">模拟</a>
+                <a href="javascript:void(0)" class="js-tag color4">LCA</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -466,11 +469,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">高精度</a>
+                <a href="javascript:void(0)" class="js-tag color3">递推</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">栈</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">高精度</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -479,14 +486,6 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">MST</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">递推</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">并查集</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -502,7 +501,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">并查集</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">最短路</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">乱搞</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -510,15 +517,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">差分</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">贪心</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">乱搞</a>
+                <a href="javascript:void(0)" class="js-tag color3">差分</a>
               </li>
              
               <li class="article-tag-list-item">

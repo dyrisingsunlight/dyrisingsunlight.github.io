@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="https://dyrisingsunlight.github.io">
   <title>跑路 | Dy_RisingSunlight</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Problem’s Website 跑路Solution 根据题意，是最短路问题，观察数据范围，我们可以直接使用通俗易懂、儒雅随和的Floyd。 但分析样例，发现这道题并不是简单的Floyd，要尽量使道路为2的次方倍，我们可以维护一个倍增数组f[i][j][k]，表示从i到j走2^k步能否到达，先枚举一遍图，找出可以1s到达的两点，然后再跑Floyd。Code1234567891011121314">
+  <meta name="description" content="Problem’s Website 跑路">
 <meta name="keywords" content="最短路,倍增">
 <meta property="og:type" content="article">
 <meta property="og:title" content="跑路">
 <meta property="og:url" content="https://dyrisingsunlight.github.io/2019/07/03/PaoLu/index.html">
 <meta property="og:site_name" content="Dy_RisingSunlight">
-<meta property="og:description" content="Problem’s Website 跑路Solution 根据题意，是最短路问题，观察数据范围，我们可以直接使用通俗易懂、儒雅随和的Floyd。 但分析样例，发现这道题并不是简单的Floyd，要尽量使道路为2的次方倍，我们可以维护一个倍增数组f[i][j][k]，表示从i到j走2^k步能否到达，先枚举一遍图，找出可以1s到达的两点，然后再跑Floyd。Code1234567891011121314">
+<meta property="og:description" content="Problem’s Website 跑路">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-07-03T14:10:33.443Z">
+<meta property="og:updated_time" content="2019-07-28T13:01:52.110Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="跑路">
-<meta name="twitter:description" content="Problem’s Website 跑路Solution 根据题意，是最短路问题，观察数据范围，我们可以直接使用通俗易懂、儒雅随和的Floyd。 但分析样例，发现这道题并不是简单的Floyd，要尽量使道路为2的次方倍，我们可以维护一个倍增数组f[i][j][k]，表示从i到j走2^k步能否到达，先枚举一遍图，找出可以1s到达的两点，然后再跑Floyd。Code1234567891011121314">
+<meta name="twitter:description" content="Problem’s Website 跑路">
   
   
     <link rel="icon" href="/favicon.png">
@@ -165,7 +165,8 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h3 id="Problem’s-Website"><a href="#Problem’s-Website" class="headerlink" title="Problem’s Website"></a>Problem’s Website</h3><ul>
-<li><a href="https://www.luogu.org/problemnew/show/P1613" target="_blank" rel="noopener">跑路</a><h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h3></li>
+<li><a href="https://www.luogu.org/problemnew/show/P1613" target="_blank" rel="noopener">跑路</a><a id="more"></a>
+<h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h3></li>
 <li>根据题意，是最短路问题，观察数据范围，我们可以直接使用通俗易懂、儒雅随和的Floyd。</li>
 <li>但分析样例，发现这道题并不是简单的Floyd，要尽量使道路为2的次方倍，我们可以维护一个倍增数组f[i][j][k]，表示从i到j走2^k步能否到达，先枚举一遍图，找出可以1s到达的两点，然后再跑Floyd。<h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> gc getchar()</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">sc</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> xx = <span class="number">0</span>, ff = <span class="number">1</span>; <span class="keyword">char</span> cch = gc;</span><br><span class="line">    <span class="keyword">while</span>(cch &lt; <span class="string">'0'</span> || cch &gt; <span class="string">'9'</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span>(cch == <span class="string">'-'</span>) ff = <span class="number">-1</span>; cch = gc;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span>(cch &gt;= <span class="string">'0'</span> &amp;&amp; cch &lt;= <span class="string">'9'</span>) &#123;</span><br><span class="line">        xx = (xx &lt;&lt; <span class="number">1</span>) + (xx &lt;&lt; <span class="number">3</span>) + (cch ^ <span class="string">'0'</span>); cch = gc;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> xx * ff;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">int</span> n, m;</span><br><span class="line"><span class="keyword">int</span> vis[<span class="number">60</span>][<span class="number">60</span>];</span><br><span class="line"><span class="keyword">bool</span> f[<span class="number">60</span>][<span class="number">60</span>][<span class="number">70</span>];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="built_in">memset</span>(vis, <span class="number">0x3f</span>, <span class="keyword">sizeof</span>(vis));</span><br><span class="line">    n = sc(); m = sc();</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= m; i++) &#123;</span><br><span class="line">        <span class="keyword">int</span> from = sc(), to = sc();</span><br><span class="line">        vis[from][to] = <span class="number">1</span>;</span><br><span class="line">        f[from][to][<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= <span class="number">64</span>; i++)</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= n; j++)</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> k = <span class="number">1</span>; k &lt;= n; k++)</span><br><span class="line">                <span class="keyword">for</span>(<span class="keyword">int</span> l = <span class="number">1</span>; l &lt;= n; l++)</span><br><span class="line">                    <span class="keyword">if</span>(f[j][k][i - <span class="number">1</span>] &amp;&amp; f[k][l][i - <span class="number">1</span>]) &#123;</span><br><span class="line">                        f[j][l][i] = <span class="number">1</span>;</span><br><span class="line">                        vis[j][l] = <span class="number">1</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= n; j++)</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> k = <span class="number">1</span>; k &lt;= n; k++)</span><br><span class="line">                vis[j][k] = min(vis[j][k], vis[j][i] + vis[i][k]);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, vis[<span class="number">1</span>][n]);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// dyyyyyyy</span></span><br></pre></td></tr></table></figure>
 </li>
@@ -433,11 +434,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">LCA</a>
+                <a href="javascript:void(0)" class="js-tag color3">模拟</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">模拟</a>
+                <a href="javascript:void(0)" class="js-tag color4">LCA</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -445,11 +446,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">高精度</a>
+                <a href="javascript:void(0)" class="js-tag color3">递推</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">栈</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">高精度</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -458,14 +463,6 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">MST</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">递推</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">并查集</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -481,7 +478,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">并查集</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">最短路</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">乱搞</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -489,15 +494,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">差分</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">贪心</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">乱搞</a>
+                <a href="javascript:void(0)" class="js-tag color3">差分</a>
               </li>
              
               <li class="article-tag-list-item">
