@@ -673,11 +673,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">bfs</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">二分答案</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">二分答案</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">bfs</a>
         		</li>
       		
 		</ul>
@@ -894,19 +894,19 @@
 
 
   
-    <article id="post-TJ_Postfix expression" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-TJ_logo language" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/03/15/TJ_Postfix expression/">后缀表达式</a>
+      <a class="article-title" href="/2019/03/15/TJ_logo language/">logo语言</a>
     </h1>
   
 
         
-        <a href="/2019/03/15/TJ_Postfix expression/" class="archive-article-date">
+        <a href="/2019/03/15/TJ_logo language/" class="archive-article-date">
   	<time datetime="2019-03-14T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-15</time>
 </a>
         
@@ -914,10 +914,9 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>这道题应用到了栈的思想，也相当于一个模拟过程。</p>
-<p>处理过程：扫描后缀表达式，只要遇到操作数将其进栈，遇到运算符则从栈中弹出两个操作数进行相应运算，将运算结果进栈，然后继续扫描，直到扫完位置，这时，栈底的数即为该后缀表达式的值。</p>
+        <p>这道题其实可以用纯模拟来做，把字符串看做一个算式，‘FD’相当于加，‘BK’相当于减，‘REPEAT’相当于乘，‘【】’相当于（）。<br>详细解释见代码注释。。。<br></p>
         
-          <a class="article-more-a" href="/2019/03/15/TJ_Postfix expression/#more">阅读全文 >></a>
+          <a class="article-more-a" href="/2019/03/15/TJ_logo language/#more">阅读全文 >></a>
         
       
 
@@ -933,10 +932,6 @@
         		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">模拟</a>
         		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">栈</a>
-        		</li>
       		
 		</ul>
 	</div>
@@ -945,7 +940,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2019/03/15/TJ_Postfix expression/">展开全文 >></a>
+          <a class="article-more-a" href="/2019/03/15/TJ_logo language/">展开全文 >></a>
         </p>
       
 
@@ -1095,15 +1090,11 @@ MathJax.Hub.Queue(function() {
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">dp</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">LCA</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">模拟</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">dp</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1111,11 +1102,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">dfs</a>
+                <a href="javascript:void(0)" class="js-tag color4">LCA</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">栈</a>
+                <a href="javascript:void(0)" class="js-tag color4">dfs</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1127,15 +1118,19 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">栈</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">递推</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">并查集</a>
+                <a href="javascript:void(0)" class="js-tag color3">分块</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">分块</a>
+                <a href="javascript:void(0)" class="js-tag color4">并查集</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1151,11 +1146,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">最短路</a>
+                <a href="javascript:void(0)" class="js-tag color3">分治</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">分治</a>
+                <a href="javascript:void(0)" class="js-tag color4">最短路</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1163,11 +1158,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">倍增</a>
+                <a href="javascript:void(0)" class="js-tag color3">贪心</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">贪心</a>
+                <a href="javascript:void(0)" class="js-tag color3">倍增</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1195,15 +1190,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">bfs</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">二分答案</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">优先队列</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">bfs</a>
               </li>
              
               <li class="article-tag-list-item">
