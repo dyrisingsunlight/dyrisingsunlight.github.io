@@ -1,12 +1,6 @@
 <!DOCTYPE html>
 <html>
 <head><meta name="generator" content="Hexo 3.8.0">
-  
-  
-  <link rel="stylesheet" href="/lib/gitalk/gitalk.css">
-  <script src="/lib/gitalk/gitalk.min.js"></script>
-
-
   <meta charset="utf-8">
   
   <meta name="renderer" content="webkit">
@@ -260,18 +254,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2019/07/03/SeBanYouXi/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2019/07/03/PaoLu/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          色板游戏
+          跑路
         
       </div>
     </a>
   
   
-    <a href="/2019/06/30/TangGuo/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">糖果</div>
+    <a href="/2019/06/30/MobileService/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Mobile Service</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -318,24 +312,21 @@
   
 
   
-<div class="gitalk">
-    <div id="gitalk-container"></div>
-    <script type="text/javascript">
-        const gitalk = new Gitalk({
-            clientID: 'c9ff84d9d599b03ffa61',
-            clientSecret: '1e119278d27fbbf16db7d3a7dfbcd8154ffb1ea1',
-            repo: 'dyrisingsunlight.github.io',
-            owner: 'dyrisingsunlight',
-            admin: ['dyrisingsunlight'],
-            id: location.pathname,      // Ensure uniqueness and length less than 50
-            distractionFreeMode: false  // Facebook-like distraction free mode
-        })
-
-        gitalk.render('gitalk-container')
-    </script>
-</div>
-
-  
+  <div id="gitment-ctn"></div> 
+<link rel="stylesheet" href="//imsun.github.io/gitment/style/default.css">
+<script src="//imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+var gitment = new Gitment({
+  id: "https://dyrisingsunlight.github.io/2019/07/02/PowerStrings/",
+  owner: 'dyrisingsunlight',
+  repo: 'dyrisingsunlight.github.io',
+  oauth: {
+    client_id: 'c9ff84d9d599b03ffa61',
+    client_secret: '1e119278d27fbbf16db7d3a7dfbcd8154ffb1ea1',
+  },
+})
+gitment.render('gitment-ctn')
+</script>
   
 
           </div>
@@ -493,11 +484,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">状压</a>
+                <a href="javascript:void(0)" class="js-tag color5">树状数组</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">树状数组</a>
+                <a href="javascript:void(0)" class="js-tag color3">状压</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -513,6 +504,10 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">差分</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">贪心</a>
               </li>
              
@@ -525,7 +520,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">差分</a>
+                <a href="javascript:void(0)" class="js-tag color5">树链剖分</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -533,11 +528,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">树链剖分</a>
+                <a href="javascript:void(0)" class="js-tag color5">树上差分</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">树上差分</a>
+                <a href="javascript:void(0)" class="js-tag color3">拓扑</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -554,10 +549,6 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">bfs</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">拓扑</a>
               </li>
              
               <li class="article-tag-list-item">
