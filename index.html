@@ -374,6 +374,117 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://dyrisingsunlight.github.io/2019/08/02/LvXIng/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="dy.">
+      <meta itemprop="description" content="路漫漫其修远兮，吾将上下而求索。">
+      <meta itemprop="image" content="/images/touxiang.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Dy_RisingSunlight">
+    </span>
+      <header class="post-header">
+
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/08/02/LvXIng/" class="post-title-link" itemprop="url">SDOI_2014旅行</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-08-02 00:00:00 / 修改时间：03:38:06" itemprop="dateCreated datePublished" datetime="2019-08-02T00:00:00+08:00">2019-08-02</time>
+            </span>
+          
+            
+
+            
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/学习笔记/" itemprop="url" rel="index"><span itemprop="name">学习笔记</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          <br>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          
+            <h2 id="Problem’s-Website"><a href="#Problem’s-Website" class="headerlink" title="Problem’s Website"></a>Problem’s Website</h2><p><a href="https://www.luogu.org/problem/P3313" target="_blank" rel="noopener">SDOI_2014旅行</a></p>
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>这道题考察了两个知识点，一个是<strong>树链剖分</strong>，另一个是<strong>动态开点线段树</strong>。</p>
+<p><strong>树剖</strong>不会的同学请点击<a href="https://dyrisingsunlight.github.io/2019/07/29/QianTanShuLianPouFen/">这</a></p>
+<p>我们着重来讲一下<strong>动态开点线段树</strong></p>
+<p>首先我们知道要开一个普通的线段树至少需要元素个数的$4$倍，对于这道题，如果对每一个宗教都开一个线段树显然不行，我们要对线段树进行改变，只保留树上有用的节点，单独用两个数组存左右儿子，查询时，遇到空区就直接返回，下面是两个图，可以帮助大家理解($Drawn$ $by$ $zyb$)</p>
+<blockquote>
+<p>修改9<br>    <img src="/2019/08/02/LvXIng/0.png" alt></p>
+<p>再修改6<br>    <img src="/2019/08/02/LvXIng/1.png" alt></p>
+</blockquote>
+<p>但这种线段树的空间要开操作数的$40$倍，还是要慎用的。</p>
+<p>修改函数两个，一个是把原来的去掉，另一个是加上新的内容，请读者根据$code$自行理解。。。</p>
+<h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> gc getchar()</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> pc(x) putchar(x)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> re register</span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> Maxn = <span class="number">1e5</span> + <span class="number">10</span>;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">sc</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> xx = <span class="number">0</span>, ff = <span class="number">1</span>; <span class="keyword">char</span> cch = gc;</span><br><span class="line">    <span class="keyword">while</span>(!<span class="built_in">isdigit</span>(cch)) &#123;</span><br><span class="line">        <span class="keyword">if</span>(cch == <span class="string">'-'</span>) ff = <span class="number">-1</span>; cch = gc;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span>(<span class="built_in">isdigit</span>(cch)) &#123;</span><br><span class="line">        xx = (xx &lt;&lt; <span class="number">1</span>) + (xx &lt;&lt; <span class="number">3</span>) + (cch ^ <span class="string">'0'</span>); cch = gc;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> xx * ff;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">out</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(x &lt; <span class="number">0</span>) pc(<span class="string">'-'</span>), x = -x;</span><br><span class="line">    <span class="keyword">if</span>(x &gt;= <span class="number">10</span>)</span><br><span class="line">        out(x / <span class="number">10</span>);</span><br><span class="line">    pc(x % <span class="number">10</span> + <span class="string">'0'</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">node</span> &#123;</span></span><br><span class="line">	<span class="keyword">int</span> next, to;</span><br><span class="line">&#125;t[Maxn &lt;&lt; <span class="number">1</span>];</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">LST</span> &#123;</span></span><br><span class="line">	<span class="keyword">int</span> sum, maxx, l, r;</span><br><span class="line">&#125;lst[Maxn * <span class="number">40</span>];</span><br><span class="line"><span class="keyword">int</span> n, m, cnt, len;</span><br><span class="line"><span class="keyword">int</span> w[Maxn], c[Maxn], head[Maxn], root[Maxn];</span><br><span class="line"><span class="keyword">int</span> siz[Maxn], top[Maxn], fa[Maxn], dep[Maxn], son[Maxn], id[Maxn];</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">ADD</span><span class="params">(<span class="keyword">int</span> from, <span class="keyword">int</span> to)</span> </span>&#123;</span><br><span class="line">	t[++cnt].next = head[from];</span><br><span class="line">	t[cnt].to = to;</span><br><span class="line">	head[from] = cnt;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">dfs1</span><span class="params">(<span class="keyword">int</span> now, <span class="keyword">int</span> Fa, <span class="keyword">int</span> Dep)</span> </span>&#123;</span><br><span class="line">	fa[now] = Fa;</span><br><span class="line">	dep[now] = Dep;</span><br><span class="line">	siz[now] = <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span>(re <span class="keyword">int</span> i = head[now]; i; i = t[i].next) &#123;</span><br><span class="line">		<span class="keyword">int</span> to = t[i].to;</span><br><span class="line">		<span class="keyword">if</span>(to == Fa) <span class="keyword">continue</span>;</span><br><span class="line">		dfs1(to, now, Dep + <span class="number">1</span>);</span><br><span class="line">		siz[now] += siz[to];</span><br><span class="line">		<span class="keyword">if</span>(siz[son[now]] &lt; siz[to])</span><br><span class="line">			son[now] = to;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">dfs2</span><span class="params">(<span class="keyword">int</span> now, <span class="keyword">int</span> topf)</span> </span>&#123;</span><br><span class="line">	id[now] = ++cnt;</span><br><span class="line"><span class="comment">//	rid[cnt] = now;</span></span><br><span class="line">	top[now] = topf;</span><br><span class="line">	<span class="keyword">if</span>(!son[now]) <span class="keyword">return</span>;</span><br><span class="line">	dfs2(son[now], topf);</span><br><span class="line">	<span class="keyword">for</span>(re <span class="keyword">int</span> i = head[now]; i; i = t[i].next) &#123;</span><br><span class="line">		<span class="keyword">int</span> to = t[i].to;</span><br><span class="line">		<span class="keyword">if</span>(to == son[now] || to == fa[now]) <span class="keyword">continue</span>;</span><br><span class="line">		dfs2(to, to);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">modify</span><span class="params">(<span class="keyword">int</span> &amp;k, <span class="keyword">int</span> l, <span class="keyword">int</span> r, <span class="keyword">int</span> x, <span class="keyword">int</span> z)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(!k) k = ++len;</span><br><span class="line">	lst[k].maxx = <span class="built_in">std</span> :: max(lst[k].maxx, z), lst[k].sum += z;</span><br><span class="line">	<span class="keyword">if</span>(l == r) <span class="keyword">return</span>;</span><br><span class="line">	<span class="keyword">int</span> mid = l + r &gt;&gt; <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">if</span>(x &lt;= mid) modify(lst[k].l, l, mid, x, z);</span><br><span class="line">	<span class="keyword">else</span> modify(lst[k].r, mid + <span class="number">1</span>, r, x, z);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">push</span><span class="params">(<span class="keyword">int</span> &amp;k, <span class="keyword">int</span> l, <span class="keyword">int</span> r, <span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(l == r) &#123;</span><br><span class="line">		lst[k].maxx = lst[k].sum = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">int</span> mid = l + r &gt;&gt; <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">if</span>(x &lt;= mid) push(lst[k].l, l, mid, x);</span><br><span class="line">	<span class="keyword">else</span> push(lst[k].r, mid + <span class="number">1</span>, r, x);</span><br><span class="line">	lst[k].maxx = <span class="built_in">std</span> :: max(lst[lst[k].l].maxx, lst[lst[k].r].maxx);</span><br><span class="line">	lst[k].sum = lst[lst[k].l].sum + lst[lst[k].r].sum;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">querymax</span><span class="params">(<span class="keyword">int</span> k, <span class="keyword">int</span> l, <span class="keyword">int</span> r, <span class="keyword">int</span> x, <span class="keyword">int</span> y)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(x &gt; r || l &gt; y) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">if</span>(x &lt;= l &amp;&amp; r &lt;= y) &#123;</span><br><span class="line">		<span class="keyword">return</span> lst[k].maxx;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">int</span> mid = l + r &gt;&gt; <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">return</span> <span class="built_in">std</span> :: max(querymax(lst[k].l, l, mid, x, y), querymax(lst[k].r, mid + <span class="number">1</span>, r, x, y));</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">querysum</span><span class="params">(<span class="keyword">int</span> k, <span class="keyword">int</span> l, <span class="keyword">int</span> r, <span class="keyword">int</span> x, <span class="keyword">int</span> y)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(x &gt; r || l &gt; y) <span class="keyword">return</span> <span class="number">0</span>;  <span class="comment">//y &lt; l || x &gt; r</span></span><br><span class="line">	<span class="keyword">if</span>(x &lt;= l &amp;&amp; r &lt;= y) &#123; <span class="comment">//y &gt;= r &amp;&amp; x &lt;= l  xlry</span></span><br><span class="line">		<span class="keyword">return</span> lst[k].sum;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">int</span> mid = l + r &gt;&gt; <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">return</span> querysum(lst[k].l, l, mid, x, y) + querysum(lst[k].r, mid + <span class="number">1</span>, r, x, y);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">qymax</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y, <span class="keyword">int</span> cc)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> ans = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">while</span>(top[x] != top[y]) &#123;</span><br><span class="line">		<span class="keyword">if</span>(dep[top[x]] &lt; dep[top[y]]) <span class="built_in">std</span> :: swap(x, y);</span><br><span class="line">		ans = <span class="built_in">std</span> :: max(ans, querymax(root[cc], <span class="number">1</span>, n, id[top[x]], id[x]));</span><br><span class="line">		x = fa[top[x]];</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span>(dep[x] &gt; dep[y]) <span class="built_in">std</span> :: swap(x, y);</span><br><span class="line">	ans = <span class="built_in">std</span> :: max(ans, querymax(root[cc], <span class="number">1</span>, n, id[x], id[y]));</span><br><span class="line">	<span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">qysum</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y, <span class="keyword">int</span> cc)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> ans = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">while</span>(top[x] != top[y]) &#123;</span><br><span class="line">		<span class="keyword">if</span>(dep[top[x]] &lt; dep[top[y]]) <span class="built_in">std</span> :: swap(x, y);</span><br><span class="line">		ans += querysum(root[cc], <span class="number">1</span>, n, id[top[x]], id[x]);</span><br><span class="line">		x = fa[top[x]];</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span>(dep[x] &gt; dep[y]) <span class="built_in">std</span> :: swap(x, y);</span><br><span class="line">	ans += querysum(root[cc], <span class="number">1</span>, n, id[x], id[y]);</span><br><span class="line">	<span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	n = sc(), m = sc();</span><br><span class="line">	<span class="keyword">for</span>(re <span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i)</span><br><span class="line">		w[i] = sc(), c[i] = sc();</span><br><span class="line">	<span class="keyword">for</span>(re <span class="keyword">int</span> i = <span class="number">1</span>; i &lt; n; ++i) &#123;</span><br><span class="line">		<span class="keyword">int</span> x = sc(), y = sc();</span><br><span class="line">		ADD(x, y), ADD(y, x);</span><br><span class="line">	&#125;</span><br><span class="line">	cnt = <span class="number">0</span>;</span><br><span class="line">	dfs1(<span class="number">1</span>, <span class="number">0</span>, <span class="number">1</span>), dfs2(<span class="number">1</span>, <span class="number">1</span>);</span><br><span class="line">	<span class="keyword">for</span>(re <span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i)</span><br><span class="line">		modify(root[c[i]], <span class="number">1</span>, n, id[i], w[i]);</span><br><span class="line">	<span class="keyword">while</span>(m--) &#123;</span><br><span class="line">		<span class="keyword">char</span> ccc[<span class="number">5</span>];</span><br><span class="line">		<span class="built_in">std</span> :: <span class="built_in">cin</span> &gt;&gt; ccc;</span><br><span class="line">		<span class="keyword">int</span> x = sc(), y = sc();</span><br><span class="line">		<span class="keyword">if</span>(ccc[<span class="number">0</span>] == <span class="string">'C'</span>) &#123;</span><br><span class="line">			<span class="keyword">if</span>(ccc[<span class="number">1</span>] == <span class="string">'C'</span>) &#123;</span><br><span class="line"><span class="comment">//				std :: cerr &lt;&lt; root[c[x]] &lt;&lt; std :: endl;</span></span><br><span class="line">				push(root[c[x]], <span class="number">1</span>, n, id[x]);</span><br><span class="line">				modify(root[y], <span class="number">1</span>, n, id[x], w[x]);</span><br><span class="line">				c[x] = y;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span> &#123;</span><br><span class="line"><span class="comment">//				std :: cerr &lt;&lt; root[c[x]] &lt;&lt; std :: endl;</span></span><br><span class="line">				push(root[c[x]], <span class="number">1</span>, n, id[x]);</span><br><span class="line">				modify(root[c[x]], <span class="number">1</span>, n, id[x], y);</span><br><span class="line">				w[x] = y;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span> &#123;</span><br><span class="line">			<span class="keyword">if</span>(ccc[<span class="number">1</span>] == <span class="string">'S'</span>) &#123;</span><br><span class="line">				out(qysum(x, y, c[x])), pc(<span class="string">'\n'</span>);</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span> &#123;</span><br><span class="line">				out(qymax(x, y, c[x])), pc(<span class="string">'\n'</span>);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// Coded by dy.</span></span><br></pre></td></tr></table></figure>
+<p><strong>rp++</strong></p>
+
+          
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+    
+      
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://dyrisingsunlight.github.io/2019/08/01/2019SDSC游记/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -480,7 +591,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://dyrisingsunlight.github.io/2019/07/30/RanSe/">
+    <link itemprop="mainEntityOfPage" href="https://dyrisingsunlight.github.io/2019/07/30/RuanJianBaoGuanLiQi/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="dy.">
@@ -497,7 +608,7 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/2019/07/30/RanSe/" class="post-title-link" itemprop="url">SDOI_2011染色</a>
+                <a href="/2019/07/30/RuanJianBaoGuanLiQi/" class="post-title-link" itemprop="url">NOI2015_软件包管理器</a>
               
             
           </h1>
@@ -529,7 +640,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-08-01 22:17:05" itemprop="dateModified" datetime="2019-08-01T22:17:05+08:00">2019-08-01</time>
+                <time title="修改时间：2019-08-01 22:17:08" itemprop="dateModified" datetime="2019-08-01T22:17:08+08:00">2019-08-01</time>
               </span>
             
           
@@ -560,12 +671,15 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id="Problems-Website"><a href="#Problems-Website" class="headerlink" title="Problems Website"></a>Problems Website</h2><ul>
-<li><a href="https://www.luogu.org/problem/P2486" target="_blank" rel="noopener">SDOI_2011染色</a></li></ul>
+          <h2 id="Problem’s-Website"><a href="#Problem’s-Website" class="headerlink" title="Problem’s Website"></a>Problem’s Website</h2><ul>
+<li><a href="https://www.luogu.org/problem/P2146" target="_blank" rel="noopener">NOI_2015软件包管理器</a><h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2></li>
+<li>一道经典的树链剖分题，我们把有依赖关系的软件包用树联系起来，对其进行树剖，设1为已安装，0为未安装，赋值前统计1的个数，赋值后取差值即可。</li>
+<li>这道题正解是线段树维护，但本菜鸡为了复习ODT，于是就开O2写了个ODT过了这道题。。。</li>
+<li>这道题用ODT维护和线段树差不多，核心就是assign函数，也是ODT复杂度的保证。</li></ul>
           <!--noindex-->
           
             <div class="post-button text-center">
-              <a class="btn" href="/2019/07/30/RanSe/#more" rel="contents">
+              <a class="btn" href="/2019/07/30/RuanJianBaoGuanLiQi/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -713,7 +827,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://dyrisingsunlight.github.io/2019/07/30/RuanJianBaoGuanLiQi/">
+    <link itemprop="mainEntityOfPage" href="https://dyrisingsunlight.github.io/2019/07/30/RanSe/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="dy.">
@@ -730,7 +844,7 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/2019/07/30/RuanJianBaoGuanLiQi/" class="post-title-link" itemprop="url">NOI2015_软件包管理器</a>
+                <a href="/2019/07/30/RanSe/" class="post-title-link" itemprop="url">SDOI_2011染色</a>
               
             
           </h1>
@@ -762,7 +876,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-08-01 22:17:08" itemprop="dateModified" datetime="2019-08-01T22:17:08+08:00">2019-08-01</time>
+                <time title="修改时间：2019-08-01 22:17:05" itemprop="dateModified" datetime="2019-08-01T22:17:05+08:00">2019-08-01</time>
               </span>
             
           
@@ -793,15 +907,12 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id="Problem’s-Website"><a href="#Problem’s-Website" class="headerlink" title="Problem’s Website"></a>Problem’s Website</h2><ul>
-<li><a href="https://www.luogu.org/problem/P2146" target="_blank" rel="noopener">NOI_2015软件包管理器</a><h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2></li>
-<li>一道经典的树链剖分题，我们把有依赖关系的软件包用树联系起来，对其进行树剖，设1为已安装，0为未安装，赋值前统计1的个数，赋值后取差值即可。</li>
-<li>这道题正解是线段树维护，但本菜鸡为了复习ODT，于是就开O2写了个ODT过了这道题。。。</li>
-<li>这道题用ODT维护和线段树差不多，核心就是assign函数，也是ODT复杂度的保证。</li></ul>
+          <h2 id="Problems-Website"><a href="#Problems-Website" class="headerlink" title="Problems Website"></a>Problems Website</h2><ul>
+<li><a href="https://www.luogu.org/problem/P2486" target="_blank" rel="noopener">SDOI_2011染色</a></li></ul>
           <!--noindex-->
           
             <div class="post-button text-center">
-              <a class="btn" href="/2019/07/30/RuanJianBaoGuanLiQi/#more" rel="contents">
+              <a class="btn" href="/2019/07/30/RanSe/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -1297,122 +1408,6 @@
   </article>
 
     
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://dyrisingsunlight.github.io/2019/07/27/ShuZhuangShuZuQuJianXiuGaiQuJianChaXun/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="dy.">
-      <meta itemprop="description" content="路漫漫其修远兮，吾将上下而求索。">
-      <meta itemprop="image" content="/images/touxiang.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Dy_RisingSunlight">
-    </span>
-      <header class="post-header">
-
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/07/27/ShuZhuangShuZuQuJianXiuGaiQuJianChaXun/" class="post-title-link" itemprop="url">树状数组区间修改区间查询</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2019-07-27 00:00:00" itemprop="dateCreated datePublished" datetime="2019-07-27T00:00:00+08:00">2019-07-27</time>
-            </span>
-          
-            
-
-            
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-08-01 22:17:30" itemprop="dateModified" datetime="2019-08-01T22:17:30+08:00">2019-08-01</time>
-              </span>
-            
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/学习笔记/" itemprop="url" rel="index"><span itemprop="name">学习笔记</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          <br>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="相关题目链接"><a href="#相关题目链接" class="headerlink" title="相关题目链接"></a>相关题目链接</h2><ul>
-<li><a href="https://www.luogu.org/problem/P3372" target="_blank" rel="noopener">线段树1</a></li></ul>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/2019/07/27/ShuZhuangShuZuQuJianXiuGaiQuJianChaXun/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-    
   </section>
 
   
@@ -1451,7 +1446,7 @@
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">75</span>
+          <span class="site-state-item-count">76</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1551,7 +1546,9 @@
         
           
         
-        <span class="site-state-item-count">31</span>
+          
+        
+        <span class="site-state-item-count">32</span>
         <span class="site-state-item-name">标签</span>
         </a>
       </div>
@@ -1599,7 +1596,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共47.3k字</span>
+  <span class="post-count">博客全站共48.4k字</span>
 </div>
         
 
