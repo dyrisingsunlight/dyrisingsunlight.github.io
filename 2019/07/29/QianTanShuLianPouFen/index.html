@@ -4,7 +4,7 @@
 
 
 
-<html class="theme-next pisces use-motion" lang="zh-Hans">
+<html class="theme-next gemini use-motion" lang="zh-Hans">
 <head>
   <meta charset="UTF-8">
 <meta name="generator" content="Hexo 3.8.0">
@@ -31,7 +31,7 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Pisces',
+    scheme: 'Gemini',
     version: '7.3.0',
     sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
     back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
@@ -77,7 +77,7 @@
 <meta property="og:image" content="https://dyrisingsunlight.github.io/2019/07/29/QianTanShuLianPouFen/4.png">
 <meta property="og:image" content="https://dyrisingsunlight.github.io/2019/07/29/QianTanShuLianPouFen/6.png">
 <meta property="og:image" content="https://dyrisingsunlight.github.io/2019/07/29/QianTanShuLianPouFen/7.png">
-<meta property="og:updated_time" content="2019-08-01T18:08:09.013Z">
+<meta property="og:updated_time" content="2019-08-02T03:18:49.531Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="浅谈树链剖分">
 <meta name="twitter:description" content="Problem’s Website 模板_树链剖分 ZHOI2008_树的统计Solution 树链剖分前置知识： 线段树 树的dfs遍历   以上内容不会的同学可以先去学习一下，特别是线段树，我的其他几篇Blog有对其的介绍。">
@@ -317,7 +317,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-08-02 02:08:09" itemprop="dateModified" datetime="2019-08-02T02:08:09+08:00">2019-08-02</time>
+                <time title="修改时间：2019-08-02 11:18:49" itemprop="dateModified" datetime="2019-08-02T11:18:49+08:00">2019-08-02</time>
               </span>
             
           
@@ -430,7 +430,9 @@
 <p>证明：显然每条重路径的起点和终点都是由轻边构成，由性质$2$可知，每个点到根节点的轻边数量为$log n$，所以重路径数量也为$log n$。</p>
 </blockquote>
 <p>树链剖分的时间复杂度及其证明：</p>
+<blockquote>
 <p>对一棵树进行分链后，对于路径$(u,v)$,我们可以分别处理$u,v$两点到其$LCA$的路径，根据性质$3$，路径最多分解成$log n$条重路径和$log n$条轻边，对于重路径，我们可以用一棵线段树来维护，对于轻边，我们直接跳过，访问下一条重路径，因为轻边的两端点一定在两条重路径上，这两种操作的时间复杂度分别为$\Theta(log^2n)$和$\Theta(logn)$，总复杂度为$\Theta(log^2n)$</p>
+</blockquote>
 </blockquote>
 <h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><ul>
 <li><p>T1</p>
@@ -457,8 +459,8 @@
         </div>
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
-              <a href="/2019/07/28/STBiaoMuBan/" rel="next" title="ST表模板">
-                <i class="fa fa-chevron-left"></i> ST表模板
+              <a href="/2019/07/28/248/" rel="next" title="248">
+                <i class="fa fa-chevron-left"></i> 248
               </a>
             
           </div>
@@ -466,8 +468,8 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-              <a href="/2019/07/30/RuanJianBaoGuanLiQi/" rel="prev" title="NOI2015_软件包管理器">
-                NOI2015_软件包管理器 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/07/30/RanSe/" rel="prev" title="SDOI_2011染色">
+                SDOI_2011染色 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -689,7 +691,7 @@
 </div>
   <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
   <span class="post-meta-divider">|</span>
-  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.3.0</div>
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.3.0</div>
 
 <div class="theme-info">
   <div class="powered-by"></div>
@@ -732,6 +734,7 @@
   
   <script src="/js/affix.js?v=7.3.0"></script>
   <script src="/js/schemes/pisces.js?v=7.3.0"></script>
+
 
 
   

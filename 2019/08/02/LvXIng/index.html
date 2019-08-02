@@ -4,7 +4,7 @@
 
 
 
-<html class="theme-next pisces use-motion" lang="zh-Hans">
+<html class="theme-next gemini use-motion" lang="zh-Hans">
 <head>
   <meta charset="UTF-8">
 <meta name="generator" content="Hexo 3.8.0">
@@ -31,7 +31,7 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Pisces',
+    scheme: 'Gemini',
     version: '7.3.0',
     sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
     back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
@@ -62,20 +62,20 @@
   };
 </script>
 
-  <meta name="description" content="Problem’s WebsiteSDOI_2014旅行 Solution这道题考察了两个知识点，一个是树链剖分，另一个是动态开点线段树。 树剖不会的同学请点击这 我们着重来讲一下动态开点线段树 首先我们知道要开一个普通的线段树至少需要元素个数的$4$倍，对于这道题，如果对每一个宗教都开一个线段树显然不行，我们要对线段树进行改变，只保留树上有用的节点，单独用两个数组存左右儿子，查询时，遇到空区就直">
+  <meta name="description" content="Problem’s WebsiteSDOI_2014旅行 Solution这道题考察了两个知识点，一个是树链剖分，另一个是动态开点线段树。 树剖不会的同学请点击这">
 <meta name="keywords" content="树链剖分,动态开点线段树">
 <meta property="og:type" content="article">
 <meta property="og:title" content="SDOI_2014旅行">
 <meta property="og:url" content="https://dyrisingsunlight.github.io/2019/08/02/LvXIng/index.html">
 <meta property="og:site_name" content="Dy_RisingSunlight">
-<meta property="og:description" content="Problem’s WebsiteSDOI_2014旅行 Solution这道题考察了两个知识点，一个是树链剖分，另一个是动态开点线段树。 树剖不会的同学请点击这 我们着重来讲一下动态开点线段树 首先我们知道要开一个普通的线段树至少需要元素个数的$4$倍，对于这道题，如果对每一个宗教都开一个线段树显然不行，我们要对线段树进行改变，只保留树上有用的节点，单独用两个数组存左右儿子，查询时，遇到空区就直">
+<meta property="og:description" content="Problem’s WebsiteSDOI_2014旅行 Solution这道题考察了两个知识点，一个是树链剖分，另一个是动态开点线段树。 树剖不会的同学请点击这">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://dyrisingsunlight.github.io/2019/08/02/LvXIng/0.png">
 <meta property="og:image" content="https://dyrisingsunlight.github.io/2019/08/02/LvXIng/1.png">
-<meta property="og:updated_time" content="2019-08-01T19:38:06.142Z">
+<meta property="og:updated_time" content="2019-08-02T03:19:10.535Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SDOI_2014旅行">
-<meta name="twitter:description" content="Problem’s WebsiteSDOI_2014旅行 Solution这道题考察了两个知识点，一个是树链剖分，另一个是动态开点线段树。 树剖不会的同学请点击这 我们着重来讲一下动态开点线段树 首先我们知道要开一个普通的线段树至少需要元素个数的$4$倍，对于这道题，如果对每一个宗教都开一个线段树显然不行，我们要对线段树进行改变，只保留树上有用的节点，单独用两个数组存左右儿子，查询时，遇到空区就直">
+<meta name="twitter:description" content="Problem’s WebsiteSDOI_2014旅行 Solution这道题考察了两个知识点，一个是树链剖分，另一个是动态开点线段树。 树剖不会的同学请点击这">
 <meta name="twitter:image" content="https://dyrisingsunlight.github.io/2019/08/02/LvXIng/0.png">
   <link rel="canonical" href="https://dyrisingsunlight.github.io/2019/08/02/LvXIng/">
 
@@ -299,7 +299,7 @@
                 
               
 
-              <time title="创建时间：2019-08-02 00:00:00 / 修改时间：03:38:06" itemprop="dateCreated datePublished" datetime="2019-08-02T00:00:00+08:00">2019-08-02</time>
+              <time title="创建时间：2019-08-02 00:00:00 / 修改时间：11:19:10" itemprop="dateCreated datePublished" datetime="2019-08-02T00:00:00+08:00">2019-08-02</time>
             </span>
           
             
@@ -336,6 +336,7 @@
         <h2 id="Problem’s-Website"><a href="#Problem’s-Website" class="headerlink" title="Problem’s Website"></a>Problem’s Website</h2><p><a href="https://www.luogu.org/problem/P3313" target="_blank" rel="noopener">SDOI_2014旅行</a></p>
 <h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>这道题考察了两个知识点，一个是<strong>树链剖分</strong>，另一个是<strong>动态开点线段树</strong>。</p>
 <p><strong>树剖</strong>不会的同学请点击<a href="https://dyrisingsunlight.github.io/2019/07/29/QianTanShuLianPouFen/">这</a></p>
+<a id="more"></a>
 <p>我们着重来讲一下<strong>动态开点线段树</strong></p>
 <p>首先我们知道要开一个普通的线段树至少需要元素个数的$4$倍，对于这道题，如果对每一个宗教都开一个线段树显然不行，我们要对线段树进行改变，只保留树上有用的节点，单独用两个数组存左右儿子，查询时，遇到空区就直接返回，下面是两个图，可以帮助大家理解($Drawn$ $by$ $zyb$)</p>
 <blockquote>
@@ -592,7 +593,7 @@
 </div>
   <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
   <span class="post-meta-divider">|</span>
-  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.3.0</div>
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.3.0</div>
 
 <div class="theme-info">
   <div class="powered-by"></div>
@@ -635,6 +636,7 @@
   
   <script src="/js/affix.js?v=7.3.0"></script>
   <script src="/js/schemes/pisces.js?v=7.3.0"></script>
+
 
 
   
