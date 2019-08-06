@@ -374,6 +374,128 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://dyrisingsunlight.github.io/2019/08/06/运输计划/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="dy.">
+      <meta itemprop="description" content="路漫漫其修远兮，吾将上下而求索。">
+      <meta itemprop="image" content="/images/touxiang.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Dy_RisingSunlight">
+    </span>
+      <header class="post-header">
+
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/08/06/运输计划/" class="post-title-link" itemprop="url">运输计划</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-08-06 00:00:00 / 修改时间：22:17:44" itemprop="dateCreated datePublished" datetime="2019-08-06T00:00:00+08:00">2019-08-06</time>
+            </span>
+          
+            
+
+            
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/题解/" itemprop="url" rel="index"><span itemprop="name">题解</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          <br>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          
+            <h2 id="Problem’s-Website"><a href="#Problem’s-Website" class="headerlink" title="Problem’s Website"></a>Problem’s Website</h2><p><a href="https://www.luogu.org/problem/P2680" target="_blank" rel="noopener">运输计划</a></p>
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>首先这是一道NOIP的<strong>压轴题</strong>。</p>
+<p>题面好长啊，不少废话，<strong>一句话题意</strong>：</p>
+<p>给定一棵树和m个任务（从$u$点到$v$点），可以使树上的<strong>一条边边权为0</strong>，让这m个任务中边权之和的<strong>最大值最小</strong>。</p>
+<p><strong>最大值最小?</strong> 那岂不是可以……  <img src="/2019/08/06/运输计划/0.jpg" alt></p>
+<p>没错，我们可以<strong>二分答案</strong>。</p>
+<p>那怎样检查答案的正确性呢？</p>
+<p>我们不妨现将每个任务的权值和求出来，然后<strong>升序</strong>排序，如果<strong>当前的mid比最大值还大</strong>，那显然没有意义，在有意义的情况下，我们从小到大进行<strong>树上差分</strong>，最后枚举判断一下每一条边是否可以减少，判断一下如果<strong>修改后的最大值不大于当前mid</strong>,说明权值还可以缩小，否则就不能再缩小。</p>
+<p>看到这，大家肯定有很多疑问，我们一一来解答</p>
+<blockquote>
+<ol>
+<li>如何求每个任务的权值和？</li>
+</ol>
+<blockquote>
+<p>权值和还是比较好求的，我们在树剖的第一个dfs中记录一下点到根中路径的权值和，那么公式为$dis[u] + dis[v] - 2 \times dis[LCA(u, v)]$,LCA我们不需要倍增求，直接用树剖记录的$top$数组求即可。</p>
+</blockquote>
+<p>2.为什么要进行树上差分？</p>
+<blockquote>
+<p>如果是一条满足条件的边修改为0，那么一定存在所有的其他需要修改的航道都经过了这条边（要不然他们就不会减少了）,所以要进行树上差分。</p>
+</blockquote>
+</blockquote>
+<p>这道<strong>压轴题</strong>就愉快地AC了！</p>
+<h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> gc getchar()</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> pc(x) putchar(x)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> re register</span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> Maxn = <span class="number">3e5</span> + <span class="number">10</span>;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">sc</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> xx = <span class="number">0</span>, ff = <span class="number">1</span>; <span class="keyword">char</span> cch = gc;</span><br><span class="line">	<span class="keyword">while</span>(!<span class="built_in">isdigit</span>(cch)) &#123;</span><br><span class="line">		<span class="keyword">if</span>(cch == <span class="string">'-'</span>) ff = <span class="number">-1</span>; cch = gc;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">while</span>(<span class="built_in">isdigit</span>(cch)) &#123;</span><br><span class="line">		xx = (xx &lt;&lt; <span class="number">1</span>) + (xx &lt;&lt; <span class="number">3</span>) + (cch ^ <span class="string">'0'</span>); cch = gc;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> xx * ff;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">out</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(x &lt; <span class="number">0</span>) pc(<span class="string">'-'</span>), x = -x;</span><br><span class="line">	<span class="keyword">if</span>(x &gt;= <span class="number">10</span>)</span><br><span class="line">		out(x / <span class="number">10</span>);</span><br><span class="line">	pc(x % <span class="number">10</span> + <span class="string">'0'</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">node</span> &#123;</span></span><br><span class="line">	<span class="keyword">int</span> next, to, dis;</span><br><span class="line">&#125;t[Maxn &lt;&lt; <span class="number">1</span>];</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">MAP</span> &#123;</span></span><br><span class="line">	<span class="keyword">int</span> u, v, d;</span><br><span class="line">	<span class="keyword">bool</span> <span class="keyword">operator</span> &lt; (<span class="keyword">const</span> MAP &amp;x) <span class="keyword">const</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> d &lt; x.d;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;p[Maxn];</span><br><span class="line"><span class="keyword">int</span> n, m, cnt, l, r , ans;</span><br><span class="line"><span class="keyword">int</span> head[Maxn], fa[Maxn], son[Maxn], siz[Maxn], dep[Maxn], top[Maxn], id[Maxn], rid[Maxn], dis[Maxn], dfa[Maxn], cha[Maxn];</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">ADD</span><span class="params">(<span class="keyword">int</span> from, <span class="keyword">int</span> to, <span class="keyword">int</span> dis)</span> </span>&#123;</span><br><span class="line">	t[++cnt].next = head[from];</span><br><span class="line">	t[cnt].to = to;</span><br><span class="line">	t[cnt].dis = dis;</span><br><span class="line">	head[from] = cnt;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">dfs1</span><span class="params">(<span class="keyword">int</span> now, <span class="keyword">int</span> Fa, <span class="keyword">int</span> Dep)</span> </span>&#123;</span><br><span class="line">	fa[now] = Fa;</span><br><span class="line">	dep[now] = Dep;</span><br><span class="line">	siz[now] = <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span>(re <span class="keyword">int</span> i = head[now]; i; i = t[i].next) &#123;</span><br><span class="line">		<span class="keyword">int</span> to = t[i].to;</span><br><span class="line">		<span class="keyword">if</span>(to == Fa) <span class="keyword">continue</span>;</span><br><span class="line">		dfa[to] = t[i].dis;</span><br><span class="line">		dis[to] = dis[now] + t[i].dis;</span><br><span class="line">		dfs1(to, now, Dep + <span class="number">1</span>);</span><br><span class="line">		siz[now] += siz[to];</span><br><span class="line">		<span class="keyword">if</span>(siz[son[now]] &lt; siz[to])</span><br><span class="line">			son[now] = to;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">dfs2</span><span class="params">(<span class="keyword">int</span> now, <span class="keyword">int</span> topf)</span> </span>&#123;</span><br><span class="line">	id[now] = ++cnt;</span><br><span class="line">	rid[cnt] = now;</span><br><span class="line">	top[now] = topf;</span><br><span class="line">	<span class="keyword">if</span>(!son[now]) <span class="keyword">return</span>;</span><br><span class="line">	dfs2(son[now], topf);</span><br><span class="line">	<span class="keyword">for</span>(re <span class="keyword">int</span> i = head[now]; i; i = t[i].next) &#123;</span><br><span class="line">		<span class="keyword">int</span> to = t[i].to;</span><br><span class="line">		<span class="keyword">if</span>(to == son[now] || to == fa[now]) <span class="keyword">continue</span>;</span><br><span class="line">		dfs2(to, to);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">LCA</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">while</span>(top[x] != top[y]) &#123;</span><br><span class="line">		<span class="keyword">if</span>(dep[top[x]] &lt; dep[top[y]]) <span class="built_in">std</span> :: swap(x, y);</span><br><span class="line">		x = fa[top[x]];</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span>(dep[x] &gt; dep[y]) <span class="built_in">std</span> :: swap(x, y);</span><br><span class="line">	<span class="keyword">return</span> x;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">update</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">while</span>(top[x] != top[y]) &#123;</span><br><span class="line">		<span class="keyword">if</span>(dep[top[x]] &lt; dep[top[y]]) <span class="built_in">std</span> :: swap(x, y);</span><br><span class="line">		++cha[id[top[x]]];</span><br><span class="line">		--cha[id[x] + <span class="number">1</span>];</span><br><span class="line">		x = fa[top[x]];</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span>(dep[x] &gt; dep[y]) <span class="built_in">std</span> :: swap(x, y);</span><br><span class="line">	--cha[id[y] + <span class="number">1</span>];</span><br><span class="line">	++cha[id[x] + <span class="number">1</span>];</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">bool</span> <span class="title">check</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">	<span class="built_in">memset</span>(cha, <span class="number">0</span>, <span class="keyword">sizeof</span>(cha));</span><br><span class="line">	<span class="keyword">int</span> sum = <span class="number">0</span>, s = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">if</span>(p[m].d &lt;= x) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span>(re <span class="keyword">int</span> i = m; i &gt;= <span class="number">1</span>; --i) &#123;</span><br><span class="line">		<span class="keyword">if</span>(p[i].d &lt;= x) <span class="keyword">break</span>;</span><br><span class="line">		++sum;</span><br><span class="line">		update(p[i].u, p[i].v);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(re <span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i) &#123;</span><br><span class="line">		s += cha[i];</span><br><span class="line">		<span class="keyword">if</span>(s == sum)</span><br><span class="line">			<span class="keyword">if</span>(p[m].d - dfa[rid[i]] &lt;= x) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	n = sc(), m = sc();</span><br><span class="line">	<span class="keyword">for</span>(re <span class="keyword">int</span> i = <span class="number">1</span>; i &lt; n; ++i) &#123;</span><br><span class="line">		<span class="keyword">int</span> x = sc(), y = sc(), z = sc();</span><br><span class="line">		ADD(x, y, z), ADD(y, x, z);</span><br><span class="line">	&#125;</span><br><span class="line">	cnt = <span class="number">0</span>;</span><br><span class="line">	dfs1(<span class="number">1</span>, <span class="number">0</span>, <span class="number">1</span>), dfs2(<span class="number">1</span>, <span class="number">1</span>);</span><br><span class="line">	<span class="keyword">for</span>(re <span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= m; ++i) &#123;</span><br><span class="line">		p[i].u = sc(), p[i].v = sc();</span><br><span class="line">		p[i].d = dis[p[i].u] + dis[p[i].v] - (dis[LCA(p[i].u, p[i].v)] &lt;&lt; <span class="number">1</span>);</span><br><span class="line">		r = <span class="built_in">std</span> :: max(r, p[i].d + <span class="number">1</span>); </span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">std</span> :: sort(p + <span class="number">1</span>, p + m + <span class="number">1</span>);</span><br><span class="line">	<span class="keyword">while</span>(l &lt;= r) &#123;</span><br><span class="line">		<span class="keyword">int</span> mid = l + r &gt;&gt; <span class="number">1</span>;</span><br><span class="line">		<span class="keyword">if</span>(check(mid)) ans = mid, r = mid - <span class="number">1</span>;</span><br><span class="line">		<span class="keyword">else</span> l = mid + <span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	out(ans), pc(<span class="string">'\n'</span>);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//Coded by dy.</span></span><br></pre></td></tr></table></figure>
+<p><strong>rp++</strong></p>
+
+          
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+    
+      
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://dyrisingsunlight.github.io/2019/08/02/LvXIng/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -557,123 +679,6 @@
           
             <div class="post-button text-center">
               <a class="btn" href="/2019/08/01/2019SDSC游记/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-    
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://dyrisingsunlight.github.io/2019/07/30/SongShuDeXinJia/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="dy.">
-      <meta itemprop="description" content="路漫漫其修远兮，吾将上下而求索。">
-      <meta itemprop="image" content="/images/touxiang.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Dy_RisingSunlight">
-    </span>
-      <header class="post-header">
-
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/07/30/SongShuDeXinJia/" class="post-title-link" itemprop="url">JIOI_2014松鼠的新家</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2019-07-30 00:00:00" itemprop="dateCreated datePublished" datetime="2019-07-30T00:00:00+08:00">2019-07-30</time>
-            </span>
-          
-            
-
-            
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-08-01 22:17:33" itemprop="dateModified" datetime="2019-08-01T22:17:33+08:00">2019-08-01</time>
-              </span>
-            
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/题解/" itemprop="url" rel="index"><span itemprop="name">题解</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          <br>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="Problem’s-Wensite"><a href="#Problem’s-Wensite" class="headerlink" title="Problem’s Wensite"></a>Problem’s Wensite</h2><ul>
-<li><a href="https://www.luogu.org/problem/P3258" target="_blank" rel="noopener">JLOI_2014松鼠的新家</a><h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2></li>
-<li>这道题有两种解法，一种为树上差分，另一种为树链剖分，下面我简单解释一下。</li></ul>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/2019/07/30/SongShuDeXinJia/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -939,6 +944,123 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://dyrisingsunlight.github.io/2019/07/30/SongShuDeXinJia/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="dy.">
+      <meta itemprop="description" content="路漫漫其修远兮，吾将上下而求索。">
+      <meta itemprop="image" content="/images/touxiang.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Dy_RisingSunlight">
+    </span>
+      <header class="post-header">
+
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/07/30/SongShuDeXinJia/" class="post-title-link" itemprop="url">JIOI_2014松鼠的新家</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-07-30 00:00:00" itemprop="dateCreated datePublished" datetime="2019-07-30T00:00:00+08:00">2019-07-30</time>
+            </span>
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-08-01 22:17:33" itemprop="dateModified" datetime="2019-08-01T22:17:33+08:00">2019-08-01</time>
+              </span>
+            
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/题解/" itemprop="url" rel="index"><span itemprop="name">题解</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          <br>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="Problem’s-Wensite"><a href="#Problem’s-Wensite" class="headerlink" title="Problem’s Wensite"></a>Problem’s Wensite</h2><ul>
+<li><a href="https://www.luogu.org/problem/P3258" target="_blank" rel="noopener">JLOI_2014松鼠的新家</a><h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2></li>
+<li>这道题有两种解法，一种为树上差分，另一种为树链剖分，下面我简单解释一下。</li></ul>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/2019/07/30/SongShuDeXinJia/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+    
+      
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://dyrisingsunlight.github.io/2019/07/29/QianTanShuLianPouFen/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1062,7 +1184,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://dyrisingsunlight.github.io/2019/07/28/248/">
+    <link itemprop="mainEntityOfPage" href="https://dyrisingsunlight.github.io/2019/07/28/STBiaoMuBan/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="dy.">
@@ -1079,7 +1201,7 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/2019/07/28/248/" class="post-title-link" itemprop="url">248</a>
+                <a href="/2019/07/28/STBiaoMuBan/" class="post-title-link" itemprop="url">ST表模板</a>
               
             
           </h1>
@@ -1111,7 +1233,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-08-01 22:12:53" itemprop="dateModified" datetime="2019-08-01T22:12:53+08:00">2019-08-01</time>
+                <time title="修改时间：2019-08-01 22:22:00" itemprop="dateModified" datetime="2019-08-01T22:22:00+08:00">2019-08-01</time>
               </span>
             
           
@@ -1123,7 +1245,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/题解/" itemprop="url" rel="index"><span itemprop="name">题解</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/学习笔记/" itemprop="url" rel="index"><span itemprop="name">学习笔记</span></a></span>
 
                 
                 
@@ -1143,11 +1265,11 @@
 
       
           <h2 id="Problem’s-Website"><a href="#Problem’s-Website" class="headerlink" title="Problem’s Website"></a>Problem’s Website</h2><ul>
-<li><a href="https://www.luogu.org/problem/P3146" target="_blank" rel="noopener">248</a></li></ul>
+<li><a href="https://www.luogu.org/problem/P3865" target="_blank" rel="noopener">模板_ST表</a></li></ul>
           <!--noindex-->
           
             <div class="post-button text-center">
-              <a class="btn" href="/2019/07/28/248/#more" rel="contents">
+              <a class="btn" href="/2019/07/28/STBiaoMuBan/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -1288,122 +1410,6 @@
   </article>
 
     
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://dyrisingsunlight.github.io/2019/07/28/STBiaoMuBan/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="dy.">
-      <meta itemprop="description" content="路漫漫其修远兮，吾将上下而求索。">
-      <meta itemprop="image" content="/images/touxiang.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Dy_RisingSunlight">
-    </span>
-      <header class="post-header">
-
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/07/28/STBiaoMuBan/" class="post-title-link" itemprop="url">ST表模板</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2019-07-28 00:00:00" itemprop="dateCreated datePublished" datetime="2019-07-28T00:00:00+08:00">2019-07-28</time>
-            </span>
-          
-            
-
-            
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-08-01 22:22:00" itemprop="dateModified" datetime="2019-08-01T22:22:00+08:00">2019-08-01</time>
-              </span>
-            
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/学习笔记/" itemprop="url" rel="index"><span itemprop="name">学习笔记</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          <br>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="Problem’s-Website"><a href="#Problem’s-Website" class="headerlink" title="Problem’s Website"></a>Problem’s Website</h2><ul>
-<li><a href="https://www.luogu.org/problem/P3865" target="_blank" rel="noopener">模板_ST表</a></li></ul>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/2019/07/28/STBiaoMuBan/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-    
   </section>
 
   
@@ -1442,7 +1448,7 @@
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">76</span>
+          <span class="site-state-item-count">77</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1592,7 +1598,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共48.4k字</span>
+  <span class="post-count">博客全站共49.5k字</span>
 </div>
         
 
