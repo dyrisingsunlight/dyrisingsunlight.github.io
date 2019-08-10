@@ -74,7 +74,7 @@
 <meta property="og:image" content="https://dyrisingsunlight.github.io/2019/08/10/浅谈fhq-Treap/fhq.jpg">
 <meta property="og:image" content="https://dyrisingsunlight.github.io/2019/08/10/浅谈fhq-Treap/fenlie.png">
 <meta property="og:image" content="https://dyrisingsunlight.github.io/2019/08/10/浅谈fhq-Treap/hebing.png">
-<meta property="og:updated_time" content="2019-08-09T19:20:29.760Z">
+<meta property="og:updated_time" content="2019-08-10T13:32:33.931Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="浅谈fhq-Treap">
 <meta name="twitter:description" content="Problem’s Website普通平衡树（洛谷） 普通平衡树（LOJ） Solution没错，又是这道题。 再上一篇题解中，我们介绍了使用$Treap$的做法，那么本篇题解讲解一下$fhq-Treap$的做法。">
@@ -143,7 +143,7 @@
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
-        <p class="site-subtitle">拼一个春夏秋冬，搏一个无怨无悔。</p>
+        <p class="site-subtitle">拼一个春夏秋冬，搏一个无怨无悔！</p>
       
   </div>
 
@@ -301,7 +301,7 @@
                 
               
 
-              <time title="创建时间：2019-08-10 00:00:00 / 修改时间：03:20:29" itemprop="dateCreated datePublished" datetime="2019-08-10T00:00:00+08:00">2019-08-10</time>
+              <time title="创建时间：2019-08-10 00:00:00 / 修改时间：21:32:33" itemprop="dateCreated datePublished" datetime="2019-08-10T00:00:00+08:00">2019-08-10</time>
             </span>
           
             
@@ -344,7 +344,7 @@
 <p>他不仅$OI$强，人其实也挺 <em>handsome</em> 的。<br><img src="/2019/08/10/浅谈fhq-Treap/fhq.jpg" alt></p>
 <p>P.s.该图片来源<a href="https://www.sohu.com/a/150540826_263220" target="_blank" rel="noopener">毕业季 | 范浩强：游走在学业和科研间的清华创客</a></p>
 <p>好了，我们步入正题。</p>
-<p>$fhq-Treap$又叫<strong>无旋Treap</strong>，顾名思义，就是<strong>没有旋转的</strong>$Treap$，取而代之的是<strong>分裂</strong>，正因如此，$fhq-Treap$可以解决$Treap$解决不了的<strong>区间问题</strong>，而且还可以<strong>持久化</strong>，这些内容以后我会另外介绍。</p>
+<p>$fhq-Treap$又叫<strong>无旋Treap</strong>，顾名思义，就是<strong>没有旋转的</strong>$Treap$，取而代之的是<strong>分裂</strong>和<strong>合并</strong>，正因如此，$fhq-Treap$可以解决$Treap$解决不了的<strong>区间问题</strong>，而且还可以<strong>持久化</strong>，这些内容以后我会另外介绍。</p>
 <p>首先，我们先明确下文中代码变量的意思。<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> siz[Maxn], val[Maxn], dat[Maxn], ch[Maxn][<span class="number">2</span>];</span><br><span class="line"><span class="keyword">int</span> x, y, z, tot, rt;</span><br><span class="line"><span class="comment">//siz为子树大小，val为节点权值，dat为rand值，ch记录左右儿子（0为左儿子，1为右儿子）。</span></span><br><span class="line"><span class="comment">// x,y,z为暂定的左右儿子编号，tot为总共的节点数，rt为当前树的根节点编号。</span></span><br></pre></td></tr></table></figure></p>
 <p>在说明基本操作前，我们先来说一下$fhq-Treap$的一些<strong>核心思想及操作</strong></p>
 <ul>
