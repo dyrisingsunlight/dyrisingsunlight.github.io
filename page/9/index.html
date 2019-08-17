@@ -259,6 +259,122 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://dyrisingsunlight.github.io/2019/03/15/TJ_Uncle McDonald's problem/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="dy.">
+      <meta itemprop="description" content="拼一个春夏秋冬，搏一个无怨无悔！路漫漫其修远兮，吾将上下而求索。">
+      <meta itemprop="image" content="/images/touxiang.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Dy_RisingSunlight">
+    </span>
+      <header class="post-header">
+
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/03/15/TJ_Uncle McDonald's problem/" class="post-title-link" itemprop="url">麦当劳叔叔的难题</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-03-15 00:00:00" itemprop="dateCreated datePublished" datetime="2019-03-15T00:00:00+08:00">2019-03-15</time>
+            </span>
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-08-01 22:18:46" itemprop="dateModified" datetime="2019-08-01T22:18:46+08:00">2019-08-01</time>
+              </span>
+            
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/题解/" itemprop="url" rel="index"><span itemprop="name">题解</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          <br>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">这篇题解应该是我征战TG以来第一篇题解，特此纪念。</span><br></pre></td></tr></table></figure>
+<p>这道题是个搜索好题，有很多种做法，大体题意就是走迷宫（可以上下左右走），大小为n*n，其中有m个障碍，问你从左下角到右上角的最大步数与最小步数之差。</p>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/2019/03/15/TJ_Uncle McDonald's problem/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+    
+      
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://dyrisingsunlight.github.io/2019/03/15/TJ_Binary tree problem/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -374,7 +490,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://dyrisingsunlight.github.io/2019/03/15/TJ_logo language/">
+    <link itemprop="mainEntityOfPage" href="https://dyrisingsunlight.github.io/2019/03/15/TJ_Postfix expression/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="dy.">
@@ -391,7 +507,7 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/2019/03/15/TJ_logo language/" class="post-title-link" itemprop="url">logo语言</a>
+                <a href="/2019/03/15/TJ_Postfix expression/" class="post-title-link" itemprop="url">后缀表达式</a>
               
             
           </h1>
@@ -423,7 +539,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-08-01 22:18:11" itemprop="dateModified" datetime="2019-08-01T22:18:11+08:00">2019-08-01</time>
+                <time title="修改时间：2019-08-01 22:18:29" itemprop="dateModified" datetime="2019-08-01T22:18:29+08:00">2019-08-01</time>
               </span>
             
           
@@ -454,11 +570,12 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>这道题其实可以用纯模拟来做，把字符串看做一个算式，‘FD’相当于加，‘BK’相当于减，‘REPEAT’相当于乘，‘【】’相当于（）。<br>详细解释见代码注释。。。<br></p>
+          <p>这道题应用到了栈的思想，也相当于一个模拟过程。</p>
+<p>处理过程：扫描后缀表达式，只要遇到操作数将其进栈，遇到运算符则从栈中弹出两个操作数进行相应运算，将运算结果进栈，然后继续扫描，直到扫完位置，这时，栈底的数即为该后缀表达式的值。</p>
           <!--noindex-->
           
             <div class="post-button text-center">
-              <a class="btn" href="/2019/03/15/TJ_logo language/#more" rel="contents">
+              <a class="btn" href="/2019/03/15/TJ_Postfix expression/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -520,7 +637,7 @@
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">82</span>
+          <span class="site-state-item-count">83</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -674,7 +791,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共56.6k字</span>
+  <span class="post-count">博客全站共57.5k字</span>
 </div>
         
 
@@ -734,6 +851,8 @@
 
 
   
+    
+      
     
       
     
