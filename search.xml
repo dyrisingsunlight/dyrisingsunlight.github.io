@@ -1,6 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[BOI2009 Radio Transmission 无线传输]]></title>
+    <url>%2F2019%2F08%2F29%2FBOI2009%20Radio%20Transmission%20%E6%97%A0%E7%BA%BF%E4%BC%A0%E8%BE%93%2F</url>
+    <content type="text"><![CDATA[$Problem’s$ $Website$BOI2009 Radio Transmission 无线传输 $Solution$ 这道题会详细地解释$KMP$算法中的$next$数组(下文写作$nxt$)，可以配合我的另外一篇辣鸡题解进行学习。 长话短说，说一下$nxt$数组。 在模式串中(就是短的字符串)，$nxt[i]$ $\le$ $i$ 并且 $str[i] == str[nxt[i]]$ 并且在 $j != 1$时应满足$str[1]$ ~ $str[nxt[i] - 1]$ $=$ $str[i - nxt[i] +1]$ ~ $str[i - 1]$，就是它们的前缀相等。 关于这题如何求最小周期 $Code$123456789101112131415161718192021222324#include&lt;iostream&gt;#include&lt;cstdio&gt;#include&lt;cstring&gt;#include&lt;algorithm&gt;#define re registerint n;char s[1000010];int nxt[1000010];int main() &#123; scanf("%d", &amp;n); scanf("%s", s + 1); int j =0; for(re int i = 2; i &lt;= n; ++i) &#123; while(j &amp;&amp; s[j + 1] != s[i]) j = nxt[j]; if(s[j + 1] == s[i]) ++j; nxt[i] = j; &#125;// for(re int i = 1; i &lt;= n; ++i)// printf("%d ", nxt[i]); printf("%d\n", n - nxt[n]); return 0;&#125; $rp++$]]></content>
+      <categories>
+        <category>学习笔记</category>
+      </categories>
+      <tags>
+        <tag>KMP</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[X龙珠]]></title>
+    <url>%2F2019%2F08%2F28%2FX%E9%BE%99%E7%8F%A0%2F</url>
+    <content type="text"><![CDATA[$Problem’s$ $Website$X龙珠 $Solution$运用链表思想，用数组模拟链表，存储一个数据的$next$和$last$(后一个和前一个)，然后类似于贪心，我们从大到小枚举，如果当前的数没有$next$，说明无法输出，如果有，则将它和它的$next$输出，更新一下与这两个数相邻的数的$next$和$last$，然后将这两个数的$next$和$last$清零即可。 $Code$12345678910111213141516171819202122232425262728//Coded by dy.#include&lt;iostream&gt;#include&lt;cstdio&gt;#include&lt;cstring&gt;#include&lt;algorithm&gt;#define re registerconst int Maxn = 1e5 + 10;int n;int a[Maxn], nxt[Maxn], lst[Maxn];int main() &#123; scanf("%d", &amp;n); for(re int i = 1; i &lt;= n; ++i) &#123; scanf("%d", &amp;a[i]); nxt[a[i]] = i + 1; lst[a[i]] = i - 1; &#125; nxt[a[n]] = lst[a[1]] = 0; for(re int i = n; i &gt;= 1; --i) &#123; if(a[nxt[i]]) &#123; printf("%d %d ", i, a[nxt[i]]); nxt[a[lst[i]]] = nxt[a[nxt[i]]]; lst[a[nxt[a[nxt[i]]]]] = lst[i]; nxt[a[nxt[i]]] = lst[a[nxt[i]]] = 0; nxt[i] = lst[i] = 0; &#125; &#125; return 0;&#125; $rp++$]]></content>
+      <categories>
+        <category>题解</category>
+      </categories>
+      <tags>
+        <tag>贪心</tag>
+        <tag>链表思想</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[20190828模拟赛T2]]></title>
+    <url>%2F2019%2F08%2F28%2F20190828%E6%A8%A1%E6%8B%9F%E8%B5%9BT2%2F</url>
+    <content type="text"><![CDATA[$Problem’s$ $Website$2019.8.28模拟赛T2 $Solution$$dp$求解，我们设$f[i][j][k]$为前$i$个数，最后连续$j$个黑球，连续$k$个白球的方案数，这样求出来答案要$\times 2$，因为颜色可以互换。 具体步骤: 1.当$n &lt; 7$时，答案为$2^n$，因为怎样涂颜色都可以。 2.当$n \ge 7$时，我们求出一个$ans$数组，$ans[i]$为i个数时一种情况的方案数 (即$f[i][j][k]$ $j$ 为黑球个数，$k$为白球个数)，因为可以互换，所以答案为$ans[n] \times 2$。 P.s. 如何处理$f$和$ans$数组？ 最外层一次循环枚举$i$从$1$到$6$，每次将$f$数组清零，初始化$f[i + 1][1][0] = 1$，显然~。然后有以下式子: $\sum\limits_{j = i + 1}^{2e5 + 10}{\sum\limits_{k = 1}^{6}{f[j][1][0] += f[j - 1][0][k], f[j][0][1] += f[j - 1][k][0];}}$ $\sum\limits_{j = i + 1}^{2e5 + 10}{\sum\limits_{k = 1}^{5}{f[j][k + 1][0] += f[j - 1][k][0], f[j][0][k + 1] += f[j - 1][0][k];}}$ $\sum\limits_{j = i + 1}^{2e5 + 10}{\sum\limits_{k = 1}^{6}{ans[j] += f[j][k][0];}}$ $\sum\limits_{j = i + 1}^{2e5 + 10}{\sum\limits_{k = 1}^{6 - i}{ans[j] += f[j][0][k];}}$ 最后别忘了$mod$！ $Code$123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263//Coded by dy.#include&lt;iostream&gt;#include&lt;cstdio&gt;#include&lt;cstring&gt;#include&lt;algorithm&gt;#include&lt;ctime&gt;#define gc getchar()#define pc(x) putchar(x)inline int sc() &#123; int xx = 0, ff = 1; char cch = gc; while(!isdigit(cch)) &#123; if(cch == '-') ff = -1; cch = gc; &#125; while(isdigit(cch)) &#123; xx = (xx &lt;&lt; 1) + (xx &lt;&lt; 3) + (cch ^ '0'); cch = gc; &#125; return xx * ff;&#125;inline void out(int x) &#123; if(x &lt; 0) pc('-'), x = -x; if(x &gt;= 10) out(x / 10); pc(x % 10 + '0');&#125;#define re registerconst int Maxn = 2e5 + 10;const int mod = 1e9 + 7;int t, n;int ans[Maxn];int f[Maxn][10][10];inline void control() &#123; for(re int i = 1; i &lt;= 6; ++i) &#123; memset(f, 0, sizeof(f)); f[i + 1][1][0] = 1; for(re int j = i + 1; j &lt;= Maxn; ++j) &#123; for(re int k = 1; k &lt;= 6; ++k) f[j][1][0] = (f[j][1][0] + f[j - 1][0][k]) % mod; for(re int k = 1; k &lt;= 5; ++k) f[j][k + 1][0] = (f[j][k + 1][0] + f[j - 1][k][0]) % mod; for(re int k = 1; k &lt;= 6; ++k) f[j][0][1] = (f[j][0][1] + f[j - 1][k][0]) % mod; for(re int k = 1; k &lt;= 5; ++k) f[j][0][k + 1] = (f[j][0][k + 1] + f[j - 1][0][k]) % mod; for(re int k = 1; k &lt; 7; ++k) ans[j] = (ans[j] + f[j][k][0]) % mod; for(re int k = 1; i + k &lt; 7; ++k) ans[j] = (ans[j] + f[j][0][k]) % mod; &#125; &#125;&#125;int main() &#123; control(); t = sc(); while(t--) &#123; n = sc(); if(n &lt; 7) out(1 &lt;&lt; n), pc('\n'); else out((ans[n] &lt;&lt; 1) % mod), pc('\n'); &#125; return 0;&#125; $rp++$]]></content>
+      <categories>
+        <category>题解</category>
+      </categories>
+      <tags>
+        <tag>dp</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[20190828模拟赛T3]]></title>
+    <url>%2F2019%2F08%2F28%2F20190828%E6%A8%A1%E6%8B%9F%E8%B5%9BT3%2F</url>
+    <content type="text"><![CDATA[$Problem’s$ $Website$20190828模拟赛T3 $Solution$首先，不懂权值线段树的同学可以暂时先去这学习一下。 根据数据范围，我们要离散化一下。 离散化之后，我们从$1$到$n$循环，每次输出 前面的元素个数 $-$ 已经合法的元素个数，即输出$i - 1 - query(1, 1, n, m - a[i])$，最后将当前的数据加到线段树上。 $Code$123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384#include&lt;iostream&gt;#include&lt;cstdio&gt;#include&lt;cstring&gt;#include&lt;algorithm&gt;#define gc getchar()#define pc(x) putchar(x)inline int sc() &#123; int xx = 0, ff = 1; char cch = gc; while(!isdigit(cch)) &#123; if(cch == '-') ff = -1; cch = gc; &#125; while(isdigit(cch)) &#123; xx = (xx &lt;&lt; 1) + (xx &lt;&lt; 3) +(cch ^ '0'); cch = gc; &#125; return xx * ff;&#125;inline void out(int x) &#123; if(x &lt; 0) pc('-'), x = -x; if(x &gt;= 10) out(x / 10); pc(x % 10 + '0');&#125;using std :: sort;using std :: pair;using std :: make_pair;#define P pair &lt;int, int&gt;const int Maxn = 2e5 + 10;int t, n, m;int a[Maxn], c[Maxn];P b[Maxn];int rank[Maxn &lt;&lt; 2];long long val[Maxn &lt;&lt; 2];inline bool cmp(P x, P y) &#123; if(x.second == y.second) return x.first &lt; y.first; return x.second &lt; y.second; &#125;inline void modify(int k, int l, int r, int x, int z) &#123; if(l == r &amp;&amp; l == x) &#123; rank[k] += 1; val[k] += z; return; &#125; int mid = l + r &gt;&gt; 1; if(x &lt;= mid) modify(k &lt;&lt; 1, l, mid, x, z); else modify(k &lt;&lt; 1 | 1, mid + 1, r, x, z); rank[k] = rank[k &lt;&lt; 1] + rank[k &lt;&lt; 1 | 1]; val[k] = val[k &lt;&lt; 1] + val[k &lt;&lt; 1 | 1];&#125;inline int query(int k, int l, int r, int x) &#123; if(val[k] &lt;= x) return rank[k]; if(l == r) return 0; int mid = l + r &gt;&gt; 1; if(val[k &lt;&lt; 1] &lt; x) return rank[k &lt;&lt; 1] + query(k &lt;&lt; 1 | 1, mid + 1, r, x - val[k &lt;&lt; 1]); else return query(k &lt;&lt; 1, l, mid, x);&#125;#define re registerint main() &#123; t = sc(); while(t--) &#123; memset(val, 0, sizeof(val)); memset(rank, 0, sizeof(rank)); n = sc(), m = sc(); for(re int i = 1; i &lt;= n; ++i) &#123; a[i] = sc(), b[i] = make_pair(i, a[i]); &#125; sort(b + 1, b + n + 1, cmp); for(re int i = 1; i &lt;= n; ++i) c[b[i].first] = i; for(re int i = 1; i &lt;= n; ++i) &#123; out(i - 1 - query(1, 1, n, m - a[i])), pc(' '); modify(1, 1, n, c[i], a[i]); &#125; pc('\n'); &#125; return 0;&#125; $rp++$]]></content>
+      <categories>
+        <category>题解</category>
+      </categories>
+      <tags>
+        <tag>权值线段树</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[TJOI2013 最长上升子序列]]></title>
     <url>%2F2019%2F08%2F21%2FTJOI2013-%E6%9C%80%E9%95%BF%E4%B8%8A%E5%8D%87%E5%AD%90%E5%BA%8F%E5%88%97%2F</url>
     <content type="text"><![CDATA[$Problem’s$ $Website$TJOI2013 最长上升子序列 $Solution$这道题是一道既考思想有考代码能力的好题，能学到不少东西。 这道题我是用$fhq-Treap$ $+$ 线段树 做的，思想类似于模板 最长公共子序列，这道题我写了一篇题解，大家可以先去查看一下，当然也可以不看。。。 大体说一下做法 1.关于维护序列 首先要把样例搞懂，所以我先把样例解释一下，见下图： 我们发现，将一个数组$x$插入到位置$i$，如果位置$i$已经有数字了，那么要进行右移，那么平衡树自然是维护序列的不二选择了，因为我暂时不会$Splay$，所以我用的是$fhq-Treap$。 对于$fhq-Treap$来说，有一点要注意，就是分裂的对象，这道题我们要以子树的大小为对象进行分裂。 2.求$LIS$ 因为数据肯定不重复，所以我们可以用类似于离散化的方式来求$LIS$。 也就是用一个数组$a[x]$来记录数字$x$出现的位置，我们从小到大枚举 （因为要求$LIS$），每次求出从$1$到当前数字位置的前一个的$LIS$长度，$+1$后更新答案 （因为当前数一定比前面的数大），最后把当前位置的$LIS$记录下来。 上面的操作就是单点修改和区间最值，那么，线段树搞定! $Code$123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101102103104105106107108109110111112113114115116117118119120121122123124125126127128//Coded by dy.#include&lt;iostream&gt;#include&lt;cstdio&gt;#include&lt;cstring&gt;#include&lt;algorithm&gt;#define gc getchar()#define pc(x) putchar(x)#define re registerusing std :: max;const int Maxn = 100000 + 10;inline int sc() &#123; int xx = 0, ff = 1; char cch = gc; while(!isdigit(cch)) &#123; if(cch == '-') ff = -1; cch = gc; &#125; while(isdigit(cch)) &#123; xx = (xx &lt;&lt; 1) + (xx &lt;&lt; 3) + (cch ^ '0'); cch = gc; &#125; return xx * ff;&#125;inline void out(int x) &#123; if(x &lt; 0) pc('-'), x = -x; if(x &gt;= 10) out(x / 10); pc(x % 10 + '0');&#125;struct fhq_Treap &#123; int siz, val, dat; int ch[2];&#125;t[Maxn];int n, ans;int a[Maxn];int lst[Maxn &lt;&lt; 2];int rt, r1, r2, tot;inline void pushup(int id) &#123; t[id].siz = t[t[id].ch[0]].siz + t[t[id].ch[1]].siz + 1;&#125;inline int cre(int v) &#123; t[++tot].siz = 1, t[tot].val = v, t[tot].dat = rand(); return tot;&#125;inline void split(int id, int k, int &amp;x, int &amp;y) &#123; if(!id) x = y = 0; else &#123; if(k &lt;= t[t[id].ch[0]].siz) &#123; y = id; split(t[id].ch[0], k, x, t[id].ch[0]); &#125; else &#123; x = id; split(t[id].ch[1], k - t[t[id].ch[0]].siz - 1, t[id].ch[1], y); &#125; pushup(id); &#125;&#125;inline int merge(int x, int y) &#123; if(!x || !y) return x + y; if(t[x].dat &lt; t[y].dat) &#123; t[x].ch[1] = merge(t[x].ch[1], y); pushup(x); return x; &#125; t[y].ch[0] = merge(x, t[y].ch[0]); pushup(y); return y;&#125;inline void insert(int val, int id) &#123; split(rt, val, r1, r2); rt = merge(r1, merge(cre(id), r2));&#125;inline int rank(int id, int r) &#123; while(1) &#123; if(r &lt;= t[t[id].ch[0]].siz) id = t[id].ch[0]; else if(r == t[t[id].ch[0]].siz + 1) return id; else &#123; r -= (t[t[id].ch[0]].siz + 1); id = t[id].ch[1]; &#125; &#125;&#125;inline void modify(int k, int l, int r, int x, int z) &#123; if(l == r &amp;&amp; l == x) &#123; lst[k] = z; return; &#125; int mid = l + r &gt;&gt; 1; if(x &lt;= mid) modify(k &lt;&lt; 1, l, mid, x, z); else modify(k &lt;&lt; 1 | 1, mid + 1, r, x, z); lst[k] = max(lst[k &lt;&lt; 1], lst[k &lt;&lt; 1 | 1]);&#125;inline int query(int k, int l, int r, int x, int y) &#123; if(x &lt;= l &amp;&amp; r &lt;= y) return lst[k]; int mid = l + r &gt;&gt; 1, res = 0; if(x &lt;= mid) res = max(res, query(k &lt;&lt; 1, l, mid, x, y)); if(y &gt; mid) res = max(res, query(k &lt;&lt; 1 | 1, mid + 1, r, x, y)); return res;&#125;int main() &#123; srand(20041029); n = sc(); for(re int i = 1; i &lt;= n; ++i) insert(sc(), i); for(re int i = 1; i &lt;= n; ++i) a[t[rank(rt, i)].val] = i; for(re int i = 1; i &lt;= n; ++i) &#123; if(a[i] == 1) &#123; ans = max(ans, 1); modify(1, 1, n, a[i], 1); &#125; else &#123; int temp = query(1, 1, n, 1, a[i] - 1) + 1; ans = max(ans, temp); modify(1, 1, n, a[i], temp); &#125; out(ans), pc('\n'); &#125; return 0;&#125; $rp++$]]></content>
@@ -117,6 +162,17 @@
       </tags>
   </entry>
   <entry>
+    <title><![CDATA[NOI2015_软件包管理器]]></title>
+    <url>%2F2019%2F07%2F30%2FRuanJianBaoGuanLiQi%2F</url>
+    <content type="text"><![CDATA[Problem’s Website NOI_2015软件包管理器Solution 一道经典的树链剖分题，我们把有依赖关系的软件包用树联系起来，对其进行树剖，设1为已安装，0为未安装，赋值前统计1的个数，赋值后取差值即可。 这道题正解是线段树维护，但本菜鸡为了复习ODT，于是就开O2写了个ODT过了这道题。。。 这道题用ODT维护和线段树差不多，核心就是assign函数，也是ODT复杂度的保证。 Code123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101102103104105106107108109110111112113114115116117118119120121122123124125126127128129130131132133134135#include&lt;iostream&gt;#include&lt;cstdio&gt;#include&lt;cstring&gt;#include&lt;algorithm&gt;#include&lt;vector&gt;#include&lt;set&gt;#define gc getchar()#define pc(x) putchar(x)#define re registerconst int Maxn = 2e5 + 10;inline int sc() &#123; int xx = 0, ff = 1; char cch = gc; while(!isdigit(cch)) &#123; if(cch == '-') ff = -1; cch = gc; &#125; while(isdigit(cch)) &#123; xx = (xx &lt;&lt; 1) + (xx &lt;&lt; 3) + (cch ^ '0'); cch = gc; &#125; return xx * ff;&#125;inline void out(int x) &#123; if(x &lt; 0) pc('-'), x = -x; if(x &gt;= 10) out(x / 10); pc(x % 10 + '0');&#125;inline int aabs(int x) &#123; return x &gt; 0 ? x : -x;&#125;struct ODT &#123; int l, r; mutable int v; bool operator &lt; (const ODT &amp;x) const &#123; return l &lt; x.l; &#125; ODT(int L, int R = -1, int V = 0) : l(L), r(R), v(V) &#123;&#125;&#125;;std :: set &lt;ODT&gt; s;#define Int std :: set &lt;ODT&gt; :: iteratorInt split(int pos) &#123; Int it = s.lower_bound(ODT(pos)); if(it != s.end() &amp;&amp; it-&gt;l == pos) return it; --it; int L = it-&gt;l, R = it-&gt;r, V = it-&gt;v; s.erase(it), s.insert(ODT(L, pos - 1, V)); return s.insert(ODT(pos, R, V)).first;&#125;int assign(int l, int r, int v) &#123; Int it2 = split(r + 1), it1 = split(l); int sum = 0, SUM = v * (r - l + 1); for(Int it = it1; it != it2; ++it) sum += it-&gt;v * (it-&gt;r - it-&gt;l + 1); s.erase(it1, it2), s.insert(ODT(l, r, v)); return aabs(SUM - sum);&#125;struct node &#123; int next, to;&#125;t[Maxn &lt;&lt; 1];int n, cnt, m;int head[Maxn];int dep[Maxn], fa[Maxn], siz[Maxn], id[Maxn], son[Maxn], top[Maxn];inline void ADD(int from, int to) &#123; t[++cnt].next = head[from]; t[cnt].to = to; head[from] = cnt;&#125;inline void dfs1(int now, int Fa, int Dep) &#123; dep[now] = Dep; fa[now] = Fa; siz[now] = 1; for(re int i = head[now]; i; i = t[i].next) &#123; int to = t[i].to; if(to == Fa) continue; dfs1(to, now, Dep + 1); siz[now] += siz[to]; if(siz[son[now]] &lt; siz[to]) son[now] = to; &#125;&#125;inline void dfs2(int now, int topf) &#123; id[now] = ++cnt;// aa[cnt] = a[now]; top[now] = topf;// std :: cerr &lt;&lt; cnt &lt;&lt; std :: endl; if(!son[now]) return; dfs2(son[now], topf); for(re int i = head[now]; i; i = t[i].next) &#123; int to = t[i].to; if(to == fa[now] || to == son[now]) continue; dfs2(to, to); &#125;&#125;inline int in(int x, int y) &#123; int res = 0; while(top[x] != top[y]) &#123; if(dep[top[x]] &lt; dep[top[y]]) std :: swap(x, y); res += assign(id[top[x]], id[x], 1); x = fa[top[x]]; &#125; if(dep[x] &gt; dep[y]) std :: swap(x, y); res += assign(id[x], id[y], 1); return res;&#125;inline int un(int x) &#123; return assign(id[x], id[x] + siz[x] - 1, 0);&#125;int main() &#123; n = sc(); s.insert(ODT(1, n + 1, 0)); for(re int i = 2; i &lt;= n; ++i) &#123; int x = sc(); ++x; ADD(x, i); &#125; cnt = 0; dfs1(1, 0, 1); dfs2(1, 1); m = sc(); while(m--) &#123; char c[10]; std :: cin &gt;&gt; c; if(c[0] == 'i') &#123; int x = sc(); ++x; out(in(x, 1)), pc('\n'); &#125; else &#123; int x = sc(); ++x; out(un(x)), pc('\n'); &#125; &#125; return 0;&#125;// Coded by dy. rp++]]></content>
+      <categories>
+        <category>题解</category>
+      </categories>
+      <tags>
+        <tag>树链剖分</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[SDOI_2011染色]]></title>
     <url>%2F2019%2F07%2F30%2FRanSe%2F</url>
     <content type="text"><![CDATA[Problems Website SDOI_2011染色 Solution 又是一道熟练剖分的好题，区别是这一次的线段树要维护的信息有所不同，要维护4个东西：$num$(区间内不同颜色的数量)、$lc$(区间最左端的颜色)、$rc$(区间最右端的颜色)、$tag$(染色标记)，在$pushup$时要注意，如果左儿子的$rc$等于右儿子的$lc$，则父亲的$num$等于他们的$num$之和$-1$，因为有重合的颜色。 还有一点，在执行$Q$操作时也要判重，我们设$lc$为当前链的左端点的颜色，$rc$为当前链右端点的颜色，$pos1$为当前要往上跳的路径\上次的终点颜色，$pos2$为另一条路径\上一次的终点颜色，在往跳同一条链时，如果$pos1==rc$，则计量数$—$,在同一条链时，如果$lc==pos1$、$rc==pos2$,同样要减计量数。 原因：当出现上述情况时，明显是颜色重合，所以要减。Code123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101102103104105106107108109110111112113114115116117118119120121122123124125126127128129130131132133134135136137138139140141142143144145146147148149150151152153154155156157158159160#include&lt;iostream&gt;#include&lt;cstdio&gt;#include&lt;cstring&gt;#include&lt;algorithm&gt;#define gc getchar()#define pc(x) putchar(x)#define re registertypedef long long ll;const int Maxn = 1e5 + 10;inline ll sc() &#123; ll xx = 0, ff = 1; char cch = gc; while(!isdigit(cch)) &#123; if(cch == '-') ff = -1; cch = gc; &#125; while(isdigit(cch)) &#123; xx = (xx &lt;&lt; 1) + (xx &lt;&lt; 3) + (cch ^ '0'); cch = gc; &#125; return xx * ff;&#125;inline ll out(ll x) &#123; if(x &lt; 0) pc('-'), x = -x; if(x &gt;= 10) out(x / 10); pc(x % 10 + '0');&#125;struct node &#123; ll next, to;&#125;t[Maxn &lt;&lt; 1];struct LST &#123; ll num, tags, lc, rc;&#125;lst[Maxn &lt;&lt; 2];ll n, m, cnt, pos1, pos2, lc, rc;ll a[Maxn], head[Maxn], dep[Maxn], son[Maxn], fa[Maxn], siz[Maxn], top[Maxn], rid[Maxn], id[Maxn];inline void ADD(ll from, ll to) &#123; t[++cnt].next = head[from]; t[cnt].to = to; head[from] = cnt;&#125;inline void dfs1(ll now, ll Fa) &#123; dep[now] = dep[Fa] + 1; fa[now] = Fa; siz[now] = 1; for(re int i = head[now]; i; i = t[i].next) &#123; ll to = t[i].to; if(to == Fa) continue; dfs1(to, now); siz[now] += siz[to]; if(siz[son[now]] &lt; siz[to]) son[now] = to; &#125;&#125;inline void dfs2(ll now, ll topf) &#123; top[now] = topf; id[now] = ++cnt; rid[cnt] = now; if(!son[now]) return; dfs2(son[now], topf); for(re int i = head[now]; i; i = t[i].next) &#123; ll to = t[i].to; if(to == son[now] || to == fa[now]) continue; dfs2(to, to); &#125;&#125;inline void pushup(ll k) &#123; lst[k].num = lst[k &lt;&lt; 1].num + lst[k &lt;&lt; 1 | 1].num; if(lst[k &lt;&lt; 1].rc == lst[k &lt;&lt; 1 | 1].lc) --lst[k].num; lst[k].lc = lst[k &lt;&lt; 1].lc; lst[k].rc = lst[k &lt;&lt; 1 | 1].rc;&#125;inline void build(ll k, ll l, ll r) &#123; if(l == r) &#123; lst[k].lc = lst[k].rc = a[rid[l]]; lst[k].num = 1; return; &#125; ll mid = l + r &gt;&gt; 1; build(k &lt;&lt; 1, l, mid), build(k &lt;&lt; 1 | 1, mid + 1, r); pushup(k);&#125;inline void pushdown(ll k, ll l, ll r) &#123; if(!lst[k].tags) return; lst[k &lt;&lt; 1].lc = lst[k &lt;&lt; 1 | 1].lc = lst[k &lt;&lt; 1].rc = lst[k &lt;&lt; 1 | 1].rc = lst[k &lt;&lt; 1].tags = lst[k &lt;&lt; 1 | 1].tags = lst[k].tags; lst[k &lt;&lt; 1].num = lst[k &lt;&lt; 1 | 1].num = 1; lst[k].tags = 0;&#125;inline void modify(ll k, ll l, ll r, ll x, ll y, ll z) &#123; if(x &lt;= l &amp;&amp; r &lt;= y) &#123; lst[k].lc = lst[k].rc = lst[k].tags = z; lst[k].num = 1; return ; &#125; pushdown(k, l, r); ll mid = l + r &gt;&gt; 1; if(x &lt;= mid) modify(k &lt;&lt; 1, l, mid, x, y, z); if(y &gt; mid) modify(k &lt;&lt; 1 | 1, mid + 1, r, x, y, z); pushup(k);&#125;inline ll query(ll k, ll l, ll r, ll x, ll y) &#123; if(x &lt;= l &amp;&amp; r &lt;= y) &#123; if(x == l) lc = lst[k].lc; if(r == y) rc = lst[k].rc; return lst[k].num; &#125; pushdown(k, l, r); ll mid = l + r &gt;&gt; 1; if(y &lt;= mid) return query(k &lt;&lt; 1, l, mid, x, y); if(x &gt; mid) return query(k &lt;&lt; 1 | 1, mid + 1, r, x, y); ll res = query(k &lt;&lt; 1, l, mid, x, y) + query(k &lt;&lt; 1 | 1, mid + 1, r, x, y); if(lst[k &lt;&lt; 1].rc == lst[k &lt;&lt; 1 | 1].lc) --res; return res;&#125;inline void uptree(ll x, ll y, ll z) &#123; while(top[x] != top[y]) &#123; if(dep[top[x]] &lt; dep[top[y]]) std :: swap(x, y); modify(1, 1, n, id[top[x]], id[x], z); x = fa[top[x]]; &#125; if(id[x] &gt; id[y]) std :: swap(x, y); modify(1, 1, n, id[x], id[y], z);&#125;inline ll qy(ll x, ll y) &#123; ll res = 0; pos1 = pos2 = 0; while(top[x] != top[y]) &#123; if(dep[top[x]] &lt; dep[top[y]]) std :: swap(x, y), std :: swap(pos1, pos2); res += query(1, 1, n, id[top[x]], id[x]); if(rc == pos1) --res; pos1 = lc, x = fa[top[x]]; &#125; if(id[x] &gt; id[y]) std :: swap(x, y), std :: swap(pos1, pos2); res += query(1, 1, n, id[x], id[y]); if(lc == pos1) --res; if(rc == pos2) --res; return res;&#125;int main() &#123; n = sc(), m = sc(); for(re int i = 1; i &lt;= n; ++i) a[i] = sc(); for(re int i = 1; i &lt; n; ++i) &#123; int x = sc(), y = sc(); ADD(x, y), ADD(y, x); &#125; cnt = 0; dfs1(1, 0), dfs2(1, 1), build(1, 1, n); while(m--) &#123; char c[2]; std :: cin &gt;&gt; c[0]; int x = sc(), y = sc(); if(c[0] == 'Q') &#123; out(qy(x, y)), pc('\n'); &#125; else &#123; int z = sc(); uptree(x, y, z); &#125; &#125; return 0;&#125;// Coded by dy. rp++]]></content>
@@ -137,17 +193,6 @@
       <tags>
         <tag>树链剖分</tag>
         <tag>树上差分</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[NOI2015_软件包管理器]]></title>
-    <url>%2F2019%2F07%2F30%2FRuanJianBaoGuanLiQi%2F</url>
-    <content type="text"><![CDATA[Problem’s Website NOI_2015软件包管理器Solution 一道经典的树链剖分题，我们把有依赖关系的软件包用树联系起来，对其进行树剖，设1为已安装，0为未安装，赋值前统计1的个数，赋值后取差值即可。 这道题正解是线段树维护，但本菜鸡为了复习ODT，于是就开O2写了个ODT过了这道题。。。 这道题用ODT维护和线段树差不多，核心就是assign函数，也是ODT复杂度的保证。 Code123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101102103104105106107108109110111112113114115116117118119120121122123124125126127128129130131132133134135#include&lt;iostream&gt;#include&lt;cstdio&gt;#include&lt;cstring&gt;#include&lt;algorithm&gt;#include&lt;vector&gt;#include&lt;set&gt;#define gc getchar()#define pc(x) putchar(x)#define re registerconst int Maxn = 2e5 + 10;inline int sc() &#123; int xx = 0, ff = 1; char cch = gc; while(!isdigit(cch)) &#123; if(cch == '-') ff = -1; cch = gc; &#125; while(isdigit(cch)) &#123; xx = (xx &lt;&lt; 1) + (xx &lt;&lt; 3) + (cch ^ '0'); cch = gc; &#125; return xx * ff;&#125;inline void out(int x) &#123; if(x &lt; 0) pc('-'), x = -x; if(x &gt;= 10) out(x / 10); pc(x % 10 + '0');&#125;inline int aabs(int x) &#123; return x &gt; 0 ? x : -x;&#125;struct ODT &#123; int l, r; mutable int v; bool operator &lt; (const ODT &amp;x) const &#123; return l &lt; x.l; &#125; ODT(int L, int R = -1, int V = 0) : l(L), r(R), v(V) &#123;&#125;&#125;;std :: set &lt;ODT&gt; s;#define Int std :: set &lt;ODT&gt; :: iteratorInt split(int pos) &#123; Int it = s.lower_bound(ODT(pos)); if(it != s.end() &amp;&amp; it-&gt;l == pos) return it; --it; int L = it-&gt;l, R = it-&gt;r, V = it-&gt;v; s.erase(it), s.insert(ODT(L, pos - 1, V)); return s.insert(ODT(pos, R, V)).first;&#125;int assign(int l, int r, int v) &#123; Int it2 = split(r + 1), it1 = split(l); int sum = 0, SUM = v * (r - l + 1); for(Int it = it1; it != it2; ++it) sum += it-&gt;v * (it-&gt;r - it-&gt;l + 1); s.erase(it1, it2), s.insert(ODT(l, r, v)); return aabs(SUM - sum);&#125;struct node &#123; int next, to;&#125;t[Maxn &lt;&lt; 1];int n, cnt, m;int head[Maxn];int dep[Maxn], fa[Maxn], siz[Maxn], id[Maxn], son[Maxn], top[Maxn];inline void ADD(int from, int to) &#123; t[++cnt].next = head[from]; t[cnt].to = to; head[from] = cnt;&#125;inline void dfs1(int now, int Fa, int Dep) &#123; dep[now] = Dep; fa[now] = Fa; siz[now] = 1; for(re int i = head[now]; i; i = t[i].next) &#123; int to = t[i].to; if(to == Fa) continue; dfs1(to, now, Dep + 1); siz[now] += siz[to]; if(siz[son[now]] &lt; siz[to]) son[now] = to; &#125;&#125;inline void dfs2(int now, int topf) &#123; id[now] = ++cnt;// aa[cnt] = a[now]; top[now] = topf;// std :: cerr &lt;&lt; cnt &lt;&lt; std :: endl; if(!son[now]) return; dfs2(son[now], topf); for(re int i = head[now]; i; i = t[i].next) &#123; int to = t[i].to; if(to == fa[now] || to == son[now]) continue; dfs2(to, to); &#125;&#125;inline int in(int x, int y) &#123; int res = 0; while(top[x] != top[y]) &#123; if(dep[top[x]] &lt; dep[top[y]]) std :: swap(x, y); res += assign(id[top[x]], id[x], 1); x = fa[top[x]]; &#125; if(dep[x] &gt; dep[y]) std :: swap(x, y); res += assign(id[x], id[y], 1); return res;&#125;inline int un(int x) &#123; return assign(id[x], id[x] + siz[x] - 1, 0);&#125;int main() &#123; n = sc(); s.insert(ODT(1, n + 1, 0)); for(re int i = 2; i &lt;= n; ++i) &#123; int x = sc(); ++x; ADD(x, i); &#125; cnt = 0; dfs1(1, 0, 1); dfs2(1, 1); m = sc(); while(m--) &#123; char c[10]; std :: cin &gt;&gt; c; if(c[0] == 'i') &#123; int x = sc(); ++x; out(in(x, 1)), pc('\n'); &#125; else &#123; int x = sc(); ++x; out(un(x)), pc('\n'); &#125; &#125; return 0;&#125;// Coded by dy. rp++]]></content>
-      <categories>
-        <category>题解</category>
-      </categories>
-      <tags>
-        <tag>树链剖分</tag>
       </tags>
   </entry>
   <entry>
@@ -195,14 +240,15 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[树状数组区间修改区间查询]]></title>
-    <url>%2F2019%2F07%2F27%2FShuZhuangShuZuQuJianXiuGaiQuJianChaXun%2F</url>
-    <content type="text"><![CDATA[相关题目链接 线段树1 Solution 首先看到题目标题，我们就知道要用线段树，但这道题还可以用其他方法来AC，比如树状数组，不仅代码量少，而且常数还小，根据树状数组模板2我们知道，树状数组的区间修改是要用差分的，这点我的另一篇Blog介绍过，不懂的点击这。 接下来我们直接将如果用树状数组实现区间修改区间查询。我们用a数组表示原序列，d数组表示差分数组,我们可得 $\sum\limits_{i=1}^{p}a[i]=\sum\limits_{i=1}^{p}\sum\limits_{j=1}^{i}d[j]$ ,在右侧的式子中，$d[1]$被用了$p$次，$d[2]$被用了$p-1$次,我们可以推出位置p的前缀和\sum\limits_{i=1}^{p}\sum\limits_{j=1}^{i}d[j]=\sum\limits_{i=1}^{p}d[i]*(p*i-1)=\sum\limits_{i=1}^{p}d[i]-\sum\limits_{i=1}^{p}d[i]*i,我们可以维护两个数组前缀和$sum1[i]=d[i]$,另一个数组$sum2[i]=d[i]*i$ 查询 位置$p$的前缀和即： $(p + 1) * sum1$数组中$p$的前缀和- sum2数组中p的前缀和。区间[l, r]的和即：位置r的前缀和 - 位置l的前缀和。 修改 对于sum1数组的修改同问题2中对$d$数组的修改。 对于sum2数组的修改也类似，我们给 sum2[l] 加上 $l \times x$ ，给 sum2[r + 1] 减去 $(r + 1) \times x$。 Code123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263#include&lt;iostream&gt;#include&lt;cstdio&gt;#include&lt;cstring&gt;#include&lt;algorithm&gt;#define gc getchar()#define pc(x) putchar(x)typedef long long ll;const int Maxn = 100000 + 10;ll sc() &#123; ll xx = 0, ff = 1; char cch = gc; while(!isdigit(cch)) &#123; if(cch == '-') ff = -1; cch = gc; &#125; while(isdigit(cch)) &#123; xx = (xx &lt;&lt; 1) + (xx &lt;&lt; 3) + (cch ^ '0'); cch = gc; &#125; return xx * ff;&#125;void out(ll x) &#123; if(x &lt; 0) pc('-'), x = -x; if(x &gt;= 10) out(x / 10); pc(x % 10 + '0');&#125;ll n, m;ll sum1[Maxn], sum2[Maxn];ll lowbit(ll x) &#123; return x &amp; (-x);&#125; void modify(ll x, ll num) &#123; for(int i = x; i &lt;= n; i += lowbit(i)) sum1[i] += num, sum2[i] += num * x;&#125;void update(ll x, ll y, ll num) &#123; modify(x, num); modify(y + 1, -num);&#125;ll ask(ll x) &#123; ll ans = 0; for(int i = x; i; i -= lowbit(i)) ans += (x + 1) * sum1[i] - sum2[i]; return ans;&#125;ll query(ll x, ll y) &#123; return ask(y) - ask(x - 1);&#125;int main() &#123; n = sc(); m = sc(); for(int i = 1; i &lt;= n; ++i) update(i, i, sc()); while(m--) &#123; ll flag = sc(), x = sc(), y = sc(); if(flag == 1) &#123; ll num = sc(); update(x, y, num); &#125; else &#123; out(query(x, y)), pc('\n'); &#125; &#125; return 0;&#125;// Coded by dy. rp++*]]></content>
+    <title><![CDATA[曼哈顿]]></title>
+    <url>%2F2019%2F07%2F27%2FManhattan%2F</url>
+    <content type="text"><![CDATA[Problem’s Website 曼哈顿 Solution 首先我们可以写一个$\Theta(n^2)$的暴力，加上卡常可以拿到70分的好成绩，而且可以用来对拍。 然后说正解，这道题目有很多种解法，这里说两种。 第一种为分治，将横纵坐标分开计算，分别升序排序，然后类似于归并，进行计算，因为这种算法并未出自出题人，所以这里不细讲，请自行看代码理解。 第二种为出题人的解法，我们可以把求ans的式子写出来 $ans=\sum\limits_{i=1}^{n}\sum\limits_{j=1}^{n}(|x_i-x_j|+|y_i-y_j|)$ $=(\sum\limits_{i=1}^{n}\sum\limits_{j=1}^{n}(|x_i-x_j|))+(\sum\limits_{i=1}^{n}\sum\limits_{j=1}^{n}(|y_i-y_j|))$ ，由于式子是独立的，所以我们可以分开计算，我们把其中 $(\sum\limits_{i=1}^{n}\sum\limits_{j=1}^{n}(|x_i-x_j|))$拿出来观察，第$i$个空缺（也就是$x_{i+1}-x_i$） ，这个空缺会被统计入答案，当且仅当一个点在一侧，另一个点在另一侧，所以这一部分对答案的贡献就是 $2i(n-i)(x_{i+1}-x_i)$。所以我们可以直接排序，时间复杂度为$\Theta(n log n)$.Code 分治（$Coded$ $by$ $Jhonson$） 12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758#include &lt;bits/stdc++.h&gt;using namespace std;const int N = 300010;int a[N], b[N], c[N];inline int get_num()&#123; register int now = 0; register char ch = getchar(); register bool sign = false; while (!isdigit(ch)) &#123; if (ch == '-') sign = true; ch = getchar(); &#125; while (isdigit(ch)) &#123; now = (now &lt;&lt; 1) + (now &lt;&lt; 3) + ch - '0'; ch = getchar(); &#125; return (sign == false ? now : -now);&#125;long long ans = 0;inline void solve(int l, int r)&#123; if (l == r) return; register int mid = (l + r) &gt;&gt; 1; solve(l, mid), solve(mid + 1, r); register long long ret = 0; for (register int i = mid + 1; i &lt;= r; ++i) &#123; ret += c[i] - c[mid]; &#125; for (register int i = l; i &lt;= mid; ++i) &#123; ans += (c[mid] - c[i]) * (r - mid) + ret; &#125;&#125;int main()&#123; freopen("manhattan.in", "r", stdin); freopen("manhattan.out", "w", stdout); register int n; n = get_num(); for (register int i = 1; i &lt;= n; ++i) &#123; a[i] = get_num(), b[i] = get_num(); &#125; sort(a + 1, a + n + 1); sort(b + 1, b + n + 1); for (register int i = 1; i &lt;= n; ++i) c[i] = a[i]; solve(1, n); for (register int i = 1; i &lt;= n; ++i) c[i] = b[i]; solve(1, n); printf("%lld\n", ans); fclose(stdin); fclose(stdout); return 0;&#125; 正常解法（$Coded$ $by$ $dy(me)$） 123456789101112131415161718192021222324252627282930313233343536373839404142#include&lt;iostream&gt;#include&lt;cstdio&gt;#include&lt;cstring&gt;#include&lt;algorithm&gt;#define gc getchar()#define pc(x) putchar(x)#define re registertypedef long long ll;const int Maxn = 300000 + 10;inline ll sc() &#123; ll xx = 0, ff = 1; char cch = gc; while(!isdigit(cch)) &#123; if(cch == '-') ff = -1; cch = gc; &#125; while(isdigit(cch)) &#123; xx = (xx &lt;&lt; 1) + (xx &lt;&lt; 3) + (cch ^ '0'); cch = gc; &#125; return xx * ff;&#125;inline void out(ll x) &#123; if(x &lt; 0) pc('-'), x = -x; if(x &gt;= 10) out(x / 10); pc(x % 10 + '0');&#125;int n;ll a[Maxn], b[Maxn];ll ans;int main() &#123; scanf("%d", &amp;n); for(re int i = 1; i &lt;= n; ++i) a[i] = sc(), b[i] = sc(); std :: sort(a + 1, a + n + 1); std :: sort(b + 1, b + n + 1); for(re int i = 1; i &lt; n; ++i) ans += (a[i + 1] - a[i]) * i * (n - i); for(re int i = 1; i &lt; n; ++i) ans += (b[i + 1] - b[i]) * i * (n - i); out(ans), pc('\n'); return 0;&#125;// Coded by dy. rp+]]></content>
       <categories>
-        <category>学习笔记</category>
+        <category>题解</category>
       </categories>
       <tags>
-        <tag>树状数组</tag>
+        <tag>模拟</tag>
+        <tag>分治</tag>
       </tags>
   </entry>
   <entry>
@@ -217,37 +263,14 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[曼哈顿]]></title>
-    <url>%2F2019%2F07%2F27%2FManhattan%2F</url>
-    <content type="text"><![CDATA[Problem’s Website 曼哈顿 Solution 首先我们可以写一个$\Theta(n^2)$的暴力，加上卡常可以拿到70分的好成绩，而且可以用来对拍。 然后说正解，这道题目有很多种解法，这里说两种。 第一种为分治，将横纵坐标分开计算，分别升序排序，然后类似于归并，进行计算，因为这种算法并未出自出题人，所以这里不细讲，请自行看代码理解。 第二种为出题人的解法，我们可以把求ans的式子写出来 $ans=\sum\limits_{i=1}^{n}\sum\limits_{j=1}^{n}(|x_i-x_j|+|y_i-y_j|)$ $=(\sum\limits_{i=1}^{n}\sum\limits_{j=1}^{n}(|x_i-x_j|))+(\sum\limits_{i=1}^{n}\sum\limits_{j=1}^{n}(|y_i-y_j|))$ ，由于式子是独立的，所以我们可以分开计算，我们把其中 $(\sum\limits_{i=1}^{n}\sum\limits_{j=1}^{n}(|x_i-x_j|))$拿出来观察，第$i$个空缺（也就是$x_{i+1}-x_i$） ，这个空缺会被统计入答案，当且仅当一个点在一侧，另一个点在另一侧，所以这一部分对答案的贡献就是 $2i(n-i)(x_{i+1}-x_i)$。所以我们可以直接排序，时间复杂度为$\Theta(n log n)$.Code 分治（$Coded$ $by$ $Jhonson$） 12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758#include &lt;bits/stdc++.h&gt;using namespace std;const int N = 300010;int a[N], b[N], c[N];inline int get_num()&#123; register int now = 0; register char ch = getchar(); register bool sign = false; while (!isdigit(ch)) &#123; if (ch == '-') sign = true; ch = getchar(); &#125; while (isdigit(ch)) &#123; now = (now &lt;&lt; 1) + (now &lt;&lt; 3) + ch - '0'; ch = getchar(); &#125; return (sign == false ? now : -now);&#125;long long ans = 0;inline void solve(int l, int r)&#123; if (l == r) return; register int mid = (l + r) &gt;&gt; 1; solve(l, mid), solve(mid + 1, r); register long long ret = 0; for (register int i = mid + 1; i &lt;= r; ++i) &#123; ret += c[i] - c[mid]; &#125; for (register int i = l; i &lt;= mid; ++i) &#123; ans += (c[mid] - c[i]) * (r - mid) + ret; &#125;&#125;int main()&#123; freopen("manhattan.in", "r", stdin); freopen("manhattan.out", "w", stdout); register int n; n = get_num(); for (register int i = 1; i &lt;= n; ++i) &#123; a[i] = get_num(), b[i] = get_num(); &#125; sort(a + 1, a + n + 1); sort(b + 1, b + n + 1); for (register int i = 1; i &lt;= n; ++i) c[i] = a[i]; solve(1, n); for (register int i = 1; i &lt;= n; ++i) c[i] = b[i]; solve(1, n); printf("%lld\n", ans); fclose(stdin); fclose(stdout); return 0;&#125; 正常解法（$Coded$ $by$ $dy(me)$） 123456789101112131415161718192021222324252627282930313233343536373839404142#include&lt;iostream&gt;#include&lt;cstdio&gt;#include&lt;cstring&gt;#include&lt;algorithm&gt;#define gc getchar()#define pc(x) putchar(x)#define re registertypedef long long ll;const int Maxn = 300000 + 10;inline ll sc() &#123; ll xx = 0, ff = 1; char cch = gc; while(!isdigit(cch)) &#123; if(cch == '-') ff = -1; cch = gc; &#125; while(isdigit(cch)) &#123; xx = (xx &lt;&lt; 1) + (xx &lt;&lt; 3) + (cch ^ '0'); cch = gc; &#125; return xx * ff;&#125;inline void out(ll x) &#123; if(x &lt; 0) pc('-'), x = -x; if(x &gt;= 10) out(x / 10); pc(x % 10 + '0');&#125;int n;ll a[Maxn], b[Maxn];ll ans;int main() &#123; scanf("%d", &amp;n); for(re int i = 1; i &lt;= n; ++i) a[i] = sc(), b[i] = sc(); std :: sort(a + 1, a + n + 1); std :: sort(b + 1, b + n + 1); for(re int i = 1; i &lt; n; ++i) ans += (a[i + 1] - a[i]) * i * (n - i); for(re int i = 1; i &lt; n; ++i) ans += (b[i + 1] - b[i]) * i * (n - i); out(ans), pc('\n'); return 0;&#125;// Coded by dy. rp+]]></content>
+    <title><![CDATA[树状数组区间修改区间查询]]></title>
+    <url>%2F2019%2F07%2F27%2FShuZhuangShuZuQuJianXiuGaiQuJianChaXun%2F</url>
+    <content type="text"><![CDATA[相关题目链接 线段树1 Solution 首先看到题目标题，我们就知道要用线段树，但这道题还可以用其他方法来AC，比如树状数组，不仅代码量少，而且常数还小，根据树状数组模板2我们知道，树状数组的区间修改是要用差分的，这点我的另一篇Blog介绍过，不懂的点击这。 接下来我们直接将如果用树状数组实现区间修改区间查询。我们用a数组表示原序列，d数组表示差分数组,我们可得 $\sum\limits_{i=1}^{p}a[i]=\sum\limits_{i=1}^{p}\sum\limits_{j=1}^{i}d[j]$ ,在右侧的式子中，$d[1]$被用了$p$次，$d[2]$被用了$p-1$次,我们可以推出位置p的前缀和\sum\limits_{i=1}^{p}\sum\limits_{j=1}^{i}d[j]=\sum\limits_{i=1}^{p}d[i]*(p*i-1)=\sum\limits_{i=1}^{p}d[i]-\sum\limits_{i=1}^{p}d[i]*i,我们可以维护两个数组前缀和$sum1[i]=d[i]$,另一个数组$sum2[i]=d[i]*i$ 查询 位置$p$的前缀和即： $(p + 1) * sum1$数组中$p$的前缀和- sum2数组中p的前缀和。区间[l, r]的和即：位置r的前缀和 - 位置l的前缀和。 修改 对于sum1数组的修改同问题2中对$d$数组的修改。 对于sum2数组的修改也类似，我们给 sum2[l] 加上 $l \times x$ ，给 sum2[r + 1] 减去 $(r + 1) \times x$。 Code123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263#include&lt;iostream&gt;#include&lt;cstdio&gt;#include&lt;cstring&gt;#include&lt;algorithm&gt;#define gc getchar()#define pc(x) putchar(x)typedef long long ll;const int Maxn = 100000 + 10;ll sc() &#123; ll xx = 0, ff = 1; char cch = gc; while(!isdigit(cch)) &#123; if(cch == '-') ff = -1; cch = gc; &#125; while(isdigit(cch)) &#123; xx = (xx &lt;&lt; 1) + (xx &lt;&lt; 3) + (cch ^ '0'); cch = gc; &#125; return xx * ff;&#125;void out(ll x) &#123; if(x &lt; 0) pc('-'), x = -x; if(x &gt;= 10) out(x / 10); pc(x % 10 + '0');&#125;ll n, m;ll sum1[Maxn], sum2[Maxn];ll lowbit(ll x) &#123; return x &amp; (-x);&#125; void modify(ll x, ll num) &#123; for(int i = x; i &lt;= n; i += lowbit(i)) sum1[i] += num, sum2[i] += num * x;&#125;void update(ll x, ll y, ll num) &#123; modify(x, num); modify(y + 1, -num);&#125;ll ask(ll x) &#123; ll ans = 0; for(int i = x; i; i -= lowbit(i)) ans += (x + 1) * sum1[i] - sum2[i]; return ans;&#125;ll query(ll x, ll y) &#123; return ask(y) - ask(x - 1);&#125;int main() &#123; n = sc(); m = sc(); for(int i = 1; i &lt;= n; ++i) update(i, i, sc()); while(m--) &#123; ll flag = sc(), x = sc(), y = sc(); if(flag == 1) &#123; ll num = sc(); update(x, y, num); &#125; else &#123; out(query(x, y)), pc('\n'); &#125; &#125; return 0;&#125;// Coded by dy. rp++*]]></content>
       <categories>
-        <category>题解</category>
+        <category>学习笔记</category>
       </categories>
       <tags>
-        <tag>模拟</tag>
-        <tag>分治</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[SHOI2001_Panda的烦恼]]></title>
-    <url>%2F2019%2F07%2F26%2FPandaDeFanNao%2F</url>
-    <content type="text"><![CDATA[Problem’s Website SHOI2001_Panda的烦恼 Solution 这道题我们可以乱搞，用一个数组存计算的数，另一个数组存下一步要乘的数，这个方法是借鉴了洛谷首篇题解的方法。Code123456789101112131415161718192021222324252627282930313233343536373839404142#include&lt;iostream&gt;#include&lt;cstdio&gt;#include&lt;cstring&gt;#include&lt;algorithm&gt;#define gc getchar()#define Maxn 100010using namespace std;int sc() &#123; int xx=0,ff=1; char cch; while(cch&lt;'0'|| cch&gt;'9') &#123; if(cch=='-') ff=-ff; cch=gc; &#125; while(cch&gt;='0'&amp;&amp; cch&lt;='9') &#123; xx=xx*10+(cch-48); cch=gc; &#125; return xx*ff;&#125;int n,k,cnt;int a[Maxn],ans[Maxn]=&#123;1&#125;,b[Maxn];namespace Dy &#123; void RPpp() &#123; n=sc(); k=sc(); for(int i=1; i&lt;=n; i++) a[i]=sc(); while(cnt&lt;k) &#123; int maxx=0x7fffffff,maxi; for(int i=1; i&lt;=n; i++) &#123; if(ans[b[i]]*a[i]&lt;maxx) &#123; maxx=ans[b[i]]*a[i]; maxi=i; &#125; &#125; b[maxi]++; if(ans[cnt]!=maxx) ans[++cnt]=maxx; &#125; printf("%d",ans[k]); &#125;&#125;;int main() &#123; Dy::RPpp(); return 0;&#125; rp++]]></content>
-      <categories>
-        <category>题解</category>
-      </categories>
-      <tags>
-        <tag>乱搞</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[时钟]]></title>
-    <url>%2F2019%2F07%2F26%2FShiZhong%2F</url>
-    <content type="text"><![CDATA[Problem’s Website 时钟 Solution 一道比较好的dfs，我们直接对3、6、9、12取模，把9种变化方式用数组存起来，用一个数组存变化的方式，因为是从1-9dfs，所以可以保证输出顺序是字典序最小的。Code12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970#include&lt;iostream&gt;#include&lt;cstdio&gt;#include&lt;cstring&gt;#include&lt;algorithm&gt;#define gc getchar()using namespace std;int sc() &#123; int xx=0,ff=1; char cch; while(cch&lt;'0'|| cch&gt;'9') &#123; if(cch=='-') ff=-1; cch=gc; &#125; while(cch&gt;='0'&amp;&amp; cch&lt;='9') &#123; xx=xx*10+(cch-48); cch=gc; &#125; return xx*ff;&#125;int node[10][10]=&#123; &#123;0,0,0,0,0,0,0,0,0,0&#125;, &#123;0,1,1,0,1,1,0,0,0,0&#125;, &#123;0,1,1,1,0,0,0,0,0,0&#125;, &#123;0,0,1,1,0,1,1,0,0,0&#125;, &#123;0,1,0,0,1,0,0,1,0,0&#125;, &#123;0,0,1,0,1,1,1,0,1,0&#125;, &#123;0,0,0,1,0,0,1,0,0,1&#125;, &#123;0,0,0,0,1,1,0,1,1,0&#125;, &#123;0,0,0,0,0,0,0,1,1,1&#125;, &#123;0,0,0,0,0,1,1,0,1,1&#125;&#125;;int a[11],now[11],num[11];namespace Dy &#123; void dfs(int way) &#123; for(int i=1; i&lt;=9; i++) now[i]=a[i]; for(int i=1; i&lt;=9; i++) for(int j=1; j&lt;=9; j++) &#123; now[i]=now[i]+node[j][i]*num[j]; if(now[i]&gt;5) now[i]-=4;// cout&lt;&lt;now[i]&lt;&lt;" "; &#125;// cout&lt;&lt;endl; bool flag=0; for(int i=1; i&lt;=9; i++) if(now[i]!=4) &#123; flag=1; break; &#125; if(!flag) &#123; for(int i=1; i&lt;=9; i++) for(int j=1; j&lt;=num[i]; j++) printf("%d ",i);// cout&lt;&lt;endl; way=10; return ; &#125; if(way==10) return ; for(int i=0; i&lt;=3; i++) num[way]=i,dfs(way+1); &#125; void RPpp() &#123;// cout&lt;&lt;node[1][3]&lt;&lt;endl; for(int i=1; i&lt;=9; i++) &#123; int x=sc(); a[i]=x/3; &#125; dfs(1); &#125;&#125;;int main() &#123; Dy::RPpp(); return 0;&#125; rp++]]></content>
-      <categories>
-        <category>题解</category>
-      </categories>
-      <tags>
-        <tag>dfs</tag>
+        <tag>树状数组</tag>
       </tags>
   </entry>
   <entry>
@@ -262,6 +285,17 @@
       </tags>
   </entry>
   <entry>
+    <title><![CDATA[SHOI2001_Panda的烦恼]]></title>
+    <url>%2F2019%2F07%2F26%2FPandaDeFanNao%2F</url>
+    <content type="text"><![CDATA[Problem’s Website SHOI2001_Panda的烦恼 Solution 这道题我们可以乱搞，用一个数组存计算的数，另一个数组存下一步要乘的数，这个方法是借鉴了洛谷首篇题解的方法。Code123456789101112131415161718192021222324252627282930313233343536373839404142#include&lt;iostream&gt;#include&lt;cstdio&gt;#include&lt;cstring&gt;#include&lt;algorithm&gt;#define gc getchar()#define Maxn 100010using namespace std;int sc() &#123; int xx=0,ff=1; char cch; while(cch&lt;'0'|| cch&gt;'9') &#123; if(cch=='-') ff=-ff; cch=gc; &#125; while(cch&gt;='0'&amp;&amp; cch&lt;='9') &#123; xx=xx*10+(cch-48); cch=gc; &#125; return xx*ff;&#125;int n,k,cnt;int a[Maxn],ans[Maxn]=&#123;1&#125;,b[Maxn];namespace Dy &#123; void RPpp() &#123; n=sc(); k=sc(); for(int i=1; i&lt;=n; i++) a[i]=sc(); while(cnt&lt;k) &#123; int maxx=0x7fffffff,maxi; for(int i=1; i&lt;=n; i++) &#123; if(ans[b[i]]*a[i]&lt;maxx) &#123; maxx=ans[b[i]]*a[i]; maxi=i; &#125; &#125; b[maxi]++; if(ans[cnt]!=maxx) ans[++cnt]=maxx; &#125; printf("%d",ans[k]); &#125;&#125;;int main() &#123; Dy::RPpp(); return 0;&#125; rp++]]></content>
+      <categories>
+        <category>题解</category>
+      </categories>
+      <tags>
+        <tag>乱搞</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[子串变换]]></title>
     <url>%2F2019%2F07%2F26%2FZiChuanBianHua%2F</url>
     <content type="text"><![CDATA[Problem’s Website 字串变换Solution 这道题是一道比较基础的搜索题，但要会用一个很方便的STL函数——string类型的replace()，不会的请点击这，其他就直接bfs就可以了。 Code12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152#include&lt;iostream&gt;#include&lt;cstdio&gt;#include&lt;cstring&gt;#include&lt;algorithm&gt;#include&lt;queue&gt;#include&lt;map&gt;using namespace std;int cnt=1;string st,end;string a[10],b[10];queue &lt;string&gt; q;queue &lt;int&gt; ans;map &lt;string,bool&gt; vis;namespace Dy &#123; void AKNOIP() &#123; cin&gt;&gt;st&gt;&gt;end; while(cin&gt;&gt;a[cnt]&gt;&gt;b[cnt]) cnt++; cnt--; q.push(st); ans.push(0); while(!q.empty()&amp;&amp;q.front()!=end&amp;&amp;ans.front()&lt;=10) &#123; if(vis[q.front()]==1) &#123; q.pop(); ans.pop(); continue; &#125; vis[q.front()]=1; string now,noww; int num; for(int i=1; i&lt;=cnt; i++) &#123; now=q.front(); while(1) &#123; num=now.find(a[i]); if(num==-1) break; noww=q.front(); noww.replace(num,a[i].length(),b[i]); q.push(noww); ans.push(ans.front()+1); now[num]='&amp;'; &#125; &#125; q.pop(); ans.pop(); &#125; if(q.empty()||ans.front()&gt;10) &#123; printf("NO ANSWER!"); return ; &#125; printf("%d",ans.front()); &#125;&#125;;int main() &#123; Dy::AKNOIP(); return 0;&#125; rp++]]></content>
@@ -270,6 +304,17 @@
       </categories>
       <tags>
         <tag>bfs</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[时钟]]></title>
+    <url>%2F2019%2F07%2F26%2FShiZhong%2F</url>
+    <content type="text"><![CDATA[Problem’s Website 时钟 Solution 一道比较好的dfs，我们直接对3、6、9、12取模，把9种变化方式用数组存起来，用一个数组存变化的方式，因为是从1-9dfs，所以可以保证输出顺序是字典序最小的。Code12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970#include&lt;iostream&gt;#include&lt;cstdio&gt;#include&lt;cstring&gt;#include&lt;algorithm&gt;#define gc getchar()using namespace std;int sc() &#123; int xx=0,ff=1; char cch; while(cch&lt;'0'|| cch&gt;'9') &#123; if(cch=='-') ff=-1; cch=gc; &#125; while(cch&gt;='0'&amp;&amp; cch&lt;='9') &#123; xx=xx*10+(cch-48); cch=gc; &#125; return xx*ff;&#125;int node[10][10]=&#123; &#123;0,0,0,0,0,0,0,0,0,0&#125;, &#123;0,1,1,0,1,1,0,0,0,0&#125;, &#123;0,1,1,1,0,0,0,0,0,0&#125;, &#123;0,0,1,1,0,1,1,0,0,0&#125;, &#123;0,1,0,0,1,0,0,1,0,0&#125;, &#123;0,0,1,0,1,1,1,0,1,0&#125;, &#123;0,0,0,1,0,0,1,0,0,1&#125;, &#123;0,0,0,0,1,1,0,1,1,0&#125;, &#123;0,0,0,0,0,0,0,1,1,1&#125;, &#123;0,0,0,0,0,1,1,0,1,1&#125;&#125;;int a[11],now[11],num[11];namespace Dy &#123; void dfs(int way) &#123; for(int i=1; i&lt;=9; i++) now[i]=a[i]; for(int i=1; i&lt;=9; i++) for(int j=1; j&lt;=9; j++) &#123; now[i]=now[i]+node[j][i]*num[j]; if(now[i]&gt;5) now[i]-=4;// cout&lt;&lt;now[i]&lt;&lt;" "; &#125;// cout&lt;&lt;endl; bool flag=0; for(int i=1; i&lt;=9; i++) if(now[i]!=4) &#123; flag=1; break; &#125; if(!flag) &#123; for(int i=1; i&lt;=9; i++) for(int j=1; j&lt;=num[i]; j++) printf("%d ",i);// cout&lt;&lt;endl; way=10; return ; &#125; if(way==10) return ; for(int i=0; i&lt;=3; i++) num[way]=i,dfs(way+1); &#125; void RPpp() &#123;// cout&lt;&lt;node[1][3]&lt;&lt;endl; for(int i=1; i&lt;=9; i++) &#123; int x=sc(); a[i]=x/3; &#125; dfs(1); &#125;&#125;;int main() &#123; Dy::RPpp(); return 0;&#125; rp++]]></content>
+      <categories>
+        <category>题解</category>
+      </categories>
+      <tags>
+        <tag>dfs</tag>
       </tags>
   </entry>
   <entry>
@@ -328,17 +373,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[垃圾陷阱]]></title>
-    <url>%2F2019%2F07%2F08%2FLaJiXianJing%2F</url>
-    <content type="text"><![CDATA[Problems Website 垃圾陷阱 Solution 一道背包题目，可以用二维解，但有一种比较神奇的状态，我们设f[i]为高度i时卡门的生命，这样就变成了一个01背包，决策无疑只有吃垃圾或垫垃圾。Code12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849#include&lt;iostream&gt;#include&lt;cstdio&gt;#include&lt;cstring&gt;#include&lt;algorithm&gt;#define gc getchar()using namespace std;int sc() &#123; int xx = 0, ff = 1; char cch = gc; while(cch &lt; '0' || cch &gt; '9') &#123; if(cch == '-') ff = -1; cch = gc; &#125; while(cch &gt;= '0' &amp;&amp; cch &lt;= '9') &#123; xx = (xx &lt;&lt; 1) + (xx &lt;&lt; 3) + (cch ^ '0'); cch = gc; &#125; return xx * ff;&#125;struct node &#123; int t, l, h; bool operator &lt; (const node &amp;x) const &#123; return t &lt; x.t; &#125;&#125;a[110];int d, g;int f[110]; //f[high] = lifeint main() &#123; d = sc(); g = sc(); for(int i = 1; i &lt;= g; i++) &#123; a[i].t = sc(); a[i].l = sc(); a[i].h = sc(); &#125; sort(a + 1, a + 1 + g); memset(f, -1, sizeof(f)); f[0] = 10; for(int i = 1; i &lt;= g; i++) &#123; for(int j = d; j &gt;=0; j--) &#123; if(f[j] &gt;= a[i].t) &#123; if(j + a[i].h &gt;= d) &#123; printf("%d\n", a[i].t); return 0; &#125; f[j + a[i].h] = max(f[j], f[j + a[i].h]); f[j] += a[i].l; &#125; &#125; &#125; printf("%d\n", f[0]); return 0;&#125; rp++]]></content>
-      <categories>
-        <category>题解</category>
-      </categories>
-      <tags>
-        <tag>dp</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[HH的项链]]></title>
     <url>%2F2019%2F07%2F08%2FHHDeXiangLian%2F</url>
     <content type="text"><![CDATA[Problem’s Website [SDOI2009]HH的项链 Solution 首先这道题模拟是不可能AC的。 其次这道题可以用莫队AC，但我不会。 我们来说一下比较大众化的做法，离线处理+树状数组，我们可以先按照询问区间的右端点升序排序，然后用一个数组存一个元素在一个区间中出现的位置，用树状数组记录区间内的元素个数。Code12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667#include&lt;iostream&gt;#include&lt;cstdio&gt;#include&lt;cstring&gt;#include&lt;algorithm&gt;#define gc getchar()using namespace std;int sc() &#123; int xx = 0, ff = 1; char cch = gc; while(cch &lt; '0' || cch &gt; '9') &#123; if(cch == '-') ff = -1; cch = gc; &#125; while(cch &gt;= '0' &amp;&amp; cch &lt;= '9') &#123; xx = (xx &lt;&lt; 1) + (xx &lt;&lt; 3) + (cch ^ '0'); cch = gc; &#125; return xx * ff;&#125;struct node &#123; int l, r, id; bool operator &lt; (const node &amp;x) const &#123; return r &lt; x.r; &#125;&#125;b[500010];int n, m;int a[500010], ans[500010], tree[1000010], place[1000010];int lowbit(int x) &#123; return x &amp; (-x);&#125;void update(int id, int num) &#123; while(id &lt;= n) &#123; tree[id] += num; id += lowbit(id); &#125;&#125;int query(int id) &#123; int sum = 0; while(id &gt; 0) &#123; sum += tree[id]; id -= lowbit(id); &#125; return sum;&#125;int main() &#123; n = sc(); for(int i = 1; i &lt;= n; i++) a[i] = sc(); m = sc(); for(int i = 1; i &lt;= m; i++) &#123; b[i].l = sc(); b[i].r = sc(); b[i].id = i; &#125; sort(b + 1, b + 1 + m); int next = 1; for(int i = 1; i &lt;= m; i++) &#123; for(int j = next; j &lt;= b[i].r; j++) &#123; if(place[a[j]]) update(place[a[j]], -1); update(j, 1); place[a[j]] = j; &#125; next = b[i].r + 1; ans[b[i].id] = query(b[i].r) - query(b[i].l - 1); &#125; for(int i = 1; i &lt;= m; i++) printf("%d\n", ans[i]); return 0;&#125; rp++]]></content>
@@ -350,6 +384,17 @@
       </tags>
   </entry>
   <entry>
+    <title><![CDATA[垃圾陷阱]]></title>
+    <url>%2F2019%2F07%2F08%2FLaJiXianJing%2F</url>
+    <content type="text"><![CDATA[Problems Website 垃圾陷阱 Solution 一道背包题目，可以用二维解，但有一种比较神奇的状态，我们设f[i]为高度i时卡门的生命，这样就变成了一个01背包，决策无疑只有吃垃圾或垫垃圾。Code12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849#include&lt;iostream&gt;#include&lt;cstdio&gt;#include&lt;cstring&gt;#include&lt;algorithm&gt;#define gc getchar()using namespace std;int sc() &#123; int xx = 0, ff = 1; char cch = gc; while(cch &lt; '0' || cch &gt; '9') &#123; if(cch == '-') ff = -1; cch = gc; &#125; while(cch &gt;= '0' &amp;&amp; cch &lt;= '9') &#123; xx = (xx &lt;&lt; 1) + (xx &lt;&lt; 3) + (cch ^ '0'); cch = gc; &#125; return xx * ff;&#125;struct node &#123; int t, l, h; bool operator &lt; (const node &amp;x) const &#123; return t &lt; x.t; &#125;&#125;a[110];int d, g;int f[110]; //f[high] = lifeint main() &#123; d = sc(); g = sc(); for(int i = 1; i &lt;= g; i++) &#123; a[i].t = sc(); a[i].l = sc(); a[i].h = sc(); &#125; sort(a + 1, a + 1 + g); memset(f, -1, sizeof(f)); f[0] = 10; for(int i = 1; i &lt;= g; i++) &#123; for(int j = d; j &gt;=0; j--) &#123; if(f[j] &gt;= a[i].t) &#123; if(j + a[i].h &gt;= d) &#123; printf("%d\n", a[i].t); return 0; &#125; f[j + a[i].h] = max(f[j], f[j + a[i].h]); f[j] += a[i].l; &#125; &#125; &#125; printf("%d\n", f[0]); return 0;&#125; rp++]]></content>
+      <categories>
+        <category>题解</category>
+      </categories>
+      <tags>
+        <tag>dp</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[单调栈]]></title>
     <url>%2F2019%2F07%2F07%2FDanDiaoZhan%2F</url>
     <content type="text"><![CDATA[Problem’s Website Largest Rectangle in a Histogram City Game Solution 这两道题都是关于单调栈，通俗来说，就是一个具有单调性的栈（如果栈都不会，请点击这）。 关于T1的解法，请见下图（摘自王婷婷-STL&amp;基础数据结构2019.1.26） T2其实是T1的拓展，是一个二维的单调栈，根据数据范围，θ(n^2)可以AC，于是我们可以第一次枚举第1行，第二次枚举第1-2行，第i次枚举第1-i行，一样的单调栈处理，要注意如果当前第i行第j个位置为’R’，要把表示高度的数组a[j]清零。Code T1 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253 #include&lt;iostream&gt;#include&lt;cstdio&gt;#include&lt;cstring&gt;#include&lt;algorithm&gt;#include&lt;stack&gt;#define gc getchar()#define ll long longusing namespace std;int sc() &#123; int xx = 0, ff = 1; char cch = gc; while(cch &lt; '0' || cch &gt; '9') &#123; if(cch == '-') ff = -1; cch = gc; &#125; while(cch &gt;= '0' &amp;&amp; cch &lt;= '9') &#123; xx = (xx &lt;&lt; 1) + (xx &lt;&lt; 3) + (cch ^ '0'); cch = gc; &#125; return xx * ff;&#125;int n;stack &lt;int&gt; qx;stack &lt;int&gt; qy;ll ans;int a[100010]; int main() &#123; while(true) &#123; ans = 0; while(!qx.empty()) &#123; qx.pop(); qy.pop(); &#125; n = sc(); if(!n) break; for(int i = 1; i &lt;= n; i++) a[i] = sc(); a[n + 1] = 0; for(int i = 1; i &lt;= n + 1; i++) &#123; if(!qx.empty() &amp;&amp; qx.top() &lt; a[i]) &#123; qx.push(a[i]); qy.push(1); &#125; else &#123; int wide = 0; while(!qx.empty() &amp;&amp; qx.top() &gt; a[i]) &#123; wide += qy.top(); ans = max(ans, (ll)wide * qx.top()); qx.pop(); qy.pop(); &#125; qx.push(a[i]); qy.push(wide + 1); &#125; &#125; printf("%lld\n", ans); &#125; return 0;&#125; T2 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657 #include&lt;iostream&gt;#include&lt;cstdio&gt;#include&lt;cstring&gt;#include&lt;algorithm&gt;#include&lt;stack&gt;#define gc getchar()using namespace std;int sc() &#123; int xx = 0, ff = 1; char cch = gc; while(cch &lt; '0' || cch &gt; '9') &#123; if(cch == '-') ff = -1; cch = gc; &#125; while(cch &gt;= '0' &amp;&amp; cch &lt;= '9') &#123; xx = (xx &lt;&lt; 1) + (xx &lt;&lt; 3) + (cch ^ '0'); cch = gc; &#125; return xx * ff;&#125;int n, m, ans;int sum[1010][1010];int a[1010];stack &lt;int&gt; qx;stack &lt;int&gt; qy;int main() &#123; n = sc(); m = sc(); for(int i = 1; i &lt;= n; i++) &#123; for(int j = 1; j &lt;= m; j++) &#123; char c[2]; int x = 0; cin &gt;&gt; c[0]; if(c[0] == 'F') x = 1; sum[i][j] = x; &#125; &#125; for(int i = 1; i &lt;= n; i++) &#123; for(int j = 1; j &lt;= m; j++) a[j] = sum[i][j] ? a[j] + 1 : 0; while(!qx.empty()) &#123; qx.pop(); qy.pop(); &#125; for(int j = 1; j &lt;= m + 1; j++) &#123; if(!qx.empty() &amp;&amp; a[j] &gt; qx.top()) &#123; qx.push(a[j]); qy.push(1); &#125; else &#123; int wide = 0; while(!qx.empty() &amp;&amp; qx.top() &gt; a[j]) &#123; wide += qy.top(); ans = max(ans, wide * qx.top()); qx.pop(); qy.pop(); &#125; qx.push(a[j]); qy.push(wide + 1); &#125; &#125; &#125; printf("%d\n", 3 * ans); return 0;&#125; rp++]]></content>
@@ -358,6 +403,17 @@
       </categories>
       <tags>
         <tag>栈</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[棋盘制作]]></title>
+    <url>%2F2019%2F07%2F07%2FQiPanZhiZuo%2F</url>
+    <content type="text"><![CDATA[Problem’s Website [ZJOI2007]棋盘制作 Solution 又是一个求最大矩阵和正方形的问题，方法还是dp，有个专有名词——悬线法，最普通的状态转移方程为 1f[i][j] = min(f[i - 1][j - 1], min(f[i - 1][j], f[i][j - 1])); 而这道题要满足是一个棋盘，我们可以设Left[i][j]为i，j能到达的最左位置，Right[i][j]为i,j能到达的最右位置，up[i][j]为i,j能向上延伸的最大长度，状态转移方程为 12Left[i][j] = max(Left[i][j], Left[i - 1][j]);Right[i][j] = min(Right[i][j], Rigth[i - 1][j]); 具体解释见代码。 Code123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051#include&lt;iostream&gt;#include&lt;cstdio&gt;#include&lt;cstring&gt;#include&lt;algorithm&gt;#define gc getchar()using namespace std;int sc() &#123; int xx = 0, ff = 1; char cch = gc; while(cch &lt; '0' || cch &gt; '9') &#123; if(cch == '-') ff = -1; cch = gc; &#125; while(cch &gt;= '0' &amp;&amp; cch &lt;= '9') &#123; xx = (xx &lt;&lt; 1) + (xx &lt;&lt; 3) + (cch ^ '0'); cch = gc; &#125; return xx * ff;&#125;int n, m, ans1, ans2;int Left[2010][2010], Right[2010][2010], up[2010][2010], Map[2010][2010];int main() &#123; n = sc(); m = sc(); for(int i = 1; i &lt;= n; i++) &#123; for(int j = 1; j &lt;= m; j++) &#123; Map[i][j] = sc(); Left[i][j] = Right[i][j] = j; // 先初始化为当前位置 up[i][j] = 1; &#125; &#125; for(int i = 1; i &lt;= n; i++) //从左向右更新 for(int j = 2; j &lt;= m; j++) if(Map[i][j] != Map[i][j - 1]) //符合棋盘的规定 Left[i][j] = Left[i][j - 1]; for(int i = 1; i &lt;= n; i++) //从右向左更新 for(int j = m - 1; j &gt;= 1; j--) if(Map[i][j] != Map[i][j + 1]) Right[i][j] = Right[i][j + 1]; for(int i = 1; i &lt;= n; i++) &#123; for(int j = 1; j &lt;= m; j++) &#123; if(i &gt; 1 &amp;&amp; Map[i][j] != Map[i - 1][j]) &#123; //状态转移 Left[i][j] = max(Left[i][j], Left[i - 1][j]); //求出向左延伸位置的最右边 Right[i][j] = min(Right[i][j], Right[i - 1][j]); //向右延伸位置的最左边 up[i][j] = up[i - 1][j] + 1; &#125; int a = Right[i][j] - Left[i][j] + 1; int b = min(a, up[i][j]); ans1 = max(ans1, b * b); //最大正方形面积 ans2 = max(ans2, a * up[i][j]); //最大矩形面积 &#125; &#125; printf("%d\n%d\n", ans1, ans2); return 0;&#125; rp++]]></content>
+      <categories>
+        <category>题解</category>
+      </categories>
+      <tags>
+        <tag>dp</tag>
       </tags>
   </entry>
   <entry>
@@ -383,17 +439,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[棋盘制作]]></title>
-    <url>%2F2019%2F07%2F07%2FQiPanZhiZuo%2F</url>
-    <content type="text"><![CDATA[Problem’s Website [ZJOI2007]棋盘制作 Solution 又是一个求最大矩阵和正方形的问题，方法还是dp，有个专有名词——悬线法，最普通的状态转移方程为 1f[i][j] = min(f[i - 1][j - 1], min(f[i - 1][j], f[i][j - 1])); 而这道题要满足是一个棋盘，我们可以设Left[i][j]为i，j能到达的最左位置，Right[i][j]为i,j能到达的最右位置，up[i][j]为i,j能向上延伸的最大长度，状态转移方程为 12Left[i][j] = max(Left[i][j], Left[i - 1][j]);Right[i][j] = min(Right[i][j], Rigth[i - 1][j]); 具体解释见代码。 Code123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051#include&lt;iostream&gt;#include&lt;cstdio&gt;#include&lt;cstring&gt;#include&lt;algorithm&gt;#define gc getchar()using namespace std;int sc() &#123; int xx = 0, ff = 1; char cch = gc; while(cch &lt; '0' || cch &gt; '9') &#123; if(cch == '-') ff = -1; cch = gc; &#125; while(cch &gt;= '0' &amp;&amp; cch &lt;= '9') &#123; xx = (xx &lt;&lt; 1) + (xx &lt;&lt; 3) + (cch ^ '0'); cch = gc; &#125; return xx * ff;&#125;int n, m, ans1, ans2;int Left[2010][2010], Right[2010][2010], up[2010][2010], Map[2010][2010];int main() &#123; n = sc(); m = sc(); for(int i = 1; i &lt;= n; i++) &#123; for(int j = 1; j &lt;= m; j++) &#123; Map[i][j] = sc(); Left[i][j] = Right[i][j] = j; // 先初始化为当前位置 up[i][j] = 1; &#125; &#125; for(int i = 1; i &lt;= n; i++) //从左向右更新 for(int j = 2; j &lt;= m; j++) if(Map[i][j] != Map[i][j - 1]) //符合棋盘的规定 Left[i][j] = Left[i][j - 1]; for(int i = 1; i &lt;= n; i++) //从右向左更新 for(int j = m - 1; j &gt;= 1; j--) if(Map[i][j] != Map[i][j + 1]) Right[i][j] = Right[i][j + 1]; for(int i = 1; i &lt;= n; i++) &#123; for(int j = 1; j &lt;= m; j++) &#123; if(i &gt; 1 &amp;&amp; Map[i][j] != Map[i - 1][j]) &#123; //状态转移 Left[i][j] = max(Left[i][j], Left[i - 1][j]); //求出向左延伸位置的最右边 Right[i][j] = min(Right[i][j], Right[i - 1][j]); //向右延伸位置的最左边 up[i][j] = up[i - 1][j] + 1; &#125; int a = Right[i][j] - Left[i][j] + 1; int b = min(a, up[i][j]); ans1 = max(ans1, b * b); //最大正方形面积 ans2 = max(ans2, a * up[i][j]); //最大矩形面积 &#125; &#125; printf("%d\n%d\n", ans1, ans2); return 0;&#125; rp++]]></content>
-      <categories>
-        <category>题解</category>
-      </categories>
-      <tags>
-        <tag>dp</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[多米诺骨牌]]></title>
     <url>%2F2019%2F07%2F06%2FDuoMiNuoGuPai%2F</url>
     <content type="text"><![CDATA[Problem’s Website 多米诺骨牌 Solution 这道题可以看做一个线性dp，也可以看做背包问题，根据题意，我们发现一张牌转两次及以上是没有意义的，那么我们可以设f[i][j]表示到第i个数上下点数之差为j的旋转次数，对于i和i+1，状态转移方程为 1f[i][j] = min(f[i - 1][j - a[i]),f[i - 1][j + a[i]] + 1); a[i]为上下一张牌上下点数之差，为了防止数组下标出现负数，我们把每个j加上一个num，最后通过枚举找到差值最小的f[i][j],记录最小转动次数。 Code1234567891011121314151617181920212223242526272829303132333435363738394041#include&lt;iostream&gt;#include&lt;cstdio&gt;#include&lt;cstring&gt;#include&lt;algorithm&gt;#define gc getchar()#define num 5000using namespace std;int sc() &#123; int xx = 0, ff = 1; char cch = gc; while(cch &lt; '0' || cch &gt; '9') &#123; if(cch == '-') ff = -1; cch = gc; &#125; while(cch &gt;= '0' &amp;&amp; cch &lt;= '9') &#123; xx = (xx &lt;&lt; 1) + (xx &lt;&lt; 3) + (cch ^ '0'); cch = gc; &#125; return xx * ff;&#125;int n, ans;int a[1010], f[1010][10010];int main() &#123; n = sc(); for(int i = 1; i &lt;= n; i++) &#123; int x = sc(), y = sc(); a[i] = x - y; &#125; memset(f, 0x7f, sizeof(f)); f[0][0 + num] = 0; for(int i = 1; i &lt;= n; i++) &#123; for(int j = -5000 ; j &lt;= 5000; j++) &#123; f[i][j + num] = min(f[i - 1][j + num - a[i]], f[i - 1][j + num + a[i]] + 1); &#125; &#125; for(int i = 0; i &lt;= 5000; i++) &#123; ans = min(f[n][i + num], f[n][num - i]); if(ans &lt;= 1000) &#123; printf("%d\n", ans); return 0; &#125; &#125; return 0;&#125; rp++]]></content>
@@ -416,15 +461,12 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[数据包的调度机制]]></title>
-    <url>%2F2019%2F07%2F05%2FShuJuBaoDeDiaoDuJiZhi%2F</url>
-    <content type="text"><![CDATA[Problem’s Website 数据包的调度机制 Solution 这道题是一道区间dp，状态的设法有很多种，可以设f[i][j]为从i到j的最小延迟值，答案为f[1][n]，状态转移时，我们先枚举区间长度l，再分别枚举左右端点i,j，再枚举i-j之间的点k，方程为 1f[i][j] = min(f[i][j], f[i][k - 1] + f[k + 1][j] + a[k] * (l - 1) + (sum[j] - sum[k]) * (k - i)); 要注意我们枚举的k表示最后一个出栈的是k，那么前面的出栈的顺序为k—i+1,所以我们可以用前缀和来维护。 Code12345678910111213141516171819202122232425262728293031323334353637383940#include&lt;iostream&gt;#include&lt;cstdio&gt;#include&lt;cstring&gt;#include&lt;algorithm&gt;#define gc getchar()#define INF 0x7fffffff - 1using namespace std;int sc() &#123; int xx = 0, ff = 1; char cch = gc; while(cch &lt; '0' || cch &gt; '9') &#123; if(cch == '-') ff = -1; cch = gc; &#125; while(cch &gt;= '0' &amp;&amp; cch &lt;= '9') &#123; xx = (xx &lt;&lt; 1) + (xx &lt;&lt; 3) + (cch ^ '0'); cch = gc; &#125; return xx * ff;&#125;int t, n;int f[110][110];int a[110], sum[110];int main() &#123; t = sc(); while(t--) &#123; memset(sum, 0, sizeof(sum)); memset(f, 0, sizeof(f)); n = sc(); for(int i = 1; i &lt;= n; i++) a[i]= sc(), sum[i] = sum[i - 1] + a[i]; for(int l = 1; l &lt;= n; l++) &#123; for(int i = 1; i &lt;= n - l + 1; i++) &#123; int j = i + l - 1; f[i][j] = INF; for(int k = i; k &lt;= j; k++) f[i][j] = min(f[i][j], f[i][k - 1] + f[k + 1][j] + a[k] * (l - 1) + (sum[j] - sum[k]) * (k - i)); &#125; &#125; printf("%d\n", f[1][n]); &#125; return 0;&#125; rp++]]></content>
+    <title><![CDATA[回文切割]]></title>
+    <url>%2F2019%2F07%2F05%2FHuiWenQieGe%2F</url>
+    <content type="text"><![CDATA[Problem’s Website 切割回文 Solution 区间dp，我们设f[i]为到第i位需要切割的次数，答案为f[strlen(ss)],我们需要预处理一下，对于判断回文串，最好的方法就是马拉车算法，不懂得可以见我的另一篇题解马拉车算法， 我们首先枚举右端点i，在枚举左端点j，判断一下j-i是否为回文串，如果是，则进行转移，但要注意，我们这样转移会使方案数多1所以最后要-1。Code12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758#include&lt;iostream&gt;#include&lt;cstdio&gt;#include&lt;cstring&gt;#include&lt;algorithm&gt;#define gc getchar()using namespace std;int sc() &#123; int xx = 0, ff = 1; char cch = gc; while(cch &lt; '0' || cch &gt; '9') &#123; if(cch == '-') ff = -1; cch = gc; &#125; while(cch &gt;= '0' &amp;&amp; cch &lt;= '9') &#123; xx = (xx &lt;&lt; 1) + (xx &lt;&lt; 3) + (cch ^ '0'); cch = gc; &#125; return xx * ff;&#125;int t, len = 1, mid, r;int p[1010 &lt;&lt; 1], f[1010 &lt;&lt; 1];char ss[1010], s[1010 &lt;&lt; 1];bool check(int ll, int rr) &#123; if((((p[ll + rr] &lt;&lt; 1) - 1) &gt;&gt; 1) &gt;= rr - ll + 1) return true; return false;&#125;int main() &#123; t = sc(); while(t--) &#123; len = 1; mid = r = 0; memset(f, 0x7f, sizeof(f)); memset(p, 0, sizeof(p)); f[0] = 0; scanf("%s", ss + 1); s[0] = '|'; s[1] = '|'; for(int i = 1; i &lt;= strlen(ss + 1); i++) &#123; s[++len] = ss[i]; s[++len] = '|'; &#125; for(int i = 1; i &lt;= len; i++) &#123; if(i &lt; r) p[i] = min(r - i, p[(mid &lt;&lt; 1) - i]); else p[i] = 1; while(s[i + p[i]] == s[i - p[i]]) p[i]++; if(p[i] + i &gt; r) r = p[i] + i, mid = i; &#125;// cout &lt;&lt; len &lt;&lt; endl;// for(int i = 1; i &lt;= len; i++)// cout &lt;&lt; p[i] &lt;&lt; " "; for(int i = 1; i &lt;= strlen(ss + 1); i++) for(int j = 1; j &lt;= i; j++) if(check(j, i)) f[i] = min(f[i], f[j - 1] + 1); printf("%d\n", f[strlen(ss + 1)] - 1); &#125; return 0;&#125; rp++]]></content>
       <categories>
         <category>题解</category>
       </categories>
-      <tags>
-        <tag>dp</tag>
-      </tags>
   </entry>
   <entry>
     <title><![CDATA[马拉车算法]]></title>
@@ -438,23 +480,14 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[回文切割]]></title>
-    <url>%2F2019%2F07%2F05%2FHuiWenQieGe%2F</url>
-    <content type="text"><![CDATA[Problem’s Website 切割回文 Solution 区间dp，我们设f[i]为到第i位需要切割的次数，答案为f[strlen(ss)],我们需要预处理一下，对于判断回文串，最好的方法就是马拉车算法，不懂得可以见我的另一篇题解马拉车算法， 我们首先枚举右端点i，在枚举左端点j，判断一下j-i是否为回文串，如果是，则进行转移，但要注意，我们这样转移会使方案数多1所以最后要-1。Code12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758#include&lt;iostream&gt;#include&lt;cstdio&gt;#include&lt;cstring&gt;#include&lt;algorithm&gt;#define gc getchar()using namespace std;int sc() &#123; int xx = 0, ff = 1; char cch = gc; while(cch &lt; '0' || cch &gt; '9') &#123; if(cch == '-') ff = -1; cch = gc; &#125; while(cch &gt;= '0' &amp;&amp; cch &lt;= '9') &#123; xx = (xx &lt;&lt; 1) + (xx &lt;&lt; 3) + (cch ^ '0'); cch = gc; &#125; return xx * ff;&#125;int t, len = 1, mid, r;int p[1010 &lt;&lt; 1], f[1010 &lt;&lt; 1];char ss[1010], s[1010 &lt;&lt; 1];bool check(int ll, int rr) &#123; if((((p[ll + rr] &lt;&lt; 1) - 1) &gt;&gt; 1) &gt;= rr - ll + 1) return true; return false;&#125;int main() &#123; t = sc(); while(t--) &#123; len = 1; mid = r = 0; memset(f, 0x7f, sizeof(f)); memset(p, 0, sizeof(p)); f[0] = 0; scanf("%s", ss + 1); s[0] = '|'; s[1] = '|'; for(int i = 1; i &lt;= strlen(ss + 1); i++) &#123; s[++len] = ss[i]; s[++len] = '|'; &#125; for(int i = 1; i &lt;= len; i++) &#123; if(i &lt; r) p[i] = min(r - i, p[(mid &lt;&lt; 1) - i]); else p[i] = 1; while(s[i + p[i]] == s[i - p[i]]) p[i]++; if(p[i] + i &gt; r) r = p[i] + i, mid = i; &#125;// cout &lt;&lt; len &lt;&lt; endl;// for(int i = 1; i &lt;= len; i++)// cout &lt;&lt; p[i] &lt;&lt; " "; for(int i = 1; i &lt;= strlen(ss + 1); i++) for(int j = 1; j &lt;= i; j++) if(check(j, i)) f[i] = min(f[i], f[j - 1] + 1); printf("%d\n", f[strlen(ss + 1)] - 1); &#125; return 0;&#125; rp++]]></content>
-      <categories>
-        <category>题解</category>
-      </categories>
-  </entry>
-  <entry>
-    <title><![CDATA[乘积最大]]></title>
-    <url>%2F2019%2F07%2F04%2FChengJiZuiDa%2F</url>
-    <content type="text"><![CDATA[Problem’s Website 乘积最大 Solution 首先这道题要dp求解，其次根据数据范围，在计算过程中要用高精。 dp：我们设f[i][j]表示第i个数后放第j个乘号的最大值，dp[i]表示最最后一个乘号放在第i位数的最大值。我们首先枚举i，f[i][1]可以直接计算，再从2到k枚举j,枚举i之前的数，进行转移，方程为 123if(f[rei][j - 1].vis) &#123; f[i][j] = Max(f[i][j], GJ(f[rei][j - 1], calc(rei + 1, i));&#125; dp[i]在之后转移，方程为 12if(f[i][j].vis) dp[i] = GJ(f[i][j], calc(i + 1, n)); 高精，具体说是高精乘，本人表示不想解释，因为自己都快忘了。。。 Code12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879#include&lt;iostream&gt;#include&lt;cstdio&gt;#include&lt;cstring&gt;#include&lt;algorithm&gt;using namespace std;struct node &#123; bool vis; int bit; int num[50];&#125;f[50][10], dp[50];int n, k;char s[50];int a[50];node calc(int l, int r) &#123; node aa; aa.bit = r - l + 1; aa.vis = true; for(int i = 1; i &lt;= aa.bit; i++) aa.num[i] = a[r - i + 1]; return aa;&#125;node Max(node a, node b) &#123; if(!a.vis || a.bit &lt; b.bit) return b; if(!b.vis || a.bit &gt; b.bit) return a; for(int i = a.bit; i &gt;= 1; i--) if(a.num[i] &gt; b.num[i]) return a; else if(a.num[i] &lt; b.num[i]) return b;&#125;node GJ(node a, node b) &#123; node aa; aa.vis = true; aa.bit = a.bit + b.bit - 1; for(int i = 1; i &lt;= aa.bit; i++) aa.num[i] = 0; for(int i = 1; i &lt;= a.bit; i++) for(int j = 1; j &lt;= b.bit; j++) aa.num[i + j - 1] += a.num[i] * b.num[j]; int mod = 0; for(int i = 1; i &lt;= aa.bit; i++) &#123; aa.num[i] += mod; mod = aa.num[i] / 10; aa.num[i] %= 10; &#125; while(mod &gt; 0) &#123; aa.num[++aa.bit] = mod % 10; mod /= 10; &#125; return aa;&#125;int main() &#123; scanf("%d%d", &amp;n, &amp;k); scanf("%s", s + 1); for(int i = 1; i &lt;= strlen(s + 1); i++) a[i] = s[i] - '0'; for(int i = 1; i &lt;= n; i++) &#123; dp[i].vis = false; for(int j = 1; j &lt;= k; j++) f[i][j].vis = false; &#125; for(int i = 1; i &lt;= n - 1; i++) &#123; f[i][1] = calc(1, i); for(int j = 2; j &lt;= k; j++) &#123; for(int rei = j - 1; rei &lt; i; rei++) &#123; if(f[rei][j - 1].vis) f[i][j] = Max(f[i][j], GJ(f[rei][j - 1], calc(rei + 1, i))); &#125; &#125; if(f[i][k].vis) dp[i] = GJ(f[i][k], calc(i + 1, n)); &#125; node ans; for(int i = 1; i &lt;= n - 1; i++) &#123; node tmp = Max(dp[i], ans); ans = tmp; &#125; for(int i = ans.bit; i &gt;= 1; i--) printf("%d", ans.num[i]); return 0;&#125; rp++]]></content>
+    <title><![CDATA[数据包的调度机制]]></title>
+    <url>%2F2019%2F07%2F05%2FShuJuBaoDeDiaoDuJiZhi%2F</url>
+    <content type="text"><![CDATA[Problem’s Website 数据包的调度机制 Solution 这道题是一道区间dp，状态的设法有很多种，可以设f[i][j]为从i到j的最小延迟值，答案为f[1][n]，状态转移时，我们先枚举区间长度l，再分别枚举左右端点i,j，再枚举i-j之间的点k，方程为 1f[i][j] = min(f[i][j], f[i][k - 1] + f[k + 1][j] + a[k] * (l - 1) + (sum[j] - sum[k]) * (k - i)); 要注意我们枚举的k表示最后一个出栈的是k，那么前面的出栈的顺序为k—i+1,所以我们可以用前缀和来维护。 Code12345678910111213141516171819202122232425262728293031323334353637383940#include&lt;iostream&gt;#include&lt;cstdio&gt;#include&lt;cstring&gt;#include&lt;algorithm&gt;#define gc getchar()#define INF 0x7fffffff - 1using namespace std;int sc() &#123; int xx = 0, ff = 1; char cch = gc; while(cch &lt; '0' || cch &gt; '9') &#123; if(cch == '-') ff = -1; cch = gc; &#125; while(cch &gt;= '0' &amp;&amp; cch &lt;= '9') &#123; xx = (xx &lt;&lt; 1) + (xx &lt;&lt; 3) + (cch ^ '0'); cch = gc; &#125; return xx * ff;&#125;int t, n;int f[110][110];int a[110], sum[110];int main() &#123; t = sc(); while(t--) &#123; memset(sum, 0, sizeof(sum)); memset(f, 0, sizeof(f)); n = sc(); for(int i = 1; i &lt;= n; i++) a[i]= sc(), sum[i] = sum[i - 1] + a[i]; for(int l = 1; l &lt;= n; l++) &#123; for(int i = 1; i &lt;= n - l + 1; i++) &#123; int j = i + l - 1; f[i][j] = INF; for(int k = i; k &lt;= j; k++) f[i][j] = min(f[i][j], f[i][k - 1] + f[k + 1][j] + a[k] * (l - 1) + (sum[j] - sum[k]) * (k - i)); &#125; &#125; printf("%d\n", f[1][n]); &#125; return 0;&#125; rp++]]></content>
       <categories>
         <category>题解</category>
       </categories>
       <tags>
         <tag>dp</tag>
-        <tag>高精度</tag>
       </tags>
   </entry>
   <entry>
@@ -466,6 +499,18 @@
       </categories>
       <tags>
         <tag>dp</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[乘积最大]]></title>
+    <url>%2F2019%2F07%2F04%2FChengJiZuiDa%2F</url>
+    <content type="text"><![CDATA[Problem’s Website 乘积最大 Solution 首先这道题要dp求解，其次根据数据范围，在计算过程中要用高精。 dp：我们设f[i][j]表示第i个数后放第j个乘号的最大值，dp[i]表示最最后一个乘号放在第i位数的最大值。我们首先枚举i，f[i][1]可以直接计算，再从2到k枚举j,枚举i之前的数，进行转移，方程为 123if(f[rei][j - 1].vis) &#123; f[i][j] = Max(f[i][j], GJ(f[rei][j - 1], calc(rei + 1, i));&#125; dp[i]在之后转移，方程为 12if(f[i][j].vis) dp[i] = GJ(f[i][j], calc(i + 1, n)); 高精，具体说是高精乘，本人表示不想解释，因为自己都快忘了。。。 Code12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879#include&lt;iostream&gt;#include&lt;cstdio&gt;#include&lt;cstring&gt;#include&lt;algorithm&gt;using namespace std;struct node &#123; bool vis; int bit; int num[50];&#125;f[50][10], dp[50];int n, k;char s[50];int a[50];node calc(int l, int r) &#123; node aa; aa.bit = r - l + 1; aa.vis = true; for(int i = 1; i &lt;= aa.bit; i++) aa.num[i] = a[r - i + 1]; return aa;&#125;node Max(node a, node b) &#123; if(!a.vis || a.bit &lt; b.bit) return b; if(!b.vis || a.bit &gt; b.bit) return a; for(int i = a.bit; i &gt;= 1; i--) if(a.num[i] &gt; b.num[i]) return a; else if(a.num[i] &lt; b.num[i]) return b;&#125;node GJ(node a, node b) &#123; node aa; aa.vis = true; aa.bit = a.bit + b.bit - 1; for(int i = 1; i &lt;= aa.bit; i++) aa.num[i] = 0; for(int i = 1; i &lt;= a.bit; i++) for(int j = 1; j &lt;= b.bit; j++) aa.num[i + j - 1] += a.num[i] * b.num[j]; int mod = 0; for(int i = 1; i &lt;= aa.bit; i++) &#123; aa.num[i] += mod; mod = aa.num[i] / 10; aa.num[i] %= 10; &#125; while(mod &gt; 0) &#123; aa.num[++aa.bit] = mod % 10; mod /= 10; &#125; return aa;&#125;int main() &#123; scanf("%d%d", &amp;n, &amp;k); scanf("%s", s + 1); for(int i = 1; i &lt;= strlen(s + 1); i++) a[i] = s[i] - '0'; for(int i = 1; i &lt;= n; i++) &#123; dp[i].vis = false; for(int j = 1; j &lt;= k; j++) f[i][j].vis = false; &#125; for(int i = 1; i &lt;= n - 1; i++) &#123; f[i][1] = calc(1, i); for(int j = 2; j &lt;= k; j++) &#123; for(int rei = j - 1; rei &lt; i; rei++) &#123; if(f[rei][j - 1].vis) f[i][j] = Max(f[i][j], GJ(f[rei][j - 1], calc(rei + 1, i))); &#125; &#125; if(f[i][k].vis) dp[i] = GJ(f[i][k], calc(i + 1, n)); &#125; node ans; for(int i = 1; i &lt;= n - 1; i++) &#123; node tmp = Max(dp[i], ans); ans = tmp; &#125; for(int i = ans.bit; i &gt;= 1; i--) printf("%d", ans.num[i]); return 0;&#125; rp++]]></content>
+      <categories>
+        <category>题解</category>
+      </categories>
+      <tags>
+        <tag>dp</tag>
+        <tag>高精度</tag>
       </tags>
   </entry>
   <entry>
@@ -581,17 +626,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[关押罪犯]]></title>
-    <url>%2F2019%2F06%2F24%2FGuanYaZuiFan%2F</url>
-    <content type="text"><![CDATA[题目链接：关押罪犯 题目思路：根据题意，这道题很明显要用并查集，用种类并查集来模拟两个监狱，根据怒气值降序排序，尽量将怒气大的罪犯分开，具体解释见代码。 代码12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152#include&lt;iostream&gt;#include&lt;cstdio&gt;#include&lt;algorithm&gt;#define gc getchar()#define Maxn 20010#define Maxm 100010using namespace std;int sc() &#123; int xx=0,ff=1; char cch=gc; while(cch&lt;'0'|| cch&gt;'9') &#123; if(cch=='-') ff=-1; cch=gc; &#125; while(cch&gt;='0'&amp;&amp; cch&lt;='9') &#123; xx=(xx&lt;&lt;1)+(xx&lt;&lt;3)+(cch^'0'); cch=gc; &#125; return xx*ff;&#125;struct node &#123; int x,y,num; bool operator &lt; (const node &amp;xx) const &#123; return num&gt;xx.num; &#125;&#125;a[Maxm];int n,m;int fa[Maxn&lt;&lt;1];int find(int x) &#123; return x==fa[x]? x: fa[x]=find(fa[x]);&#125;int main() &#123; n=sc(); m=sc(); for(int i=1; i&lt;=(n&lt;&lt;1); i++) //初始化并查集时要开双倍空间，每一倍模拟一个监狱 fa[i]=i; for(int i=1; i&lt;=m; i++) &#123; a[i].x=sc(); a[i].y=sc(); a[i].num=sc(); &#125; sort(a+1, a+m+1); //排序 for(int i=1; i&lt;=m+1; i++) &#123; //循环到m+1，因为降序排序，第m+1的值肯定是0 int xx=find(a[i].x); int yy=find(a[i].y); if(xx==yy) &#123; printf("%d\n",a[i].num); return 0; &#125;// fa[fa[a[i].x]]=fa[find(a[i].y+n)];// fa[fa[a[i].y]]=fa[find(a[i].x+n)]; fa[find(a[i].x)]=fa[find(a[i].y+n)]; //将两人分到两个监狱 fa[find(a[i].y)]=fa[find(a[i].x+n)]; &#125; return 0;&#125; rp++]]></content>
-      <categories>
-        <category>题解</category>
-      </categories>
-      <tags>
-        <tag>并查集</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[模板_树状数组2]]></title>
     <url>%2F2019%2F06%2F24%2FMuBanShuZhuangShuZu%2F</url>
     <content type="text"><![CDATA[题目链接：【模板】树状数组 2 题目思路：基本的树状数组操作就不讲了，讲一下对于本题的差分思路。 差分： 原数组 差分数组 即为 我们可以得出 即 如果我们把原数组都加上2，即变为 差分数组变为 因为a[i]-a[i-1]是不变的，变得只有b[1]和b[3 + 1] (在这个样例中后者可以省略) 所以对a[x,y]进行修改,只用修改b[x]与b[y+1] 对于本题，我们可以把原数组记录下来，在用树状数组维护差分数组（即在原数基础上的变化），输出原数组加上变化值即可。 代码123456789101112131415161718192021222324252627282930313233343536373839404142#include&lt;iostream&gt;#include&lt;cstdio&gt;using namespace std;int n, m;int a[500010], b[500010];int qwery(int x) &#123; int sum = 0; while(x &gt; 0) &#123; sum += a[x]; x -= ( x &amp; -x); &#125; return sum;&#125;void updata(int x,int i) &#123; while( x &lt;= n) &#123; a[x] += i; x += (x &amp; -x); &#125;&#125;int main() &#123; scanf("%d%d", &amp;n, &amp;m); for(int i = 1 ;i &lt;= n; i++) scanf("%d", &amp;b[i]); for(int i=1;i&lt;=m;i++) &#123; char c; cin &gt;&gt; c; if(c == '1') &#123; int x, y, k; scanf("%d%d%d", &amp;x, &amp;y, &amp;k); updata(x, k); updata(y + 1, -k); &#125; if(c=='2') &#123; int x; scanf("%d", &amp;x); printf("%d\n", b[x] + qwery(x)); &#125; &#125; return 0;&#125; rp++]]></content>
@@ -601,17 +635,6 @@
       <tags>
         <tag>树状数组</tag>
         <tag>差分</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[NOI_2002银河英雄传说]]></title>
-    <url>%2F2019%2F06%2F24%2FYinHeYingXiongChuanShuo%2F</url>
-    <content type="text"><![CDATA[题目链接：[NOI2002]银河英雄传说 题目思路： 根据题意，这道题明显要用带权并查集，我们用size数组表示一个集合内的容量，d[i]表示元素i之前的元素数量，我们可以在find()函数和合并过程中来维护d[]数组，具体解释见代码。 代码123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657#include&lt;iostream&gt;#include&lt;cstdio&gt;#include&lt;cstring&gt;#include&lt;algorithm&gt;#define gc getchar()#define Maxn 30010using namespace std;int sc() &#123; int xx = 0, ff = 1; char cch; while (cch &lt; '0' || cch &gt; '9') &#123; if (cch == '-') ff = -1; cch = gc; &#125; while (cch &gt;= '0'&amp;&amp; cch &lt;= '9') &#123; xx = (xx &lt;&lt; 1) + (xx &lt;&lt; 3) + (cch ^ '0'); cch = gc; &#125; return xx * ff;&#125;int t;int fa[Maxn], size[Maxn], d[Maxn];int find( int x) &#123; if (x == fa[x]) return x; int xx = find( fa[x]); d[x] += d[fa[x]]; return fa[x] = xx;&#125;int aabs(int x) &#123; return x &gt; 0 ? x : - x;&#125;int main() &#123; t = sc(); for (int i = 1; i &lt;= 30000; i++) &#123; //赋初值,size数组为1 fa[i] = i; size[i] = 1; &#125; for (int i = 1; i &lt;= t; i++) &#123; char c[2]; cin &gt;&gt; c[0]; int x = sc(), y = sc(); //一定要在合并前find()，因为find()函数不仅是找爸爸，还要维护d数组！！！ int xx = find( x); int yy = find( y); if (c[0] == 'M') &#123;// cout &lt;&lt; xx &lt;&lt; " "&lt;&lt; yy &lt;&lt; endl; fa[xx] = yy; d[xx] = size[yy]; size[yy] += size[xx]; //注意我这样合并yy是父亲，则要把xx的元素数加到yy上 &#125; else &#123;// int x = sc(), y = sc();// cout &lt;&lt; fa[x] &lt;&lt; " " &lt;&lt; fa[y] &lt;&lt; endl; if(fa[x] == fa[y]) printf ("%d\n", aabs( d[x] - d[y]) - 1); //两艘战舰之间的数目不难推出为|d[x]-d[y]|-1 else printf ("-1\n"); &#125; &#125; return 0;&#125; rp++]]></content>
-      <categories>
-        <category>题解</category>
-      </categories>
-      <tags>
-        <tag>并查集</tag>
       </tags>
   </entry>
   <entry>
@@ -626,34 +649,34 @@
       </tags>
   </entry>
   <entry>
+    <title><![CDATA[关押罪犯]]></title>
+    <url>%2F2019%2F06%2F24%2FGuanYaZuiFan%2F</url>
+    <content type="text"><![CDATA[题目链接：关押罪犯 题目思路：根据题意，这道题很明显要用并查集，用种类并查集来模拟两个监狱，根据怒气值降序排序，尽量将怒气大的罪犯分开，具体解释见代码。 代码12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152#include&lt;iostream&gt;#include&lt;cstdio&gt;#include&lt;algorithm&gt;#define gc getchar()#define Maxn 20010#define Maxm 100010using namespace std;int sc() &#123; int xx=0,ff=1; char cch=gc; while(cch&lt;'0'|| cch&gt;'9') &#123; if(cch=='-') ff=-1; cch=gc; &#125; while(cch&gt;='0'&amp;&amp; cch&lt;='9') &#123; xx=(xx&lt;&lt;1)+(xx&lt;&lt;3)+(cch^'0'); cch=gc; &#125; return xx*ff;&#125;struct node &#123; int x,y,num; bool operator &lt; (const node &amp;xx) const &#123; return num&gt;xx.num; &#125;&#125;a[Maxm];int n,m;int fa[Maxn&lt;&lt;1];int find(int x) &#123; return x==fa[x]? x: fa[x]=find(fa[x]);&#125;int main() &#123; n=sc(); m=sc(); for(int i=1; i&lt;=(n&lt;&lt;1); i++) //初始化并查集时要开双倍空间，每一倍模拟一个监狱 fa[i]=i; for(int i=1; i&lt;=m; i++) &#123; a[i].x=sc(); a[i].y=sc(); a[i].num=sc(); &#125; sort(a+1, a+m+1); //排序 for(int i=1; i&lt;=m+1; i++) &#123; //循环到m+1，因为降序排序，第m+1的值肯定是0 int xx=find(a[i].x); int yy=find(a[i].y); if(xx==yy) &#123; printf("%d\n",a[i].num); return 0; &#125;// fa[fa[a[i].x]]=fa[find(a[i].y+n)];// fa[fa[a[i].y]]=fa[find(a[i].x+n)]; fa[find(a[i].x)]=fa[find(a[i].y+n)]; //将两人分到两个监狱 fa[find(a[i].y)]=fa[find(a[i].x+n)]; &#125; return 0;&#125; rp++]]></content>
+      <categories>
+        <category>题解</category>
+      </categories>
+      <tags>
+        <tag>并查集</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[NOI_2002银河英雄传说]]></title>
+    <url>%2F2019%2F06%2F24%2FYinHeYingXiongChuanShuo%2F</url>
+    <content type="text"><![CDATA[题目链接：[NOI2002]银河英雄传说 题目思路： 根据题意，这道题明显要用带权并查集，我们用size数组表示一个集合内的容量，d[i]表示元素i之前的元素数量，我们可以在find()函数和合并过程中来维护d[]数组，具体解释见代码。 代码123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657#include&lt;iostream&gt;#include&lt;cstdio&gt;#include&lt;cstring&gt;#include&lt;algorithm&gt;#define gc getchar()#define Maxn 30010using namespace std;int sc() &#123; int xx = 0, ff = 1; char cch; while (cch &lt; '0' || cch &gt; '9') &#123; if (cch == '-') ff = -1; cch = gc; &#125; while (cch &gt;= '0'&amp;&amp; cch &lt;= '9') &#123; xx = (xx &lt;&lt; 1) + (xx &lt;&lt; 3) + (cch ^ '0'); cch = gc; &#125; return xx * ff;&#125;int t;int fa[Maxn], size[Maxn], d[Maxn];int find( int x) &#123; if (x == fa[x]) return x; int xx = find( fa[x]); d[x] += d[fa[x]]; return fa[x] = xx;&#125;int aabs(int x) &#123; return x &gt; 0 ? x : - x;&#125;int main() &#123; t = sc(); for (int i = 1; i &lt;= 30000; i++) &#123; //赋初值,size数组为1 fa[i] = i; size[i] = 1; &#125; for (int i = 1; i &lt;= t; i++) &#123; char c[2]; cin &gt;&gt; c[0]; int x = sc(), y = sc(); //一定要在合并前find()，因为find()函数不仅是找爸爸，还要维护d数组！！！ int xx = find( x); int yy = find( y); if (c[0] == 'M') &#123;// cout &lt;&lt; xx &lt;&lt; " "&lt;&lt; yy &lt;&lt; endl; fa[xx] = yy; d[xx] = size[yy]; size[yy] += size[xx]; //注意我这样合并yy是父亲，则要把xx的元素数加到yy上 &#125; else &#123;// int x = sc(), y = sc();// cout &lt;&lt; fa[x] &lt;&lt; " " &lt;&lt; fa[y] &lt;&lt; endl; if(fa[x] == fa[y]) printf ("%d\n", aabs( d[x] - d[y]) - 1); //两艘战舰之间的数目不难推出为|d[x]-d[y]|-1 else printf ("-1\n"); &#125; &#125; return 0;&#125; rp++]]></content>
+      <categories>
+        <category>题解</category>
+      </categories>
+      <tags>
+        <tag>并查集</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Blog介绍]]></title>
     <url>%2F2019%2F06%2F22%2FBlog%20introduction%20and%20index%2F</url>
-    <content type="text"><![CDATA[Blog介绍本Blog为$dy$($Rising$$Sunlight$)的博客，基于$Hexo$，搭建在$Github$平台上形成。精于心，简于形。 ——$Next$ 特别感谢：手把手教你搭建属于自己的hexo+github博客hexo的next主题个性化配置教程2018最新版Hexo博客Next主题6.0配置优化Hexo NexT主题更改语言在HEXO博客中使用LaTeX公式的简单方法Hexo的Next主题详细配置Hexo Next主题添加搜索功能Hexo Next主题嵌入网易云音乐Hexo Next主题添加友情链接本人因技术有限，Blog并不美观。。。]]></content>
+    <content type="text"><![CDATA[Blog介绍本Blog为$dy$($Rising$$Sunlight$)的博客，基于$Hexo$，搭建在$Github$平台上形成。精于心，简于形。 ——$NexT$从$2019.8.28$开始，我的洛谷$Blog$会暂时记录我的一些文章，正文以本$Blog$为准。 特别感谢：手把手教你搭建属于自己的hexo+github博客hexo的next主题个性化配置教程2018最新版Hexo博客Next主题6.0配置优化Hexo NexT主题更改语言在HEXO博客中使用LaTeX公式的简单方法Hexo的Next主题详细配置Hexo Next主题添加搜索功能Hexo Next主题嵌入网易云音乐Hexo Next主题添加友情链接本人因技术有限，Blog并不美观。。。]]></content>
       <categories>
         <category>介绍</category>
       </categories>
-  </entry>
-  <entry>
-    <title><![CDATA[博弈]]></title>
-    <url>%2F2019%2F06%2F21%2FBoYi%2F</url>
-    <content type="text"><![CDATA[题目链接：博弈 如果没有权限看题，请看下图 题目思路：通过手玩样例，我们可以得出一些结论： 如果k==1，那么可以不断地删数，即为平局。 我们可以把区间内的每个数判断一下，看能用几次k把那个数弄为0，把次数累加，最后发现，胜利结果与总次数的奇偶性有关。 代码12345678910111213141516171819202122232425262728293031323334#include&lt;iostream&gt;#include&lt;cstdio&gt;#include&lt;cstring&gt;#include&lt;algorithm&gt;#define gc getchar()#define ll long longusing namespace std;int l,r,k;ll tot;int main() &#123; while(scanf("%d%d%d",&amp;l,&amp;r,&amp;k)!=EOF) &#123; if(k==1) &#123; printf("Draw\n"); continue; &#125; tot=0; for(int i=l; i&lt;=r; i++) &#123; ll time=1; while(time&lt;=i) &#123; tot+=time; time*=k; &#125; tot&amp;=1; &#125;// cout&lt;&lt;tot&lt;&lt;endl; if(!(tot&amp;1)) &#123; printf("Cwbc\n"); &#125; else &#123; printf("XHRlyb\n"); &#125; &#125; return 0;&#125; rp++]]></content>
-      <categories>
-        <category>题解</category>
-      </categories>
-      <tags>
-        <tag>模拟</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[零点]]></title>
-    <url>%2F2019%2F06%2F21%2FLingDian%2F</url>
-    <content type="text"><![CDATA[题目链接：零点 如果没有权限看题，请看下图 题目思路：就是模拟了，根据题意模拟即可，具体解释见代码。 附件：关于求y=kx+b的相关公式 代码123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081#include&lt;iostream&gt;#include&lt;cstdio&gt;#include&lt;cstring&gt;#include&lt;algorithm&gt;#define gc getchar()#define ll long long#define Maxn 700010#define Maxx 300000using namespace std;ll sc() &#123; ll xx=0,ff=1; char cch=gc; while(cch&lt;'0'|| cch&gt;'9') &#123; if(cch=='-') ff=-ff; cch=gc; &#125; while(cch&gt;='0'&amp;&amp; cch&lt;='9') &#123; xx=(xx&lt;&lt;1)+(xx&lt;&lt;3)+(cch^48); cch=gc; &#125; return xx*ff;&#125;ll n,cnt;ll lax,lay,x,y;ll ans[Maxn];int main() &#123; n=sc(); lax=sc(); lay=sc(); //lax lay 为上一个点的横纵坐标 if(!lay) ans[++cnt]=lax; //如果第一个点的纵坐标为0，则lax为一个零点 for(ll i=2; i&lt;=n; i++) &#123; x=sc(); y=sc(); if(i==2&amp;&amp; ((lay&gt;0&amp;&amp;y&gt;lay&amp;&amp;(y-lay)*(x-lax)&gt;0)|| (lay&lt;0&amp;&amp;y&lt;lay&amp;&amp;(y-lay)*(x-lax)&lt;0))) //处理射线，当射线满足形似'/'或'\'时 if((lay*(x-lax)%(y-lay))==0) &#123; //零点为整点 ans[++cnt]=lax-lay*(x-lax)/(y-lay); //由公式求出零点 if(cnt&gt;Maxx) &#123; printf("-1\n"); return 0; &#125; &#125; if(lay==0&amp;&amp;y==0) &#123; //如果当前点和上一点在x轴上 if(i==2||i==n) &#123; //如果在射线上，那么数量肯定会超过3e5 printf("-1\n"); return 0; &#125; for(ll j=lax+1; j&lt;=x; j++) &#123; //否则就把它们之间的零点存入 ans[++cnt]=j; if(cnt&gt;Maxx) &#123; printf("-1\n"); return 0; &#125; &#125; &#125; else if(lay!=0&amp;&amp;y==0) &#123; //如果上一点不在x轴上，而当前点在x轴上，存入 ans[++cnt]=x; if(cnt&gt;Maxx) &#123; printf("-1\n"); return 0; &#125; &#125; else if(lay*y&lt;0) &#123; //如果前后两点在x轴两侧 if((lay*(x-lax)%(y-lay))==0) &#123; //同上 ans[++cnt]=lax-lay*(x-lax)/(y-lay); if(cnt&gt;Maxx) &#123; printf("-1\n"); return 0; &#125; &#125; &#125; if(i==n&amp;&amp; ((y&lt;0&amp;&amp;y&gt;lay&amp;&amp;(y-lay)*(x-lax)&gt;0)|| (y&gt;0&amp;&amp;y&lt;lay&amp;&amp;(y-lay)*(x-lax)&lt;0))) //处理第二条射线，思路和第一条射线基本一样，但做法不同 if((lay*(x-lax)%(y-lay))==0) &#123; ans[++cnt]=lax-lay*(x-lax)/(y-lay); if(cnt&gt;Maxx) &#123; printf("-1\n"); return 0; &#125; &#125; lax=x; lay=y; //更新上一个点坐标 &#125; printf("%lld\n",cnt); //输出 for(ll i=1; i&lt;=cnt; i++) printf("%lld ",ans[i]); return 0;&#125; rp++]]></content>
-      <categories>
-        <category>题解</category>
-      </categories>
-      <tags>
-        <tag>模拟</tag>
-      </tags>
   </entry>
   <entry>
     <title><![CDATA[幻方]]></title>
@@ -668,6 +691,17 @@
       </tags>
   </entry>
   <entry>
+    <title><![CDATA[旅游]]></title>
+    <url>%2F2019%2F06%2F21%2FLvYou%2F</url>
+    <content type="text"><![CDATA[题目链接：旅游 如果没有权限查看题目，请看下图 题目思路：根据题意，我们可以知道城市布局为一棵树，因为住宿在一个城市中可以游览与它距离为1的所有城市，那么相当于求一颗树的最大独立集。 关于如何求树的最大独立集：树形dp，用一个数组f[i][0或1]表示第i个节点不住或住的最大天数，我们显然能够得到 代码123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354#include&lt;iostream&gt;#include&lt;cstdio&gt;#include&lt;cstring&gt;#include&lt;algorithm&gt;#include&lt;cstdlib&gt;#define gc getchar()#define Maxn 500010using namespace std;int sc() &#123; int xx=0,ff=1; char cch=gc; while(cch&lt;'0'|| cch&gt;'9') &#123; if(cch=='-') ff=-1; cch=gc; &#125; while(cch&gt;='0'&amp;&amp; cch&lt;='9') &#123; xx=(xx&lt;&lt;1)+(xx&lt;&lt;3)+(cch^'0'); cch=gc; &#125; return xx*ff;&#125;struct TREE &#123; int next,to;&#125;tree[Maxn&lt;&lt;1];int n,s,cnt;int head[Maxn&lt;&lt;1];int f[Maxn][2];void ADD(int from,int to) &#123; tree[++cnt].next=head[from]; tree[cnt].to=to; head[from]=cnt;&#125;void dfs(int son,int fa) &#123; f[son][0]=0; f[son][1]=1; for(int i=head[son]; i; i=tree[i].next) &#123; int to=tree[i].to; if(to!=fa) &#123; dfs(to,son); f[son][0]+=max(f[to][0],f[to][1]); f[son][1]=max(f[son][1],f[son][1]+f[to][0]); &#125; &#125;&#125;int main() &#123; int size = 64 &lt;&lt; 20; char *p = (char*)malloc(size) + size; __asm__("movq %0, %%rsp\n" :: "r"(p)); n=sc(); s=sc(); for(int i=1; i&lt;=n-1; i++) &#123; int x=sc(),y=sc(); ADD(x,y); ADD(y,x); &#125; dfs(s,-1); printf("%d\n",f[s][1]); exit(0);&#125; rp++]]></content>
+      <categories>
+        <category>题解</category>
+      </categories>
+      <tags>
+        <tag>dp</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[躲藏]]></title>
     <url>%2F2019%2F06%2F21%2FDuoCang%2F</url>
     <content type="text"><![CDATA[题目链接：躲藏 如果没有权限看题，请看下图 题目思路：dp，因为求的是Cwbc作为子序列出现的次数，且不区分大小写，那我们就把整个序列全化为大写，用四个变量（e1,e2,e3,e4）来记录以c、w、b、c出现的次数，我们不难得出 代码123456789101112131415161718192021222324252627282930#include&lt;iostream&gt;#include&lt;cstdio&gt;#include&lt;cstring&gt;#include&lt;algorithm&gt;#define gc getchar()#define ll long long#define Maxn 200010#define mo 2000120420010122using namespace std;char s[Maxn];ll e1,e2,e3,e4;int main() &#123; while(scanf("%s",s+1)!=EOF) &#123; e1=e2=e3=e4=0; int lens=strlen(s+1); for(int i=1; i&lt;=lens; i++) &#123; if(s[i]&gt;='a'&amp;&amp; s[i]&lt;='z') s[i]-=32; if(s[i]=='C') e1++; if(s[i]=='W') e2+=(e1)%mo; if(s[i]=='B') e3+=(e2)%mo; if(s[i]=='C') e4+=(e3)%mo; &#125; printf("%lld\n",e4%mo); &#125; return 0;&#125; rp++]]></content>
@@ -679,14 +713,25 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[旅游]]></title>
-    <url>%2F2019%2F06%2F21%2FLvYou%2F</url>
-    <content type="text"><![CDATA[题目链接：旅游 如果没有权限查看题目，请看下图 题目思路：根据题意，我们可以知道城市布局为一棵树，因为住宿在一个城市中可以游览与它距离为1的所有城市，那么相当于求一颗树的最大独立集。 关于如何求树的最大独立集：树形dp，用一个数组f[i][0或1]表示第i个节点不住或住的最大天数，我们显然能够得到 代码123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354#include&lt;iostream&gt;#include&lt;cstdio&gt;#include&lt;cstring&gt;#include&lt;algorithm&gt;#include&lt;cstdlib&gt;#define gc getchar()#define Maxn 500010using namespace std;int sc() &#123; int xx=0,ff=1; char cch=gc; while(cch&lt;'0'|| cch&gt;'9') &#123; if(cch=='-') ff=-1; cch=gc; &#125; while(cch&gt;='0'&amp;&amp; cch&lt;='9') &#123; xx=(xx&lt;&lt;1)+(xx&lt;&lt;3)+(cch^'0'); cch=gc; &#125; return xx*ff;&#125;struct TREE &#123; int next,to;&#125;tree[Maxn&lt;&lt;1];int n,s,cnt;int head[Maxn&lt;&lt;1];int f[Maxn][2];void ADD(int from,int to) &#123; tree[++cnt].next=head[from]; tree[cnt].to=to; head[from]=cnt;&#125;void dfs(int son,int fa) &#123; f[son][0]=0; f[son][1]=1; for(int i=head[son]; i; i=tree[i].next) &#123; int to=tree[i].to; if(to!=fa) &#123; dfs(to,son); f[son][0]+=max(f[to][0],f[to][1]); f[son][1]=max(f[son][1],f[son][1]+f[to][0]); &#125; &#125;&#125;int main() &#123; int size = 64 &lt;&lt; 20; char *p = (char*)malloc(size) + size; __asm__("movq %0, %%rsp\n" :: "r"(p)); n=sc(); s=sc(); for(int i=1; i&lt;=n-1; i++) &#123; int x=sc(),y=sc(); ADD(x,y); ADD(y,x); &#125; dfs(s,-1); printf("%d\n",f[s][1]); exit(0);&#125; rp++]]></content>
+    <title><![CDATA[零点]]></title>
+    <url>%2F2019%2F06%2F21%2FLingDian%2F</url>
+    <content type="text"><![CDATA[题目链接：零点 如果没有权限看题，请看下图 题目思路：就是模拟了，根据题意模拟即可，具体解释见代码。 附件：关于求y=kx+b的相关公式 代码123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081#include&lt;iostream&gt;#include&lt;cstdio&gt;#include&lt;cstring&gt;#include&lt;algorithm&gt;#define gc getchar()#define ll long long#define Maxn 700010#define Maxx 300000using namespace std;ll sc() &#123; ll xx=0,ff=1; char cch=gc; while(cch&lt;'0'|| cch&gt;'9') &#123; if(cch=='-') ff=-ff; cch=gc; &#125; while(cch&gt;='0'&amp;&amp; cch&lt;='9') &#123; xx=(xx&lt;&lt;1)+(xx&lt;&lt;3)+(cch^48); cch=gc; &#125; return xx*ff;&#125;ll n,cnt;ll lax,lay,x,y;ll ans[Maxn];int main() &#123; n=sc(); lax=sc(); lay=sc(); //lax lay 为上一个点的横纵坐标 if(!lay) ans[++cnt]=lax; //如果第一个点的纵坐标为0，则lax为一个零点 for(ll i=2; i&lt;=n; i++) &#123; x=sc(); y=sc(); if(i==2&amp;&amp; ((lay&gt;0&amp;&amp;y&gt;lay&amp;&amp;(y-lay)*(x-lax)&gt;0)|| (lay&lt;0&amp;&amp;y&lt;lay&amp;&amp;(y-lay)*(x-lax)&lt;0))) //处理射线，当射线满足形似'/'或'\'时 if((lay*(x-lax)%(y-lay))==0) &#123; //零点为整点 ans[++cnt]=lax-lay*(x-lax)/(y-lay); //由公式求出零点 if(cnt&gt;Maxx) &#123; printf("-1\n"); return 0; &#125; &#125; if(lay==0&amp;&amp;y==0) &#123; //如果当前点和上一点在x轴上 if(i==2||i==n) &#123; //如果在射线上，那么数量肯定会超过3e5 printf("-1\n"); return 0; &#125; for(ll j=lax+1; j&lt;=x; j++) &#123; //否则就把它们之间的零点存入 ans[++cnt]=j; if(cnt&gt;Maxx) &#123; printf("-1\n"); return 0; &#125; &#125; &#125; else if(lay!=0&amp;&amp;y==0) &#123; //如果上一点不在x轴上，而当前点在x轴上，存入 ans[++cnt]=x; if(cnt&gt;Maxx) &#123; printf("-1\n"); return 0; &#125; &#125; else if(lay*y&lt;0) &#123; //如果前后两点在x轴两侧 if((lay*(x-lax)%(y-lay))==0) &#123; //同上 ans[++cnt]=lax-lay*(x-lax)/(y-lay); if(cnt&gt;Maxx) &#123; printf("-1\n"); return 0; &#125; &#125; &#125; if(i==n&amp;&amp; ((y&lt;0&amp;&amp;y&gt;lay&amp;&amp;(y-lay)*(x-lax)&gt;0)|| (y&gt;0&amp;&amp;y&lt;lay&amp;&amp;(y-lay)*(x-lax)&lt;0))) //处理第二条射线，思路和第一条射线基本一样，但做法不同 if((lay*(x-lax)%(y-lay))==0) &#123; ans[++cnt]=lax-lay*(x-lax)/(y-lay); if(cnt&gt;Maxx) &#123; printf("-1\n"); return 0; &#125; &#125; lax=x; lay=y; //更新上一个点坐标 &#125; printf("%lld\n",cnt); //输出 for(ll i=1; i&lt;=cnt; i++) printf("%lld ",ans[i]); return 0;&#125; rp++]]></content>
       <categories>
         <category>题解</category>
       </categories>
       <tags>
-        <tag>dp</tag>
+        <tag>模拟</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[博弈]]></title>
+    <url>%2F2019%2F06%2F21%2FBoYi%2F</url>
+    <content type="text"><![CDATA[题目链接：博弈 如果没有权限看题，请看下图 题目思路：通过手玩样例，我们可以得出一些结论： 如果k==1，那么可以不断地删数，即为平局。 我们可以把区间内的每个数判断一下，看能用几次k把那个数弄为0，把次数累加，最后发现，胜利结果与总次数的奇偶性有关。 代码12345678910111213141516171819202122232425262728293031323334#include&lt;iostream&gt;#include&lt;cstdio&gt;#include&lt;cstring&gt;#include&lt;algorithm&gt;#define gc getchar()#define ll long longusing namespace std;int l,r,k;ll tot;int main() &#123; while(scanf("%d%d%d",&amp;l,&amp;r,&amp;k)!=EOF) &#123; if(k==1) &#123; printf("Draw\n"); continue; &#125; tot=0; for(int i=l; i&lt;=r; i++) &#123; ll time=1; while(time&lt;=i) &#123; tot+=time; time*=k; &#125; tot&amp;=1; &#125;// cout&lt;&lt;tot&lt;&lt;endl; if(!(tot&amp;1)) &#123; printf("Cwbc\n"); &#125; else &#123; printf("XHRlyb\n"); &#125; &#125; return 0;&#125; rp++]]></content>
+      <categories>
+        <category>题解</category>
+      </categories>
+      <tags>
+        <tag>模拟</tag>
       </tags>
   </entry>
   <entry>
@@ -701,6 +746,17 @@
       </tags>
   </entry>
   <entry>
+    <title><![CDATA[NOI2001_食物链]]></title>
+    <url>%2F2019%2F06%2F18%2FShiWuLian%2F</url>
+    <content type="text"><![CDATA[题目链接：食物链 题目思路：通过题目，我们不难发现有动物之间有三个关系，分别为同类、食物、天敌，于是我们可以开3*n的空间来进行并查集，分别对应上面的关系，进行一些合理的判断，就可以AC。 代码12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455#include&lt;iostream&gt;#include&lt;cstdio&gt;#include&lt;cstring&gt;using namespace std;int n,k,ans;int f[50010*3];int find(int x)&#123; if(f[x]!=x) f[x]=find(f[x]); return f[x];&#125;void un(int x,int y)&#123; f[find(y)]=find(x);&#125;int main()&#123; scanf("%d%d",&amp;n,&amp;k); for(int i=1;i&lt;=3*n;i++) f[i]=i; for(int i=1;i&lt;=k;i++) &#123; int c,x,y; scanf("%d%d%d",&amp;c,&amp;x,&amp;y); if(x&gt;n||y&gt;n) //判断动物序号是否超出范围 &#123; ans++; continue; &#125; if(c==1) //动物为同类 &#123; if(find(x+n)==find(y)||find(x+2*n)==find(y)) //x的食物和y的同类为同类 或 x的天敌和y的同类是同类，显然不符题意 &#123; ans++; continue; &#125; un(x,y); //x,y的同类为同类 un(x+n,y+n); //x,y的食物合并 un(x+2*n,y+2*n); //x,y的天敌合并 &#125; else if(c==2) //动物为被吃关系 &#123; if(find(x)==find(y)||find(x+2*n)==find(y)) //x的同类和y的同类为同类 或 x的天敌和y的同类是同类，不符题意 &#123; ans++; continue; &#125; un(x,y+2*n); //x的同类和y的天敌合并 un(x+n,y); //x的食物和y的同类合并 un(x+2*n,y+n); //x的天敌和y的食物合并 &#125; &#125; printf("%d",ans); return 0;&#125; rp++]]></content>
+      <categories>
+        <category>题解</category>
+      </categories>
+      <tags>
+        <tag>并查集</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[仓鼠找sugar]]></title>
     <url>%2F2019%2F06%2F18%2FCangShuZhaoSugar%2F</url>
     <content type="text"><![CDATA[题目链接：仓鼠找sugar 题目思路：首先，我们知道，在一棵树上两个节点(x,y)的最短距离就是x-&gt;LCA(x,y)-&gt;y，那么我们可以得出，从x到y，LCA(x,y)是必经之点，那么对于四个点(x1,y1;x2,y2)来说，如果它们的最短路上有交点，则max(deep[LCA(x1,y1)]，deep[LCA(x2,y2)]）后的LCA一定在任意两个点的最短路上，那根据之前的结论，我们就求出任意两个点的LCA，就深度取max,如果不小于max(deep[LCA(x1,y1)], deep[LCA(x2,y2)])，那就说明合法，否则，就不合法。 代码123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869#include&lt;iostream&gt;#include&lt;cstdio&gt;#include&lt;cstring&gt;#include&lt;algorithm&gt;#define gc getchar()#define Maxn 1000010using namespace std;int sc() &#123; int xx=0,ff=1; char cch; while(cch&lt;'0'|| cch&gt;'9') &#123; if(cch=='-') ff=-ff; cch=gc; &#125; while(cch&gt;='0'&amp;&amp; cch&lt;='9') &#123; xx=xx*10+(cch-48); cch=gc; &#125; return xx*ff;&#125;struct TREE &#123; int next,to;&#125;tree[Maxn*2];int n,m,cnt;int head[Maxn],deep[Maxn];int f[Maxn][22];void ADD(int from,int to) &#123; tree[++cnt].next=head[from]; tree[cnt].to=to; head[from]=cnt;&#125;void D_F(int son,int fa) &#123; deep[son]=deep[fa]+1; for(int i=0; i&lt;=19; i++) f[son][i+1]=f[f[son][i]][i]; for(int i=head[son]; i; i=tree[i].next) &#123; int to=tree[i].to; if(to==fa) continue; f[to][0]=son; D_F(to,son); &#125;&#125;int LCA(int x,int y) &#123; if(deep[x]&lt;deep[y]) swap(x,y); for(int i=20; i&gt;=0; i--) &#123; if(deep[f[x][i]]&gt;=deep[y]) x=f[x][i]; if(x==y) return x; &#125; for(int i=20; i&gt;=0; i--) &#123; if(f[x][i]!=f[y][i]) x=f[x][i],y=f[y][i]; &#125; return f[x][0];&#125;int main() &#123; n=sc(); m=sc(); for(int i=1; i&lt;n; i++) &#123; int x=sc(),y=sc(); ADD(x,y); ADD(y,x); &#125; D_F(1,0); while(m--) &#123; int x1=sc(),y1=sc(),x2=sc(),y2=sc(); int mid1=LCA(x1,y1),mid2=LCA(x2,y2); int MID=max(deep[mid1],deep[mid2]); int maxx=max(deep[LCA(x1,x2)],max(deep[LCA(x1,y2)],max(deep[LCA(y1,x2)],deep[LCA(y1,y2)]))); if(maxx&gt;=MID) printf("Y\n"); else printf("N\n"); &#125; return 0;&#125; rp++]]></content>
@@ -712,14 +768,15 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[NOI2001_食物链]]></title>
-    <url>%2F2019%2F06%2F18%2FShiWuLian%2F</url>
-    <content type="text"><![CDATA[题目链接：食物链 题目思路：通过题目，我们不难发现有动物之间有三个关系，分别为同类、食物、天敌，于是我们可以开3*n的空间来进行并查集，分别对应上面的关系，进行一些合理的判断，就可以AC。 代码12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455#include&lt;iostream&gt;#include&lt;cstdio&gt;#include&lt;cstring&gt;using namespace std;int n,k,ans;int f[50010*3];int find(int x)&#123; if(f[x]!=x) f[x]=find(f[x]); return f[x];&#125;void un(int x,int y)&#123; f[find(y)]=find(x);&#125;int main()&#123; scanf("%d%d",&amp;n,&amp;k); for(int i=1;i&lt;=3*n;i++) f[i]=i; for(int i=1;i&lt;=k;i++) &#123; int c,x,y; scanf("%d%d%d",&amp;c,&amp;x,&amp;y); if(x&gt;n||y&gt;n) //判断动物序号是否超出范围 &#123; ans++; continue; &#125; if(c==1) //动物为同类 &#123; if(find(x+n)==find(y)||find(x+2*n)==find(y)) //x的食物和y的同类为同类 或 x的天敌和y的同类是同类，显然不符题意 &#123; ans++; continue; &#125; un(x,y); //x,y的同类为同类 un(x+n,y+n); //x,y的食物合并 un(x+2*n,y+2*n); //x,y的天敌合并 &#125; else if(c==2) //动物为被吃关系 &#123; if(find(x)==find(y)||find(x+2*n)==find(y)) //x的同类和y的同类为同类 或 x的天敌和y的同类是同类，不符题意 &#123; ans++; continue; &#125; un(x,y+2*n); //x的同类和y的天敌合并 un(x+n,y); //x的食物和y的同类合并 un(x+2*n,y+n); //x的天敌和y的食物合并 &#125; &#125; printf("%d",ans); return 0;&#125; rp++]]></content>
+    <title><![CDATA[砝码称重]]></title>
+    <url>%2F2019%2F06%2F17%2Ffamachengzhong%2F</url>
+    <content type="text"><![CDATA[题目思路：根据数据范围，我们可以爆搜枚举每一种情况，然后到达边界时dp一下。dp其实是一个变式01背包，以它们之累加和为容量跑一遍，更新答案。 代码1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859#include&lt;iostream&gt;#include&lt;cstdio&gt;#include&lt;cstring&gt;#include&lt;algorithm&gt;#define gc getchar()#define Maxn 30#define INF 2010using namespace std;int sc() &#123; int xx=0,ff=1; char cch; while(cch&lt;'0'|| cch&gt;'9') &#123; if(cch=='-') ff=-ff; cch=gc; &#125; while(cch&gt;='0'&amp;&amp; cch&lt;='9') &#123; xx=xx*10+(cch-48); cch=gc; &#125; return xx*ff;&#125;int n,m,ans;int a[Maxn];bool vis[Maxn],pd[INF];namespace DY &#123; void dp() &#123; int cnt=0,sum=0; memset(pd,0,sizeof(pd)); pd[0]=1; for(int i=1; i&lt;=n; i++) &#123; if(vis[i]) continue; for(int j=sum; j&gt;=0; j--) &#123; if(pd[j]&amp;&amp;!pd[j+a[i]]) pd[j+a[i]]=1,cnt++; &#125; sum+=a[i]; &#125; ans=max(ans,cnt); &#125; void dfs(int now,int tot) &#123; if(tot&gt;m) return ; if(now==n+1) &#123; if(tot==m) dp(); return ; &#125; dfs(now+1,tot); vis[now]=1; dfs(now+1,tot+1); vis[now]=0; &#125; void AKNOIP() &#123; n=sc(); m=sc(); for(int i=1; i&lt;=n; i++) a[i]=sc(); dfs(1,0); printf("%d",ans); &#125;&#125;;int main() &#123; DY::AKNOIP(); return 0;&#125;]]></content>
       <categories>
         <category>题解</category>
       </categories>
       <tags>
-        <tag>并查集</tag>
+        <tag>dp</tag>
+        <tag>dfs</tag>
       </tags>
   </entry>
   <entry>
@@ -759,18 +816,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[砝码称重]]></title>
-    <url>%2F2019%2F06%2F17%2Ffamachengzhong%2F</url>
-    <content type="text"><![CDATA[题目思路：根据数据范围，我们可以爆搜枚举每一种情况，然后到达边界时dp一下。dp其实是一个变式01背包，以它们之累加和为容量跑一遍，更新答案。 代码1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859#include&lt;iostream&gt;#include&lt;cstdio&gt;#include&lt;cstring&gt;#include&lt;algorithm&gt;#define gc getchar()#define Maxn 30#define INF 2010using namespace std;int sc() &#123; int xx=0,ff=1; char cch; while(cch&lt;'0'|| cch&gt;'9') &#123; if(cch=='-') ff=-ff; cch=gc; &#125; while(cch&gt;='0'&amp;&amp; cch&lt;='9') &#123; xx=xx*10+(cch-48); cch=gc; &#125; return xx*ff;&#125;int n,m,ans;int a[Maxn];bool vis[Maxn],pd[INF];namespace DY &#123; void dp() &#123; int cnt=0,sum=0; memset(pd,0,sizeof(pd)); pd[0]=1; for(int i=1; i&lt;=n; i++) &#123; if(vis[i]) continue; for(int j=sum; j&gt;=0; j--) &#123; if(pd[j]&amp;&amp;!pd[j+a[i]]) pd[j+a[i]]=1,cnt++; &#125; sum+=a[i]; &#125; ans=max(ans,cnt); &#125; void dfs(int now,int tot) &#123; if(tot&gt;m) return ; if(now==n+1) &#123; if(tot==m) dp(); return ; &#125; dfs(now+1,tot); vis[now]=1; dfs(now+1,tot+1); vis[now]=0; &#125; void AKNOIP() &#123; n=sc(); m=sc(); for(int i=1; i&lt;=n; i++) a[i]=sc(); dfs(1,0); printf("%d",ans); &#125;&#125;;int main() &#123; DY::AKNOIP(); return 0;&#125;]]></content>
-      <categories>
-        <category>题解</category>
-      </categories>
-      <tags>
-        <tag>dp</tag>
-        <tag>dfs</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[暗的连锁]]></title>
     <url>%2F2019%2F04%2F14%2FTJ_andesuolian%2F</url>
     <content type="text"><![CDATA[题目链接：「一本通 4.4 例 2」暗的连锁 题目标签：LCA，（树上差分） 题目大意：请自行读题。。。 题目分析：对于一条附加边[x,y]，如果将原树分开后x,y分成了两个部分，那么下一步就必须把x,y切开。通过研究样例，我们不妨这样想，对于每一条附加边[x,y]，我们就说 _从x到y的路径上的节点被覆盖了一次_ ，那么对于每个节点，无疑有三种情况： 1.该节点到根节点没有被覆盖过，那么下一步可以随意切一条边，故有M种方案。 2.该节点到根节点被覆盖过1次，那么下一步只能切除被分开的x,y。 3.该节点到根节点被覆盖过&gt;=2次，那么下一步无论怎样切割都无法达到要求。 那我们就把问题简化成了：对于每一条附加边，把它们的路径上的节点覆盖一次，然后枚举除了根节点之外的节点，累加方案数。 关于优化：如果暴力覆盖的话肯定会TLE，那我们就来差分一下，也就是树上差分，在这里不做详细解释，搬来一篇解释差分的洛谷日报，不会的读者请自行学习。。。 代码123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687#include&lt;iostream&gt;#include&lt;cstdio&gt;#include&lt;cstring&gt;#include&lt;algorithm&gt;#define gc getchar()#define Maxn 200010using namespace std;int sc() &#123; int xx=0,ff=1; char cch; while(cch&lt;'0'|| cch&gt;'9') &#123; if(cch=='-') ff=-ff; cch=gc; &#125; while(cch&gt;='0'&amp;&amp; cch&lt;='9') &#123; xx=xx*10+(cch-48); cch=gc; &#125; return xx*ff;&#125;struct EDGE &#123; int next,to;&#125;edge[Maxn*2];int n,m,ans,cnt;int head[Maxn*2],deep[Maxn],w[Maxn],ww[Maxn];int f[Maxn][21];namespace DY &#123; void ADD(int from,int to) &#123; edge[++cnt].next=head[from]; edge[cnt].to=to; head[from]=cnt; &#125; void D_F(int son,int fa) &#123; //LCA的板子(From line30 to line52) deep[son]=deep[fa]+1; for(int i=0; i&lt;=19; i++) f[son][i+1]=f[f[son][i]][i]; for(int i=head[son]; i; i=edge[i].next) &#123; int to=edge[i].to; if(to==fa) continue; f[to][0]=son; D_F(to,son); &#125; &#125; int LCA(int x,int y) &#123; if(deep[x]&lt;deep[y]) swap(x,y); for(int i=20; i&gt;=0; i--) &#123; if(deep[f[x][i]]&gt;=deep[y]) x=f[x][i]; if(x==y) return x; &#125; for(int i=20; i&gt;=0; i--) &#123; if(f[x][i]!=f[y][i]) x=f[x][i],y=f[y][i]; &#125; return f[x][0]; &#125; void dfs(int son,int fa) &#123; //遍历赋值 for(int i=head[son]; i; i=edge[i].next) &#123; int to=edge[i].to; if(to==fa) continue; dfs(to,son); ww[son]+=ww[to]; &#125; &#125; void main() &#123; n=sc(); m=sc(); for(int i=1; i&lt;n; i++) &#123; int u=sc(),v=sc(); ADD(u,v); ADD(v,u); &#125; deep[1]=1; D_F(1,0); for(int i=1; i&lt;=m; i++) &#123; //树上差分 int u=sc(),v=sc(); w[u]++; w[v]++; w[LCA(u,v)]-=2; &#125; for(int i=1; i&lt;=n; i++) //ww[i]为第i个节点到根节点被覆盖的次数 ww[i]=w[i]; dfs(1,0); //进行遍历来赋值 for(int i=2; i&lt;=n; i++) &#123; if(!ww[i]) ans+=m; else if(ww[i]==1) ans+=1; &#125; printf("%d",ans); &#125;&#125;;int main() &#123; DY::main(); return 0;&#125; RP++]]></content>
@@ -783,17 +828,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[SCOI2010_序列操作]]></title>
-    <url>%2F2019%2F04%2F13%2FTJ_xuliecaozuo%2F</url>
-    <content type="text"><![CDATA[题目链接：SCOI2010_序列操作 写在前面的话：这道题真毒！！！ 题目标签：线段树 题目大意：给定一个序列，支持5种操作，全变0，全变1，区间取反，查询1的总数，查询连续1的总数。 题目思路：一个线段树维护7个量+2种标记。即 _1的总数（sum）、连续1的数目（l1）、连续0的数目（l0）、从左端点开始连续1的数目（ll1）、从左端点开始连续0的数目（ll0）、从右端点开始连续1的数目（rl1）、从右端点开始连续0的数目（rl0）;整体取反标记（all）、单个取反标记（sin）_ 。 建树：略 上传标记：sum直接左右儿子求和，ll0、ll1、rl0、rl1、l1、l0的维护详见另一篇题解。 下传标记：先处理全部取反的标记，再处理单个取反，详见代码pushdown函数。 3种修改：请读者自行理解。 2种查询： 对于查询1的总数：略 查询连续1的总数：和上传标记的思路基本一样，请读者自行理解。 代码123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101102103104105106107108109110111112113114115116117118119120121122123124125126127128129130131132133134135136137138139140141142143144145146147148149150151152153154155156157158159160161162163164165166167168169170171172173174175176177178179180181182183184185186187188189190191192193194195196#include&lt;iostream&gt;#include&lt;cstdio&gt;#include&lt;cstring&gt;#include&lt;algorithm&gt;#define gc getchar()#define Maxn 100010using namespace std;int sc() &#123; int xx=0,ff=1; char cch; while(cch&lt;'0'|| cch&gt;'9') &#123; if(cch=='-') ff=-ff; cch=gc; &#125; while(cch&gt;='0'&amp;&amp; cch&lt;='9') &#123; xx=xx*10+(cch-48); cch=gc; &#125; return xx*ff;&#125;struct lst &#123; int sum,l1,l0,ll1,ll0,rl1,rl0,all,sin;&#125;T[Maxn*4];int n,m;int a[Maxn];namespace DY &#123; void pushup(int k,int l,int r) &#123; int mid=l+r&gt;&gt;1; int L1=mid-l+1,L2=r-mid; T[k].sum=T[k&lt;&lt;1].sum+T[k&lt;&lt;1|1].sum; T[k].ll0=T[k&lt;&lt;1].ll0; T[k].ll1=T[k&lt;&lt;1].ll1; if(T[k].ll0==L1) T[k].ll0+=T[k&lt;&lt;1|1].ll0; if(T[k].ll1==L1) T[k].ll1+=T[k&lt;&lt;1|1].ll1; T[k].rl0=T[k&lt;&lt;1|1].rl0; T[k].rl1=T[k&lt;&lt;1|1].rl1; if(T[k].rl0==L2) T[k].rl0+=T[k&lt;&lt;1].rl0; if(T[k].rl1==L2) T[k].rl1+=T[k&lt;&lt;1].rl1; T[k].l0=max(T[k&lt;&lt;1].l0, T[k&lt;&lt;1|1].l0); T[k].l0=max(T[k].l0, T[k&lt;&lt;1].rl0+T[k&lt;&lt;1|1].ll0); T[k].l1=max(T[k&lt;&lt;1].l1, T[k&lt;&lt;1|1].l1); T[k].l1=max(T[k].l1, T[k&lt;&lt;1].rl1+T[k&lt;&lt;1|1].ll1); &#125; void pushdown(int k,int l,int r) &#123; int mid=l+r&gt;&gt;1; int L1=mid-l+1,L2=r-mid; if(T[k].all==1) &#123; //首先处理整体取反 （这一部分感觉很好理解） T[k&lt;&lt;1]=(lst)&#123;L1,L1,0,L1,0,L1,0,1,0&#125;; //整体变1 T[k&lt;&lt;1|1]=(lst)&#123;L2,L2,0,L2,0,L2,0,1,0&#125;; &#125; else if(T[k].all==0) &#123; T[k&lt;&lt;1]=(lst)&#123;0,0,L1,0,L1,0,L1,0,0&#125;; //整体变0 T[k&lt;&lt;1|1]=(lst)&#123;0,0,L2,0,L2,0,L2,0,0&#125;; &#125; T[k].all=-1; if(T[k].sin==1) &#123; //单个取反 T[k].sin=0; T[k&lt;&lt;1].sum=L1-T[k&lt;&lt;1].sum; //新的sum相当于区间长度-原来1的数目 swap(T[k&lt;&lt;1].l0,T[k&lt;&lt;1].l1); //剩下的内容交换 具体解释[请自行copy该链接](https://www.luogu.org/blog/RIsingSunlight43383/dui-yu-wei-hu-xian-duan-shu-di-xie-shi-xu-lie-wei-hu-di-dan-ge-qu-fan) swap(T[k&lt;&lt;1].ll0,T[k&lt;&lt;1].ll1); swap(T[k&lt;&lt;1].rl0,T[k&lt;&lt;1].rl1); T[k&lt;&lt;1].sin^=1; T[k&lt;&lt;1|1].sum=L2-T[k&lt;&lt;1|1].sum; swap(T[k&lt;&lt;1|1].l0,T[k&lt;&lt;1|1].l1); swap(T[k&lt;&lt;1|1].ll0,T[k&lt;&lt;1|1].ll1); swap(T[k&lt;&lt;1|1].rl0,T[k&lt;&lt;1|1].rl1); T[k&lt;&lt;1|1].sin^=1; &#125; &#125; void build(int k,int l,int r) &#123; T[k].all=-1; if(l==r) &#123; T[k]=(lst)&#123;a[l],a[l],a[l]^1,a[l],a[l]^1,a[l],a[l]^1,-1,0&#125;; return ; &#125; int mid=l+r&gt;&gt;1; build(k&lt;&lt;1, l, mid); build(k&lt;&lt;1|1, mid+1, r); pushup(k,l,r); &#125; void modify0(int k,int l,int r,int x,int y) &#123;// if(l&lt;x|| r&gt;y) return ; int mid=l+r&gt;&gt;1; if(l&gt;=x&amp;&amp; r&lt;=y) &#123; int L=r-l+1; T[k]=(lst)&#123;0,0,L,0,L,0,L,0,0&#125;; //0,0,L,0,0,L,L,0,0 return ; &#125; if(l&gt;y|| r&lt;x) return ; pushdown(k,l,r); if(x&lt;=mid) modify0(k&lt;&lt;1, l, mid, x, y); if(y&gt;mid) modify0(k&lt;&lt;1|1, mid+1, r, x, y); pushup(k,l,r); &#125; void modify1(int k,int l,int r,int x,int y) &#123;// if(l&lt;x|| r&gt;y) return ; int mid=l+r&gt;&gt;1; if(l&gt;=x&amp;&amp; r&lt;=y) &#123; int L=r-l+1; T[k]=(lst)&#123;L,L,0,L,0,L,0,1,0&#125;; //L,L,0,L,L,0,0,1,0 return ; &#125; if(l&gt;y|| r&lt;x) return ; pushdown(k,l,r); if(x&lt;=mid) modify1(k&lt;&lt;1, l, mid, x, y); if(y&gt;mid) modify1(k&lt;&lt;1|1, mid+1, r, x, y); pushup(k,l,r); &#125; void modify2(int k,int l,int r,int x,int y) &#123;// if(l&lt;x|| r&gt;y) return ; int mid=l+r&gt;&gt;1; if(l&gt;=x&amp;&amp; r&lt;=y) &#123; int L=r-l+1; T[k].sum=L-T[k].sum; swap(T[k].l0,T[k].l1); swap(T[k].ll0,T[k].ll1); swap(T[k].rl0,T[k].rl1); T[k].sin^=1; return ; &#125; if(l&gt;y|| r&lt;x) return ; pushdown(k,l,r); if(x&lt;=mid) modify2(k&lt;&lt;1, l, mid, x, y); if(y&gt;mid) modify2(k&lt;&lt;1|1, mid+1, r, x, y); pushup(k,l,r); &#125; int query1(int k,int l,int r,int x,int y) &#123;// if(l&lt;x|| r&gt;y) return 0; if(l&gt;=x&amp;&amp; r&lt;=y) return T[k].sum; if(l&gt;y|| r&lt;x) return 0; int mid=l+r&gt;&gt;1,res=0; pushdown(k,l,r); if(x&lt;=mid) res+=query1(k&lt;&lt;1, l, mid, x, y); if(y&gt;mid) res+=query1(k&lt;&lt;1|1, mid+1, r, x, y); return res; &#125; lst query2(int k,int l,int r,int x,int y) &#123;// if(l&lt;x|| r&gt;y) return (lst)&#123;0&#125;; if(l&gt;=x&amp;&amp; r&lt;=y) return T[k]; if(l&gt;y|| r&lt;x) return (lst)&#123;0&#125;; pushdown(k,l,r); int mid=l+r&gt;&gt;1; int L1=mid-l+1,L2=r-mid; lst LL=query2(k&lt;&lt;1, l, mid, x, y); lst RR=query2(k&lt;&lt;1|1, mid+1, r, x, y); lst ans; ans.sum=LL.sum+RR.sum; ans.ll0=LL.ll0; ans.ll1=LL.ll1; if(ans.ll0==L1) ans.ll0+=RR.ll0; if(ans.ll1==L1) ans.ll1+=RR.ll1; ans.rl0=RR.rl0; ans.rl1=RR.rl1; if(ans.rl0==L2) ans.rl0+=LL.rl0; if(ans.rl1==L2) ans.rl1+=LL.rl1; ans.l0=max(LL.l0, RR.l0); ans.l0=max(ans.l0, LL.rl0+RR.ll0); ans.l1=max(LL.l1, RR.l1); ans.l1=max(ans.l1, LL.rl1+RR.ll1); return ans; &#125; void main() &#123; n=sc(); m=sc(); for(int i=1; i&lt;=n; i++) a[i]=sc(); build(1,1,n); while(m--) &#123; int flag=sc(),u=sc(),v=sc(); u++,v++; if(!flag) &#123; modify0(1,1,n,u,v); &#125; else if(flag==1) &#123; modify1(1,1,n,u,v); &#125; else if(flag==2) &#123; modify2(1,1,n,u,v); &#125; else if(flag==3) &#123; printf("%d\n",query1(1,1,n,u,v)); &#125; else &#123; printf("%d\n",query2(1,1,n,u,v).l1); &#125; &#125; &#125;&#125;;int main() &#123; DY::main(); return 0;&#125; RP++]]></content>
-      <categories>
-        <category>题解</category>
-      </categories>
-      <tags>
-        <tag>线段树</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[模板_最近公共祖先（LCA）]]></title>
     <url>%2F2019%2F04%2F13%2FTJ_LCA%2F</url>
     <content type="text"><![CDATA[题目链接：【模板】最近公共祖先（LCA） 题目标签：LCA 题目大意：略 题目思路：LCA的朴素求法直接略过，只说明倍增求法。设f[i][j]为第i个节点的2^k倍的祖先，如果该节点不存在，则f[i][j]=0。重点来了：对于k∈[1,log(n)]，有f[x][k]=f[f[x][k-1]][k-1],即从x节点走2^k步==从x的父亲走2^k-1步再走2^k-1步，因此，我们可以用一次遍历来把f数组求出来，时间复杂度为O(nlogn)，至于查找函数，大体思路是：把深度大的节点放前面(设为x)，从x往上跳，直到与另一个节点（设为y）同深度，再去单个查找他们的父亲是不是同一个。时间复杂度为O(logn)。 代码（注释被吃了）123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869#include&lt;iostream&gt;#include&lt;cstdio&gt;#include&lt;cstring&gt;#include&lt;algorithm&gt;#define gc getchar()#define Maxn 500010using namespace std;int sc() &#123; int xx=0,ff=1; char cch; while(cch&lt;'0'|| cch&gt;'9') &#123; if(cch=='-') ff=-ff; cch=gc; &#125; while(cch&gt;='0'&amp;&amp; cch&lt;='9') &#123; xx=xx*10+(cch-48); cch=gc; &#125; return xx*ff;&#125;struct EDGE &#123; int next,to;&#125;edge[Maxn*2];int n,m,s,cnt;int head[Maxn*2],deep[Maxn];int f[Maxn][21];namespace DY &#123; void ADD(int from,int to) &#123; edge[++cnt].next=head[from]; edge[cnt].to=to; head[from]=cnt; &#125; void D_F(int son,int fa) &#123; deep[son]=deep[fa]+1; for(int i=0; i&lt;=19; i++) f[son][i+1]=f[f[son][i]][i]; for(int i=head[son]; i; i=edge[i].next) &#123; int to=edge[i].to; if(to==fa) continue; f[to][0]=son; D_F(to,son); &#125; &#125; int LCA(int x,int y) &#123; if(deep[x]&lt;deep[y]) swap(x,y); for(int i=20; i&gt;=0; i--) &#123; if(deep[f[x][i]]&gt;=deep[y]) x=f[x][i]; if(x==y) return x; &#125; for(int i=20; i&gt;=0; i--) &#123; if(f[x][i]!=f[y][i]) x=f[x][i],y=f[y][i]; &#125; return f[x][0]; &#125; void main() &#123; n=sc(); m=sc(); s=sc(); for(int i=1; i&lt;n; i++) &#123; //链式前向星建树 int u=sc(),v=sc(); ADD(u,v); ADD(v,u); &#125; D_F(s,0); //预处理 while(m--) &#123; int u=sc(),v=sc(); printf("%d\n",LCA(u,v)); //查询 &#125; &#125;&#125;;int main() &#123; DY::main(); return 0;&#125; RP++]]></content>
@@ -802,6 +836,17 @@
       </categories>
       <tags>
         <tag>LCA</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[SCOI2010_序列操作]]></title>
+    <url>%2F2019%2F04%2F13%2FTJ_xuliecaozuo%2F</url>
+    <content type="text"><![CDATA[题目链接：SCOI2010_序列操作 写在前面的话：这道题真毒！！！ 题目标签：线段树 题目大意：给定一个序列，支持5种操作，全变0，全变1，区间取反，查询1的总数，查询连续1的总数。 题目思路：一个线段树维护7个量+2种标记。即 _1的总数（sum）、连续1的数目（l1）、连续0的数目（l0）、从左端点开始连续1的数目（ll1）、从左端点开始连续0的数目（ll0）、从右端点开始连续1的数目（rl1）、从右端点开始连续0的数目（rl0）;整体取反标记（all）、单个取反标记（sin）_ 。 建树：略 上传标记：sum直接左右儿子求和，ll0、ll1、rl0、rl1、l1、l0的维护详见另一篇题解。 下传标记：先处理全部取反的标记，再处理单个取反，详见代码pushdown函数。 3种修改：请读者自行理解。 2种查询： 对于查询1的总数：略 查询连续1的总数：和上传标记的思路基本一样，请读者自行理解。 代码123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101102103104105106107108109110111112113114115116117118119120121122123124125126127128129130131132133134135136137138139140141142143144145146147148149150151152153154155156157158159160161162163164165166167168169170171172173174175176177178179180181182183184185186187188189190191192193194195196#include&lt;iostream&gt;#include&lt;cstdio&gt;#include&lt;cstring&gt;#include&lt;algorithm&gt;#define gc getchar()#define Maxn 100010using namespace std;int sc() &#123; int xx=0,ff=1; char cch; while(cch&lt;'0'|| cch&gt;'9') &#123; if(cch=='-') ff=-ff; cch=gc; &#125; while(cch&gt;='0'&amp;&amp; cch&lt;='9') &#123; xx=xx*10+(cch-48); cch=gc; &#125; return xx*ff;&#125;struct lst &#123; int sum,l1,l0,ll1,ll0,rl1,rl0,all,sin;&#125;T[Maxn*4];int n,m;int a[Maxn];namespace DY &#123; void pushup(int k,int l,int r) &#123; int mid=l+r&gt;&gt;1; int L1=mid-l+1,L2=r-mid; T[k].sum=T[k&lt;&lt;1].sum+T[k&lt;&lt;1|1].sum; T[k].ll0=T[k&lt;&lt;1].ll0; T[k].ll1=T[k&lt;&lt;1].ll1; if(T[k].ll0==L1) T[k].ll0+=T[k&lt;&lt;1|1].ll0; if(T[k].ll1==L1) T[k].ll1+=T[k&lt;&lt;1|1].ll1; T[k].rl0=T[k&lt;&lt;1|1].rl0; T[k].rl1=T[k&lt;&lt;1|1].rl1; if(T[k].rl0==L2) T[k].rl0+=T[k&lt;&lt;1].rl0; if(T[k].rl1==L2) T[k].rl1+=T[k&lt;&lt;1].rl1; T[k].l0=max(T[k&lt;&lt;1].l0, T[k&lt;&lt;1|1].l0); T[k].l0=max(T[k].l0, T[k&lt;&lt;1].rl0+T[k&lt;&lt;1|1].ll0); T[k].l1=max(T[k&lt;&lt;1].l1, T[k&lt;&lt;1|1].l1); T[k].l1=max(T[k].l1, T[k&lt;&lt;1].rl1+T[k&lt;&lt;1|1].ll1); &#125; void pushdown(int k,int l,int r) &#123; int mid=l+r&gt;&gt;1; int L1=mid-l+1,L2=r-mid; if(T[k].all==1) &#123; //首先处理整体取反 （这一部分感觉很好理解） T[k&lt;&lt;1]=(lst)&#123;L1,L1,0,L1,0,L1,0,1,0&#125;; //整体变1 T[k&lt;&lt;1|1]=(lst)&#123;L2,L2,0,L2,0,L2,0,1,0&#125;; &#125; else if(T[k].all==0) &#123; T[k&lt;&lt;1]=(lst)&#123;0,0,L1,0,L1,0,L1,0,0&#125;; //整体变0 T[k&lt;&lt;1|1]=(lst)&#123;0,0,L2,0,L2,0,L2,0,0&#125;; &#125; T[k].all=-1; if(T[k].sin==1) &#123; //单个取反 T[k].sin=0; T[k&lt;&lt;1].sum=L1-T[k&lt;&lt;1].sum; //新的sum相当于区间长度-原来1的数目 swap(T[k&lt;&lt;1].l0,T[k&lt;&lt;1].l1); //剩下的内容交换 具体解释[请自行copy该链接](https://www.luogu.org/blog/RIsingSunlight43383/dui-yu-wei-hu-xian-duan-shu-di-xie-shi-xu-lie-wei-hu-di-dan-ge-qu-fan) swap(T[k&lt;&lt;1].ll0,T[k&lt;&lt;1].ll1); swap(T[k&lt;&lt;1].rl0,T[k&lt;&lt;1].rl1); T[k&lt;&lt;1].sin^=1; T[k&lt;&lt;1|1].sum=L2-T[k&lt;&lt;1|1].sum; swap(T[k&lt;&lt;1|1].l0,T[k&lt;&lt;1|1].l1); swap(T[k&lt;&lt;1|1].ll0,T[k&lt;&lt;1|1].ll1); swap(T[k&lt;&lt;1|1].rl0,T[k&lt;&lt;1|1].rl1); T[k&lt;&lt;1|1].sin^=1; &#125; &#125; void build(int k,int l,int r) &#123; T[k].all=-1; if(l==r) &#123; T[k]=(lst)&#123;a[l],a[l],a[l]^1,a[l],a[l]^1,a[l],a[l]^1,-1,0&#125;; return ; &#125; int mid=l+r&gt;&gt;1; build(k&lt;&lt;1, l, mid); build(k&lt;&lt;1|1, mid+1, r); pushup(k,l,r); &#125; void modify0(int k,int l,int r,int x,int y) &#123;// if(l&lt;x|| r&gt;y) return ; int mid=l+r&gt;&gt;1; if(l&gt;=x&amp;&amp; r&lt;=y) &#123; int L=r-l+1; T[k]=(lst)&#123;0,0,L,0,L,0,L,0,0&#125;; //0,0,L,0,0,L,L,0,0 return ; &#125; if(l&gt;y|| r&lt;x) return ; pushdown(k,l,r); if(x&lt;=mid) modify0(k&lt;&lt;1, l, mid, x, y); if(y&gt;mid) modify0(k&lt;&lt;1|1, mid+1, r, x, y); pushup(k,l,r); &#125; void modify1(int k,int l,int r,int x,int y) &#123;// if(l&lt;x|| r&gt;y) return ; int mid=l+r&gt;&gt;1; if(l&gt;=x&amp;&amp; r&lt;=y) &#123; int L=r-l+1; T[k]=(lst)&#123;L,L,0,L,0,L,0,1,0&#125;; //L,L,0,L,L,0,0,1,0 return ; &#125; if(l&gt;y|| r&lt;x) return ; pushdown(k,l,r); if(x&lt;=mid) modify1(k&lt;&lt;1, l, mid, x, y); if(y&gt;mid) modify1(k&lt;&lt;1|1, mid+1, r, x, y); pushup(k,l,r); &#125; void modify2(int k,int l,int r,int x,int y) &#123;// if(l&lt;x|| r&gt;y) return ; int mid=l+r&gt;&gt;1; if(l&gt;=x&amp;&amp; r&lt;=y) &#123; int L=r-l+1; T[k].sum=L-T[k].sum; swap(T[k].l0,T[k].l1); swap(T[k].ll0,T[k].ll1); swap(T[k].rl0,T[k].rl1); T[k].sin^=1; return ; &#125; if(l&gt;y|| r&lt;x) return ; pushdown(k,l,r); if(x&lt;=mid) modify2(k&lt;&lt;1, l, mid, x, y); if(y&gt;mid) modify2(k&lt;&lt;1|1, mid+1, r, x, y); pushup(k,l,r); &#125; int query1(int k,int l,int r,int x,int y) &#123;// if(l&lt;x|| r&gt;y) return 0; if(l&gt;=x&amp;&amp; r&lt;=y) return T[k].sum; if(l&gt;y|| r&lt;x) return 0; int mid=l+r&gt;&gt;1,res=0; pushdown(k,l,r); if(x&lt;=mid) res+=query1(k&lt;&lt;1, l, mid, x, y); if(y&gt;mid) res+=query1(k&lt;&lt;1|1, mid+1, r, x, y); return res; &#125; lst query2(int k,int l,int r,int x,int y) &#123;// if(l&lt;x|| r&gt;y) return (lst)&#123;0&#125;; if(l&gt;=x&amp;&amp; r&lt;=y) return T[k]; if(l&gt;y|| r&lt;x) return (lst)&#123;0&#125;; pushdown(k,l,r); int mid=l+r&gt;&gt;1; int L1=mid-l+1,L2=r-mid; lst LL=query2(k&lt;&lt;1, l, mid, x, y); lst RR=query2(k&lt;&lt;1|1, mid+1, r, x, y); lst ans; ans.sum=LL.sum+RR.sum; ans.ll0=LL.ll0; ans.ll1=LL.ll1; if(ans.ll0==L1) ans.ll0+=RR.ll0; if(ans.ll1==L1) ans.ll1+=RR.ll1; ans.rl0=RR.rl0; ans.rl1=RR.rl1; if(ans.rl0==L2) ans.rl0+=LL.rl0; if(ans.rl1==L2) ans.rl1+=LL.rl1; ans.l0=max(LL.l0, RR.l0); ans.l0=max(ans.l0, LL.rl0+RR.ll0); ans.l1=max(LL.l1, RR.l1); ans.l1=max(ans.l1, LL.rl1+RR.ll1); return ans; &#125; void main() &#123; n=sc(); m=sc(); for(int i=1; i&lt;=n; i++) a[i]=sc(); build(1,1,n); while(m--) &#123; int flag=sc(),u=sc(),v=sc(); u++,v++; if(!flag) &#123; modify0(1,1,n,u,v); &#125; else if(flag==1) &#123; modify1(1,1,n,u,v); &#125; else if(flag==2) &#123; modify2(1,1,n,u,v); &#125; else if(flag==3) &#123; printf("%d\n",query1(1,1,n,u,v)); &#125; else &#123; printf("%d\n",query2(1,1,n,u,v).l1); &#125; &#125; &#125;&#125;;int main() &#123; DY::main(); return 0;&#125; RP++]]></content>
+      <categories>
+        <category>题解</category>
+      </categories>
+      <tags>
+        <tag>线段树</tag>
       </tags>
   </entry>
   <entry>
@@ -856,20 +901,8 @@
         <category>题解</category>
       </categories>
       <tags>
-        <tag>bfs</tag>
         <tag>二分答案</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[「一本通 1.1 练习 4」家庭作业（带反悔的贪心）]]></title>
-    <url>%2F2019%2F03%2F16%2FTJ_homework%2F</url>
-    <content type="text"><![CDATA[题目来源：《信息学奥赛一本通·提高篇》提供题目的OJ：LOJ题目链接：「一本通 1.1 练习 4」家庭作业 本题目的基本算法——贪心，具体说是带反悔的贪心。题目大意：你有n个项目，每个项目有一定的期限和价值，规定只有在期限内完成这个项目才能获得相应的价值，完成一个项目需要花一个时间单位，求能获得的最大价值。基本思路：带反悔的贪心，先按照期限升序排序，用一个变量记录时间，然后枚举每一个项目，如果时间在期限以内，将价值存入一个小根堆中，如果超出期限，与小根堆的top()进行比较，如果大于top()，则将top()扔掉，加入当前的价值。因为时间原因，代码不写注释了，感觉思路已经很明确了。。。 附件：代码 123456789101112131415161718192021222324252627282930313233343536373839#include&lt;iostream&gt;#include&lt;cstdio&gt;#include&lt;cstring&gt;#include&lt;algorithm&gt;#include&lt;queue&gt;using namespace std;struct HM &#123; int tim,dis; bool operator &lt; (const HM &amp;x) const &#123; return tim&lt;x.tim; &#125;&#125;a[1000010];int n,ans,Time=1;bool pd[1000010];priority_queue &lt;int, vector &lt;int&gt;, greater &lt;int&gt; &gt; q;namespace DY &#123; void main() &#123; scanf("%d",&amp;n); for(int i=1; i&lt;=n; i++) &#123; scanf("%d%d",&amp;a[i].tim,&amp;a[i].dis); &#125; sort(a+1,a+1+n); for(int i=1; i&lt;=n; i++) &#123; if(Time&lt;= a[i].tim) Time++,q.push(a[i].dis); else if(a[i].dis&gt;q.top()) q.pop(),q.push(a[i].dis); &#125; while(!q.empty()) &#123; int x=q.top(); q.pop(); ans+=x; &#125; printf("%d",ans); &#125;&#125;;int main() &#123; DY::main(); return 0;&#125;]]></content>
-      <categories>
-        <category>题解</category>
-      </categories>
-      <tags>
-        <tag>贪心</tag>
-        <tag>优先队列</tag>
+        <tag>bfs</tag>
       </tags>
   </entry>
   <entry>
@@ -886,6 +919,29 @@
       </tags>
   </entry>
   <entry>
+    <title><![CDATA[「一本通 1.1 练习 4」家庭作业（带反悔的贪心）]]></title>
+    <url>%2F2019%2F03%2F16%2FTJ_homework%2F</url>
+    <content type="text"><![CDATA[题目来源：《信息学奥赛一本通·提高篇》提供题目的OJ：LOJ题目链接：「一本通 1.1 练习 4」家庭作业 本题目的基本算法——贪心，具体说是带反悔的贪心。题目大意：你有n个项目，每个项目有一定的期限和价值，规定只有在期限内完成这个项目才能获得相应的价值，完成一个项目需要花一个时间单位，求能获得的最大价值。基本思路：带反悔的贪心，先按照期限升序排序，用一个变量记录时间，然后枚举每一个项目，如果时间在期限以内，将价值存入一个小根堆中，如果超出期限，与小根堆的top()进行比较，如果大于top()，则将top()扔掉，加入当前的价值。因为时间原因，代码不写注释了，感觉思路已经很明确了。。。 附件：代码 123456789101112131415161718192021222324252627282930313233343536373839#include&lt;iostream&gt;#include&lt;cstdio&gt;#include&lt;cstring&gt;#include&lt;algorithm&gt;#include&lt;queue&gt;using namespace std;struct HM &#123; int tim,dis; bool operator &lt; (const HM &amp;x) const &#123; return tim&lt;x.tim; &#125;&#125;a[1000010];int n,ans,Time=1;bool pd[1000010];priority_queue &lt;int, vector &lt;int&gt;, greater &lt;int&gt; &gt; q;namespace DY &#123; void main() &#123; scanf("%d",&amp;n); for(int i=1; i&lt;=n; i++) &#123; scanf("%d%d",&amp;a[i].tim,&amp;a[i].dis); &#125; sort(a+1,a+1+n); for(int i=1; i&lt;=n; i++) &#123; if(Time&lt;= a[i].tim) Time++,q.push(a[i].dis); else if(a[i].dis&gt;q.top()) q.pop(),q.push(a[i].dis); &#125; while(!q.empty()) &#123; int x=q.top(); q.pop(); ans+=x; &#125; printf("%d",ans); &#125;&#125;;int main() &#123; DY::main(); return 0;&#125;]]></content>
+      <categories>
+        <category>题解</category>
+      </categories>
+      <tags>
+        <tag>贪心</tag>
+        <tag>优先队列</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[logo语言]]></title>
+    <url>%2F2019%2F03%2F15%2FTJ_logo%20language%2F</url>
+    <content type="text"><![CDATA[这道题其实可以用纯模拟来做，把字符串看做一个算式，‘FD’相当于加，‘BK’相当于减，‘REPEAT’相当于乘，‘【】’相当于（）。详细解释见代码注释。。。1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374757677787980818283848586878889#include&lt;iostream&gt;#include&lt;cstdio&gt;#include&lt;cstring&gt;using namespace std;char a[260];//字符串 int b[]=&#123;0,1,10,100,1000,10000,100000,1000000,10000000,100000000,1000000000&#125;;//用来处理字符串中的位数关系，一直到十亿 int num[7878]=&#123;1&#125;;//用来记录REPEAT(相当于乘)当前的数 int lena,now,pd,numn,len_num;//lena=字符串长度 now=当前距起点的距离 pd=1时表示前进，pd=2时表示后退，pd=3时表示REPEAT//numn表示num数组当前下标 len_num用来为num数组加数 int main()//主程序（程序快乐的开始了） &#123; gets(a);//输入 注：gets 一直读到回车（'\n'） scanf读到空格（' '） 所以要用gets lena=strlen(a);//记录长度 for(int i=0;i&lt;lena;)//处理 &#123; while(a[i]==' ')//空格跳过 i++; if(i&gt;=lena) break;//判断是否到头 if(a[i]=='[')//当出现‘【’时说明有REPEAT 以便乘num数组 &#123; numn++; i++; continue; &#125; if(a[i]==']')//当出现‘】’时说明REPEAT结束 乘之前的num数组 &#123; numn--; i++; continue; &#125; if(a[i]=='R'&amp;&amp;a[i+1]=='E')//处理REPEAT &#123; pd=3;//防止处理前进或后退 i+=6;//往前处理 while(a[i]==' ')//跳过空格 i++; int ii=0,iii=i;//处理数字 while(a[iii]&gt;='0'&amp;&amp;a[iii]&lt;='9')//符合数字范围 &#123; ii++;//用来记数的位数 iii++;//用来往前处理数字 &#125; int x=0;//数的总和 while(ii)//计算数的总和 &#123; x=int(a[i]-'0')*b[ii]+x;//当前数*位数+原来的数 ii--;//位数-1 i++;//往前处理 &#125; x*=num[numn];//乘之前的REPEAT num[++len_num]=x;//加入新的乘数（REPEAT） &#125; if(a[i]=='F'&amp;&amp;a[i+1]=='D')//处理前进 &#123; i+=2;//往前处理 pd=1;//用来表示前进 continue; &#125; if(a[i]=='B'&amp;&amp;a[i+1]=='K')//处理后退 &#123; i+=2;//同上 pd=2;//用来表示后退 continue; &#125; if(pd!=3)//处理前进或后退而不处理REPEAT &#123; int ii=0,iii=i;//同上 while(a[iii]&gt;='0'&amp;&amp;a[iii]&lt;='9') &#123; ii++; iii++; &#125; int x=0; while(ii) &#123; x=int(a[i]-'0')*b[ii]+x; ii--; i++; &#125; x*=num[numn]; if(pd==1) now+=x;//如果前进 + else if(pd==2) now-=x;//如果后退 - &#125; pd=0;//pd归零 &#125; if(now&lt;0) now=0-now;//处理负数（求绝对值，可用abs(cmath)） printf("%d",now);//输出 return 0;//程序快乐的结束了 &#125;]]></content>
+      <categories>
+        <category>题解</category>
+      </categories>
+      <tags>
+        <tag>模拟</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[JLOI2009 二叉树问题]]></title>
     <url>%2F2019%2F03%2F15%2FTJ_Binary%20tree%20problem%2F</url>
     <content type="text"><![CDATA[这道题用到了树的一些概念，但主要算法还是搜索和模拟，我用了深搜（Deep First Search，简称DFS）。主要思路：1.用一个结构体来表示树，l表示左子树，r表示右子树，fa表示父节点，ceng表示当前节点的深度，数组下标表示当前节点的值。2.深度用maxx来表示，每求出一个节点的ceng，就与maxx比较，取大者为maxx，最后的maxx即为深度。3.宽度用一个数组num来记，假设下标为i，num[i]即为第i层有几个节点，通过扫描所有节点来记，记完后sort从大到小一遍，num[1]即为宽度。4.计算距离用dfs函数，参数为now（当前节点），up（上行的次数）,down（下行的次数），加上简单的剪枝，求出结果ans=up*2+down。具体解释见代码。1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253#include&lt;iostream&gt;#include&lt;cstdio&gt;#include&lt;algorithm&gt;using namespace std;struct tree//树，见思路 &#123; int fa; int l; int r; int ceng;&#125;t[787878];int n,u,v,ans,maxx=-7878;//n个节点,计算从u到v的距离，ans为距离，maxx为深度 int num[787878];//计算宽度，见思路 bool pd[787878];//用来dfs剪枝 bool cmp(int a,int b)//sort从大到小函数 &#123; return a&gt;b;&#125;void dfs(int now,int up,int down)//计算从u到v的距离 &#123; if(now==v)//到达终点 &#123; ans=up*2+down;//计算距离 return; &#125; if(now&lt;1||now&gt;n) return;//剪枝 pd[now]=true;//记录 if(t[now].l&gt;=1&amp;&amp;t[now].l&lt;=n&amp;&amp;pd[t[now].l]==false) dfs(t[now].l,up,down+1);//搜索左子树，下行次数+1 if(t[now].r&gt;=1&amp;&amp;t[now].r&lt;=n&amp;&amp;pd[t[now].r]==false) dfs(t[now].r,up,down+1);//搜索右子树，下行次数+1 if(t[now].fa&gt;=1&amp;&amp;t[now].fa&lt;=n&amp;&amp;pd[t[now].fa]==false) dfs(t[now].fa,up+1,down);//搜索父节点，上行次数+1 &#125;int main()//主函数 &#123; scanf("%d",&amp;n);//输入 t[1].fa=0; t[1].ceng=1;//处理根节点 for(int i=1;i&lt;=(n-1);i++) &#123; int x,y; scanf("%d%d",&amp;x,&amp;y);//输入 if(t[x].l==0) t[x].l=y; else t[x].r=y;//记录左右子树 t[y].fa=x;//记录父节点 t[y].ceng=t[x].ceng+1;//记录层数 maxx=max(maxx,t[y].ceng);//计算深度 &#125; scanf("%d%d",&amp;u,&amp;v);//输入 for(int i=1;i&lt;=n;i++) num[t[i].ceng]++;//计算每一层节点的数量 sort(num+1,num+n+1,cmp);//排序，找出宽度 dfs(u,0,0);//搜索从u到v的距离 printf("%d\n%d\n%d",maxx,num[1],ans);//输出 return 0;//程序结束 &#125; 希望我的代码能够帮助到大家！]]></content>
@@ -895,6 +951,18 @@
       <tags>
         <tag>dfs</tag>
         <tag>二叉树</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[USACO13FEB 牛奶调度Milk Scheduling]]></title>
+    <url>%2F2019%2F03%2F15%2FTJ_Milk%20Scheduling%2F</url>
+    <content type="text"><![CDATA[本人思路：拓扑思想+简单模拟1这道题其实并不难，只是用到了拓扑的思想，A奶牛必须在B奶牛挤奶前挤奶，这就形成了一个有向图，点A指向点B。 我们只需要记一下总量（实际上是每只奶牛挤奶时间的总和），每一次循环将入度为0的奶牛加入要挤奶的数组，并且取挤奶数组的最小值，让在挤奶数组里的奶牛减去最小值，如果一个奶牛挤完奶了，那就删除与它相连的边，并且相连的点入度减一，总时间加上最小值，总量减去最小值*挤奶牛数，直到总量为0结束,如果到这里还不懂可以看代码，代码有更详细的解释。12345678910111213141516171819202122232425262728293031323334353637383940414243444546#include&lt;iostream&gt;#include&lt;cstdio&gt;#include&lt;cstring&gt;#define maxn 10007using namespace std;int n,m,minn,ans,tot,len; //n奶牛数目 m有先后要求的量 minn挤奶数组的最小值 ans最后答案 tot总量 len挤奶数组长度 int a[maxn],ru[maxn],q[maxn]; //a[]每只奶牛挤奶时间 ru[]每只奶牛的入度 q[]挤奶数组 bool edg[20000][20000]; //二维数组建图（模拟大法好） int main() //程序开始 &#123; scanf("%d%d",&amp;n,&amp;m); for(int i=1;i&lt;=n;i++) scanf("%d",&amp;a[i]),tot+=a[i]; //输入，并且计算总量 for(int i=1;i&lt;=m;i++) &#123; int x,y; scanf("%d%d",&amp;x,&amp;y); ru[y]++; //x指向y y入度+1 edg[x][y]=1; //建图 &#125; while(tot) //直到总量为0结束 &#123; minn=0x7fffffff; //先赋一个最大值 len=0; memset(q,0,sizeof(q)); //挤奶数组长度、内容清零 for(int i=1;i&lt;=n;i++) &#123; if(!ru[i]&amp;&amp;a[i]&gt;0) q[++len]=i,minn=min(minn,a[i]); //找还有奶并且入度为0的奶牛加入挤奶数组 &amp;&amp; 计算挤奶最小值 &#125; for(int i=1;i&lt;=len;i++) &#123; a[q[i]]-=minn; //每只挤奶奶牛减去最小值 if(a[q[i]]&lt;=0) //处理没奶的奶牛 &#123; for(int j=1;j&lt;=n;j++) &#123; if(edg[q[i]][j]==1) ru[j]--,edg[q[i]][j]=0; //删除和它相连的所有边以及和它相连点的入度 &#125; &#125; &#125; tot-=(minn*len); //总量减去（最小值*挤奶奶牛数） ans+=minn; //需要时间（答案）加上最小值 &#125; printf("%d",ans); //输出 return 0; //程序结束 &#125; 另外嘱咐大家一句：数组一定要够大，否则RE最后祝大家RP++；]]></content>
+      <categories>
+        <category>题解</category>
+      </categories>
+      <tags>
+        <tag>模拟</tag>
+        <tag>拓扑</tag>
       </tags>
   </entry>
   <entry>
@@ -919,29 +987,6 @@
       <tags>
         <tag>模拟</tag>
         <tag>栈</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[logo语言]]></title>
-    <url>%2F2019%2F03%2F15%2FTJ_logo%20language%2F</url>
-    <content type="text"><![CDATA[这道题其实可以用纯模拟来做，把字符串看做一个算式，‘FD’相当于加，‘BK’相当于减，‘REPEAT’相当于乘，‘【】’相当于（）。详细解释见代码注释。。。1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374757677787980818283848586878889#include&lt;iostream&gt;#include&lt;cstdio&gt;#include&lt;cstring&gt;using namespace std;char a[260];//字符串 int b[]=&#123;0,1,10,100,1000,10000,100000,1000000,10000000,100000000,1000000000&#125;;//用来处理字符串中的位数关系，一直到十亿 int num[7878]=&#123;1&#125;;//用来记录REPEAT(相当于乘)当前的数 int lena,now,pd,numn,len_num;//lena=字符串长度 now=当前距起点的距离 pd=1时表示前进，pd=2时表示后退，pd=3时表示REPEAT//numn表示num数组当前下标 len_num用来为num数组加数 int main()//主程序（程序快乐的开始了） &#123; gets(a);//输入 注：gets 一直读到回车（'\n'） scanf读到空格（' '） 所以要用gets lena=strlen(a);//记录长度 for(int i=0;i&lt;lena;)//处理 &#123; while(a[i]==' ')//空格跳过 i++; if(i&gt;=lena) break;//判断是否到头 if(a[i]=='[')//当出现‘【’时说明有REPEAT 以便乘num数组 &#123; numn++; i++; continue; &#125; if(a[i]==']')//当出现‘】’时说明REPEAT结束 乘之前的num数组 &#123; numn--; i++; continue; &#125; if(a[i]=='R'&amp;&amp;a[i+1]=='E')//处理REPEAT &#123; pd=3;//防止处理前进或后退 i+=6;//往前处理 while(a[i]==' ')//跳过空格 i++; int ii=0,iii=i;//处理数字 while(a[iii]&gt;='0'&amp;&amp;a[iii]&lt;='9')//符合数字范围 &#123; ii++;//用来记数的位数 iii++;//用来往前处理数字 &#125; int x=0;//数的总和 while(ii)//计算数的总和 &#123; x=int(a[i]-'0')*b[ii]+x;//当前数*位数+原来的数 ii--;//位数-1 i++;//往前处理 &#125; x*=num[numn];//乘之前的REPEAT num[++len_num]=x;//加入新的乘数（REPEAT） &#125; if(a[i]=='F'&amp;&amp;a[i+1]=='D')//处理前进 &#123; i+=2;//往前处理 pd=1;//用来表示前进 continue; &#125; if(a[i]=='B'&amp;&amp;a[i+1]=='K')//处理后退 &#123; i+=2;//同上 pd=2;//用来表示后退 continue; &#125; if(pd!=3)//处理前进或后退而不处理REPEAT &#123; int ii=0,iii=i;//同上 while(a[iii]&gt;='0'&amp;&amp;a[iii]&lt;='9') &#123; ii++; iii++; &#125; int x=0; while(ii) &#123; x=int(a[i]-'0')*b[ii]+x; ii--; i++; &#125; x*=num[numn]; if(pd==1) now+=x;//如果前进 + else if(pd==2) now-=x;//如果后退 - &#125; pd=0;//pd归零 &#125; if(now&lt;0) now=0-now;//处理负数（求绝对值，可用abs(cmath)） printf("%d",now);//输出 return 0;//程序快乐的结束了 &#125;]]></content>
-      <categories>
-        <category>题解</category>
-      </categories>
-      <tags>
-        <tag>模拟</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[USACO13FEB 牛奶调度Milk Scheduling]]></title>
-    <url>%2F2019%2F03%2F15%2FTJ_Milk%20Scheduling%2F</url>
-    <content type="text"><![CDATA[本人思路：拓扑思想+简单模拟1这道题其实并不难，只是用到了拓扑的思想，A奶牛必须在B奶牛挤奶前挤奶，这就形成了一个有向图，点A指向点B。 我们只需要记一下总量（实际上是每只奶牛挤奶时间的总和），每一次循环将入度为0的奶牛加入要挤奶的数组，并且取挤奶数组的最小值，让在挤奶数组里的奶牛减去最小值，如果一个奶牛挤完奶了，那就删除与它相连的边，并且相连的点入度减一，总时间加上最小值，总量减去最小值*挤奶牛数，直到总量为0结束,如果到这里还不懂可以看代码，代码有更详细的解释。12345678910111213141516171819202122232425262728293031323334353637383940414243444546#include&lt;iostream&gt;#include&lt;cstdio&gt;#include&lt;cstring&gt;#define maxn 10007using namespace std;int n,m,minn,ans,tot,len; //n奶牛数目 m有先后要求的量 minn挤奶数组的最小值 ans最后答案 tot总量 len挤奶数组长度 int a[maxn],ru[maxn],q[maxn]; //a[]每只奶牛挤奶时间 ru[]每只奶牛的入度 q[]挤奶数组 bool edg[20000][20000]; //二维数组建图（模拟大法好） int main() //程序开始 &#123; scanf("%d%d",&amp;n,&amp;m); for(int i=1;i&lt;=n;i++) scanf("%d",&amp;a[i]),tot+=a[i]; //输入，并且计算总量 for(int i=1;i&lt;=m;i++) &#123; int x,y; scanf("%d%d",&amp;x,&amp;y); ru[y]++; //x指向y y入度+1 edg[x][y]=1; //建图 &#125; while(tot) //直到总量为0结束 &#123; minn=0x7fffffff; //先赋一个最大值 len=0; memset(q,0,sizeof(q)); //挤奶数组长度、内容清零 for(int i=1;i&lt;=n;i++) &#123; if(!ru[i]&amp;&amp;a[i]&gt;0) q[++len]=i,minn=min(minn,a[i]); //找还有奶并且入度为0的奶牛加入挤奶数组 &amp;&amp; 计算挤奶最小值 &#125; for(int i=1;i&lt;=len;i++) &#123; a[q[i]]-=minn; //每只挤奶奶牛减去最小值 if(a[q[i]]&lt;=0) //处理没奶的奶牛 &#123; for(int j=1;j&lt;=n;j++) &#123; if(edg[q[i]][j]==1) ru[j]--,edg[q[i]][j]=0; //删除和它相连的所有边以及和它相连点的入度 &#125; &#125; &#125; tot-=(minn*len); //总量减去（最小值*挤奶奶牛数） ans+=minn; //需要时间（答案）加上最小值 &#125; printf("%d",ans); //输出 return 0; //程序结束 &#125; 另外嘱咐大家一句：数组一定要够大，否则RE最后祝大家RP++；]]></content>
-      <categories>
-        <category>题解</category>
-      </categories>
-      <tags>
-        <tag>模拟</tag>
-        <tag>拓扑</tag>
       </tags>
   </entry>
 </search>
